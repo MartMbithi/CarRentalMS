@@ -4,7 +4,7 @@
   include('inc/checklogin.php');
   check_login();
   //hold logged in user session.
-  $a_id = $_SESSION['a_id'];
+  $s_id = $_SESSION['s_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,53 +63,21 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Returns</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Hired Cars</h5>
                         <?php
-                              //code for summing up number of bookings
-                              $result ="SELECT count(*) FROM crms_bookings WHERE b_car_return_status  = 'Returned' ";
+                              //code for summing up number of hired cars
+                              $result ="SELECT count(*) FROM crms_cars WHERE  car_status  = 'Hired' ";
                               $stmt = $mysqli->prepare($result);
                               $stmt->execute();
-                              $stmt->bind_result($booking);
+                              $stmt->bind_result($hired_cars);
                               $stmt->fetch();
                               $stmt->close();
                         ?>
-                      <span class="h2 font-weight-bold mb-0"><?php echo $booking;?></span>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $hired_cars;?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                        <i class="fas fa-clipboard-check"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"></span>
-                    <span class="text-nowrap"></span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Staffs</h5>
-                        <?php
-                            //code for summing up number of staff
-                            $result ="SELECT count(*) FROM crms_staff ";
-                            $stmt = $mysqli->prepare($result);
-                            $stmt->execute();
-                            $stmt->bind_result($staff);
-                            $stmt->fetch();
-                            $stmt->close();
-                        ?>
-                      <span class="h2 font-weight-bold mb-0"><?php echo $staff;?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                        <i class="fa fa-users"></i>
+                        <i class="fas fa-car"></i>
                       </div>
                     </div>
                   </div>
@@ -120,7 +88,7 @@
                 </div>
               </div>
             </div>
-
+            
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
@@ -151,6 +119,38 @@
                 </div>
               </div>
             </div>
+
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Car Hiring</h5>
+                        <?php
+                              //code for summing up number of bookings
+                              $result ="SELECT count(*) FROM crms_bookings WHERE b_status ='Approved' AND b_payment = 'Paid' ";
+                              $stmt = $mysqli->prepare($result);
+                              $stmt->execute();
+                              $stmt->bind_result($booking);
+                              $stmt->fetch();
+                              $stmt->close();
+                        ?>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $booking;?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                        <i class="fas fa-business-time"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"></span>
+                    <span class="text-nowrap"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
 
           </div>
           <br>
@@ -186,38 +186,6 @@
                 </div>
               </div>
             </div>
-            
-            <div class="col-xl-4 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Hired Cars</h5>
-                        <?php
-                              //code for summing up number of hired cars
-                              $result ="SELECT count(*) FROM crms_cars WHERE  car_status  = 'Hired' ";
-                              $stmt = $mysqli->prepare($result);
-                              $stmt->execute();
-                              $stmt->bind_result($hired_cars);
-                              $stmt->fetch();
-                              $stmt->close();
-                        ?>
-                      <span class="h2 font-weight-bold mb-0"><?php echo $hired_cars;?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                        <i class="fas fa-car"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-danger mr-2"></span>
-                    <span class="text-nowrap"></span>
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <div class="col-xl-4 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
@@ -249,8 +217,38 @@
               </div>
             </div>
 
+            <div class="col-xl-4 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Returns</h5>
+                        <?php
+                              //code for summing up number of bookings
+                              $result ="SELECT count(*) FROM crms_bookings WHERE b_car_return_status  = 'Returned' ";
+                              $stmt = $mysqli->prepare($result);
+                              $stmt->execute();
+                              $stmt->bind_result($booking);
+                              $stmt->fetch();
+                              $stmt->close();
+                        ?>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $booking;?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                        <i class="fas fa-clipboard-check"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"></span>
+                    <span class="text-nowrap"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
             
-
+            
           </div>
         </div>
       </div>
