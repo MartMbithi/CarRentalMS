@@ -103,8 +103,8 @@
               <a href="admin_register.php" class="text-light"><small>Create An Account </small></a>
             </div>
 -->
-            <div class="col-6 text-right">
-              <a href="staff_login.php" class="btn btn-outline-success"><small>Remembered Password</small></a>
+            <div class="col-6 text-centre">
+              <a href="client_login.php" class="btn btn-outline-success"><small>Remembered Password</small></a>
             </div>
           </div>
         </div>

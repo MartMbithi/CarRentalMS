@@ -4,19 +4,19 @@
     include('inc/config.php');//get configuration file
     if(isset($_POST['login']))
     {
-        $s_email=$_POST['s_email'];
-        $s_pwd=sha1(md5($_POST['s_pwd']));//double encrypt to increase security
-        $stmt=$mysqli->prepare("SELECT s_email ,s_pwd , s_id FROM crms_staff  WHERE s_email=? AND s_pwd=? ");//sql to log in user
-        $stmt->bind_param('ss',$s_email,$s_pwd);//bind fetched parameters
+        $c_email=$_POST['c_email'];
+        $c_pwd=sha1(md5($_POST['c_pwd']));//double encrypt to increase security
+        $stmt=$mysqli->prepare("SELECT c_email ,c_pwd , c_id FROM crms_clients  WHERE c_email=? AND c_pwd=? ");//sql to log in user
+        $stmt->bind_param('ss',$c_email,$c_pwd);//bind fetched parameters
         $stmt->execute();//execute bind
-        $stmt -> bind_result($s_email, $s_pwd, $s_id);//bind result
+        $stmt -> bind_result($c_email, $c_pwd, $c_id);//bind result
         $rs=$stmt->fetch();
-        $_SESSION['s_id']= $s_id;//assaign session to admin id
+        $_SESSION['c_id']= $c_id;//assaign session to client_id
         //$uip=$_SERVER['REMOTE_ADDR'];
         //$ldate=date('d/m/Y h:i:s', time());
         if($rs)
             {//if its sucessfull
-                header("location:staff_dashboard.php");
+                header("location:client_dashboard.php");
             }
 
         else
@@ -49,8 +49,8 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Staff Login</h1>
-              <p class="text-lead text-light">Please provide your email and passsword inorder to access staff panel.</p>
+              <h1 class="text-white">Client Login</h1>
+              <p class="text-lead text-light">Please provide your email and passsword inorder to access client portal.</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" required name="s_email" placeholder="Email" type="email">
+                    <input class="form-control" required name="c_email" placeholder="Email" type="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -80,7 +80,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" required name="s_pwd" placeholder="Password" type="password">
+                    <input class="form-control" required name="c_pwd" placeholder="Password" type="password">
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -98,13 +98,18 @@
 
             </div>
           </div>
+
           <div class="row mt-3">
-            <div class="col-6">
-              <a href="staff_pwd_reset.php" class="btn btn-outline-danger"><small>Forgot password?</small></a>
+          <div class="col-4">
+              <a href="client_signup.php" class=" btn btn-outline-success "><small>Sign Up</small></a>
+            </div>
+
+            <div class="col-4">
+              <a href="client_pwd_reset.php" class=" btn btn-outline-danger"><small>Forgot Password?</small></a>
             </div>
             
-            <div class="col-6 text-right">
-              <a href="../../" class="btn btn-outline-success"><small>Home</small></a>
+            <div class="col-4 text-right">
+              <a href="../../" class="btn btn-outline-secondary"><small>Home</small></a>
             </div>
           </div>
         </div>
