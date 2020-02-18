@@ -4,7 +4,7 @@
   include('inc/checklogin.php');
   check_login();
   //hold logged in user session.
-  $a_id = $_SESSION['a_id'];
+  $c_id = $_SESSION['c_id'];
   /*
   if(isset($_POST['update_profile']))
   {
@@ -54,24 +54,24 @@
             <!-- Header -->
         <?php
             //Get single details of logged in user
-            $c_id = $_GET['c_id'];
-            $ret="SELECT  * FROM  crms_clients  WHERE c_id=?";
+            $car_id = $_GET['car_id'];
+            $ret="SELECT  * FROM  crms_cars  WHERE car_id=?";
             $stmt= $mysqli->prepare($ret) ;
-            $stmt->bind_param('i',$c_id);
+            $stmt->bind_param('i',$car_id);
             $stmt->execute() ;//ok
             $res=$stmt->get_result();
             //$cnt=1;
             while($row=$res->fetch_object())
             {
         ?>
-            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../Uploads/Users/<?php echo $row->c_dpic;?>); background-size: cover; background-position: center top;">
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 500px; background-image: url(../Uploads/Cars/<?php echo $row->front_img;?>); background-size: cover; background-position: center top;">
             <!-- Mask -->
             <span class="mask bg-gradient-default opacity-8"></span>
             <!-- Header container -->
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                 <div class="col-lg-12 col-md-10">
-                    <h3 class="display-2 text-white"><?php echo $row->c_name;?></h3>
+                    <h3 class="display-2 text-white"><?php echo $row->car_name;?></h3>
                 </div>
                 </div>
             </div>
@@ -82,10 +82,26 @@
                 <div class="col-xl-12 order-xl-2 mb-5 mb-xl-0">
                     <div class="card card-profile shadow">
                         <div class="row justify-content-center">
-                        <div class="col-lg-3 order-lg-2">
+                        <div class="col-lg-6 order-lg-2">
                             <div class="card-profile-image">
                             <a href="#">
-                                <img src="../Uploads/Users/<?php echo $row->c_dpic;?>" class="circle">
+                                <img src="../Uploads/Cars/<?php echo $row->rear_img ;?>" class="circle">
+                            </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="card-profile-image">
+                            <a href="#">
+                                <img src="../Uploads/Cars/<?php echo $row->interior_img;?>" class="circle">
+                            </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="card-profile-image">
+                            <a href="#">
+                                <img src="../Uploads/Cars/<?php echo $row->exterior_img;?>" class="circle">
                             </a>
                             </div>
                         </div>
@@ -96,46 +112,13 @@
                         <div class="card-body pt-0 pt-md-4">
                         
                         <div class="text-center">
-                            <div class="h5 mt-4">
-                                <i class="fa fa-user" mr-2"></i>  <?php echo $row->c_name;?>
-                                
-                            </div>
-
-                            <div class="h5 mt-4 ">
-                                <i class="fa fa-envelope" mr-2"></i> <?php echo $row->c_email;?>
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="fa fa-phone mr-2"></i> <?php echo $row->c_phone;?>
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="fa fa-map-marker mr-2"></i> <?php echo $row->c_adr;?>
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="fa fa-calendar mr-2"></i> <?php echo $row->c_dob;?>
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="fa fa-address-card mr-2"></i> <?php echo $row->c_natidno;?>
-                            </div>
-
-                            <div class="h5 mt-4">
-                                <i class="fa fa-user-cog mr-2"></i> <?php echo $row->c_number;?>
-                            </div>
-
-                            <div>
-                            </div>
-                            <hr class="my-4" />
-                            <p><?php echo $row->c_bio;?></p>
-                            <hr class="my-4" />
-                            <!--Client Hired Cars-->
+                            
+                            <hr>
                             <div class="card shadow">
                                 <div class="card-header border-0">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                    <h3 class="mb-0">Client Car Hire Records</h3>
+                                    <h3 class="mb-0"><?php echo $row->car_name;?> Records</h3>
                                     </div>
                                    
                                 </div>
@@ -145,33 +128,30 @@
                                 <table class="table align-items-center table-flush">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">#</th>
                                         <th scope="col">Car Name</th>
                                         <th scope="col">Car Type</th>
                                         <th scope="col">Car Reg No.</th>
-                                        <th scope="col">Hire Date</th>
+                                        <th scope="col">Car Hire Price Per Day </th>
                                         <th scope="col">Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                         //get details of all cars this client has hired
-                                        $c_id = $_GET['c_id'];
-                                        $ret="SELECT * FROM crms_bookings WHERE c_id = ? ORDER BY RAND() LIMIT 10  "; 
+                                        $car_id = $_GET['car_id'];
+                                        $ret="SELECT * FROM crms_cars WHERE car_id = ? "; 
                                         $stmt= $mysqli->prepare($ret) ;
-                                        $stmt->bind_param('i',$c_id);
+                                        $stmt->bind_param('i',$car_id);
                                         $stmt->execute() ;//ok
                                         $res=$stmt->get_result();
                                         $cnt=1;
                                         while($row=$res->fetch_object())
                                         {
                                             //Trim Timestamp to <DD-MM-YYY>
-                                            $mysqlDateTime = $row->b_date;
+                                            //$mysqlDateTime = $row->b_date;
                                     ?>
                                         <tr>
-                                            <th scope="row">
-                                                <?php echo $cnt;?>
-                                            </th>
+                                            
                                             <td>
                                                 <?php echo $row->car_name;?>
                                             </td>
@@ -182,20 +162,23 @@
                                                 <?php echo $row->car_regno;?>
                                             </td>
                                             <td>
-                                                <?php echo date("d-m-Y", strtotime($mysqlDateTime));?>
+                                              Ksh <?php echo $row->car_price;?>
                                             </td>
                                             <td>
+                                            
                                                 <?php 
-                                                    if($row->b_status)
-                                                    {
-                                                        echo "<span class='badge badge-success'>Approved</span>";
-                                                    }
-                                                        else
-                                                        {
-                                                            echo "<span class='badge badge-danger'>Pending</span>";
-                                                        }
+                                                if($row->car_status == 'Available')
+                                                {
+                                                    echo '<span class="badge badge-success">Available<span>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<span class="badge badge-danger">Hired</span>';
+                                                }
+                                                
                                                 ?>
                                             </td>
+                                           
                                         </tr>
                                     <?php $cnt = 1+$cnt; }?>
                                         </tbody>
@@ -203,6 +186,29 @@
                                 </div>
                             </div>
                             </div>
+                            <br>
+                            <?php
+                            
+                                $car_id = $_GET['car_id'];
+                                $ret="SELECT  * FROM  crms_cars  WHERE car_id=?";
+                                $stmt= $mysqli->prepare($ret) ;
+                                $stmt->bind_param('i',$car_id);
+                                $stmt->execute() ;//ok
+                                $res=$stmt->get_result();
+                                //$cnt=1;
+                                while($row=$res->fetch_object())
+                                {
+                            ?>
+                            <div class="card">
+                                <div class="card-header">
+                                    <?php echo $row->car_name;?> Features
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text"><?php echo $row->car_features;?></div>
+                                </div>
+                            </div>
+
+                            <?php }?>
                         </div>
                     </div>
                 </div>

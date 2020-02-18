@@ -100,11 +100,11 @@
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="admin_pwd_reset.php" class="text-light"><small>Forgot password?</small></a>
+              <a href="admin_pwd_reset.php" class="btn btn-outline-danger"><small>Forgot password?</small></a>
             </div>
             
             <div class="col-6 text-right">
-              <a href="../../" class="text-light"><small>Home</small></a>
+              <a href="../../" class="btn btn-outline-success"><small>Home</small></a>
             </div>
           </div>
         </div>

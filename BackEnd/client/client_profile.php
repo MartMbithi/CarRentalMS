@@ -4,38 +4,10 @@
   include('inc/checklogin.php');
   check_login();
   //hold logged in user session.
-  $a_id = $_SESSION['a_id'];
-  /*
-  if(isset($_POST['update_profile']))
-  {
-      $a_id = $_SESSION['a_id'];
-      $a_name = $_POST['a_name'];
-      $a_email = $_POST['a_email'];
-      $a_bio = $_POST['a_bio'];
-      
-      $a_dpic = $_FILES["a_dpic"]["name"];
-          move_uploaded_file($_FILES["a_dpic"]["tmp_name"],"assets/img/theme/".$_FILES["a_dpic"]["name"]);//move uploaded image
-      
-      
-      //sql to insert captured values
-      $query="UPDATE crms_admin SET a_name=?, a_email = ?, a_bio=?, a_dpic = ? WHERE a_id =?";
-      $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('ssssi', $a_name, $a_email, $a_bio, $a_dpic, $a_id);
-      $stmt->execute();
-
-      if($stmt)
-      {
-                $success = "Profile Updated!";
-                
-                //echo "<script>toastr.success('Have Fun')</script>";
-      }
-      else {
-        $err = "Please Try Again Or Try Later";
-      }
-      
-      
-  }
-  */
+  $c_id = $_SESSION['c_id'];
+  //update logged in user profile
+  
+  
 ?>
 
 <!DOCTYPE html>
@@ -53,8 +25,8 @@
             <?php include("inc/nav.php");?>
             <!-- Header -->
         <?php
-            //Get single details of logged in user
-            $c_id = $_GET['c_id'];
+            //Get single details of logged in user ->
+            $c_id = $_SESSION['c_id'];
             $ret="SELECT  * FROM  crms_clients  WHERE c_id=?";
             $stmt= $mysqli->prepare($ret) ;
             $stmt->bind_param('i',$c_id);
@@ -114,10 +86,6 @@
                             </div>
 
                             <div class="h5 mt-4">
-                                <i class="fa fa-calendar mr-2"></i> <?php echo $row->c_dob;?>
-                            </div>
-
-                            <div class="h5 mt-4">
                                 <i class="fa fa-address-card mr-2"></i> <?php echo $row->c_natidno;?>
                             </div>
 
@@ -135,7 +103,7 @@
                                 <div class="card-header border-0">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                    <h3 class="mb-0">Client Car Hire Records</h3>
+                                    <h3 class="mb-0"><?php echo $row->c_name;?> Car Hire Records</h3>
                                     </div>
                                    
                                 </div>
@@ -155,8 +123,8 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                        //get details of all cars this client has hired
-                                        $c_id = $_GET['c_id'];
+                                        //get details of all cars this staff has hired
+                                        $c_id = $_SESSION['c_id'];
                                         $ret="SELECT * FROM crms_bookings WHERE c_id = ? ORDER BY RAND() LIMIT 10  "; 
                                         $stmt= $mysqli->prepare($ret) ;
                                         $stmt->bind_param('i',$c_id);
@@ -185,16 +153,19 @@
                                                 <?php echo date("d-m-Y", strtotime($mysqlDateTime));?>
                                             </td>
                                             <td>
-                                                <?php 
-                                                    if($row->b_status)
-                                                    {
-                                                        echo "<span class='badge badge-success'>Approved</span>";
-                                                    }
-                                                        else
-                                                        {
-                                                            echo "<span class='badge badge-danger'>Pending</span>";
-                                                        }
-                                                ?>
+                                            <?php 
+                                                if ($row->b_status == 'Approved')
+                                                {
+                                                   echo "
+                                                        <span class='badge badge-success'>Approved</span>
+                                                    ";
+                                                }
+                                                else{
+                                                    echo "
+                                                        <span class='badge badge-danger'>Pending</span>
+                                                    ";
+                                                }
+                                            ?>
                                             </td>
                                         </tr>
                                     <?php $cnt = 1+$cnt; }?>

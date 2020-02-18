@@ -169,7 +169,7 @@
                                 
                             </div> 
                             <?php }?>
-                            <button type="submit" name="update_car" class="btn btn-outline-success">Add Car</button>
+                            <button type="submit" name="update_car" class="btn btn-outline-success">Update Car</button>
                         </form>
                         <!-- ./ Form -->
                     </div>    

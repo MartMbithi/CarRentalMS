@@ -57,7 +57,7 @@
 							</div>
 						</div>	
 						<p class="mt-50 mx-auto footer-text col-lg-12">
-							Copyright &copy; 2020 - <script>document.write(new Date().getFullYear());</script> Car Rental |  All rights reserved |Crafted with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://martdev.info" target="_blank">MartDevelopers</a>
+							Copyright &copy; 2020 - <script>document.write(new Date().getFullYear());</script> Car Rental |  All rights reserved | Crafted with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://martdev.info" target="_blank">MartDevelopers</a>
 						</p>											
 					</div>
 				</div>

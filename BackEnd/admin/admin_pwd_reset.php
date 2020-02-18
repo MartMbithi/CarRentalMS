@@ -104,7 +104,7 @@
             </div>
 -->
             <div class="col-6 text-right">
-              <a href="admin_login.php" class="text-light"><small>Remembered Password</small></a>
+              <a href="admin_login.php" class="btn btn-outline-success"><small>Remembered Password</small></a>
             </div>
           </div>
         </div>
