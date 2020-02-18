@@ -9,7 +9,7 @@
   
 		if(isset($_POST['pay_hire']))
 		{
-            $s_id = $_SESSION['s_id'];
+            $c_id = $_GET['c_id'];
             $car_cat_id = $_GET['car_cat_id'];
             $car_id  = $_GET['car_id'];
             $car_name  = $_POST['car_name'];
@@ -29,13 +29,13 @@
             $b_id = $_GET['b_id'];
             
             //sql to insert captured values
-            $query1="INSERT INTO crms_car_payments (s_id, car_cat_id, car_id, car_name, car_type, car_regno, b_duration, c_name, c_natidno, p_method, p_code, p_amt, p_ref_number) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $query1="INSERT INTO crms_car_payments (c_id, car_cat_id, car_id, car_name, car_type, car_regno, b_duration, c_name, c_natidno, p_method, p_code, p_amt, p_ref_number) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $query2="UPDATE crms_bookings SET b_payment = ? WHERE b_id =?";
 
             $stmt1 = $mysqli->prepare($query1);
             $stmt2 = $mysqli->prepare($query2);
 
-            $rc=$stmt1->bind_param('sssssssssssss',$s_id, $car_cat_id, $car_id, $car_name, $car_type, $car_regno, $b_duration, $c_name, $c_natidno, $p_method, $p_code, $p_amt, $p_ref_number);
+            $rc=$stmt1->bind_param('sssssssssssss',$c_id, $car_cat_id, $car_id, $car_name, $car_type, $car_regno, $b_duration, $c_name, $c_natidno, $p_method, $p_code, $p_amt, $p_ref_number);
             $rc=$stmt2->bind_param('si',$b_payment, $b_id);
 
             $stmt1->execute();

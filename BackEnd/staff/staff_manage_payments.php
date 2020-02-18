@@ -101,7 +101,7 @@
                                    {
                                     echo 
                                         "   
-                                        <a class='badge badge-success' href='staff_add_payment.php?b_id=$row->b_id&car_cat_id=$row->cc_id&car_id=$row->car_id'>
+                                        <a class='badge badge-success' href='staff_add_payment.php?b_id=$row->b_id&car_cat_id=$row->cc_id&car_id=$row->car_id&c_id=$row->c_id'>
                                             <i class='fa fa-plus'></i> <i class='fas fa-money-check-alt'></i>
                                                 Add Payment
                                         </a>

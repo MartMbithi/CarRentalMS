@@ -126,69 +126,7 @@
                             <hr class="my-4" />
                             <p><?php echo $row->s_bio;?></p>
                             <hr class="my-4" />
-                            <!--Client Hired Cars-->
-                            <div class="card shadow">
-                                <div class="card-header border-0">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                    <h3 class="mb-0">Staff Car Hire Records</h3>
-                                    </div>
-                                   
-                                </div>
-                                </div>
-                                <div class="table-responsive">
-                                <!-- Projects table -->
-                                <table class="table align-items-center table-flush">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Car Name</th>
-                                        <th scope="col">Car Type</th>
-                                        <th scope="col">Car Reg No.</th>
-                                        <th scope="col">Hire Date</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                        //get details of all cars this staff has hired
-                                        $s_id = $_GET['s_id'];
-                                        $ret="SELECT * FROM crms_bookings WHERE s_id = ? ORDER BY RAND() LIMIT 10  "; 
-                                        $stmt= $mysqli->prepare($ret) ;
-                                        $stmt->bind_param('i',$s_id);
-                                        $stmt->execute() ;//ok
-                                        $res=$stmt->get_result();
-                                        $cnt=1;
-                                        while($row=$res->fetch_object())
-                                        {
-                                            //Trim Timestamp to <DD-MM-YYY>
-                                            $mysqlDateTime = $row->b_date;
-                                    ?>
-                                        <tr>
-                                            <th scope="row">
-                                                <?php echo $cnt;?>
-                                            </th>
-                                            <td>
-                                                <?php echo $row->car_name;?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->car_type;?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->car_regno;?>
-                                            </td>
-                                            <td>
-                                                <?php echo date("d-m-Y", strtotime($mysqlDateTime));?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->c_email;?>
-                                            </td>
-                                        </tr>
-                                    <?php $cnt = 1+$cnt; }?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                           
                             </div>
                         </div>
                     </div>

@@ -50,15 +50,37 @@
 
   <?php } ?>
   <script>
-        function getCarCategoryId(val) {
-          //get Room Type
+        function getClientDetails(val) {
+          //get client details phone number
         $.ajax({
         type: "POST",
-        url: "pages_carcategory.php",
-        data:'car_type='+val,
+        url: "pages_getClientDetails.php",
+        data:'client_name='+val,
         success: function(data){
         //alert(data);
-        $('#car_category_id').val(data);
+        $('#clientPhoneNumber').val(data);
+        }
+        });
+
+        //get client national id number
+        $.ajax({
+        type: "POST",
+        url: "pages_getClientDetails.php",
+        data:'c_natidno='+val,
+        success: function(data){
+        //alert(data);
+        $('#clientNationalIDNumber').val(data);
+        }
+        });
+
+        //get client  id 
+        $.ajax({
+        type: "POST",
+        url: "pages_getClientDetails.php",
+        data:'c_phoneno='+val,
+        success: function(data){
+        //alert(data);
+        $('#clientID').val(data);
         }
         });
 

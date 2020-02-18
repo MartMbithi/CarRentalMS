@@ -9,7 +9,7 @@
   
 		if(isset($_POST['book_car']))
 		{
-            $s_id = $_SESSION['s_id'];
+            $c_id = $_POST['c_id'];
             $cc_id = $_GET['cc_id'];
             $car_id  = $_GET['car_id'];
             $car_name  = $_POST['car_name'];
@@ -31,9 +31,9 @@
             //move_uploaded_file($_FILES["h_front_dpic"]["tmp_name"],"dist/img/houses/".$_FILES["h_front_dpic"]["name"]);
             
             //sql to insert captured values
-            $query="INSERT INTO crms_bookings (s_id, cc_id, car_id, car_name, car_type, car_regno, b_duration, c_name, c_natidno, c_phone, b_number, car_price) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            $query="INSERT INTO crms_bookings (c_id, cc_id, car_id, car_name, car_type, car_regno, b_duration, c_name, c_natidno, c_phone, b_number, car_price) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             $stmt = $mysqli->prepare($query);
-            $rc=$stmt->bind_param('ssssssssssss',$s_id, $cc_id, $car_id, $car_name, $car_type, $car_regno, $b_duration, $c_name, $c_natidno, $c_phone, $b_number, $car_price);
+            $rc=$stmt->bind_param('ssssssssssss',$c_id, $cc_id, $car_id, $car_name, $car_type, $car_regno, $b_duration, $c_name, $c_natidno, $c_phone, $b_number, $car_price);
             $stmt->execute();
 
             if($stmt)
@@ -132,21 +132,27 @@
                                 <input type="text" required readonly name="car_price" value="<?php echo $row->car_price;?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                             <?php }?>
-                            <?php
-                            
-                                $s_id = $_SESSION['s_id'];
-                                $ret="SELECT  * FROM  crms_staff  WHERE s_id=?";
-                                $stmt= $mysqli->prepare($ret) ;
-                                $stmt->bind_param('i',$s_id);
-                                $stmt->execute() ;//ok
-                                $res=$stmt->get_result();
-                                //$cnt=1;
-                                while($row=$res->fetch_object())
-                                {
-                            ?>
+                           
                             <div class="form-group col-md-4">
                                 <label for="exampleInputEmail1">Client Name</label>
-                                <input type="text" value="<?php echo $row->s_name;?>" required name="c_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <select class="form-control"  name="c_name" onChange="getClientDetails(this.value);" id="client_name">
+                                    <option>Select Clients Name</option>
+                                    <?php
+                            
+                                    //$s_id = $_SESSION['s_id'];
+                                    $ret="SELECT  * FROM  crms_clients";
+                                    $stmt= $mysqli->prepare($ret) ;
+                                    //$stmt->bind_param('i',$s_id);
+                                    $stmt->execute() ;//ok
+                                    $res=$stmt->get_result();
+                                    //$cnt=1;
+                                    while($row=$res->fetch_object())
+                                    {
+                                ?>
+                                    <option><?php echo $row->c_name;?></option>
+                                <?php }?>   
+
+                                </select>
                             </div>
 
                             
@@ -155,16 +161,20 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Client Phone Number</label>
-                                <input type="text" required name="c_phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="text" required name="c_phone"  class="form-control" id="clientPhoneNumber" readonly aria-describedby="emailHelp">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Client ID Number</label>
-                                <input type="text"  required name="c_natidno" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="text"  required name="c_natidno" id="clientNationalIDNumber" readonly class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+
+                            <div class="form-group col-md-6"style="display:none" >
+                                <label for="exampleInputEmail1">Client ID  🙁 </label>
+                                <input type="text"  required name="c_id" id="clientID" readonly class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
 
                         </div> 
-                        <?php }?>
                         <button type="submit" name="book_car" class="btn btn-outline-success">Hire Car</button>
                     </form>
                     <!-- ./ Form -->
