@@ -94,6 +94,7 @@
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Car Type</label>
                                 <select class="form-control" name="car_type" onChange="getCarCategoryId(this.value);" id="car_type" >
+                                
                                     <option>Select Car Type</option>
                                     <?php
                                         //get all car categories

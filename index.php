@@ -11,7 +11,7 @@
 		<!-- Favicon-->
 		<link rel="shortcut icon" href="img/fav.png">
 		<!-- Author Meta -->
-		<meta name="author" content="MartDevelopers">
+		<meta name="author" content="MartDevelopers Inc.">
 		<!-- Meta Description -->
 		<meta name="description" content="">
 		<!-- Meta Keyword -->
@@ -46,14 +46,14 @@
 				<div class="container">
 					<div class="row fullscreen d-flex align-items-center justify-content-center">
 						<div class="banner-content col-lg-12 col-md-6 ">
-							<h6 class="text-white ">the Royal Essence of Journey</h6>
+							<h6 class="text-white ">KAPA Car Rentals Agency.</h6>
 							<h1 class="text-white text-uppercase">
-								Relaxed Journey Ever				
+								The Royal Essence of Journey
 							</h1>
 							<p class="pt-20 pb-20 text-white">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									Welcome to KAPA Car Rentals Agency, Search, hire, drive your dream car and travel hassle-free.
 							</p>
-							<a href="#" class="primary-btn text-uppercase">Rent Car Now</a>
+							<a href="#service" class="primary-btn text-uppercase">Explore</a>
 						</div>
 																
 					</div>
@@ -68,59 +68,36 @@
 						<div class="col-md-8 pb-40 header-text">
 							<h1>What Services we offer to our clients</h1>
 							<p>
-								Who are in extremely love with eco friendly system.
+								We are in extremely love with eco friendly system which leaves our clients with mesmerizing memories of their encounters with us.
 							</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-4 col-md-6">
 							<div class="single-feature">
-								<h4><span class="lnr lnr-user"></span>Expert Technicians</h4>
+								<h4><span class="lnr lnr-user"></span>Car Renting</h4>
 								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									Renting cars is our main job here at KAPA Car Rentals Agency and we have perfected our skills over the years which makes our clients fully satisfied for we have solved their travel mystery.
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-feature">
-								<h4><span class="lnr lnr-license"></span>Professional Service</h4>
+								<h4><span class="lnr lnr-license"></span>Car Reveiws</h4>
 								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									Each and every time automobiles manufacturers releases new brand of car its our job to review that car and make a recommendation to it if its fit for you to hire or its not.
 								</p>								
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-feature">
-								<h4><span class="lnr lnr-phone"></span>Great Support</h4>
+								<h4><span class="lnr lnr-phone"></span>Intergrated Car Renting  Support</h4>
 								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									Us being the leading Car Rentals Agency in the country, we always offer our clients full technical and logical support to our clients if stuck in a dillemma when selecting the best car for them to hire. 
 								</p>								
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="single-feature">
-								<h4><span class="lnr lnr-rocket"></span>Technical Skills</h4>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>				
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="single-feature">
-								<h4><span class="lnr lnr-diamond"></span>Highly Recomended</h4>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>								
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="single-feature">
-								<h4><span class="lnr lnr-bubble"></span>Positive Reviews</h4>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>									
-							</div>
-						</div>						
+					
 					</div>
 				</div>	
 			</section>
@@ -134,16 +111,18 @@
 							<img class="img-fluid" src="img/about-img.jpg" alt="">
 						</div>
 						<div class="col-lg-6 no-padding home-about-right">
-							<h1>Globally Connected <br>
-							by Large Network</h1>
+							<h1>KAPA Car Rentals Agency<br>
+							</h1>
 							<p>
-								<span>We are here to listen from you deliver exellence</span>
+								<span>We are here to take away your day to day travel hassel and pain.</span>
 							</p>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+								Are you sandboxed in a dillemma of how you will reach out to your family and friends at countryside and you have phobia of public service vehicles?
+								Worry no more because here at KAPA Car Rentals Agency we take away that dillemma and let you drive your dream car for a couple of days,
+								visit your friends and family, have fun and later return our car. Our charges per day are pocket friendly that you will not even realize that you 
+								are riding a rental car.
 							</p>
-							<a class="text-uppercase primary-btn" href="#">get details</a>
+							<a class="text-uppercase primary-btn" href="cars.php">Car Market Place</a>
 						</div>
 					</div>
 				</div>	
@@ -155,125 +134,101 @@
 				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="col-md-8 pb-40 header-text text-center">
-							<h1>Some Features that Made us Unique</h1>
+							<h1>Our Satisfied Client Feedbacks</h1>
 							<p class="mb-10 text-center">
-								Who are in extremely love with eco friendly system.
+								This is why we are leading in this car rental gig.
 							</p>
 						</div>
-					</div>					
+					</div>		
+					<!--Display Core testimonials-->			
 					<div class="row">
 						<div class="col-lg-4 col-md-6">
 							<div class="single-review">
-								<h4>Cody Hines</h4>
+								<h4>Barclays Bank Kenya.</h4>
 								<p>
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+									Our team when its travelling to countryside or around the town we always hire cars from KAPA Rentals Agency and they do not fail us.
+									The services offered by these guys its on a new level, ranging from charming hospitality to even their products(Automobiles). 
+									We always be your number one clients.
 								</p>
 								<div class="star">
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-review">
-								<h4>Chad Herrera</h4>
+								<h4>MartDevelopers Inc.</h4>
 								<p>
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+									Being a software development agency we always find it easy to send a team of developers to visit a client in a remote area, insted of taking a public
+									service vehicle which tends to be insecure, expensive and slow we always head straight for KAPA Car Rentals Agency which is always one call away, and 
+									they never failed us. Keep it up guys.
 								</p>
 								<div class="star">
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-review">
-								<h4>Andre Gonzalez</h4>
+								<h4>Lydia </h4>
 								<p>
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+									I being a student i always find it easy to transit to my campus with ease and comfortability, i always prefer these rental cars and when im heading to 
+									my instution for any lectures or co curriclular activies i just hire a car of my choice from KAPA Car Rentals Agency and trust me they 
+									do not dissapoint, these guys they are professionals at their job. Thanks KAPA Car Rentals Agency.
 								</p>
 								<div class="star">
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
 								</div>
 							</div>
-						</div>							
+						</div>		
+						<!--Get remaining testimonials from database-->
+						<?php
+							//get details of all published feedbacks
+							$ret="SELECT * FROM crms_feedbacks WHERE f_status = 'Published'  ORDER BY RAND() "; 
+							$stmt= $mysqli->prepare($ret) ;
+							$stmt->execute() ;//ok
+							$res=$stmt->get_result();
+							$cnt=1;
+							while($row=$res->fetch_object())
+							{
+						?>
+
 						<div class="col-lg-4 col-md-6">
 							<div class="single-review">
-								<h4>Jon Banks</h4>
+								<h4><?php echo $row->user_name;?></h4>
 								<p>
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+									<?php echo $row->feedback;?>
 								</p>
 								<div class="star">
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="single-review">
-								<h4>Landon Houston</h4>
-								<p>
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
-								</p>
-								<div class="star">
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="single-review">
-								<h4>Nelle Wade</h4>
-								<p>
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
-								</p>
-								<div class="star">
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</div>
-							</div>
-						</div>												
+
+						<?php }?>
+																	
 					</div>
 				</div>	
 			</section>
 			<!-- End reviews Area -->
 			
 
-			<!-- Start callaction Area -->
-			<section class="callaction-area relative section-gap">
-				<div class="overlay overlay-bg"></div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-10">
-							<h1 class="text-white">Experience Great Support</h1>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-							</p>
-							<a class="callaction-btn text-uppercase" href="#">Reach Our Support Team</a>	
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End callaction Area -->
 
 			<!-- Start blog Area -->
 			<section class="blog-area section-gap" id="blog">
@@ -282,7 +237,7 @@
 						<div class="menu-content pb-70 col-lg-8">
 							<div class="title text-center">
 								<h1 class="mb-10">Latest From Our Blog</h1>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.</p>
+								<p>If you are an automobiles ethusiast, you can follow our blogs which will keep you entertained and educated on certain aspects in 🚗 cars</p>
 							</div>
 						</div>
 					</div>					
@@ -292,29 +247,23 @@
 								<img class="img-fluid" src="img/b1.jpg" alt="">								
 							</div>
 							<p class="date">10 Jan 2018</p>
-							<a href="blog-single.html"><h4>Addiction When Gambling
-							Becomes A Problem</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
+							<a href=""><h4>Nissan GTR Silverstone is ranked as one of 🗺 worlds fastest cars.</h4></a>
+							
 							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
+								<p><span class="lnr lnr-heart"></span> 29K Likes</p>
+								<p><span class="lnr lnr-bubble"></span> 10K Comments</p>
 							</div>									
 						</div>
 						<div class="col-lg-3 col-md-6 single-blog">
 							<div class="thumb">
 								<img class="img-fluid" src="img/b2.jpg" alt="">								
 							</div>
-							<p class="date">10 Jan 2018</p>
-							<a href="blog-single.html"><h4>Addiction When Gambling
-							Becomes A Problem</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
+							<p class="date">10 June 2018</p>
+							<a href=""><h4>How you can turn your old school car junkie to a legacy dream car.</h4></a>
+							
 							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
+								<p><span class="lnr lnr-heart"></span> 15K Likes</p>
+								<p><span class="lnr lnr-bubble"></span> 20K Comments</p>
 							</div>									
 						</div>
 						<div class="col-lg-3 col-md-6 single-blog">
@@ -322,29 +271,24 @@
 								<img class="img-fluid" src="img/b3.jpg" alt="">								
 							</div>
 							<p class="date">10 Jan 2018</p>
-							<a href="blog-single.html"><h4>Addiction When Gambling
-							Becomes A Problem</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
+							<a href=""><h4>How to customize your manufacture made car dashboard.</h4></a>
+							
 							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
+								<p><span class="lnr lnr-heart"></span> 150K Likes</p>
+								<p><span class="lnr lnr-bubble"></span> 200K Comments</p>
 							</div>									
 						</div>
 						<div class="col-lg-3 col-md-6 single-blog">
 							<div class="thumb">
 								<img class="img-fluid" src="img/b4.jpg" alt="">								
 							</div>
-							<p class="date">10 Jan 2018</p>
-							<a href="blog-single.html"><h4>Addiction When Gambling
-							Becomes A Problem</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
+							<p class="date">10 Jan 2019</p>
+							<a href=""><h4>Release of  brand new SUV cars which will take our car hire gig to a 
+							new level</h4></a>
+							
 							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
+								<p><span class="lnr lnr-heart"></span> 50K Likes</p>
+								<p><span class="lnr lnr-bubble"></span> 20K Comments</p>
 							</div>									
 						</div>							
 					</div>

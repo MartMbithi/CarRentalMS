@@ -122,13 +122,13 @@
               <i class="fa fa-car text-blue"></i> Manage Cars
             </a>
           </li>
-
+<!--
           <li class="nav-item">
             <a class="nav-link " href="admin_manage_bookings.php">
               <i class="fas fa-business-time text-blue"></i> Hire Car
             </a>
           </li>
-
+-->
           <li class="nav-item">
             <a class="nav-link " href="admin_approve_bookings.php">
               <i class="fas fa-cogs text-blue"></i> Manage Hiring

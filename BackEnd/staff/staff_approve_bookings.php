@@ -140,7 +140,7 @@
                                         
 
                                         ?>  
-                                    <a href  ='admin_approve_bookings.php?delete_booking=<?php echo $row->b_id;?>' class='badge badge-danger'>
+                                    <a href  ='staff_approve_bookings.php?delete_booking=<?php echo $row->b_id;?>' class='badge badge-danger'>
                                         <i class='fas fa-trash'></i> <i class='fa fa-car'></i>
                                             Delete
                                     </a>         

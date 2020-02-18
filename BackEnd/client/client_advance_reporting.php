@@ -94,7 +94,7 @@
                                         }
                                         else
                                         {
-                                            echo '<span class="badge badge-danger">Pending</span>';
+                                            echo '<span class="badge badge-danger">Return Pending</span>';
                                         }
                                     ?>
                                 </td>
