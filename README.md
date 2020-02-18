@@ -1,78 +1,39 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About LaraCarRentalsAgency
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+LaraCarRentalsAgecy is a web application crafted using laravel framework and core PHP which is shipped with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. LaraCarRentalAgency takes the pain out of aoutomobile renting by easing common tasks in agency such as:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Customer’s registration: The system should allow new users to register online and generate membership card.
+- Online reservation of cars: Customers should be able to use the system to make booking and online reservation.
+- Automatic update to database once reservation is made or new customer registered: Whenever there’s new reservation or new     registration, the system should be able update the database without any additional efforts from the admin.
+- Feedbacks to customers: It should provide means for customers to leave feedback.
+- And many more.
 
-## Learning Laravel
+## A glance of the system
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
+<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
+<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
+<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
+<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
+<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## How to unleash this beast.
+1. Git clone this repo or download it as a zip<br>
+2. Extract it to your servers public_html or htdocs directory in your server<br>
+3. Run Composer install<br>
+4. Create a database name it anything you want but you should change the default value in   .env file<br>
+5. Run php artisan migrate<br>
+6. Or you can just import the .SQL file directly into your database server<br>
+7. On your web browser type <b>http://127.0.0.1:8000</b> or <b>http://127.0.0.1/public/</b>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Login Credentials For Admin Account
+1. Email:   <b>sysadmin@cmrs.com</b><br>
+2. Password :  <b>admin</b> <br>
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+LaraCarRentalsAgency  is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
