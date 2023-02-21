@@ -66,9 +66,9 @@
  */
 session_start();
 require_once('../app/settings/config.php');
+require_once('../app/helpers/authentication.php');
 require_once('../app/partials/back_office_head.php');
 ?>
-
 
 <body style="background-image: url('../public/landing_assets/images/bg_1.jpg'); background-size:cover;">
     <!-- ===============================================-->
@@ -105,7 +105,7 @@ require_once('../app/partials/back_office_head.php');
                                 <div class="col-md-7 d-flex flex-center">
                                     <div class="p-4 p-md-5 flex-grow-1">
                                         <h3>Account Login</h3>
-                                        <form method="post">
+                                        <form method="POST">
                                             <div class="form-group">
                                                 <label for="card-email">Email address</label>
                                                 <input class="form-control" id="card-email" name="login_email" type="email" />

@@ -24,3 +24,9 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="../public/landing_assets/js/google-map.js"></script>
 <script src="../public/landing_assets/js/main.js"></script>
+<!-- Mojs -->
+<script src="../public/backoffice_assets/plugins/mojs/mo.js"></script>
+<!-- Noty -->
+<script src="../public/backoffice_assets/plugins/noty/noty.js"></script>
+<!-- Load Alerts -->
+<?php include('alerts.php'); ?>
