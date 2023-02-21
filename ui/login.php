@@ -113,15 +113,16 @@ require_once('../app/partials/back_office_head.php');
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-between">
                                                     <label for="card-password">Password</label>
-                                                    <a class="fs--1" href="forgot-password.html">Forgot Password?</a>
+                                                    <a class="fs--1" href="reset_password">Forgot Password?</a>
                                                 </div>
                                                 <input class="form-control" id="card-password" name="login_password" type="password" />
                                             </div>
                                             <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" type="checkbox" id="card-checkbox" checked="checked" /><label class="custom-control-label" for="card-checkbox">Remember me</label>
+                                                <input class="custom-control-input" type="checkbox" id="card-checkbox" checked="checked" />
+                                                <label class="custom-control-label" for="card-checkbox">Remember me</label>
                                             </div>
                                             <div class="form-group">
-                                                <button class="btn btn-primary btn-block mt-3" type="submit" name="Login">Log in</button>
+                                                <input type="submit" name="Login" value="Log in" class="btn btn-primary btn-block mt-3" type="submit" name="Login">
                                             </div>
                                         </form>
                                     </div>
