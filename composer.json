@@ -1,0 +1,8 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.6",
+        "infobip/infobip-api-php-client": "3.2.0",
+        "phpoffice/phpspreadsheet": "^1.24",
+        "dompdf/dompdf": "^2.0"
+    }
+}

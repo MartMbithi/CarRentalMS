@@ -1,0 +1,36 @@
+{
+    "name": "infobip/infobip-api-php-client",
+    "description": "PHP library for consuming Infobip's API",
+    "version": "3.2.0",
+    "keywords": [
+        "infobip",
+        "sms",
+        "php",
+        "tfa",
+        "sdk",
+        "rest",
+        "api",
+        "msisdn",
+        "2fa",
+        "openapi"
+    ],
+    "homepage": "https://www.infobip.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Infobip Support",
+            "email": "support@infobip.com",
+            "homepage": "https://www.infobip.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "autoload": {
+        "psr-4": { "Infobip\\" : "Infobip/" }
+    }
+}
