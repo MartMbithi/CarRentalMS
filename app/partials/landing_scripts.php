@@ -30,3 +30,13 @@
 <script src="../public/backoffice_assets/plugins/noty/noty.js"></script>
 <!-- Load Alerts -->
 <?php include('alerts.php'); ?>
+<script>
+    /* Add Active class on navigation */
+    var url = window.location;
+    // Will only work if string in href matches with location
+    $('li.nav-item a[href="' + url + '"]').parent().addClass('active');
+    // Will also work for relative and absolute hrefs
+    $('li.nav-item a').filter(function() {
+        return this.href == url;
+    }).parent().addClass('active');
+</script>
