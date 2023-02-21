@@ -65,82 +65,47 @@
  *
  */
 
+require '../vendor/autoload.php';
 
-/* Login */
-if (isset($_POST['Login'])) {
-    $login_email = mysqli_real_escape_string($mysqli, $_POST['login_email']);
-    $login_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['login_password'])));
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
-    /* Login Client First */
-    $client_login_sql = "SELECT * FROM clients WHERE client_email = '{$login_email}' AND client_password = '{$login_password}'";
-    $res = mysqli_query($mysqli, $client_login_sql);
-    if (mysqli_num_rows($res) > 0) {
-        $row = mysqli_fetch_assoc($res);
-        $_SESSION['client_id'] = $row['client_id'];
-        $_SESSION['success'] = 'Logged in successfully';
-        header('Location: home');
-        exit;
-    } else if (mysqli_num_rows($res) == 0) {
-        /* Staff Login */
-        $staff_login_sql = "SELECT * FROM users WHERE user_email = '{$login_email}' AND user_password = '{$login_password}'";
-        $res = mysqli_query($mysqli, $staff_login_sql);
-        if (mysqli_num_rows($res) > 0) {
-            $row = mysqli_fetch_assoc($res);
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['user_access_level'] = $row['user_access_level'];
-            $_SESSION['success'] = 'Login successful';
-            header('Location: dashboard');
-            exit;
-        } else {
-            $err = "Invalid login credentials";
-        }
-    } else {
-        $err = "Invalid login credentials";
-    }
-}
+/* SMS OTP Code */
+
+$to = $_SESSION['client_phone_number'];
+$to = preg_replace("/\s+/", "", $to);
+$arr = str_split($to);
+
+$to = "254" . substr($to, -9);
 
 
+/* GENERATE API HEADERS & PAYLOAD */
+$client = new Client([
+    'base_uri' => "https://89y4k1.api.infobip.com/",
+    'headers' => [
+        'Authorization' => "App 2015dca8a64813666b47902dd6567af9-12ae6a93-ddb3-4af8-b01f-c82bab88a71c",
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json',
+    ]
+]);
 
+/* Prepare API REQUEST To Infobip */
 
-/* Register */
-if (isset($_POST['Register'])) {
-    $client_names = mysqli_real_escape_string($mysqli, $_POST['client_names']);
-    $client_id_no = mysqli_real_escape_string($mysqli, $_POST['client_id_no']);
-    $client_email = mysqli_real_escape_string($mysqli, $_POST['client_email']);
-    $client_phone_number = mysqli_real_escape_string($mysqli, $_POST['client_phone_number']);
-    $client_address = mysqli_real_escape_string($mysqli, $_POST['client_address']);
-    $password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
-    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
-    $client_date_joined = mysqli_real_escape_string($mysqli, date('Y-m-d H:i:s'));
-
-    /* Check If Passwords Match */
-    if ($password != $confirm_password) {
-        $err = "Passwords Do Not Match";
-    } else {
-        /* Avoid Redundancy */
-        $duplication_sql = "SELECT * FROM  clients WHERE client_email = '{$client_email}'
-        || client_phone_number = '{$client_phone_number}' || client_id_no = '{$client_id_no}'";
-        $res = mysqli_query($mysqli, $duplication_sql);
-        if (mysqli_num_rows($res) > 0) {
-            $err = "An account with this email, phone or ID number already exists";
-        } else {
-            /* Persist */
-            $register_sql = "INSERT INTO clients (client_names, client_id_no, client_email, client_phone_number, client_address, client_password, client_date_joined)
-            VALUES ('{$client_names}', '{$client_id_no}', '{$client_email}', '{$client_phone_number}', '{$client_address}', '{$password}', '{$client_date_joined}')";
-
-            /* Mailer */
-            include('../app/mailers/sign_up_mailer.php');
-            include('../app/sms/sign_up_sms.php');
-            if (mysqli_query($mysqli, $register_sql) && $mail->send()) {
-                $_SESSION['success'] = 'Account created successfully';
-                header('Location: login');
-                exit;
-            } else {
-                $err = "Failed, please try again later";
-            }
-        }
-    }
-}
- /* Reset Password Step 1 */
-
- /* Reset Password Step 2 */
+$response = $client->request(
+    'POST',
+    'sms/2/text/advanced',
+    [
+        RequestOptions::JSON => [
+            'messages' => [
+                [
+                    'from' => 'Car Rentals',
+                    'destinations' => [
+                        ['to' => "$to"]
+                    ],
+                    'text' => 'Welcome to Car Rentals!, we are so delighted to have you on board.
+                     Text us STOP to unsubscribe.',
+                ]
+            ]
+        ],
+    ]
+);
