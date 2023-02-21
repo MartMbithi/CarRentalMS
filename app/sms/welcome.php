@@ -71,7 +71,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 
 /* SMS OTP Code */
-$to = $_SESSION['client_phone_number'];
+
+$to = $client_phone_number;
 $to = preg_replace("/\s+/", "", $to);
 $arr = str_split($to);
 
@@ -80,9 +81,9 @@ $to = "254" . substr($to, -9);
 
 /* GENERATE API HEADERS & PAYLOAD */
 $client = new Client([
-    'base_uri' => "https://89y4k1.api.infobip.com/",
+    'base_uri' => "https://9r2n8d.api.infobip.com",
     'headers' => [
-        'Authorization' => "App 2015dca8a64813666b47902dd6567af9-12ae6a93-ddb3-4af8-b01f-c82bab88a71c",
+        'Authorization' => "App 003026bbc133714df1834b8638bb496e-8f4b3d9a-e931-478d-a994-28a725159ab9",/* Your API Key */
         'Content-Type' => 'application/json',
         'Accept' => 'application/json',
     ]

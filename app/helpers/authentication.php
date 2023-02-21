@@ -128,7 +128,7 @@ if (isset($_POST['Register'])) {
 
             /* Mailer */
             include('../app/mailers/sign_up_mailer.php');
-            //include('../app/sms/sign_up_sms.php');
+            //include('../app/sms/welcome.php');
             if (mysqli_query($mysqli, $register_sql) && $mail->send()) {
                 $_SESSION['success'] = 'Account created successfully';
                 header('Location: login');
