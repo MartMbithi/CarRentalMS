@@ -66,6 +66,7 @@
  */
 session_start();
 require_once('../app/settings/config.php');
+require_once('../app/helpers/authentication.php');
 require_once('../app/partials/back_office_head.php');
 ?>
 
@@ -104,20 +105,34 @@ require_once('../app/partials/back_office_head.php');
                                         <form method="POST">
                                             <div class="form-group">
                                                 <label for="card-name">Name</label>
-                                                <input class="form-control" type="text" id="card-name" />
+                                                <input class="form-control" name="client_names" required type="text" />
                                             </div>
                                             <div class="form-group">
-                                                <label for="card-email">Email address</label>
-                                                <input class="form-control" type="email" id="card-email" />
+                                                <label for="card-email">National ID Number</label>
+                                                <input class="form-control" name="client_id_no" required type="text" />
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-6">
+                                                    <label for="card-email">Email address</label>
+                                                    <input class="form-control" name="client_email" required type="email" />
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="card-email">Phone number</label>
+                                                    <input class="form-control" name="client_phone_number" required type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="card-email">Address</label>
+                                                <input class="form-control" name="client_address" required type="text" />
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-6">
                                                     <label for="card-password">Password</label>
-                                                    <input class="form-control" type="password" id="card-password" />
+                                                    <input class="form-control" name="new_password" type="password" />
                                                 </div>
                                                 <div class="form-group col-6">
-                                                    <label for="card-confirm-password">Confirm Password</label>
-                                                    <input class="form-control" type="password" id="card-confirm-password" />
+                                                    <label for="card-confirm-password">Confirm password</label>
+                                                    <input class="form-control" name="confirm_password" type="password" />
                                                 </div>
                                             </div>
                                             <div class="custom-control custom-checkbox">

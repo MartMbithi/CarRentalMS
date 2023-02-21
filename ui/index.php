@@ -102,7 +102,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-12	featured-top">
                     <div class="row no-gutters">
                         <div class="col-md-4 d-flex align-items-center">
-                            <form action="#" class="request-form ftco-animate bg-primary">
+                            <form method="post" class="request-form ftco-animate bg-primary">
                                 <h2>Make your trip</h2>
                                 <div class="form-group">
                                     <label for="" class="label">Pick-up location</label>

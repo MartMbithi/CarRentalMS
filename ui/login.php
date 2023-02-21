@@ -105,16 +105,23 @@ require_once('../app/partials/back_office_head.php');
                                 <div class="col-md-7 d-flex flex-center">
                                     <div class="p-4 p-md-5 flex-grow-1">
                                         <h3>Account Login</h3>
-                                        <form>
-                                            <div class="form-group"><label for="card-email">Email address</label><input class="form-control" id="card-email" type="email" /></div>
+                                        <form method="post">
                                             <div class="form-group">
-                                                <div class="d-flex justify-content-between"><label for="card-password">Password</label><a class="fs--1" href="forgot-password.html">Forgot Password?</a></div><input class="form-control" id="card-password" type="password" />
+                                                <label for="card-email">Email address</label>
+                                                <input class="form-control" id="card-email" name="login_email" type="email" />
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="d-flex justify-content-between">
+                                                    <label for="card-password">Password</label>
+                                                    <a class="fs--1" href="forgot-password.html">Forgot Password?</a>
+                                                </div>
+                                                <input class="form-control" id="card-password" name="login_password" type="password" />
                                             </div>
                                             <div class="custom-control custom-checkbox">
                                                 <input class="custom-control-input" type="checkbox" id="card-checkbox" checked="checked" /><label class="custom-control-label" for="card-checkbox">Remember me</label>
                                             </div>
                                             <div class="form-group">
-                                                <button class="btn btn-primary btn-block mt-3" type="submit" name="submit">Log in</button>
+                                                <button class="btn btn-primary btn-block mt-3" type="submit" name="Login">Log in</button>
                                             </div>
                                         </form>
                                         <!-- <div class="w-100 position-relative mt-4">
