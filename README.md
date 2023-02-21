@@ -1,10 +1,7 @@
-<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/core/BackEnd/admin/assets/img/brand/blue.png" width="400"></p>
 
+## About CarRentalsAgency
 
-
-## About LaraCarRentalsAgency
-
-LaraCarRentalsAgecy is a web application crafted using laravel framework and core PHP which is shipped with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. LaraCarRentalAgency takes the pain out of aoutomobile renting by easing common tasks in agency such as:
+CarRentalsAgecy is a web application  which is shipped with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. CarRentalAgency takes the pain out of aoutomobile renting by easing common tasks in agency such as:
 
 - Customer’s registration: The system should allow new users to register online and generate membership card.
 - Online reservation of cars: Customers should be able to use the system to make booking and online reservation.
@@ -12,13 +9,6 @@ LaraCarRentalsAgecy is a web application crafted using laravel framework and cor
 - Feedbacks to customers: It should provide means for customers to leave feedback.
 - And many more.
 
-## A glance of the system
-
-<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/screenshots/1.png"></p>
-<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/screenshots/2.png"></p>
-<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/screenshots/3.png"></p>
-<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/screenshots/4.png"></p>
-<p align="center"><img src="https://github.com/MartMbithi/LaraCarRentalMS/blob/master/public/screenshots/5.png"></p>
 
 
 ## How to unleash this beast.
@@ -33,6 +23,3 @@ LaraCarRentalsAgecy is a web application crafted using laravel framework and cor
 ## Login Credentials For Admin Account
 1. Email:   <b>sysadmin@cmrs.com</b><br>
 2. Password :  <b>admin</b> <br>
-
-## License
-LaraCarRentalsAgency  is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
