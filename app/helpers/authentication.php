@@ -67,6 +67,40 @@
 
 
 /* Login */
+if (isset($_Post['Login'])) {
+    $login_email = mysqli_real_escape_string($mysqli, $_POST['login_email']);
+    $login_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['login_password'])));
+
+    /* Login Client First */
+    $client_login_sql = "SELECT * FROM clients WHERE client_email = '{$login_email}' AND client_password = '{$login_password}'";
+    $res = mysqli_query($mysqli, $client_login_sql);
+    if (mysqli_num_rows($res) > 0) {
+        $row = mysqli_fetch_assoc($res);
+        $_SESSION['client_id'] = $row['client_id'];
+        $_SESSION['success'] = 'Account created successfully';
+        header('Location: home');
+        exit;
+    } else if (mysqli_num_rows($res) == 0) {
+        /* Staff Login */
+        $staff_login_sql = "SELECT * FROM users WHERE user_email = '{$login_email}' AND user_password = '{$login_password}'";
+        $res = mysqli_query($mysqli, $staff_login_sql);
+        if (mysqli_num_rows($res) > 0) {
+            $row = mysqli_fetch_assoc($res);
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['user_access_level'] = $row['user_access_level'];
+            $_SESSION['success'] = 'Account created successfully';
+            header('Location: dashboard');
+            exit;
+        } else {
+            $err = "Invalid login credentials";
+        }
+    } else {
+        $err = "Invalid login credentials";
+    }
+}
+
+
+
 
 /* Register */
 if (isset($_POST['Register'])) {

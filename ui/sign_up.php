@@ -147,26 +147,6 @@ require_once('../app/partials/back_office_head.php');
                                                 </button>
                                             </div>
                                         </form>
-                                        <!-- <div class="w-100 position-relative mt-4">
-                                            <hr class="text-300" />
-                                            <div class="position-absolute absolute-centered t-0 px-3 bg-white text-sans-serif fs--1 text-500 text-nowrap">or register with</div>
-                                        </div>
-                                        <div class="form-group mb-0">
-                                            <div class="row no-gutters">
-                                                <div class="col-sm-6 pr-sm-1">
-                                                    <a class="btn btn-outline-google-plus btn-sm btn-block mt-2" href="#">
-                                                        <span class="fab fa-google-plus-g mr-2" data-fa-transform="grow-8"></span>
-                                                        Google
-                                                    </a>
-                                                </div>
-                                                <div class="col-sm-6 pl-sm-1">
-                                                    <a class="btn btn-outline-facebook btn-sm btn-block mt-2" href="#">
-                                                        <span class="fab fa-facebook-square mr-2" data-fa-transform="grow-8"></span>
-                                                        Facebook
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
