@@ -79,8 +79,8 @@ require_once('../app/partials/landing_head.php');
                     <div class="text w-100 text-center mb-md-5 pb-md-5">
                         <h1 class="mb-4">CarRentals</h1>
                         <p style="font-size: 18px;">
-                            The quickest, most elegant,
-                            simplest, and most robust approach to rent an automobile.
+                            We are a popular option for individuals and businesses who need access to a vehicle for a short period of time.
+                            Our service offers are convenient, flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
                         </p>
                         <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
                             <div class="icon d-flex align-items-center justify-content-center">
@@ -174,7 +174,7 @@ require_once('../app/partials/landing_head.php');
             <div class="row justify-content-center">
                 <div class="col-md-12 heading-section text-center ftco-animate mb-5">
                     <span class="subheading">What we offer</span>
-                    <h2 class="mb-2">Feeatured Vehicles</h2>
+                    <h2 class="mb-2">Featured Vehicles</h2>
                 </div>
             </div>
             <div class="row">
@@ -250,9 +250,20 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 wrap-about ftco-animate">
                     <div class="heading-section heading-section-white pl-md-5">
                         <span class="subheading">About us</span>
-                        <h2 class="mb-4">Welcome to CarRentalMS</h2>
-
-                        <p>Car rental services with smiling prices</p>
+                        <p>
+                            We are a popular option for individuals and businesses who need access to a vehicle for a short period of time.
+                            Our service offers are convenient, flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
+                        </p>
+                        <p>
+                            We have a fleet of vehicles available for rental, ranging from compact cars to luxury vehicles,
+                            and even larger vehicles like vans and trucks. As a customer, you can choose the vehicle that best suits your needs and budget,
+                            and you can often rent it for a period as short as a few hours or as long as several weeks or months.
+                        </p>
+                        <p>
+                            Overall, we provide a flexible, cost-effective, and convenient transportation option for individuals and businesses.
+                            With a wide range of vehicles available, and the ability to rent for as long or as short a period as needed,
+                            we are a popular choice for those who need access to transportation without the commitment of car ownership.
+                        </p>
                         <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
                     </div>
                 </div>
