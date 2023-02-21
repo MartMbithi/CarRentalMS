@@ -21,3 +21,9 @@
 <script src="../public/backoffice_assets/lib/perfect-scrollbar/perfect-scrollbar.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
 <script src="../public/backoffice_assets/js/theme.min.js"></script>
+<!-- Mojs -->
+<script src="../public/backoffice_assets/plugins/mojs/mo.js"></script>
+<!-- Noty -->
+<script src="../public/backoffice_assets/plugins/noty/noty.js"></script>
+<!-- Load Alerts -->
+<?php include('alerts.php'); ?>
