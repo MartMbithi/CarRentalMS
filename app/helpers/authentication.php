@@ -202,32 +202,18 @@ if (isset($_POST['Reset_Password_Step_2'])) {
     $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
     $token = mysqli_real_escape_string($mysqli, $_GET['token']);
 
-    /* Check if passwords match */
-    if ($new_password != $confirm_password) {
-        $err = "Passwords Do Not Match";
-    } else {
-        /* Check Whos account has this token */
-        $sql = "SELECT * FROM clients WHERE client_password_reset_code = '{$token}'";
-        $res = mysqli_query($mysqli, $sql);
-        if (mysqli_num_rows($res) > 0) {
-            /* Update Password */
-            $update_sql = "UPDATE clients SET client_password = '{$new_password}',
-            client_password_reset_code = '' WHERE client_password_reset_code = '{$token}'";
-            if (mysqli_query($mysqli, $update_sql)) {
-                $_SESSION['success'] = "Password reset successful";
-                header('Location: login');
-                exit;
-            } else {
-                $err = "Failed, please try again later";
-            }
-        } else if (mysqli_num_rows($res) == 0) {
+    if (!empty($token)) {
+        /* Check if passwords match */
+        if ($new_password != $confirm_password) {
+            $err = "Passwords Do Not Match";
+        } else {
             /* Check Whos account has this token */
-            $sql = "SELECT * FROM users WHERE user_password_reset_code = '{$token}'";
+            $sql = "SELECT * FROM clients WHERE client_password_reset_code = '{$token}'";
             $res = mysqli_query($mysqli, $sql);
             if (mysqli_num_rows($res) > 0) {
                 /* Update Password */
-                $update_sql = "UPDATE users SET user_password = '{$new_password}',
-                user_password_reset_code = '' WHERE user_password_reset_code = '{$token}'";
+                $update_sql = "UPDATE clients SET client_password = '{$new_password}',
+            client_password_reset_code = '' WHERE client_password_reset_code = '{$token}'";
                 if (mysqli_query($mysqli, $update_sql)) {
                     $_SESSION['success'] = "Password reset successful";
                     header('Location: login');
@@ -235,13 +221,35 @@ if (isset($_POST['Reset_Password_Step_2'])) {
                 } else {
                     $err = "Failed, please try again later";
                 }
+            } else if (mysqli_num_rows($res) == 0) {
+                /* Check Whos account has this token */
+                $sql = "SELECT * FROM users WHERE user_password_reset_code = '{$token}'";
+                $res = mysqli_query($mysqli, $sql);
+                if (mysqli_num_rows($res) > 0) {
+                    /* Update Password */
+                    $update_sql = "UPDATE users SET user_password = '{$new_password}',
+                    user_password_reset_code = '' WHERE user_password_reset_code = '{$token}'";
+                    if (mysqli_query($mysqli, $update_sql)) {
+                        $_SESSION['success'] = "Password reset successful";
+                        header('Location: login');
+                        exit;
+                    } else {
+                        $err = "Failed, please try again later";
+                    }
+                } else {
+                    $_SESSION['err'] = "Invalid password reset token";
+                    header('Location: reset_password');
+                    exit;
+                }
             } else {
-                $err = "Invalid token";
+                $_SESSION['err'] = "Invalid password reset token";
+                header('Location: reset_password');
+                exit;
             }
-        } else {
-            $_SESSION['err'] = "Invalid Token";
-            header('Location: reset_password');
-            exit;
         }
+    } else {
+        $_SESSION['err'] = "Invalid password reset token";
+        header('Location: reset_password');
+        exit;
     }
 }

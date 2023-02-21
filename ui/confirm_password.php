@@ -105,7 +105,7 @@ require_once('../app/partials/back_office_head.php');
                                             </div>
                                             <div class="form-group">
                                                 <label for="card-email">Confirm password</label>
-                                                <input class="form-control" name="new_password" required type="password" />
+                                                <input class="form-control" name="confirm_password" required type="password" />
                                             </div>
                                             <div class="form-group">
                                                 <input type="submit" name="Reset_Password_Step_2" value="Reset password" class="btn btn-primary btn-block mt-3">
