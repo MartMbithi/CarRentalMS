@@ -276,7 +276,7 @@ require_once('../app/partials/landing_head.php');
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center heading-section ftco-animate">
                     <span class="subheading">Services</span>
-                    <h2 class="mb-3">Our Latest Services</h2>
+                    <h2 class="mb-3">Services We Offer</h2>
                 </div>
             </div>
             <div class="row">
@@ -284,8 +284,11 @@ require_once('../app/partials/landing_head.php');
                     <div class="services services-2 w-100 text-center">
                         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wedding-car"></span></div>
                         <div class="text w-100">
-                            <h3 class="heading mb-2">Wedding Ceremony</h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                            <h3 class="heading mb-2">Vehicle rental</h3>
+                            <p>The primary service we offer is the ability to rent a vehicle for a specific period of time.
+                                Customers can choose from a range of vehicles, including compact cars, SUVs, vans,
+                                and luxury vehicles, and rent them for as short or as long a period as they need.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -293,8 +296,11 @@ require_once('../app/partials/landing_head.php');
                     <div class="services services-2 w-100 text-center">
                         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
                         <div class="text w-100">
-                            <h3 class="heading mb-2">City Transfer</h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                            <h3 class="heading mb-2">Online reservations</h3>
+                            <p>
+                                We offer the ability to reserve a vehicle online, making it easy for customers to select the vehicle they want and book it in advance.
+                                This can save time and make the rental process more efficient.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -302,8 +308,11 @@ require_once('../app/partials/landing_head.php');
                     <div class="services services-2 w-100 text-center">
                         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
                         <div class="text w-100">
-                            <h3 class="heading mb-2">Airport Transfer</h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                            <h3 class="heading mb-2">Airport pick-up and drop-off</h3>
+                            <p>
+                                We often have rental counters at airports, allowing customers to easily rent a car as soon as they arrive.
+                                we also offer drop-off services at the airport, making it convenient for customers to return the car before their flight.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -311,8 +320,12 @@ require_once('../app/partials/landing_head.php');
                     <div class="services services-2 w-100 text-center">
                         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
                         <div class="text w-100">
-                            <h3 class="heading mb-2">Whole City Tour</h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                            <h3 class="heading mb-2">Insurance coverage</h3>
+                            <p>
+                                We offer insurance coverage for their rental vehicles,
+                                which provide peace of mind to our customers who are concerned about damage or accidents.
+                                Our customers can choose from a range of coverage options, including collision damage waivers, liability insurance, and personal accident insurance.
+                            </p>
                         </div>
                     </div>
                 </div>

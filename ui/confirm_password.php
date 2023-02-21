@@ -89,8 +89,9 @@ require_once('../app/partials/back_office_head.php');
                                         <div class="z-index-1 position-relative">
                                             <img src="../storage/system/logo.png" alt="">
                                             <p class="text-white text-center opacity-75"><br><br>
-                                                The quickest, most elegant,
-                                                simplest, and most robust approach to rent an automobile.
+                                                We are a popular option for individuals and businesses who need access to a vehicle for a
+                                                short period of time. Our service offers are convenient,
+                                                flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
                                             </p>
                                         </div>
                                     </div>

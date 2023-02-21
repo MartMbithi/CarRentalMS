@@ -88,14 +88,19 @@ require_once('../app/partials/back_office_head.php');
                                         <div class="z-index-1 position-relative">
                                             <img src="../storage/system/logo.png" alt="">
                                             <p class="text-white text-center opacity-75"><br><br>
-                                                The quickest, most elegant,
-                                                simplest, and most robust approach to rent an automobile.
+                                                We are a popular option for individuals and businesses who need access to a vehicle for a
+                                                short period of time. Our service offers are convenient,
+                                                flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
                                             </p>
                                         </div>
                                     </div>
                                     <div class="mt-3 mb-4 mt-md-4 mb-md-5">
-                                        <p class="pt-3">Have an account?<br>
-                                            <a class="btn btn-outline-light mt-2 px-4" href="login">Log In</a>
+                                        <p>Already have an account?<br>
+                                            <a class="text-white text-underline" href="login">Login!</a>
+                                        </p>
+                                        <p class="mb-0 mt-4 mt-md-5 fs--1 font-weight-semi-bold text-white opacity-75">
+                                            Read our <a class="text-underline text-white" href="#!">terms</a> and
+                                            <a class="text-underline text-white" href="#!">conditions </a>
                                         </p>
                                     </div>
                                 </div>
