@@ -142,7 +142,7 @@ if (isset($_POST['Register'])) {
 /* Reset Password Step 1 */
 if (isset($_POST['Reset_Password_Step_1'])) {
     $login_email = mysqli_real_escape_string($mysqli, $_POST['login_email']);
-
+    $reset_url = $url . $tk;
     /* Check If Email Exists */
     $sql = "SELECT * FROM clients WHERE client_email = '{$login_email}'";
     $res = mysqli_query($mysqli, $sql);
