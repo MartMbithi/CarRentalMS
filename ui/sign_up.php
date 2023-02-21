@@ -108,13 +108,13 @@ require_once('../app/partials/back_office_head.php');
                                                 <input class="form-control" name="client_names" required type="text" />
                                             </div>
                                             <div class="form-group">
-                                                <label for="card-email">National ID Number</label>
-                                                <input class="form-control" name="client_id_no" required type="text" />
+                                                <label for="card-email">Email address</label>
+                                                <input class="form-control" name="client_email" required type="email" />
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-6">
-                                                    <label for="card-email">Email address</label>
-                                                    <input class="form-control" name="client_email" required type="email" />
+                                                    <label for="card-email">National ID Number</label>
+                                                    <input class="form-control" name="client_id_no" required type="text" />
                                                 </div>
                                                 <div class="form-group col-6">
                                                     <label for="card-email">Phone number</label>

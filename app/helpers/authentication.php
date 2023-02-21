@@ -67,7 +67,7 @@
 
 
 /* Login */
-if (isset($_Post['Login'])) {
+if (isset($_POST['Login'])) {
     $login_email = mysqli_real_escape_string($mysqli, $_POST['login_email']);
     $login_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['login_password'])));
 
@@ -106,10 +106,10 @@ if (isset($_Post['Login'])) {
 if (isset($_POST['Register'])) {
     $client_names = mysqli_real_escape_string($mysqli, $_POST['client_names']);
     $client_id_no = mysqli_real_escape_string($mysqli, $_POST['client_id_no']);
-    $client_email = mysqli_real_escape_string($mysqli, $_Post['client_email']);
+    $client_email = mysqli_real_escape_string($mysqli, $_POST['client_email']);
     $client_phone_number = mysqli_real_escape_string($mysqli, $_POST['client_phone_number']);
     $client_address = mysqli_real_escape_string($mysqli, $_POST['client_address']);
-    $password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['password'])));
+    $password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
     $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
     $client_date_joined = mysqli_real_escape_string($mysqli, date('Y-m-d H:i:s'));
 

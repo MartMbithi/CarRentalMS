@@ -66,7 +66,7 @@
  */
 session_start();
 require_once('../app/settings/config.php');
-require_once('../app/helpers/authentication.php');
+include('../app/helpers/authentication.php');
 require_once('../app/partials/back_office_head.php');
 ?>
 
@@ -108,14 +108,14 @@ require_once('../app/partials/back_office_head.php');
                                         <form method="POST">
                                             <div class="form-group">
                                                 <label for="card-email">Email address</label>
-                                                <input class="form-control" id="card-email" name="login_email" type="email" />
+                                                <input class="form-control" id="card-email" name="login_email" required type="email" />
                                             </div>
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-between">
                                                     <label for="card-password">Password</label>
                                                     <a class="fs--1" href="reset_password">Forgot Password?</a>
                                                 </div>
-                                                <input class="form-control" id="card-password" name="login_password" type="password" />
+                                                <input class="form-control" id="card-password" required name="login_password" type="password" />
                                             </div>
                                             <div class="custom-control custom-checkbox">
                                                 <input class="custom-control-input" type="checkbox" id="card-checkbox" checked="checked" />
