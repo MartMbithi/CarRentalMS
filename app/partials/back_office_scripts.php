@@ -5,6 +5,10 @@
         container.classList.remove('container');
         container.classList.add('container-fluid');
     }
+    /* Prevent Double Submissions */
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
 <!-- ===============================================-->
 <!--    JavaScripts-->

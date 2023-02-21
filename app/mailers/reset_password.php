@@ -79,7 +79,7 @@ while ($mailer = $res->fetch_object()) {
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->setFrom($mailer->mail_from_email);
-    $mail->addAddress($client_email);
+    $mail->addAddress($email);
     $mail->FromName = $mailer->mail_from_name;
     $mail->isHTML(true);
     $mail->IsSMTP();

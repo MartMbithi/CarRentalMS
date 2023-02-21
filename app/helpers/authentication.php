@@ -99,7 +99,6 @@ if (isset($_POST['Login'])) {
     }
 }
 
-
 /* Register */
 if (isset($_POST['Register'])) {
     $client_names = mysqli_real_escape_string($mysqli, $_POST['client_names']);
@@ -149,18 +148,22 @@ if (isset($_POST['Reset_Password_Step_1'])) {
     $res = mysqli_query($mysqli, $sql);
     if (mysqli_num_rows($res) > 0) {
         $row = mysqli_fetch_assoc($res);
+        /* Get User Email Where Reset Link Will Be Sent */
+        $email = $row['client_email'];
 
         /* Persist reset code  */
         $reset_code_sql = "UPDATE clients SET client_password_reset_code = '{$tk}',
         client_password = '' WHERE client_email = '{$login_email}'";
         if (mysqli_query($mysqli, $reset_code_sql)) {
             /* Mailer */
-            include('../app/mailers/reset_password_mailer.php');
+            include('../app/mailers/reset_password.php');
             if ($mail->send()) {
                 $success = 'Please check your email for a password reset link';
             } else {
-                $err = "Failed, please try again later";
+                $info = "We could not send you a password reset link, please try again";
             }
+        } else {
+            $err = "Failed, please try again later";
         }
     } else if (mysqli_num_rows($res) == 0) {
         /* Reset Staff Password*/
@@ -168,22 +171,28 @@ if (isset($_POST['Reset_Password_Step_1'])) {
         $res = mysqli_query($mysqli, $sql);
         if (mysqli_num_rows($res) > 0) {
             $row = mysqli_fetch_assoc($res);
+            /* Get User Email Where Reset Link Will Be Sent */
+            $email = $row['user_email'];
 
             /* Persist reset code  */
             $reset_code_sql = "UPDATE users SET user_password_reset_code = '{$tk}',
             user_password = '' WHERE user_number = '{$login_email}' || user_email = '{$login_email}'";
             if (mysqli_query($mysqli, $reset_code_sql)) {
                 /* Mailer */
-                include('../app/mailers/reset_password_mailer.php');
+                include('../app/mailers/reset_password.php');
                 if ($mail->send()) {
                     $success = 'Please check your email for a password reset link';
                 } else {
-                    $err = "Failed, please try again later";
+                    $info = "We could not send you a password reset link, please try again";
                 }
+            } else {
+                $err = "Failed, please try again later";
             }
+        } else {
+            $err = "No account with this email or staff number exists";
         }
     } else {
-        $err = "No account with this email exists";
+        $err = "No account with this email  exists";
     }
 }
 

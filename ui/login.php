@@ -66,7 +66,7 @@
  */
 session_start();
 require_once('../app/settings/config.php');
-include('../app/helpers/authentication.php');
+require_once('../app/helpers/authentication.php');
 require_once('../app/partials/back_office_head.php');
 ?>
 

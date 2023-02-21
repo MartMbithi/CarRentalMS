@@ -66,8 +66,9 @@
  */
 session_start();
 require_once('../app/settings/config.php');
-include('../app/helpers/authentication.php');
-include('../app/settings/codeGen.php');
+require_once('../app/settings/app_config.php');
+require_once('../app/settings/codeGen.php');
+require_once('../app/helpers/authentication.php');
 require_once('../app/partials/back_office_head.php');
 ?>
 
@@ -105,7 +106,7 @@ require_once('../app/partials/back_office_head.php');
                                         <form method="POST">
                                             <div class="form-group">
                                                 <label for="card-email">Email address or staff number</label>
-                                                <input class="form-control" id="card-email" name="login_email" required type="text" />
+                                                <input class="form-control" name="login_email" required type="text" />
                                             </div>
                                             <div class="form-group">
                                                 <input type="submit" name="Reset_Password_Step_1" value="Reset password" class="btn btn-primary btn-block mt-3">
