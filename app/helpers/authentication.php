@@ -139,6 +139,52 @@ if (isset($_POST['Register'])) {
         }
     }
 }
- /* Reset Password Step 1 */
+
+/* Reset Password Step 1 */
+if (isset($_POST['Reset_Password_Step_1'])) {
+    $login_email = mysqli_real_escape_string($mysqli, $_POST['login_email']);
+
+    /* Check If Email Exists */
+    $sql = "SELECT * FROM clients WHERE client_email = '{$login_email}'";
+    $res = mysqli_query($mysqli, $sql);
+    if (mysqli_num_rows($res) > 0) {
+        $row = mysqli_fetch_assoc($res);
+
+        /* Persist reset code  */
+        $reset_code_sql = "UPDATE clients SET client_password_reset_code = '{$tk}',
+        client_password = '' WHERE client_email = '{$login_email}'";
+        if (mysqli_query($mysqli, $reset_code_sql)) {
+            /* Mailer */
+            include('../app/mailers/reset_password_mailer.php');
+            if ($mail->send()) {
+                $success = 'Please check your email for a password reset link';
+            } else {
+                $err = "Failed, please try again later";
+            }
+        }
+    } else if (mysqli_num_rows($res) == 0) {
+        /* Reset Staff Password*/
+        $sql = "SELECT * FROM users WHERE user_number = '{$login_email}' || user_email = '{$login_email}'";
+        $res = mysqli_query($mysqli, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            $row = mysqli_fetch_assoc($res);
+
+            /* Persist reset code  */
+            $reset_code_sql = "UPDATE users SET user_password_reset_code = '{$tk}',
+            user_password = '' WHERE user_number = '{$login_email}' || user_email = '{$login_email}'";
+            if (mysqli_query($mysqli, $reset_code_sql)) {
+                /* Mailer */
+                include('../app/mailers/reset_password_mailer.php');
+                if ($mail->send()) {
+                    $success = 'Please check your email for a password reset link';
+                } else {
+                    $err = "Failed, please try again later";
+                }
+            }
+        }
+    } else {
+        $err = "No account with this email exists";
+    }
+}
 
  /* Reset Password Step 2 */

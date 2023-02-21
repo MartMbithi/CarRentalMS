@@ -122,7 +122,7 @@ require_once('../app/partials/back_office_head.php');
                                                 <label class="custom-control-label" for="card-checkbox">Remember me</label>
                                             </div>
                                             <div class="form-group">
-                                                <input type="submit" name="Login" value="Log in" class="btn btn-primary btn-block mt-3" type="submit" name="Login">
+                                                <input type="submit" name="Login" value="Log in" class="btn btn-primary btn-block mt-3">
                                             </div>
                                         </form>
                                     </div>
