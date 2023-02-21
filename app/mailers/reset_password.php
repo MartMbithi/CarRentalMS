@@ -67,9 +67,9 @@
 
 
 /* Mailer Configurations */
-require_once('../vendor/PHPMailer/src/SMTP.php');
-require_once('../vendor/PHPMailer/src/PHPMailer.php');
-require_once('../vendor/PHPMailer/src/Exception.php');
+require_once('../vendor/phpmailer/phpmailer/src/SMTP.php');
+require_once('../vendor/phpmailer/phpmailer/src/PHPMailer.php');
+require_once('../vendor/phpmailer/phpmailer/src/Exception.php');
 
 $ret = "SELECT * FROM mailer_settings";
 $stmt = $mysqli->prepare($ret);
@@ -78,17 +78,17 @@ $res = $stmt->get_result();
 while ($mailer = $res->fetch_object()) {
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
-    $mail->setFrom($mailer->mailer_mail_from_email);
-    $mail->addAddress($user_email);
-    $mail->FromName = $mailer->mailer_mail_from_name;
+    $mail->setFrom($mailer->mail_from_email);
+    $mail->addAddress($client_email);
+    $mail->FromName = $mailer->mail_from_name;
     $mail->isHTML(true);
     $mail->IsSMTP();
-    $mail->SMTPSecure = 'ssl';
-    $mail->Host = $mailer->mailer_host;
+    $mail->SMTPSecure = $mailer->mail_protocol;
+    $mail->Host = $mailer->mail_host;
     $mail->SMTPAuth = true;
-    $mail->Port = $mailer->mailer_port;
-    $mail->Username = $mailer->mailer_username;
-    $mail->Password = $mailer->mailer_password;
+    $mail->Port = $mailer->mail_port;
+    $mail->Username = $mailer->mail_username;
+    $mail->Password = $mailer->mail_password;
     $mail->Subject = 'Password Reset Instructions';
     /* Custom Mail Body */
     $mail->Body = '

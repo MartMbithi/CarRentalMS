@@ -71,7 +71,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 
 /* SMS OTP Code */
-
 $to = $_SESSION['client_phone_number'];
 $to = preg_replace("/\s+/", "", $to);
 $arr = str_split($to);

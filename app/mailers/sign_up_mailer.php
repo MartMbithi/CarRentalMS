@@ -66,9 +66,9 @@
  */
 
 /* Mailer Configurations */
-require_once('../vendor/PHPMailer/src/SMTP.php');
-require_once('../vendor/PHPMailer/src/PHPMailer.php');
-require_once('../vendor/PHPMailer/src/Exception.php');
+require_once('../vendor/phpmailer/phpmailer/src/SMTP.php');
+require_once('../vendor/phpmailer/phpmailer/src/PHPMailer.php');
+require_once('../vendor/phpmailer/phpmailer/src/Exception.php');
 
 $ret = "SELECT * FROM `mailer_settings`  ";
 $stmt = $mysqli->prepare($ret);
@@ -77,17 +77,17 @@ $res = $stmt->get_result();
 while ($mailer = $res->fetch_object()) {
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
-    $mail->setFrom($mailer->mailer_mail_from_email);
+    $mail->setFrom($mailer->mail_from_email);
     $mail->addAddress($client_email);
-    $mail->FromName = $mailer->mailer_mail_from_name;
+    $mail->FromName = $mailer->mail_from_name;
     $mail->isHTML(true);
     $mail->IsSMTP();
-    $mail->SMTPSecure = $mailer->mailer_protocol;
-    $mail->Host = $mailer->mailer_host;
+    $mail->SMTPSecure = $mailer->mail_protocol;
+    $mail->Host = $mailer->mail_host;
     $mail->SMTPAuth = true;
-    $mail->Port = $mailer->mailer_port;
-    $mail->Username = $mailer->mailer_username;
-    $mail->Password = $mailer->mailer_password;
+    $mail->Port = $mailer->mail_port;
+    $mail->Username = $mailer->mail_username;
+    $mail->Password = $mailer->mail_password;
     $mail->Subject = 'Welcome Aboard';
     /* Custom Mail Body */
     $mail->Body = '
@@ -126,7 +126,7 @@ while ($mailer = $res->fetch_object()) {
                                     </tr>
                                     <tr>
                                         <td style="padding:0 35px;">
-                                            <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:"Rubik",sans-serif;">Welcome On Board ' . $client_name . '</h1>
+                                            <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:"Rubik",sans-serif;">Welcome On Board ' . $client_names . '</h1>
                                             <span
                                                 style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                             <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
