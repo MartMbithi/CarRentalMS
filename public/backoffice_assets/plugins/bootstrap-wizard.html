@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  
+<!-- Mirrored from prium.github.io/falcon/v2.8.1/default/plugins/bootstrap-wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Mar 2021 10:59:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Falcon | Dashboard &amp; WebApp Template</title>
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="../assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="../assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <script src="../assets/js/config.navbar-vertical.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="../assets/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet">
+    <link href="../assets/lib/prismjs/prism-okaidia.css" rel="stylesheet">
+    <link href="../assets/lib/flatpickr/flatpickr.min.css" rel="stylesheet">
+    <link href="../assets/css/theme.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+
+      <div class="container" data-layout="container">
+        <nav class="navbar navbar-vertical navbar-expand-xl navbar-light" style="display:none;">
+          <script>
+            var navbarStyle = localStorage.getItem("navbarStyle");
+            if (navbarStyle) {
+              document.querySelector('.navbar-vertical').className += ' navbar-' + navbarStyle;
+            }
+          </script>
+          <div class="d-flex align-items-center">
+            <div class="toggle-icon-wrapper">
+              <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-toggle="tooltip" data-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+            </div><a class="navbar-brand" href="../index.html">
+              <div class="d-flex align-items-center py-3"><img class="mr-2" src="../assets/img/illustrations/falcon.png" alt="" width="40" /><span class="text-sans-serif">falcon</span></div>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+            <div class="navbar-vertical-content perfect-scrollbar scrollbar">
+              <ul class="navbar-nav flex-column">
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#home" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text">Home</span></div>
+                  </a>
+                  <ul class="nav collapse" id="home" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../home/dashboard-alt.html">Dashboard alt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../home/feed.html">Feed</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../home/landing.html">Landing</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#pages" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pages">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-copy"></span></span><span class="nav-link-text">Pages</span></div>
+                  </a>
+                  <ul class="nav collapse" id="pages" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link" href="../pages/activity.html">Activity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/associations.html">Associations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/billing.html">Billing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/customer-details.html">Customer details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/event-detail.html">Event detail</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/event-create.html">Event create</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/faq.html">Faq</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/invoice.html">Invoice</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/invite-people.html">Invite people</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/notifications.html">Notifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/people.html">People</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/pricing-alt.html">Pricing alt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/profile.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/settings.html">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/starter.html">Starter</a></li>
+                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#pages-errors" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pages-errors">Errors</a>
+                      <ul class="nav collapse" id="pages-errors" data-parent="#pages">
+                        <li class="nav-item"><a class="nav-link" href="../pages/errors/404.html">404</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../pages/errors/500.html">500</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="../chat.html">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-comments"></span></span><span class="nav-link-text"> Chat</span></div>
+                  </a></li>
+                <li class="nav-item"><a class="nav-link" href="../kanban.html">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fab fa-trello"></span></span><span class="nav-link-text"> Kanban</span></div>
+                  </a></li>
+                <li class="nav-item"><a class="nav-link" href="../calendar.html">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-calendar-alt"></span></span><span class="nav-link-text"> Calendar</span></div>
+                  </a></li>
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#email" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="email">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-envelope-open"></span></span><span class="nav-link-text">Email</span></div>
+                  </a>
+                  <ul class="nav collapse" id="email" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link" href="../email/inbox.html">Inbox</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../email/email-detail.html">Email detail</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../email/compose.html">Compose</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#authentication" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="authentication">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-unlock-alt"></span></span><span class="nav-link-text">Authentication</span></div>
+                  </a>
+                  <ul class="nav collapse" id="authentication" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#authentication-basic" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="authentication-basic">Basic</a>
+                      <ul class="nav collapse" id="authentication-basic" data-parent="#authentication">
+                        <li class="nav-item"><a class="nav-link" href="../authentication/basic/login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/basic/logout.html">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/basic/register.html">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/basic/forgot-password.html">Forgot password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/basic/reset-password.html">Reset password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/basic/confirm-mail.html">Confirm mail</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/basic/lock-screen.html">Lock screen</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#authentication-card" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="authentication-card">Card</a>
+                      <ul class="nav collapse" id="authentication-card" data-parent="#authentication">
+                        <li class="nav-item"><a class="nav-link" href="../authentication/card/login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/card/logout.html">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/card/register.html">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/card/forgot-password.html">Forgot password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/card/reset-password.html">Reset password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/card/confirm-mail.html">Confirm mail</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/card/lock-screen.html">Lock screen</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#authentication-split" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="authentication-split">Split</a>
+                      <ul class="nav collapse" id="authentication-split" data-parent="#authentication">
+                        <li class="nav-item"><a class="nav-link" href="../authentication/split/login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/split/logout.html">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/split/register.html">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/split/forgot-password.html">Forgot password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/split/reset-password.html">Reset password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/split/confirm-mail.html">Confirm mail</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../authentication/split/lock-screen.html">Lock screen</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../authentication/wizard.html">Wizard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!" data-toggle="modal" data-target="#authentication-modal">In Modal</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#e-commerce" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="e-commerce">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-cart-plus"></span></span><span class="nav-link-text">E commerce</span></div>
+                  </a>
+                  <ul class="nav collapse" id="e-commerce" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/product-list.html">Product list</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/product-grid.html">Product grid</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/product-details.html">Product details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/orders.html">Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/order-details.html">Order details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/customers.html">Customers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/shopping-cart.html">Shopping cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../e-commerce/checkout.html">Checkout</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="navbar-vertical-divider">
+                <hr class="navbar-vertical-hr my-2" />
+              </div>
+              <ul class="navbar-nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="../widgets.html">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-poll"></span></span><span class="nav-link-text"> Widgets</span></div>
+                  </a></li>
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="components">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-puzzle-piece"></span></span><span class="nav-link-text">Components</span></div>
+                  </a>
+                  <ul class="nav collapse" id="components" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link" href="../components/accordion.html">Accordion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/alerts.html">Alerts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/avatar.html">Avatar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/background.html">Background</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/badges.html">Badges</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/breadcrumb.html">Breadcrumb</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/bulk-select.html">Bulk select</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/buttons.html">Buttons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/cards.html">Cards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/carousel.html">Carousel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/collapse.html">Collapse</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/countup.html">Countup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/dropdowns.html">Dropdowns</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/fancyscroll.html">Fancyscroll</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/fancytab.html">Fancytab</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/forms.html">Forms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/hoverbox.html">Hoverbox</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/list-group.html">List group</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/modals.html">Modals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/media-object.html">Media object</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/navs.html">Navs</a></li>
+                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#components-navbar" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="components-navbar">Navbar</a>
+                      <ul class="nav collapse" id="components-navbar" data-parent="#components">
+                        <li class="nav-item"><a class="nav-link" href="../components/navbar/default.html">Default</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../components/navbar/vertical.html">Vertical</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../components/navbar/top.html">Top</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../components/navbar/combo.html">Combo</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../components/cookie-notice.html">Cookie notice</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/page-headers.html">Page headers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/pagination.html">Pagination</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/popovers.html">Popovers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/progress.html">Progress</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/search.html">
+                        <div class="d-flex align-items-center">Search<span class="badge badge-pill ml-2 badge-soft-success">New</span></div>
+                      </a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/scrollspy.html">Scrollspy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/sidepanel.html">Sidepanel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/spinners.html">Spinners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/tables.html">Tables</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/tabs.html">Tabs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/toasts.html">Toasts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/tooltips.html">Tooltips</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#utilities" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="utilities">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-fire"></span></span><span class="nav-link-text">Utilities</span></div>
+                  </a>
+                  <ul class="nav collapse" id="utilities" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link" href="../utilities/borders.html">Borders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/clearfix.html">Clearfix</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/close-icon.html">Close icon</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/colors.html">Colors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/display.html">Display</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/embed.html">Embed</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/figures.html">Figures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/flex.html">Flex</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/grid.html">Grid</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/sizing.html">Sizing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/spacing.html">Spacing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/stretched-link.html">Stretched link</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/typography.html">Typography</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/vertical-align.html">Vertical align</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../utilities/visibility.html">Visibility</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#plugins" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="plugins">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-plug"></span></span><span class="nav-link-text">Plugins</span></div>
+                  </a>
+                  <ul class="nav collapse show" id="plugins" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item active"><a class="nav-link" href="bootstrap-wizard.html">Bootstrap wizard</a></li>
+                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#plugins-charts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="plugins-charts">Charts</a>
+                      <ul class="nav collapse" id="plugins-charts" data-parent="#plugins">
+                        <li class="nav-item"><a class="nav-link" href="charts/chart-js.html">Chart js</a></li>
+                        <li class="nav-item"><a class="nav-link" href="charts/echarts.html">Echarts</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="countdown.html">Countdown</a></li>
+                    <li class="nav-item"><a class="nav-link" href="data-table.html">Data table</a></li>
+                    <li class="nav-item"><a class="nav-link" href="date-picker.html">Date picker</a></li>
+                    <li class="nav-item"><a class="nav-link" href="draggable.html">Draggable</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dropzone.html">Dropzone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="emojionearea.html">Emojionearea</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fancybox.html">Fancybox</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fontawesome.html">Fontawesome</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fullcalendar.html">Fullcalendar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inline-player.html">Inline player</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jquery-validation.html">Jquery validation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="lightbox.html">Lightbox</a></li>
+                    <li class="nav-item"><a class="nav-link" href="lottie.html">Lottie</a></li>
+                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#plugins-map" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="plugins-map">Map</a>
+                      <ul class="nav collapse" id="plugins-map" data-parent="#plugins">
+                        <li class="nav-item"><a class="nav-link" href="map/google-map.html">Google map</a></li>
+                        <li class="nav-item"><a class="nav-link" href="map/leaflet-map.html">Leaflet map</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="toastr.html">Toastr</a></li>
+                    <li class="nav-item"><a class="nav-link" href="owl-carousel.html">Owl carousel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfect-scrollbar.html">Perfect scrollbar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="progressbar.html">Progressbar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="raty.html">Raty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="select2.html">Select2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tinymce.html">Tinymce</a></li>
+                    <li class="nav-item"><a class="nav-link" href="typed-text.html">Typed text</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="navbar-vertical-divider">
+                <hr class="navbar-vertical-hr my-2" />
+              </div>
+              <ul class="navbar-nav flex-column" id="navbarVerticalNav">
+                <li class="nav-item"><a class="nav-link dropdown-indicator" href="#documentation" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="documentation">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-book"></span></span><span class="nav-link-text">Documentation</span></div>
+                  </a>
+                  <ul class="nav collapse" id="documentation" data-parent="#navbarVerticalCollapse">
+                    <li class="nav-item"><a class="nav-link" href="../documentation/getting-started.html">Getting started</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../documentation/file-structure.html">File structure</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../documentation/customization.html">Customization</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../documentation/dark-mode.html">Dark mode</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../documentation/fluid-layout.html">Fluid layout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../documentation/gulp.html">Gulp</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../documentation/RTL.html">RTL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../documentation/plugins.html">Plugins</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="../changelog.html">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-code-branch"></span></span><span class="nav-link-text"> Changelog</span><span class="badge badge-pill ml-2 badge-soft-primary">v2.8.1</span></div>
+                  </a></li>
+              </ul>
+              <div class="settings px-3 px-xl-0">
+                <div class="navbar-vertical-divider px-0">
+                  <hr class="navbar-vertical-hr my-3" />
+                </div><a class="btn btn-sm btn-block btn-purchase mb-3" href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/"> Purchase</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <nav class="navbar navbar-light navbar-glass navbar-top sticky-kit navbar-expand-lg" style="display:none;">
+          <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+          <a class="navbar-brand mr-1 mr-sm-3" href="../index.html">
+            <div class="d-flex align-items-center"><img class="mr-2" src="../assets/img/illustrations/falcon.png" alt="" width="40" /><span class="text-sans-serif">falcon</span></div>
+          </a>
+          <div class="collapse navbar-collapse" id="navbarStandard">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownHome" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownHome">
+                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="../index.html">Dashboard</a><a class="dropdown-item" href="../home/dashboard-alt.html">Dashboard alt</a><a class="dropdown-item" href="../home/feed.html">Feed</a><a class="dropdown-item" href="../home/landing.html">Landing</a></div>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownPages">
+                  <div class="card navbar-card-pages shadow-none">
+                    <div class="card-body scrollbar perfect-scrollbar max-h-dropdown"><img class="position-absolute b-0 r-0" src="../assets/img/illustrations/authentication-corner.png" width="130" alt="" />
+                      <div class="row">
+                        <div class="col-6 col-md-4">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/activity.html">Activity</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/associations.html">Associations</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/billing.html">Billing</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/customer-details.html">Customer details</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/event-detail.html">Event detail</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/event-create.html">Event create</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/events.html">Events</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/faq.html">Faq</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/invoice.html">Invoice</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/invite-people.html">Invite people</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/notifications.html">Notifications</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/people.html">People</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/pricing.html">Pricing</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/pricing-alt.html">Pricing alt</a></div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/profile.html">Profile</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/settings.html">Settings</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/starter.html">Starter</a><a class="nav-link py-1 text-700 font-weight-medium" href="../calendar.html">Calendar</a><a class="nav-link py-1 text-700 font-weight-medium" href="../chat.html">Chat</a><a class="nav-link py-1 text-700 font-weight-medium" href="../kanban.html">Kanban</a><a class="nav-link py-1 text-700 font-weight-medium" href="../widgets.html">Widgets</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/errors/404.html">404</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/errors/500.html">500</a>
+                            <div class="nav-link py-1 text-900 font-weight-bold mt-3">Emails</div><a class="nav-link py-1 text-700 font-weight-medium" href="../email/inbox.html">Inbox</a><a class="nav-link py-1 text-700 font-weight-medium" href="../email/email-detail.html">Email detail</a><a class="nav-link py-1 text-700 font-weight-medium" href="../email/compose.html">Compose</a>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                          <div class="nav flex-column">
+                            <div class="nav-link py-1 text-900 font-weight-bold">E-commerce</div><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/product-list.html">Product list</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/product-grid.html">Product grid</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/product-details.html">Product details</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/orders.html">Orders</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/order-details.html">Order details</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/customers.html">Customers</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/shopping-cart.html">Shopping cart</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/checkout.html">Checkout</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownDocumentation" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownDocumentation">
+                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="../documentation/getting-started.html">Getting started</a><a class="dropdown-item" href="../documentation/file-structure.html">File structure</a><a class="dropdown-item" href="../documentation/customization.html">Customization</a><a class="dropdown-item" href="../documentation/dark-mode.html">Dark mode</a><a class="dropdown-item" href="../documentation/fluid-layout.html">Fluid layout</a><a class="dropdown-item" href="../documentation/gulp.html">Gulp</a><a class="dropdown-item" href="../documentation/RTL.html">RTL</a><a class="dropdown-item" href="../documentation/plugins.html">Plugins</a></div>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownComponents" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Components</a>
+                <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownComponents">
+                  <div class="card shadow-none navbar-card-components">
+                    <div class="card-body scrollbar perfect-scrollbar max-h-dropdown">
+                      <div class="row">
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../components/accordion.html">Accordion</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/alerts.html">Alerts</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/avatar.html">Avatar</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/background.html">Background</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/badges.html">Badges</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/breadcrumb.html">Breadcrumb</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/bulk-select.html">Bulk select</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/buttons.html">Buttons</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/cards.html">Cards</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/carousel.html">Carousel</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../components/collapse.html">Collapse</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/countup.html">Countup</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/dropdowns.html">Dropdowns</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/fancyscroll.html">Fancyscroll</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/fancytab.html">Fancytab</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/forms.html">Forms</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/hoverbox.html">Hoverbox</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/list-group.html">List group</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/modals.html">Modals</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/media-object.html">Media object</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../components/navs.html">Navs</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/navbar/default.html">Navbar default</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/navbar/vertical.html">Navbar vertical</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/navbar/top.html">Navbar top</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/navbar/combo.html">Navbar combo</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/cookie-notice.html">Cookie notice</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/page-headers.html">Page headers</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/pagination.html">Pagination</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/popovers.html">Popovers</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/progress.html">Progress</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../components/search.html">Search<span class="badge badge-pill ml-2 fs--2 badge-soft-success">New</span></a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/scrollspy.html">Scrollspy</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/sidepanel.html">Sidepanel</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/spinners.html">Spinners</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/tables.html">Tables</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/tabs.html">Tabs</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/toasts.html">Toasts</a><a class="nav-link py-1 text-700 font-weight-medium" href="../components/tooltips.html">Tooltips</a></div>
+                        </div>
+                      </div>
+                      <div class="nav-link py-1 text-900 font-weight-bold mt-3">Plugins</div>
+                      <div class="row">
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="bootstrap-wizard.html">Bootstrap wizard</a><a class="nav-link py-1 text-700 font-weight-medium" href="charts/chart-js.html">Chart js</a><a class="nav-link py-1 text-700 font-weight-medium" href="charts/echarts.html">Echarts</a><a class="nav-link py-1 text-700 font-weight-medium" href="countdown.html">Countdown</a><a class="nav-link py-1 text-700 font-weight-medium" href="data-table.html">Data table</a><a class="nav-link py-1 text-700 font-weight-medium" href="date-picker.html">Date picker</a><a class="nav-link py-1 text-700 font-weight-medium" href="draggable.html">Draggable</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="dropzone.html">Dropzone</a><a class="nav-link py-1 text-700 font-weight-medium" href="emojionearea.html">Emojionearea</a><a class="nav-link py-1 text-700 font-weight-medium" href="fancybox.html">Fancybox</a><a class="nav-link py-1 text-700 font-weight-medium" href="fontawesome.html">Fontawesome</a><a class="nav-link py-1 text-700 font-weight-medium" href="fullcalendar.html">Fullcalendar</a><a class="nav-link py-1 text-700 font-weight-medium" href="inline-player.html">Inline player</a><a class="nav-link py-1 text-700 font-weight-medium" href="jquery-validation.html">Jquery validation</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="lightbox.html">Lightbox</a><a class="nav-link py-1 text-700 font-weight-medium" href="lottie.html">Lottie</a><a class="nav-link py-1 text-700 font-weight-medium" href="map/google-map.html">Google map</a><a class="nav-link py-1 text-700 font-weight-medium" href="map/leaflet-map.html">Leaflet map</a><a class="nav-link py-1 text-700 font-weight-medium" href="toastr.html">Toastr</a><a class="nav-link py-1 text-700 font-weight-medium" href="owl-carousel.html">Owl carousel</a><a class="nav-link py-1 text-700 font-weight-medium" href="perfect-scrollbar.html">Perfect scrollbar</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="progressbar.html">Progressbar</a><a class="nav-link py-1 text-700 font-weight-medium" href="raty.html">Raty</a><a class="nav-link py-1 text-700 font-weight-medium" href="select2.html">Select2</a><a class="nav-link py-1 text-700 font-weight-medium" href="tinymce.html">Tinymce</a><a class="nav-link py-1 text-700 font-weight-medium" href="typed-text.html">Typed text</a></div>
+                        </div>
+                      </div>
+                      <div class="nav-link py-1 text-900 font-weight-bold mt-3">Utilities</div>
+                      <div class="row">
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/borders.html">Borders</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/clearfix.html">Clearfix</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/close-icon.html">Close icon</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/colors.html">Colors</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/display.html">Display</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/embed.html">Embed</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/figures.html">Figures</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/flex.html">Flex</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/grid.html">Grid</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/sizing.html">Sizing</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/spacing.html">Spacing</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/stretched-link.html">Stretched link</a></div>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/typography.html">Typography</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/vertical-align.html">Vertical align</a><a class="nav-link py-1 text-700 font-weight-medium" href="../utilities/visibility.html">Visibility</a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownAuthentication" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Authentication</a>
+                <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownAuthentication">
+                  <div class="card shadow-none navbar-card-auth">
+                    <div class="card-body scrollbar perfect-scrollbar max-h-dropdown"><img class="position-absolute b-0 r-0" src="../assets/img/illustrations/authentication-corner.png" width="130" alt="" />
+                      <div class="row">
+                        <div class="col-6 col-xxl-3">
+                          <div class="nav-link py-1 text-900 font-weight-bold">Basic</div>
+                          <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/basic/login.html">Login</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/basic/logout.html">Logout</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/basic/register.html">Register</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/basic/forgot-password.html">Forgot password</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/basic/reset-password.html">Reset password</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/basic/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/basic/lock-screen.html">Lock screen</a></div>
+                        </div>
+                        <div class="col-6 col-xxl-3">
+                          <div class="nav flex-column">
+                            <div class="nav-link py-1 text-900 font-weight-bold">Split</div><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/split/login.html">Login</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/split/logout.html">Logout</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/split/register.html">Register</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/split/forgot-password.html">Forgot password</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/split/reset-password.html">Reset password</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/split/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/split/lock-screen.html">Lock screen</a>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl-3">
+                          <div class="nav flex-column">
+                            <div class="nav-link py-1 text-900 font-weight-bold mt-3 mt-xxl-0">Card</div><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/card/login.html">Login</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/card/logout.html">Logout</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/card/register.html">Register</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/card/forgot-password.html">Forgot password</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/card/reset-password.html">Reset password</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/card/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/card/lock-screen.html">Lock screen</a>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl-3">
+                          <div class="nav flex-column">
+                            <div class="nav-link py-1 text-900 font-weight-bold mt-3 mt-xxl-0">Special</div><a class="nav-link py-1 text-700 font-weight-medium" href="../authentication/wizard.html">Wizard</a><a class="nav-link py-1" href="#!" data-toggle="modal" data-target="#authentication-modal">In Modal</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
+            <li class="nav-item d-none d-md-block">
+              <a class="nav-link px-3 py-0" href="https://prium.github.io/falcon/v3.0.0-beta5/" target="_blank"><img src="../assets/img/logos/bootstrap-5.png" alt="" height="35" /></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link settings-popover" href="#settings-modal" data-toggle="modal"><span class="ripple"></span><span class="fa-spin position-absolute a-0 d-flex flex-center"><span class="icon-spin position-absolute a-0 d-flex flex-center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.7369 12.3941L19.1989 12.1065C18.4459 11.7041 18.0843 10.8487 18.0843 9.99495C18.0843 9.14118 18.4459 8.28582 19.1989 7.88336L19.7369 7.59581C19.9474 7.47484 20.0316 7.23291 19.9474 7.03131C19.4842 5.57973 18.6843 4.28943 17.6738 3.20075C17.5053 3.03946 17.2527 2.99914 17.0422 3.12011L16.393 3.46714C15.6883 3.84379 14.8377 3.74529 14.1476 3.3427C14.0988 3.31422 14.0496 3.28621 14.0002 3.25868C13.2568 2.84453 12.7055 2.10629 12.7055 1.25525V0.70081C12.7055 0.499202 12.5371 0.297594 12.2845 0.257272C10.7266 -0.105622 9.16879 -0.0653007 7.69516 0.257272C7.44254 0.297594 7.31623 0.499202 7.31623 0.70081V1.23474C7.31623 2.09575 6.74999 2.8362 5.99824 3.25599C5.95774 3.27861 5.91747 3.30159 5.87744 3.32493C5.15643 3.74527 4.26453 3.85902 3.53534 3.45302L2.93743 3.12011C2.72691 2.99914 2.47429 3.03946 2.30587 3.20075C1.29538 4.28943 0.495411 5.57973 0.0322686 7.03131C-0.051939 7.23291 0.0322686 7.47484 0.242788 7.59581L0.784376 7.8853C1.54166 8.29007 1.92694 9.13627 1.92694 9.99495C1.92694 10.8536 1.54166 11.6998 0.784375 12.1046L0.242788 12.3941C0.0322686 12.515 -0.051939 12.757 0.0322686 12.9586C0.495411 14.4102 1.29538 15.7005 2.30587 16.7891C2.47429 16.9504 2.72691 16.9907 2.93743 16.8698L3.58669 16.5227C4.29133 16.1461 5.14131 16.2457 5.8331 16.6455C5.88713 16.6767 5.94159 16.7074 5.99648 16.7375C6.75162 17.1511 7.31623 17.8941 7.31623 18.7552V19.2891C7.31623 19.4425 7.41373 19.5959 7.55309 19.696C7.64066 19.7589 7.74815 19.7843 7.85406 19.8046C9.35884 20.0925 10.8609 20.0456 12.2845 19.7729C12.5371 19.6923 12.7055 19.4907 12.7055 19.2891V18.7346C12.7055 17.8836 13.2568 17.1454 14.0002 16.7312C14.0496 16.7037 14.0988 16.6757 14.1476 16.6472C14.8377 16.2446 15.6883 16.1461 16.393 16.5227L17.0422 16.8698C17.2527 16.9907 17.5053 16.9504 17.6738 16.7891C18.7264 15.7005 19.4842 14.4102 19.9895 12.9586C20.0316 12.757 19.9474 12.515 19.7369 12.3941ZM10.0109 13.2005C8.1162 13.2005 6.64257 11.7893 6.64257 9.97478C6.64257 8.20063 8.1162 6.74905 10.0109 6.74905C11.8634 6.74905 13.3792 8.20063 13.3792 9.97478C13.3792 11.7893 11.8634 13.2005 10.0109 13.2005Z" fill="#2A7BE4"></path></svg></span></span></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block ml-1">
+              <a class="nav-link px-0" href="../changelog.html" data-toggle="tooltip" data-placement="bottom" title="Changelog"><span class="fas fa-code-branch fs-4" data-fa-transform="shrink-8"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill icon-indicator" href="../e-commerce/shopping-cart.html"><span class="fas fa-shopping-cart fs-4" data-fa-transform="shrink-7"></span><span class="notification-indicator-number">1</span></a>
+            </li>
+            <li class="nav-item dropdown dropdown-on-hover">
+              <a class="nav-link notification-indicator notification-indicator-primary px-0 icon-indicator" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span></a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="navbarDropdownNotification">
+                <div class="card card-notification shadow-none" style="max-width: 20rem">
+                  <div class="card-header">
+                    <div class="row justify-content-between align-items-center">
+                      <div class="col-auto">
+                        <h6 class="card-header-title mb-0">Notifications</h6>
+                      </div>
+                      <div class="col-auto"><a class="card-link font-weight-normal" href="#">Mark all as read</a></div>
+                    </div>
+                  </div>
+                  <div class="list-group list-group-flush font-weight-normal fs--1">
+                    <div class="list-group-title border-bottom">NEW</div>
+                    <div class="list-group-item">
+                      <a class="notification notification-flush bg-200" href="#!">
+                        <div class="notification-avatar">
+                          <div class="avatar avatar-2xl mr-3">
+                            <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="" />
+                          </div>
+                        </div>
+                        <div class="notification-body">
+                          <p class="mb-1"><strong>Emma Watson</strong> replied to your comment : "Hello world 😍"</p>
+                          <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">💬</span>Just now</span>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="list-group-item">
+                      <a class="notification notification-flush bg-200" href="#!">
+                        <div class="notification-avatar">
+                          <div class="avatar avatar-2xl mr-3">
+                            <div class="avatar-name rounded-circle"><span>AB</span></div>
+                          </div>
+                        </div>
+                        <div class="notification-body">
+                          <p class="mb-1"><strong>Albert Brooks</strong> reacted to <strong>Mia Khalifa's</strong> status</p>
+                          <span class="notification-time"><span class="mr-1 fab fa-gratipay text-danger"></span>9hr</span>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="list-group-title">EARLIER</div>
+                    <div class="list-group-item">
+                      <a class="notification notification-flush" href="#!">
+                        <div class="notification-avatar">
+                          <div class="avatar avatar-2xl mr-3">
+                            <img class="rounded-circle" src="../assets/img/icons/weather-sm.jpg" alt="" />
+                          </div>
+                        </div>
+                        <div class="notification-body">
+                          <p class="mb-1">The forecast today shows a low of 20&#8451; in California. See today's weather.</p>
+                          <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">🌤️</span>1d</span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-footer text-center border-top"><a class="card-link d-block" href="../pages/notifications.html">View all</a></div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-xl">
+                  <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="" />
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
+                <div class="bg-white rounded-soft py-2">
+                  <a class="dropdown-item font-weight-bold text-warning" href="#!"><span class="fas fa-crown mr-1"></span><span>Go Pro</span></a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#!">Set status</a>
+                  <a class="dropdown-item" href="../pages/profile.html">Profile &amp; account</a>
+                  <a class="dropdown-item" href="#!">Feedback</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../pages/settings.html">Settings</a>
+                  <a class="dropdown-item" href="../authentication/basic/logout.html">Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div class="content">
+          <nav class="navbar navbar-light navbar-glass navbar-top sticky-kit navbar-expand" style="display:none;">
+            <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+            <a class="navbar-brand mr-1 mr-sm-3" href="../index.html">
+              <div class="d-flex align-items-center"><img class="mr-2" src="../assets/img/illustrations/falcon.png" alt="" width="40" /><span class="text-sans-serif">falcon</span></div>
+            </a>
+            <ul class="navbar-nav align-items-center d-none d-lg-block">
+              <li class="nav-item">
+                <div class="search-box">
+                  <form class="position-relative" data-toggle="search" data-display="static">
+                    <input class="form-control search-input" type="search" placeholder="Search..." aria-label="Search" />
+                    <span class="fas fa-search search-box-icon"></span>
+                  </form>
+                  <button class="close" type="button" data-dismiss="search"><span class="fas fa-times"></span></button>
+                  <div class="dropdown-menu">
+                    <div class="scrollbar perfect-scrollbar py-3" style="height: 24rem;">
+                      <h6 class="dropdown-header px-card pt-0 pb-2">Recently Browsed</h6>
+                      <a class="dropdown-item fs--1 px-card py-1 hover-primary" href="../pages/events.html">
+                        <div class="d-flex align-items-center">
+                          <span class="fas fa-circle mr-2 text-300 fs--2"></span>
+                          <div class="font-weight-normal">Pages <span class="fas fa-chevron-right mx-1 text-500 fs--2" data-fa-transform="shrink-2"></span> Events</div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item fs--1 px-card py-1 hover-primary" href="../e-commerce/customers.html">
+                        <div class="d-flex align-items-center">
+                          <span class="fas fa-circle mr-2 text-300 fs--2"></span>
+                          <div class="font-weight-normal">E-commerce <span class="fas fa-chevron-right mx-1 text-500 fs--2" data-fa-transform="shrink-2"></span> Customers</div>
+                        </div>
+                      </a>
+                      <hr class="border-200" />
+                      <h6 class="dropdown-header px-card pt-0 pb-2">Suggested Filter</h6>
+                      <a class="dropdown-item px-card py-1 fs-0" href="../e-commerce/customers.html">
+                        <div class="d-flex align-items-center"><span class="badge font-weight-medium text-decoration-none mr-2 badge-soft-warning">customers:</span>
+                          <div class="flex-1 fs--1">All customers list</div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item px-card py-1 fs-0" href="../pages/events.html">
+                        <div class="d-flex align-items-center"><span class="badge font-weight-medium text-decoration-none mr-2 badge-soft-success">events:</span>
+                          <div class="flex-1 fs--1">Latest events in current month</div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item px-card py-1 fs-0" href="../e-commerce/product-grid.html">
+                        <div class="d-flex align-items-center"><span class="badge font-weight-medium text-decoration-none mr-2 badge-soft-info">products:</span>
+                          <div class="flex-1 fs--1">Most popular products</div>
+                        </div>
+                      </a>
+                      <hr class="border-200" />
+                      <h6 class="dropdown-header px-card pt-0 pb-2">Files</h6>
+                      <a class="dropdown-item px-card py-2" href="#!">
+                        <div class="d-flex align-items-center">
+                          <div class="file-thumbnail mr-2"><img class="border h-100 w-100 fit-cover rounded-lg" src="../assets/img/products/3-thumb.png" alt="" /></div>
+                          <div class="flex-1">
+                            <h6 class="mb-0">iPhone</h6>
+                            <p class="fs--2 mb-0"><span class="font-weight-semi-bold">Antony</span><span class="font-weight-medium text-600 ml-2">27 Sep at 10:30 AM</span></p>
+                          </div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item px-card py-2" href="#!">
+                        <div class="d-flex align-items-center">
+                          <div class="file-thumbnail mr-2"><img class="img-fluid" src="../assets/img/icons/zip.png" alt="" /></div>
+                          <div class="flex-1">
+                            <h6 class="mb-0">Falcon v1.8.2</h6>
+                            <p class="fs--2 mb-0"><span class="font-weight-semi-bold">John</span><span class="font-weight-medium text-600 ml-2">30 Sep at 12:30 PM</span></p>
+                          </div>
+                        </div>
+                      </a>
+                      <hr class="border-200" />
+                      <h6 class="dropdown-header px-card pt-0 pb-2">Members</h6>
+                      <a class="dropdown-item px-card py-2" href="../pages/profile.html">
+                        <div class="d-flex align-items-center">
+                          <div class="avatar avatar-l status-online mr-2">
+                            <img class="rounded-circle" src="../assets/img/team/1.jpg" alt="" />
+                          </div>
+                          <div class="flex-1">
+                            <h6 class="mb-0">Anna Karinina</h6>
+                            <p class="fs--2 mb-0">Technext Limited</p>
+                          </div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item px-card py-2" href="../pages/profile.html">
+                        <div class="d-flex align-items-center">
+                          <div class="avatar avatar-l mr-2">
+                            <img class="rounded-circle" src="../assets/img/team/2.jpg" alt="" />
+                          </div>
+                          <div class="flex-1">
+                            <h6 class="mb-0">Antony Hopkins</h6>
+                            <p class="fs--2 mb-0">Brain Trust</p>
+                          </div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item px-card py-2" href="../pages/profile.html">
+                        <div class="d-flex align-items-center">
+                          <div class="avatar avatar-l mr-2">
+                            <img class="rounded-circle" src="../assets/img/team/3.jpg" alt="" />
+                          </div>
+                          <div class="flex-1">
+                            <h6 class="mb-0">Emma Watson</h6>
+                            <p class="fs--2 mb-0">Google</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
+              <li class="nav-item d-none d-md-block">
+                <a class="nav-link px-3 py-0" href="https://prium.github.io/falcon/v3.0.0-beta5/" target="_blank"><img src="../assets/img/logos/bootstrap-5.png" alt="" height="35" /></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link settings-popover" href="#settings-modal" data-toggle="modal"><span class="ripple"></span><span class="fa-spin position-absolute a-0 d-flex flex-center"><span class="icon-spin position-absolute a-0 d-flex flex-center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.7369 12.3941L19.1989 12.1065C18.4459 11.7041 18.0843 10.8487 18.0843 9.99495C18.0843 9.14118 18.4459 8.28582 19.1989 7.88336L19.7369 7.59581C19.9474 7.47484 20.0316 7.23291 19.9474 7.03131C19.4842 5.57973 18.6843 4.28943 17.6738 3.20075C17.5053 3.03946 17.2527 2.99914 17.0422 3.12011L16.393 3.46714C15.6883 3.84379 14.8377 3.74529 14.1476 3.3427C14.0988 3.31422 14.0496 3.28621 14.0002 3.25868C13.2568 2.84453 12.7055 2.10629 12.7055 1.25525V0.70081C12.7055 0.499202 12.5371 0.297594 12.2845 0.257272C10.7266 -0.105622 9.16879 -0.0653007 7.69516 0.257272C7.44254 0.297594 7.31623 0.499202 7.31623 0.70081V1.23474C7.31623 2.09575 6.74999 2.8362 5.99824 3.25599C5.95774 3.27861 5.91747 3.30159 5.87744 3.32493C5.15643 3.74527 4.26453 3.85902 3.53534 3.45302L2.93743 3.12011C2.72691 2.99914 2.47429 3.03946 2.30587 3.20075C1.29538 4.28943 0.495411 5.57973 0.0322686 7.03131C-0.051939 7.23291 0.0322686 7.47484 0.242788 7.59581L0.784376 7.8853C1.54166 8.29007 1.92694 9.13627 1.92694 9.99495C1.92694 10.8536 1.54166 11.6998 0.784375 12.1046L0.242788 12.3941C0.0322686 12.515 -0.051939 12.757 0.0322686 12.9586C0.495411 14.4102 1.29538 15.7005 2.30587 16.7891C2.47429 16.9504 2.72691 16.9907 2.93743 16.8698L3.58669 16.5227C4.29133 16.1461 5.14131 16.2457 5.8331 16.6455C5.88713 16.6767 5.94159 16.7074 5.99648 16.7375C6.75162 17.1511 7.31623 17.8941 7.31623 18.7552V19.2891C7.31623 19.4425 7.41373 19.5959 7.55309 19.696C7.64066 19.7589 7.74815 19.7843 7.85406 19.8046C9.35884 20.0925 10.8609 20.0456 12.2845 19.7729C12.5371 19.6923 12.7055 19.4907 12.7055 19.2891V18.7346C12.7055 17.8836 13.2568 17.1454 14.0002 16.7312C14.0496 16.7037 14.0988 16.6757 14.1476 16.6472C14.8377 16.2446 15.6883 16.1461 16.393 16.5227L17.0422 16.8698C17.2527 16.9907 17.5053 16.9504 17.6738 16.7891C18.7264 15.7005 19.4842 14.4102 19.9895 12.9586C20.0316 12.757 19.9474 12.515 19.7369 12.3941ZM10.0109 13.2005C8.1162 13.2005 6.64257 11.7893 6.64257 9.97478C6.64257 8.20063 8.1162 6.74905 10.0109 6.74905C11.8634 6.74905 13.3792 8.20063 13.3792 9.97478C13.3792 11.7893 11.8634 13.2005 10.0109 13.2005Z" fill="#2A7BE4"></path></svg></span></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill icon-indicator" href="../e-commerce/shopping-cart.html"><span class="fas fa-shopping-cart fs-4" data-fa-transform="shrink-7"></span><span class="notification-indicator-number">1</span></a>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover">
+                <a class="nav-link notification-indicator notification-indicator-primary px-0 icon-indicator" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span></a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="navbarDropdownNotification">
+                  <div class="card card-notification shadow-none" style="max-width: 20rem">
+                    <div class="card-header">
+                      <div class="row justify-content-between align-items-center">
+                        <div class="col-auto">
+                          <h6 class="card-header-title mb-0">Notifications</h6>
+                        </div>
+                        <div class="col-auto"><a class="card-link font-weight-normal" href="#">Mark all as read</a></div>
+                      </div>
+                    </div>
+                    <div class="list-group list-group-flush font-weight-normal fs--1">
+                      <div class="list-group-title border-bottom">NEW</div>
+                      <div class="list-group-item">
+                        <a class="notification notification-flush bg-200" href="#!">
+                          <div class="notification-avatar">
+                            <div class="avatar avatar-2xl mr-3">
+                              <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="" />
+                            </div>
+                          </div>
+                          <div class="notification-body">
+                            <p class="mb-1"><strong>Emma Watson</strong> replied to your comment : "Hello world 😍"</p>
+                            <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">💬</span>Just now</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="list-group-item">
+                        <a class="notification notification-flush bg-200" href="#!">
+                          <div class="notification-avatar">
+                            <div class="avatar avatar-2xl mr-3">
+                              <div class="avatar-name rounded-circle"><span>AB</span></div>
+                            </div>
+                          </div>
+                          <div class="notification-body">
+                            <p class="mb-1"><strong>Albert Brooks</strong> reacted to <strong>Mia Khalifa's</strong> status</p>
+                            <span class="notification-time"><span class="mr-1 fab fa-gratipay text-danger"></span>9hr</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="list-group-title">EARLIER</div>
+                      <div class="list-group-item">
+                        <a class="notification notification-flush" href="#!">
+                          <div class="notification-avatar">
+                            <div class="avatar avatar-2xl mr-3">
+                              <img class="rounded-circle" src="../assets/img/icons/weather-sm.jpg" alt="" />
+                            </div>
+                          </div>
+                          <div class="notification-body">
+                            <p class="mb-1">The forecast today shows a low of 20&#8451; in California. See today's weather.</p>
+                            <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">🌤️</span>1d</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="card-footer text-center border-top"><a class="card-link d-block" href="../pages/notifications.html">View all</a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="avatar avatar-xl">
+                    <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="" />
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
+                  <div class="bg-white rounded-soft py-2">
+                    <a class="dropdown-item font-weight-bold text-warning" href="#!"><span class="fas fa-crown mr-1"></span><span>Go Pro</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!">Set status</a>
+                    <a class="dropdown-item" href="../pages/profile.html">Profile &amp; account</a>
+                    <a class="dropdown-item" href="#!">Feedback</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../pages/settings.html">Settings</a>
+                    <a class="dropdown-item" href="../authentication/basic/logout.html">Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <nav class="navbar navbar-light navbar-glass navbar-top sticky-kit navbar-expand-lg navbar-top-combo" data-move-target="#navbarVerticalNav" style="display:none;">
+            <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+            <a class="navbar-brand mr-1 mr-sm-3" href="../index.html">
+              <div class="d-flex align-items-center"><img class="mr-2" src="../assets/img/illustrations/falcon.png" alt="" width="40" /><span class="text-sans-serif">falcon</span></div>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarStandard">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownHome" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                  <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownHome">
+                    <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="../index.html">Dashboard</a><a class="dropdown-item" href="../home/dashboard-alt.html">Dashboard alt</a><a class="dropdown-item" href="../home/feed.html">Feed</a><a class="dropdown-item" href="../home/landing.html">Landing</a></div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                  <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownPages">
+                    <div class="card navbar-card-pages shadow-none">
+                      <div class="card-body scrollbar perfect-scrollbar max-h-dropdown"><img class="position-absolute b-0 r-0" src="../assets/img/illustrations/authentication-corner.png" width="130" alt="" />
+                        <div class="row">
+                          <div class="col-6 col-md-4">
+                            <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/activity.html">Activity</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/associations.html">Associations</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/billing.html">Billing</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/customer-details.html">Customer details</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/event-detail.html">Event detail</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/event-create.html">Event create</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/events.html">Events</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/faq.html">Faq</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/invoice.html">Invoice</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/invite-people.html">Invite people</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/notifications.html">Notifications</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/people.html">People</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/pricing.html">Pricing</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/pricing-alt.html">Pricing alt</a></div>
+                          </div>
+                          <div class="col-6 col-md-4">
+                            <div class="nav flex-column"><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/profile.html">Profile</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/settings.html">Settings</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/starter.html">Starter</a><a class="nav-link py-1 text-700 font-weight-medium" href="../calendar.html">Calendar</a><a class="nav-link py-1 text-700 font-weight-medium" href="../chat.html">Chat</a><a class="nav-link py-1 text-700 font-weight-medium" href="../kanban.html">Kanban</a><a class="nav-link py-1 text-700 font-weight-medium" href="../widgets.html">Widgets</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/errors/404.html">404</a><a class="nav-link py-1 text-700 font-weight-medium" href="../pages/errors/500.html">500</a>
+                              <div class="nav-link py-1 text-900 font-weight-bold mt-3">Emails</div><a class="nav-link py-1 text-700 font-weight-medium" href="../email/inbox.html">Inbox</a><a class="nav-link py-1 text-700 font-weight-medium" href="../email/email-detail.html">Email detail</a><a class="nav-link py-1 text-700 font-weight-medium" href="../email/compose.html">Compose</a>
+                            </div>
+                          </div>
+                          <div class="col-6 col-md-4">
+                            <div class="nav flex-column">
+                              <div class="nav-link py-1 text-900 font-weight-bold">E-commerce</div><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/product-list.html">Product list</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/product-grid.html">Product grid</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/product-details.html">Product details</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/orders.html">Orders</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/order-details.html">Order details</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/customers.html">Customers</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/shopping-cart.html">Shopping cart</a><a class="nav-link py-1 text-700 font-weight-medium" href="../e-commerce/checkout.html">Checkout</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle" id="navbarDropdownDocumentation" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                  <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownDocumentation">
+                    <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="../documentation/getting-started.html">Getting started</a><a class="dropdown-item" href="../documentation/file-structure.html">File structure</a><a class="dropdown-item" href="../documentation/customization.html">Customization</a><a class="dropdown-item" href="../documentation/dark-mode.html">Dark mode</a><a class="dropdown-item" href="../documentation/fluid-layout.html">Fluid layout</a><a class="dropdown-item" href="../documentation/gulp.html">Gulp</a><a class="dropdown-item" href="../documentation/RTL.html">RTL</a><a class="dropdown-item" href="../documentation/plugins.html">Plugins</a></div>
+                  </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="../widgets.html">Widgets</a></li>
+              </ul>
+            </div>
+            <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
+              <li class="nav-item d-none d-md-block">
+                <a class="nav-link px-3 py-0" href="https://prium.github.io/falcon/v3.0.0-beta5/" target="_blank"><img src="../assets/img/logos/bootstrap-5.png" alt="" height="35" /></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link settings-popover" href="#settings-modal" data-toggle="modal"><span class="ripple"></span><span class="fa-spin position-absolute a-0 d-flex flex-center"><span class="icon-spin position-absolute a-0 d-flex flex-center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.7369 12.3941L19.1989 12.1065C18.4459 11.7041 18.0843 10.8487 18.0843 9.99495C18.0843 9.14118 18.4459 8.28582 19.1989 7.88336L19.7369 7.59581C19.9474 7.47484 20.0316 7.23291 19.9474 7.03131C19.4842 5.57973 18.6843 4.28943 17.6738 3.20075C17.5053 3.03946 17.2527 2.99914 17.0422 3.12011L16.393 3.46714C15.6883 3.84379 14.8377 3.74529 14.1476 3.3427C14.0988 3.31422 14.0496 3.28621 14.0002 3.25868C13.2568 2.84453 12.7055 2.10629 12.7055 1.25525V0.70081C12.7055 0.499202 12.5371 0.297594 12.2845 0.257272C10.7266 -0.105622 9.16879 -0.0653007 7.69516 0.257272C7.44254 0.297594 7.31623 0.499202 7.31623 0.70081V1.23474C7.31623 2.09575 6.74999 2.8362 5.99824 3.25599C5.95774 3.27861 5.91747 3.30159 5.87744 3.32493C5.15643 3.74527 4.26453 3.85902 3.53534 3.45302L2.93743 3.12011C2.72691 2.99914 2.47429 3.03946 2.30587 3.20075C1.29538 4.28943 0.495411 5.57973 0.0322686 7.03131C-0.051939 7.23291 0.0322686 7.47484 0.242788 7.59581L0.784376 7.8853C1.54166 8.29007 1.92694 9.13627 1.92694 9.99495C1.92694 10.8536 1.54166 11.6998 0.784375 12.1046L0.242788 12.3941C0.0322686 12.515 -0.051939 12.757 0.0322686 12.9586C0.495411 14.4102 1.29538 15.7005 2.30587 16.7891C2.47429 16.9504 2.72691 16.9907 2.93743 16.8698L3.58669 16.5227C4.29133 16.1461 5.14131 16.2457 5.8331 16.6455C5.88713 16.6767 5.94159 16.7074 5.99648 16.7375C6.75162 17.1511 7.31623 17.8941 7.31623 18.7552V19.2891C7.31623 19.4425 7.41373 19.5959 7.55309 19.696C7.64066 19.7589 7.74815 19.7843 7.85406 19.8046C9.35884 20.0925 10.8609 20.0456 12.2845 19.7729C12.5371 19.6923 12.7055 19.4907 12.7055 19.2891V18.7346C12.7055 17.8836 13.2568 17.1454 14.0002 16.7312C14.0496 16.7037 14.0988 16.6757 14.1476 16.6472C14.8377 16.2446 15.6883 16.1461 16.393 16.5227L17.0422 16.8698C17.2527 16.9907 17.5053 16.9504 17.6738 16.7891C18.7264 15.7005 19.4842 14.4102 19.9895 12.9586C20.0316 12.757 19.9474 12.515 19.7369 12.3941ZM10.0109 13.2005C8.1162 13.2005 6.64257 11.7893 6.64257 9.97478C6.64257 8.20063 8.1162 6.74905 10.0109 6.74905C11.8634 6.74905 13.3792 8.20063 13.3792 9.97478C13.3792 11.7893 11.8634 13.2005 10.0109 13.2005Z" fill="#2A7BE4"></path></svg></span></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill icon-indicator" href="../e-commerce/shopping-cart.html"><span class="fas fa-shopping-cart fs-4" data-fa-transform="shrink-7"></span><span class="notification-indicator-number">1</span></a>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover">
+                <a class="nav-link notification-indicator notification-indicator-primary px-0 icon-indicator" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span></a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="navbarDropdownNotification">
+                  <div class="card card-notification shadow-none" style="max-width: 20rem">
+                    <div class="card-header">
+                      <div class="row justify-content-between align-items-center">
+                        <div class="col-auto">
+                          <h6 class="card-header-title mb-0">Notifications</h6>
+                        </div>
+                        <div class="col-auto"><a class="card-link font-weight-normal" href="#">Mark all as read</a></div>
+                      </div>
+                    </div>
+                    <div class="list-group list-group-flush font-weight-normal fs--1">
+                      <div class="list-group-title border-bottom">NEW</div>
+                      <div class="list-group-item">
+                        <a class="notification notification-flush bg-200" href="#!">
+                          <div class="notification-avatar">
+                            <div class="avatar avatar-2xl mr-3">
+                              <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="" />
+                            </div>
+                          </div>
+                          <div class="notification-body">
+                            <p class="mb-1"><strong>Emma Watson</strong> replied to your comment : "Hello world 😍"</p>
+                            <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">💬</span>Just now</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="list-group-item">
+                        <a class="notification notification-flush bg-200" href="#!">
+                          <div class="notification-avatar">
+                            <div class="avatar avatar-2xl mr-3">
+                              <div class="avatar-name rounded-circle"><span>AB</span></div>
+                            </div>
+                          </div>
+                          <div class="notification-body">
+                            <p class="mb-1"><strong>Albert Brooks</strong> reacted to <strong>Mia Khalifa's</strong> status</p>
+                            <span class="notification-time"><span class="mr-1 fab fa-gratipay text-danger"></span>9hr</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="list-group-title">EARLIER</div>
+                      <div class="list-group-item">
+                        <a class="notification notification-flush" href="#!">
+                          <div class="notification-avatar">
+                            <div class="avatar avatar-2xl mr-3">
+                              <img class="rounded-circle" src="../assets/img/icons/weather-sm.jpg" alt="" />
+                            </div>
+                          </div>
+                          <div class="notification-body">
+                            <p class="mb-1">The forecast today shows a low of 20&#8451; in California. See today's weather.</p>
+                            <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">🌤️</span>1d</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="card-footer text-center border-top"><a class="card-link d-block" href="../pages/notifications.html">View all</a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="avatar avatar-xl">
+                    <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="" />
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
+                  <div class="bg-white rounded-soft py-2">
+                    <a class="dropdown-item font-weight-bold text-warning" href="#!"><span class="fas fa-crown mr-1"></span><span>Go Pro</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!">Set status</a>
+                    <a class="dropdown-item" href="../pages/profile.html">Profile &amp; account</a>
+                    <a class="dropdown-item" href="#!">Feedback</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../pages/settings.html">Settings</a>
+                    <a class="dropdown-item" href="../authentication/basic/logout.html">Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <script>
+            var navbarPosition = localStorage.getItem('navbarPosition');
+            var navbarVertical = document.querySelector('.navbar-vertical');
+            var navbarTopVertical = document.querySelector('.content .navbar-top');
+            var navbarTop = document.querySelector('[data-layout] .navbar-top');
+            var navbarTopCombo = document.querySelector('.content .navbar-top-combo');
+
+            if (navbarPosition === 'top') {
+              navbarTop.removeAttribute('style');
+              navbarTopVertical.parentNode.removeChild(navbarTopVertical);
+              navbarVertical.parentNode.removeChild(navbarVertical);
+              navbarTopCombo.parentNode.removeChild(navbarTopCombo);
+            } else if (navbarPosition === 'combo') {
+              navbarVertical.removeAttribute('style');
+              navbarTopCombo.removeAttribute('style');
+              navbarTop.parentNode.removeChild(navbarTop);
+              navbarTopVertical.parentNode.removeChild(navbarTopVertical);
+            } else {
+              navbarVertical.removeAttribute('style');
+              navbarTopVertical.removeAttribute('style');
+              navbarTop.parentNode.removeChild(navbarTop);
+              navbarTopCombo.parentNode.removeChild(navbarTopCombo);
+            }
+          </script>
+          <div class="card mb-3">
+            <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../assets/img/illustrations/corner-4.png);"></div>
+            <!--/.bg-holder-->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-8">
+                  <h3 class="mb-0">Twitter Bootstrap Wizard</h3>
+                  <p class="mt-2">This twitter bootstrap plugin builds a wizard out of a formatter tabbable structure. It allows us to create a wizard functionality using buttons to go through the different wizard steps, and using events enables us to hook into each step individually.</p><a class="btn btn-link pl-0 btn-sm" href="https://vinceg.github.io/twitter-bootstrap-wizard/" target="_blank"> The Final Twitter Bootstrap Wizard Documentation<span class="fas fa-chevron-right ml-1 fs--2"></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-header">
+              <h5>Example</h5>
+              <p>Set <code>.pager </code>element to a unique id and assign it to <code>data-controller </code>attribute in <code>.theme-wizard </code>element to detect current wizard and its corresponding pagination. To add error modal notification, assign your modal <code>id </code>to <code>data-error-modal </code>attribute.</p>
+            </div>
+            <div class="card-body bg-light px-0 py-4">
+              <div class="row">
+                <div class="col-12">
+                  <div class="row justify-content-center no-gutters">
+                    <div class="col-lg-9 col-xxl-6 px-4 pb-3">
+                      <div class="card border shadow-none theme-wizard shadow-0" data-wizard data-controller="#wizard-controller" data-error-modal="#error-modal">
+                        <div class="card-header">
+                          <ul class="nav justify-content-between nav-wizard">
+                            <li class="nav-item"><a class="nav-link active font-weight-semi-bold" href="#bootstrap-wizard-tab1" data-toggle="tab"><span class="nav-item-circle-parent"><span class="nav-item-circle"><span class="fas fa-lock"></span></span></span><span class="d-none d-md-block mt-1 fs--1">Account</span></a></li>
+                            <li class="nav-item"><a class="nav-link font-weight-semi-bold" href="#bootstrap-wizard-tab2" data-toggle="tab"><span class="nav-item-circle-parent"><span class="nav-item-circle"><span class="fas fa-user"></span></span></span><span class="d-none d-md-block mt-1 fs--1">Personal</span></a></li>
+                            <li class="nav-item"><a class="nav-link font-weight-semi-bold" href="#bootstrap-wizard-tab3" data-toggle="tab"><span class="nav-item-circle-parent"><span class="nav-item-circle"><span class="fas fa-dollar-sign"></span></span></span><span class="d-none d-md-block mt-1 fs--1">Billing</span></a></li>
+                            <li class="nav-item"><a class="nav-link font-weight-semi-bold" href="#bootstrap-wizard-tab4" data-toggle="tab"><span class="nav-item-circle-parent"><span class="nav-item-circle"><span class="fas fa-thumbs-up"></span></span></span><span class="d-none d-md-block mt-1 fs--1">Done</span></a></li>
+                          </ul>
+                        </div>
+                        <div class="card-body">
+                          <div class="tab-content">
+                            <div class="tab-pane active px-sm-3 px-md-5" id="bootstrap-wizard-tab1">
+                              <form class="form-validation" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password"}},"messages":{"confirmPassword":{"equalTo":"Passwords didn&#39;t match"},"terms":{"required":"You must accept terms and privacy policy"}}}'>
+                                <div class="form-group"><label for="wizard-name">Name</label><input class="form-control" type="text" name="name" placeholder="John Smith" id="wizard-name" /></div>
+                                <div class="form-group"><label for="wizard-email">Email*</label><input class="form-control" type="email" name="email" placeholder="Email address" required="required" id="wizard-email" /></div>
+                                <div class="form-row">
+                                  <div class="col-6">
+                                    <div class="form-gorup"><label for="wizard-password">Password*</label><input class="form-control" type="password" name="password" placeholder="Password" required="required" id="wizard-password" /></div>
+                                  </div>
+                                  <div class="col-6">
+                                    <div class="form-group"><label for="wizard-confirm-password">Confirm Password*</label><input class="form-control" type="password" name="confirmPassword" placeholder="Confirm Password" id="wizard-confirm-password" /></div>
+                                  </div>
+                                </div>
+                                <div class="custom-control custom-checkbox"><input class="custom-control-input" id="wizard-checkbox" type="checkbox" name="terms" required="required" checked="checked" /><label class="custom-control-label" for="wizard-checkbox">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label></div>
+                              </form>
+                            </div>
+                            <div class="tab-pane px-sm-3 px-md-5" id="bootstrap-wizard-tab2">
+                              <form class="form-validation">
+                                <div class="form-group">
+                                  <div class="row" data-dropzone="data-dropzone" data-options='{"maxFiles":1,"data":[{"name":"avatar.png","size":"54kb","url":"../assets/img/team"}]}'>
+                                    <div class="fallback"><input type="file" name="file" /></div>
+                                    <div class="col-md-auto">
+                                      <div class="dz-preview dz-preview-single">
+                                        <div class="dz-preview-cover d-flex align-items-center justify-content-center mb-3 mb-md-0">
+                                          <div class="avatar avatar-4xl"><img class="rounded-circle" src="...html" alt="..." data-dz-thumbnail="data-dz-thumbnail" /></div>
+                                          <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md">
+                                      <div class="dz-message dropzone-area px-2 py-3" data-dz-message="data-dz-message">
+                                        <div class="text-center"><img class="mr-2" src="../assets/img/icons/cloud-upload.svg" width="25" alt="" />Upload your profile picture<p class="mb-0 fs--1 text-400">Upload a 300x300 jpg image with <br />a maximum size of 400KB</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group"><label for="gender">Gender</label><select class="form-control custom-select" id="gender" name="gender">
+                                    <option value="">Select your gender ...</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                  </select></div>
+                                <div class="form-group"><label for="wizard-phone">Phone</label><input class="form-control" type="text" name="phone" placeholder="Phone" id="wizard-phone" /></div>
+                                <div class="form-group"><label for="wizard-datepicker">Date of Birth</label><input class="form-control datetimepicker" id="wizard-datepicker" type="text" placeholder="d/m/y" data-options='{"dateFormat":"d/m/Y"}' /></div>
+                                <div class="form-group"><label for="wizard-address">Address</label><textarea class="form-control" rows="4" id="wizard-address"></textarea></div>
+                              </form>
+                            </div>
+                            <div class="tab-pane px-sm-3 px-md-5" id="bootstrap-wizard-tab3">
+                              <form class="form-validation">
+                                <div class="form-row">
+                                  <div class="col">
+                                    <div class="form-group"><label for="card-number">Card Number</label><input class="form-control" id="card-number" placeholder="XXXX XXXX XXXX XXXX" type="text" /></div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group"><label for="card-name">Name on Card</label><input class="form-control" id="card-name" placeholder="John Doe" name="cardName" type="text" /></div>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-6">
+                                    <div class="form-group"><label for="card-holder-country">Country</label><select class="custom-select" id="card-holder-country" name="customSelectCountry">
+                                        <option value="">Select your country ...</option>
+                                        <option value="Afghanistan">Afghanistan</option>
+                                        <option value="Albania">Albania</option>
+                                        <option value="Algeria">Algeria</option>
+                                        <option value="American Samoa">American Samoa</option>
+                                        <option value="Andorra">Andorra</option>
+                                        <option value="Angola">Angola</option>
+                                        <option value="Anguilla">Anguilla</option>
+                                        <option value="Antarctica">Antarctica</option>
+                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Armenia">Armenia</option>
+                                        <option value="Aruba">Aruba</option>
+                                        <option value="Australia">Australia</option>
+                                        <option value="Austria">Austria</option>
+                                        <option value="Azerbaijan">Azerbaijan</option>
+                                        <option value="Bahamas">Bahamas</option>
+                                        <option value="Bahrain">Bahrain</option>
+                                        <option value="Bangladesh">Bangladesh</option>
+                                        <option value="Barbados">Barbados</option>
+                                        <option value="Belarus">Belarus</option>
+                                        <option value="Belgium">Belgium</option>
+                                        <option value="Belize">Belize</option>
+                                        <option value="Benin">Benin</option>
+                                        <option value="Bermuda">Bermuda</option>
+                                        <option value="Bhutan">Bhutan</option>
+                                        <option value="Bolivia">Bolivia</option>
+                                        <option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option>
+                                        <option value="Botswana">Botswana</option>
+                                        <option value="Bouvet Island">Bouvet Island</option>
+                                        <option value="Brazil">Brazil</option>
+                                        <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                        <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                        <option value="Bulgaria">Bulgaria</option>
+                                        <option value="Burkina Faso">Burkina Faso</option>
+                                        <option value="Burundi">Burundi</option>
+                                        <option value="Cambodia">Cambodia</option>
+                                        <option value="Cameroon">Cameroon</option>
+                                        <option value="Canada">Canada</option>
+                                        <option value="Cape Verde">Cape Verde</option>
+                                        <option value="Cayman Islands">Cayman Islands</option>
+                                        <option value="Central African Republic">Central African Republic</option>
+                                        <option value="Chad">Chad</option>
+                                        <option value="Chile">Chile</option>
+                                        <option value="China">China</option>
+                                        <option value="Christmas Island">Christmas Island</option>
+                                        <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                        <option value="Colombia">Colombia</option>
+                                        <option value="Comoros">Comoros</option>
+                                        <option value="Congo">Congo</option>
+                                        <option value="Congo, the Democratic Republic of the">Congo, the Democratic Republic of the</option>
+                                        <option value="Cook Islands">Cook Islands</option>
+                                        <option value="Costa Rica">Costa Rica</option>
+                                        <option value="Cote d'Ivoire">Cote d'Ivoire</option>
+                                        <option value="Croatia (Hrvatska)">Croatia (Hrvatska)</option>
+                                        <option value="Cuba">Cuba</option>
+                                        <option value="Cyprus">Cyprus</option>
+                                        <option value="Czech Republic">Czech Republic</option>
+                                        <option value="Denmark">Denmark</option>
+                                        <option value="Djibouti">Djibouti</option>
+                                        <option value="Dominica">Dominica</option>
+                                        <option value="Dominican Republic">Dominican Republic</option>
+                                        <option value="East Timor">East Timor</option>
+                                        <option value="Ecuador">Ecuador</option>
+                                        <option value="Egypt">Egypt</option>
+                                        <option value="El Salvador">El Salvador</option>
+                                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                        <option value="Eritrea">Eritrea</option>
+                                        <option value="Estonia">Estonia</option>
+                                        <option value="Ethiopia">Ethiopia</option>
+                                        <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                        <option value="Faroe Islands">Faroe Islands</option>
+                                        <option value="Fiji">Fiji</option>
+                                        <option value="Finland">Finland</option>
+                                        <option value="France">France</option>
+                                        <option value="France Metropolitan">France Metropolitan</option>
+                                        <option value="French Guiana">French Guiana</option>
+                                        <option value="French Polynesia">French Polynesia</option>
+                                        <option value="French Southern Territories">French Southern Territories</option>
+                                        <option value="Gabon">Gabon</option>
+                                        <option value="Gambia">Gambia</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Germany">Germany</option>
+                                        <option value="Ghana">Ghana</option>
+                                        <option value="Gibraltar">Gibraltar</option>
+                                        <option value="Greece">Greece</option>
+                                        <option value="Greenland">Greenland</option>
+                                        <option value="Grenada">Grenada</option>
+                                        <option value="Guadeloupe">Guadeloupe</option>
+                                        <option value="Guam">Guam</option>
+                                        <option value="Guatemala">Guatemala</option>
+                                        <option value="Guinea">Guinea</option>
+                                        <option value="Guinea-Bissau">Guinea-Bissau</option>
+                                        <option value="Guyana">Guyana</option>
+                                        <option value="Haiti">Haiti</option>
+                                        <option value="Heard and Mc Donald Islands">Heard and Mc Donald Islands</option>
+                                        <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                                        <option value="Honduras">Honduras</option>
+                                        <option value="Hong Kong">Hong Kong</option>
+                                        <option value="Hungary">Hungary</option>
+                                        <option value="Iceland">Iceland</option>
+                                        <option value="India">India</option>
+                                        <option value="Indonesia">Indonesia</option>
+                                        <option value="Iran (Islamic Republic of)">Iran (Islamic Republic of)</option>
+                                        <option value="Iraq">Iraq</option>
+                                        <option value="Ireland">Ireland</option>
+                                        <option value="Israel">Israel</option>
+                                        <option value="Italy">Italy</option>
+                                        <option value="Jamaica">Jamaica</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="Jordan">Jordan</option>
+                                        <option value="Kazakhstan">Kazakhstan</option>
+                                        <option value="Kenya">Kenya</option>
+                                        <option value="Kiribati">Kiribati</option>
+                                        <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                                        <option value="Korea, Republic of">Korea, Republic of</option>
+                                        <option value="Kuwait">Kuwait</option>
+                                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                        <option value="Lao, People's Democratic Republic">Lao, People's Democratic Republic</option>
+                                        <option value="Latvia">Latvia</option>
+                                        <option value="Lebanon">Lebanon</option>
+                                        <option value="Lesotho">Lesotho</option>
+                                        <option value="Liberia">Liberia</option>
+                                        <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                                        <option value="Liechtenstein">Liechtenstein</option>
+                                        <option value="Lithuania">Lithuania</option>
+                                        <option value="Luxembourg">Luxembourg</option>
+                                        <option value="Macau">Macau</option>
+                                        <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                                        <option value="Madagascar">Madagascar</option>
+                                        <option value="Malawi">Malawi</option>
+                                        <option value="Malaysia">Malaysia</option>
+                                        <option value="Maldives">Maldives</option>
+                                        <option value="Mali">Mali</option>
+                                        <option value="Malta">Malta</option>
+                                        <option value="Marshall Islands">Marshall Islands</option>
+                                        <option value="Martinique">Martinique</option>
+                                        <option value="Mauritania">Mauritania</option>
+                                        <option value="Mauritius">Mauritius</option>
+                                        <option value="Mayotte">Mayotte</option>
+                                        <option value="Mexico">Mexico</option>
+                                        <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                        <option value="Moldova, Republic of">Moldova, Republic of</option>
+                                        <option value="Monaco">Monaco</option>
+                                        <option value="Mongolia">Mongolia</option>
+                                        <option value="Montserrat">Montserrat</option>
+                                        <option value="Morocco">Morocco</option>
+                                        <option value="Mozambique">Mozambique</option>
+                                        <option value="Myanmar">Myanmar</option>
+                                        <option value="Namibia">Namibia</option>
+                                        <option value="Nauru">Nauru</option>
+                                        <option value="Nepal">Nepal</option>
+                                        <option value="Netherlands">Netherlands</option>
+                                        <option value="Netherlands Antilles">Netherlands Antilles</option>
+                                        <option value="New Caledonia">New Caledonia</option>
+                                        <option value="New Zealand">New Zealand</option>
+                                        <option value="Nicaragua">Nicaragua</option>
+                                        <option value="Niger">Niger</option>
+                                        <option value="Nigeria">Nigeria</option>
+                                        <option value="Niue">Niue</option>
+                                        <option value="Norfolk Island">Norfolk Island</option>
+                                        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                                        <option value="Norway">Norway</option>
+                                        <option value="Oman">Oman</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                        <option value="Palau">Palau</option>
+                                        <option value="Panama">Panama</option>
+                                        <option value="Papua New Guinea">Papua New Guinea</option>
+                                        <option value="Paraguay">Paraguay</option>
+                                        <option value="Peru">Peru</option>
+                                        <option value="Philippines">Philippines</option>
+                                        <option value="Pitcairn">Pitcairn</option>
+                                        <option value="Poland">Poland</option>
+                                        <option value="Portugal">Portugal</option>
+                                        <option value="Puerto Rico">Puerto Rico</option>
+                                        <option value="Qatar">Qatar</option>
+                                        <option value="Reunion">Reunion</option>
+                                        <option value="Romania">Romania</option>
+                                        <option value="Russian Federation">Russian Federation</option>
+                                        <option value="Rwanda">Rwanda</option>
+                                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                        <option value="Saint Lucia">Saint Lucia</option>
+                                        <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                                        <option value="Samoa">Samoa</option>
+                                        <option value="San Marino">San Marino</option>
+                                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                        <option value="Saudi Arabia">Saudi Arabia</option>
+                                        <option value="Senegal">Senegal</option>
+                                        <option value="Seychelles">Seychelles</option>
+                                        <option value="Sierra Leone">Sierra Leone</option>
+                                        <option value="Singapore">Singapore</option>
+                                        <option value="Slovakia (Slovak Republic)">Slovakia (Slovak Republic)</option>
+                                        <option value="Slovenia">Slovenia</option>
+                                        <option value="Solomon Islands">Solomon Islands</option>
+                                        <option value="Somalia">Somalia</option>
+                                        <option value="South Africa">South Africa</option>
+                                        <option value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+                                        <option value="Spain">Spain</option>
+                                        <option value="Sri Lanka">Sri Lanka</option>
+                                        <option value="St. Helena">St. Helena</option>
+                                        <option value="St. Pierre and Miquelon">St. Pierre and Miquelon</option>
+                                        <option value="Sudan">Sudan</option>
+                                        <option value="Suriname">Suriname</option>
+                                        <option value="Svalbard and Jan Mayen Islands">Svalbard and Jan Mayen Islands</option>
+                                        <option value="Swaziland">Swaziland</option>
+                                        <option value="Sweden">Sweden</option>
+                                        <option value="Switzerland">Switzerland</option>
+                                        <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                                        <option value="Taiwan, Province of China">Taiwan, Province of China</option>
+                                        <option value="Tajikistan">Tajikistan</option>
+                                        <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                                        <option value="Thailand">Thailand</option>
+                                        <option value="Togo">Togo</option>
+                                        <option value="Tokelau">Tokelau</option>
+                                        <option value="Tonga">Tonga</option>
+                                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                        <option value="Tunisia">Tunisia</option>
+                                        <option value="Turkey">Turkey</option>
+                                        <option value="Turkmenistan">Turkmenistan</option>
+                                        <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                                        <option value="Tuvalu">Tuvalu</option>
+                                        <option value="Uganda">Uganda</option>
+                                        <option value="Ukraine">Ukraine</option>
+                                        <option value="United Arab Emirates">United Arab Emirates</option>
+                                        <option value="United Kingdom">United Kingdom</option>
+                                        <option value="United States">United States</option>
+                                        <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                        <option value="Uruguay">Uruguay</option>
+                                        <option value="Uzbekistan">Uzbekistan</option>
+                                        <option value="Vanuatu">Vanuatu</option>
+                                        <option value="Venezuela">Venezuela</option>
+                                        <option value="Vietnam">Vietnam</option>
+                                        <option value="Virgin Islands (British)">Virgin Islands (British)</option>
+                                        <option value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
+                                        <option value="Wallis and Futuna Islands">Wallis and Futuna Islands</option>
+                                        <option value="Western Sahara">Western Sahara</option>
+                                        <option value="Yemen">Yemen</option>
+                                        <option value="Yugoslavia">Yugoslavia</option>
+                                        <option value="Zambia">Zambia</option>
+                                        <option value="Zimbabwe">Zimbabwe</option>
+                                      </select></div>
+                                  </div>
+                                  <div class="col-6">
+                                    <div class="form-group form-group"><label for="card-holder-zip-code">Zip Code</label><input class="form-control" id="card-holder-zip-code" placeholder="1234" name="zipCode" type="text" /></div>
+                                  </div>
+                                  <div class="col-6">
+                                    <div class="form-group mb-0"><label for="card-exp-date">Exp Date</label><input class="form-control" id="card-exp-date" placeholder="15/2024" name="expDate" type="text" /></div>
+                                  </div>
+                                  <div class="col-6">
+                                    <div class="form-group mb-0"><label for="card-cvv">CVV<span class="fa fa-question-circle ml-2" data-toggle="tooltip" data-placement="top" title="Card verification value"></span></label><input class="form-control" id="card-cvv" placeholder="123" name="cvv" maxlength="3" pattern="[0-9]{3}" type="text" /></div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="tab-pane text-center px-sm-3 px-md-5" id="bootstrap-wizard-tab4">
+                              <div class="wizard-lottie-wrapper">
+                                <div class="wizard-lottie mx-auto my-3" data-options='{"path":"../assets/img/animated-icons/celebration.json"}'></div>
+                              </div>
+                              <h4 class="mb-1">Your account is all set!</h4>
+                              <p>Now you can access to your account</p><a class="btn btn-primary px-5 my-3" href="bootstrap-wizard.html">Start Over</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer" id="wizard-controller">
+                          <div class="px-sm-3 px-md-5">
+                            <ul class="pager wizard list-inline mb-0">
+                              <li class="previous"><button class="btn btn-link pl-0" type="button" style="display: none;"><span class="fas fa-chevron-left mr-2" data-fa-transform="shrink-3"></span>Prev</button></li>
+                              <li class="next"><a class="btn btn-primary px-5 px-sm-6" href="#">Next<span class="fas fa-chevron-right ml-2" data-fa-transform="shrink-3"> </span></a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px">
+                      <div class="modal-content position-relative p-5">
+                        <div class="media align-items-center">
+                          <div class="lottie mr-3" data-options='{"path":"../assets/img/animated-icons/warning-light.json"}'></div>
+                          <div class="media-body"><button class="btn btn-link text-danger position-absolute t-0 r-0 mt-2 mr-2" data-dismiss="modal"><span class="fas fa-times"></span></button>
+                            <p class="mb-0">You don't have access to the link. Please try again.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12"><pre class="rounded mt-2"><code class="language-html">&lt;div class=&quot;row justify-content-center no-gutters&quot;&gt;
+  &lt;div class=&quot;col-lg-9 col-xxl-6 px-4 pb-3&quot;&gt;
+    &lt;div class=&quot;card border shadow-none theme-wizard shadow-0&quot; data-wizard data-controller=&quot;#wizard-controller&quot; data-error-modal=&quot;#error-modal&quot;&gt;
+      &lt;div class=&quot;card-header&quot;&gt;
+        &lt;ul class=&quot;nav justify-content-between nav-wizard&quot;&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active font-weight-semi-bold&quot; href=&quot;#bootstrap-wizard-tab1&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;nav-item-circle-parent&quot;&gt;&lt;span class=&quot;nav-item-circle&quot;&gt;&lt;span class=&quot;fas fa-lock&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;d-none d-md-block mt-1 fs--1&quot;&gt;Account&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link font-weight-semi-bold&quot; href=&quot;#bootstrap-wizard-tab2&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;nav-item-circle-parent&quot;&gt;&lt;span class=&quot;nav-item-circle&quot;&gt;&lt;span class=&quot;fas fa-user&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;d-none d-md-block mt-1 fs--1&quot;&gt;Personal&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link font-weight-semi-bold&quot; href=&quot;#bootstrap-wizard-tab3&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;nav-item-circle-parent&quot;&gt;&lt;span class=&quot;nav-item-circle&quot;&gt;&lt;span class=&quot;fas fa-dollar-sign&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;d-none d-md-block mt-1 fs--1&quot;&gt;Billing&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link font-weight-semi-bold&quot; href=&quot;#bootstrap-wizard-tab4&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;nav-item-circle-parent&quot;&gt;&lt;span class=&quot;nav-item-circle&quot;&gt;&lt;span class=&quot;fas fa-thumbs-up&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;d-none d-md-block mt-1 fs--1&quot;&gt;Done&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+          &lt;div class=&quot;tab-pane active px-sm-3 px-md-5&quot; id=&quot;bootstrap-wizard-tab1&quot;&gt;
+            &lt;form class=&quot;form-validation&quot; data-options='{&quot;rules&quot;:{&quot;confirmPassword&quot;:{&quot;equalTo&quot;:&quot;#wizard-password&quot;}},&quot;messages&quot;:{&quot;confirmPassword&quot;:{&quot;equalTo&quot;:&quot;Passwords didn&amp;#39;t match&quot;},&quot;terms&quot;:{&quot;required&quot;:&quot;You must accept terms and privacy policy&quot;}}}'&gt;
+              &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;wizard-name&quot;&gt;Name&lt;/label&gt;&lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;John Smith&quot; id=&quot;wizard-name&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;wizard-email&quot;&gt;Email*&lt;/label&gt;&lt;input class=&quot;form-control&quot; type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Email address&quot; required=&quot;required&quot; id=&quot;wizard-email&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;form-row&quot;&gt;
+                &lt;div class=&quot;col-6&quot;&gt;
+                  &lt;div class=&quot;form-gorup&quot;&gt;&lt;label for=&quot;wizard-password&quot;&gt;Password*&lt;/label&gt;&lt;input class=&quot;form-control&quot; type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Password&quot; required=&quot;required&quot; id=&quot;wizard-password&quot; /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-6&quot;&gt;
+                  &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;wizard-confirm-password&quot;&gt;Confirm Password*&lt;/label&gt;&lt;input class=&quot;form-control&quot; type=&quot;password&quot; name=&quot;confirmPassword&quot; placeholder=&quot;Confirm Password&quot; id=&quot;wizard-confirm-password&quot; /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;custom-control custom-checkbox&quot;&gt;&lt;input class=&quot;custom-control-input&quot; id=&quot;wizard-checkbox&quot; type=&quot;checkbox&quot; name=&quot;terms&quot; required=&quot;required&quot; checked=&quot;checked&quot; /&gt;&lt;label class=&quot;custom-control-label&quot; for=&quot;wizard-checkbox&quot;&gt;I accept the &lt;a href=&quot;#!&quot;&gt;terms &lt;/a&gt;and &lt;a href=&quot;#!&quot;&gt;privacy policy&lt;/a&gt;&lt;/label&gt;&lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane px-sm-3 px-md-5&quot; id=&quot;bootstrap-wizard-tab2&quot;&gt;
+            &lt;form class=&quot;form-validation&quot;&gt;
+              &lt;div class=&quot;form-group&quot;&gt;
+                &lt;div class=&quot;row&quot; data-dropzone=&quot;data-dropzone&quot; data-options='{&quot;maxFiles&quot;:1,&quot;data&quot;:[{&quot;name&quot;:&quot;avatar.png&quot;,&quot;size&quot;:&quot;54kb&quot;,&quot;url&quot;:&quot;../assets/img/team&quot;}]}'&gt;
+                  &lt;div class=&quot;fallback&quot;&gt;&lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;&lt;/div&gt;
+                  &lt;div class=&quot;col-md-auto&quot;&gt;
+                    &lt;div class=&quot;dz-preview dz-preview-single&quot;&gt;
+                      &lt;div class=&quot;dz-preview-cover d-flex align-items-center justify-content-center mb-3 mb-md-0&quot;&gt;
+                        &lt;div class=&quot;avatar avatar-4xl&quot;&gt;&lt;img class=&quot;rounded-circle&quot; src=&quot;...&quot; alt=&quot;...&quot; data-dz-thumbnail=&quot;data-dz-thumbnail&quot; /&gt;&lt;/div&gt;
+                        &lt;div class=&quot;dz-progress&quot;&gt;&lt;span class=&quot;dz-upload&quot; data-dz-uploadprogress=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;col-md&quot;&gt;
+                    &lt;div class=&quot;dz-message dropzone-area px-2 py-3&quot; data-dz-message=&quot;data-dz-message&quot;&gt;
+                      &lt;div class=&quot;text-center&quot;&gt;&lt;img class=&quot;mr-2&quot; src=&quot;../assets/img/icons/cloud-upload.svg&quot; width=&quot;25&quot; alt=&quot;&quot; /&gt;Upload your profile picture&lt;p class=&quot;mb-0 fs--1 text-400&quot;&gt;Upload a 300x300 jpg image with &lt;br /&gt;a maximum size of 400KB&lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;gender&quot;&gt;Gender&lt;/label&gt;&lt;select class=&quot;form-control custom-select&quot; id=&quot;gender&quot; name=&quot;gender&quot;&gt;
+                  &lt;option value=&quot;&quot;&gt;Select your gender ...&lt;/option&gt;
+                  &lt;option value=&quot;Male&quot;&gt;Male&lt;/option&gt;
+                  &lt;option value=&quot;Female&quot;&gt;Female&lt;/option&gt;
+                  &lt;option value=&quot;Other&quot;&gt;Other&lt;/option&gt;
+                &lt;/select&gt;&lt;/div&gt;
+              &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;wizard-phone&quot;&gt;Phone&lt;/label&gt;&lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;phone&quot; placeholder=&quot;Phone&quot; id=&quot;wizard-phone&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;wizard-datepicker&quot;&gt;Date of Birth&lt;/label&gt;&lt;input class=&quot;form-control datetimepicker&quot; id=&quot;wizard-datepicker&quot; type=&quot;text&quot; placeholder=&quot;d/m/y&quot; data-options='{&quot;dateFormat&quot;:&quot;d/m/Y&quot;}' /&gt;&lt;/div&gt;
+              &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;wizard-address&quot;&gt;Address&lt;/label&gt;&lt;textarea class=&quot;form-control&quot; rows=&quot;4&quot; id=&quot;wizard-address&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane px-sm-3 px-md-5&quot; id=&quot;bootstrap-wizard-tab3&quot;&gt;
+            &lt;form class=&quot;form-validation&quot;&gt;
+              &lt;div class=&quot;form-row&quot;&gt;
+                &lt;div class=&quot;col&quot;&gt;
+                  &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;card-number&quot;&gt;Card Number&lt;/label&gt;&lt;input class=&quot;form-control&quot; id=&quot;card-number&quot; placeholder=&quot;XXXX XXXX XXXX XXXX&quot; type=&quot;text&quot; /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col&quot;&gt;
+                  &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;card-name&quot;&gt;Name on Card&lt;/label&gt;&lt;input class=&quot;form-control&quot; id=&quot;card-name&quot; placeholder=&quot;John Doe&quot; name=&quot;cardName&quot; type=&quot;text&quot; /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;form-row&quot;&gt;
+                &lt;div class=&quot;col-6&quot;&gt;
+                  &lt;div class=&quot;form-group&quot;&gt;&lt;label for=&quot;card-holder-country&quot;&gt;Country&lt;/label&gt;&lt;select class=&quot;custom-select&quot; id=&quot;card-holder-country&quot; name=&quot;customSelectCountry&quot;&gt;
+                      &lt;option value=&quot;&quot;&gt;Select your country ...&lt;/option&gt;
+                      &lt;option value=&quot;Afghanistan&quot;&gt;Afghanistan&lt;/option&gt;
+                      &lt;option value=&quot;Albania&quot;&gt;Albania&lt;/option&gt;
+                      &lt;option value=&quot;Algeria&quot;&gt;Algeria&lt;/option&gt;
+                      &lt;option value=&quot;American Samoa&quot;&gt;American Samoa&lt;/option&gt;
+                      &lt;option value=&quot;Andorra&quot;&gt;Andorra&lt;/option&gt;
+                      &lt;option value=&quot;Angola&quot;&gt;Angola&lt;/option&gt;
+                      &lt;option value=&quot;Anguilla&quot;&gt;Anguilla&lt;/option&gt;
+                      &lt;option value=&quot;Antarctica&quot;&gt;Antarctica&lt;/option&gt;
+                      &lt;option value=&quot;Antigua and Barbuda&quot;&gt;Antigua and Barbuda&lt;/option&gt;
+                      &lt;option value=&quot;Argentina&quot;&gt;Argentina&lt;/option&gt;
+                      &lt;option value=&quot;Armenia&quot;&gt;Armenia&lt;/option&gt;
+                      &lt;option value=&quot;Aruba&quot;&gt;Aruba&lt;/option&gt;
+                      &lt;option value=&quot;Australia&quot;&gt;Australia&lt;/option&gt;
+                      &lt;option value=&quot;Austria&quot;&gt;Austria&lt;/option&gt;
+                      &lt;option value=&quot;Azerbaijan&quot;&gt;Azerbaijan&lt;/option&gt;
+                      &lt;option value=&quot;Bahamas&quot;&gt;Bahamas&lt;/option&gt;
+                      &lt;option value=&quot;Bahrain&quot;&gt;Bahrain&lt;/option&gt;
+                      &lt;option value=&quot;Bangladesh&quot;&gt;Bangladesh&lt;/option&gt;
+                      &lt;option value=&quot;Barbados&quot;&gt;Barbados&lt;/option&gt;
+                      &lt;option value=&quot;Belarus&quot;&gt;Belarus&lt;/option&gt;
+                      &lt;option value=&quot;Belgium&quot;&gt;Belgium&lt;/option&gt;
+                      &lt;option value=&quot;Belize&quot;&gt;Belize&lt;/option&gt;
+                      &lt;option value=&quot;Benin&quot;&gt;Benin&lt;/option&gt;
+                      &lt;option value=&quot;Bermuda&quot;&gt;Bermuda&lt;/option&gt;
+                      &lt;option value=&quot;Bhutan&quot;&gt;Bhutan&lt;/option&gt;
+                      &lt;option value=&quot;Bolivia&quot;&gt;Bolivia&lt;/option&gt;
+                      &lt;option value=&quot;Bosnia and Herzegowina&quot;&gt;Bosnia and Herzegowina&lt;/option&gt;
+                      &lt;option value=&quot;Botswana&quot;&gt;Botswana&lt;/option&gt;
+                      &lt;option value=&quot;Bouvet Island&quot;&gt;Bouvet Island&lt;/option&gt;
+                      &lt;option value=&quot;Brazil&quot;&gt;Brazil&lt;/option&gt;
+                      &lt;option value=&quot;British Indian Ocean Territory&quot;&gt;British Indian Ocean Territory&lt;/option&gt;
+                      &lt;option value=&quot;Brunei Darussalam&quot;&gt;Brunei Darussalam&lt;/option&gt;
+                      &lt;option value=&quot;Bulgaria&quot;&gt;Bulgaria&lt;/option&gt;
+                      &lt;option value=&quot;Burkina Faso&quot;&gt;Burkina Faso&lt;/option&gt;
+                      &lt;option value=&quot;Burundi&quot;&gt;Burundi&lt;/option&gt;
+                      &lt;option value=&quot;Cambodia&quot;&gt;Cambodia&lt;/option&gt;
+                      &lt;option value=&quot;Cameroon&quot;&gt;Cameroon&lt;/option&gt;
+                      &lt;option value=&quot;Canada&quot;&gt;Canada&lt;/option&gt;
+                      &lt;option value=&quot;Cape Verde&quot;&gt;Cape Verde&lt;/option&gt;
+                      &lt;option value=&quot;Cayman Islands&quot;&gt;Cayman Islands&lt;/option&gt;
+                      &lt;option value=&quot;Central African Republic&quot;&gt;Central African Republic&lt;/option&gt;
+                      &lt;option value=&quot;Chad&quot;&gt;Chad&lt;/option&gt;
+                      &lt;option value=&quot;Chile&quot;&gt;Chile&lt;/option&gt;
+                      &lt;option value=&quot;China&quot;&gt;China&lt;/option&gt;
+                      &lt;option value=&quot;Christmas Island&quot;&gt;Christmas Island&lt;/option&gt;
+                      &lt;option value=&quot;Cocos (Keeling) Islands&quot;&gt;Cocos (Keeling) Islands&lt;/option&gt;
+                      &lt;option value=&quot;Colombia&quot;&gt;Colombia&lt;/option&gt;
+                      &lt;option value=&quot;Comoros&quot;&gt;Comoros&lt;/option&gt;
+                      &lt;option value=&quot;Congo&quot;&gt;Congo&lt;/option&gt;
+                      &lt;option value=&quot;Congo, the Democratic Republic of the&quot;&gt;Congo, the Democratic Republic of the&lt;/option&gt;
+                      &lt;option value=&quot;Cook Islands&quot;&gt;Cook Islands&lt;/option&gt;
+                      &lt;option value=&quot;Costa Rica&quot;&gt;Costa Rica&lt;/option&gt;
+                      &lt;option value=&quot;Cote d'Ivoire&quot;&gt;Cote d'Ivoire&lt;/option&gt;
+                      &lt;option value=&quot;Croatia (Hrvatska)&quot;&gt;Croatia (Hrvatska)&lt;/option&gt;
+                      &lt;option value=&quot;Cuba&quot;&gt;Cuba&lt;/option&gt;
+                      &lt;option value=&quot;Cyprus&quot;&gt;Cyprus&lt;/option&gt;
+                      &lt;option value=&quot;Czech Republic&quot;&gt;Czech Republic&lt;/option&gt;
+                      &lt;option value=&quot;Denmark&quot;&gt;Denmark&lt;/option&gt;
+                      &lt;option value=&quot;Djibouti&quot;&gt;Djibouti&lt;/option&gt;
+                      &lt;option value=&quot;Dominica&quot;&gt;Dominica&lt;/option&gt;
+                      &lt;option value=&quot;Dominican Republic&quot;&gt;Dominican Republic&lt;/option&gt;
+                      &lt;option value=&quot;East Timor&quot;&gt;East Timor&lt;/option&gt;
+                      &lt;option value=&quot;Ecuador&quot;&gt;Ecuador&lt;/option&gt;
+                      &lt;option value=&quot;Egypt&quot;&gt;Egypt&lt;/option&gt;
+                      &lt;option value=&quot;El Salvador&quot;&gt;El Salvador&lt;/option&gt;
+                      &lt;option value=&quot;Equatorial Guinea&quot;&gt;Equatorial Guinea&lt;/option&gt;
+                      &lt;option value=&quot;Eritrea&quot;&gt;Eritrea&lt;/option&gt;
+                      &lt;option value=&quot;Estonia&quot;&gt;Estonia&lt;/option&gt;
+                      &lt;option value=&quot;Ethiopia&quot;&gt;Ethiopia&lt;/option&gt;
+                      &lt;option value=&quot;Falkland Islands (Malvinas)&quot;&gt;Falkland Islands (Malvinas)&lt;/option&gt;
+                      &lt;option value=&quot;Faroe Islands&quot;&gt;Faroe Islands&lt;/option&gt;
+                      &lt;option value=&quot;Fiji&quot;&gt;Fiji&lt;/option&gt;
+                      &lt;option value=&quot;Finland&quot;&gt;Finland&lt;/option&gt;
+                      &lt;option value=&quot;France&quot;&gt;France&lt;/option&gt;
+                      &lt;option value=&quot;France Metropolitan&quot;&gt;France Metropolitan&lt;/option&gt;
+                      &lt;option value=&quot;French Guiana&quot;&gt;French Guiana&lt;/option&gt;
+                      &lt;option value=&quot;French Polynesia&quot;&gt;French Polynesia&lt;/option&gt;
+                      &lt;option value=&quot;French Southern Territories&quot;&gt;French Southern Territories&lt;/option&gt;
+                      &lt;option value=&quot;Gabon&quot;&gt;Gabon&lt;/option&gt;
+                      &lt;option value=&quot;Gambia&quot;&gt;Gambia&lt;/option&gt;
+                      &lt;option value=&quot;Georgia&quot;&gt;Georgia&lt;/option&gt;
+                      &lt;option value=&quot;Germany&quot;&gt;Germany&lt;/option&gt;
+                      &lt;option value=&quot;Ghana&quot;&gt;Ghana&lt;/option&gt;
+                      &lt;option value=&quot;Gibraltar&quot;&gt;Gibraltar&lt;/option&gt;
+                      &lt;option value=&quot;Greece&quot;&gt;Greece&lt;/option&gt;
+                      &lt;option value=&quot;Greenland&quot;&gt;Greenland&lt;/option&gt;
+                      &lt;option value=&quot;Grenada&quot;&gt;Grenada&lt;/option&gt;
+                      &lt;option value=&quot;Guadeloupe&quot;&gt;Guadeloupe&lt;/option&gt;
+                      &lt;option value=&quot;Guam&quot;&gt;Guam&lt;/option&gt;
+                      &lt;option value=&quot;Guatemala&quot;&gt;Guatemala&lt;/option&gt;
+                      &lt;option value=&quot;Guinea&quot;&gt;Guinea&lt;/option&gt;
+                      &lt;option value=&quot;Guinea-Bissau&quot;&gt;Guinea-Bissau&lt;/option&gt;
+                      &lt;option value=&quot;Guyana&quot;&gt;Guyana&lt;/option&gt;
+                      &lt;option value=&quot;Haiti&quot;&gt;Haiti&lt;/option&gt;
+                      &lt;option value=&quot;Heard and Mc Donald Islands&quot;&gt;Heard and Mc Donald Islands&lt;/option&gt;
+                      &lt;option value=&quot;Holy See (Vatican City State)&quot;&gt;Holy See (Vatican City State)&lt;/option&gt;
+                      &lt;option value=&quot;Honduras&quot;&gt;Honduras&lt;/option&gt;
+                      &lt;option value=&quot;Hong Kong&quot;&gt;Hong Kong&lt;/option&gt;
+                      &lt;option value=&quot;Hungary&quot;&gt;Hungary&lt;/option&gt;
+                      &lt;option value=&quot;Iceland&quot;&gt;Iceland&lt;/option&gt;
+                      &lt;option value=&quot;India&quot;&gt;India&lt;/option&gt;
+                      &lt;option value=&quot;Indonesia&quot;&gt;Indonesia&lt;/option&gt;
+                      &lt;option value=&quot;Iran (Islamic Republic of)&quot;&gt;Iran (Islamic Republic of)&lt;/option&gt;
+                      &lt;option value=&quot;Iraq&quot;&gt;Iraq&lt;/option&gt;
+                      &lt;option value=&quot;Ireland&quot;&gt;Ireland&lt;/option&gt;
+                      &lt;option value=&quot;Israel&quot;&gt;Israel&lt;/option&gt;
+                      &lt;option value=&quot;Italy&quot;&gt;Italy&lt;/option&gt;
+                      &lt;option value=&quot;Jamaica&quot;&gt;Jamaica&lt;/option&gt;
+                      &lt;option value=&quot;Japan&quot;&gt;Japan&lt;/option&gt;
+                      &lt;option value=&quot;Jordan&quot;&gt;Jordan&lt;/option&gt;
+                      &lt;option value=&quot;Kazakhstan&quot;&gt;Kazakhstan&lt;/option&gt;
+                      &lt;option value=&quot;Kenya&quot;&gt;Kenya&lt;/option&gt;
+                      &lt;option value=&quot;Kiribati&quot;&gt;Kiribati&lt;/option&gt;
+                      &lt;option value=&quot;Korea, Democratic People's Republic of&quot;&gt;Korea, Democratic People's Republic of&lt;/option&gt;
+                      &lt;option value=&quot;Korea, Republic of&quot;&gt;Korea, Republic of&lt;/option&gt;
+                      &lt;option value=&quot;Kuwait&quot;&gt;Kuwait&lt;/option&gt;
+                      &lt;option value=&quot;Kyrgyzstan&quot;&gt;Kyrgyzstan&lt;/option&gt;
+                      &lt;option value=&quot;Lao, People's Democratic Republic&quot;&gt;Lao, People's Democratic Republic&lt;/option&gt;
+                      &lt;option value=&quot;Latvia&quot;&gt;Latvia&lt;/option&gt;
+                      &lt;option value=&quot;Lebanon&quot;&gt;Lebanon&lt;/option&gt;
+                      &lt;option value=&quot;Lesotho&quot;&gt;Lesotho&lt;/option&gt;
+                      &lt;option value=&quot;Liberia&quot;&gt;Liberia&lt;/option&gt;
+                      &lt;option value=&quot;Libyan Arab Jamahiriya&quot;&gt;Libyan Arab Jamahiriya&lt;/option&gt;
+                      &lt;option value=&quot;Liechtenstein&quot;&gt;Liechtenstein&lt;/option&gt;
+                      &lt;option value=&quot;Lithuania&quot;&gt;Lithuania&lt;/option&gt;
+                      &lt;option value=&quot;Luxembourg&quot;&gt;Luxembourg&lt;/option&gt;
+                      &lt;option value=&quot;Macau&quot;&gt;Macau&lt;/option&gt;
+                      &lt;option value=&quot;Macedonia, The Former Yugoslav Republic of&quot;&gt;Macedonia, The Former Yugoslav Republic of&lt;/option&gt;
+                      &lt;option value=&quot;Madagascar&quot;&gt;Madagascar&lt;/option&gt;
+                      &lt;option value=&quot;Malawi&quot;&gt;Malawi&lt;/option&gt;
+                      &lt;option value=&quot;Malaysia&quot;&gt;Malaysia&lt;/option&gt;
+                      &lt;option value=&quot;Maldives&quot;&gt;Maldives&lt;/option&gt;
+                      &lt;option value=&quot;Mali&quot;&gt;Mali&lt;/option&gt;
+                      &lt;option value=&quot;Malta&quot;&gt;Malta&lt;/option&gt;
+                      &lt;option value=&quot;Marshall Islands&quot;&gt;Marshall Islands&lt;/option&gt;
+                      &lt;option value=&quot;Martinique&quot;&gt;Martinique&lt;/option&gt;
+                      &lt;option value=&quot;Mauritania&quot;&gt;Mauritania&lt;/option&gt;
+                      &lt;option value=&quot;Mauritius&quot;&gt;Mauritius&lt;/option&gt;
+                      &lt;option value=&quot;Mayotte&quot;&gt;Mayotte&lt;/option&gt;
+                      &lt;option value=&quot;Mexico&quot;&gt;Mexico&lt;/option&gt;
+                      &lt;option value=&quot;Micronesia, Federated States of&quot;&gt;Micronesia, Federated States of&lt;/option&gt;
+                      &lt;option value=&quot;Moldova, Republic of&quot;&gt;Moldova, Republic of&lt;/option&gt;
+                      &lt;option value=&quot;Monaco&quot;&gt;Monaco&lt;/option&gt;
+                      &lt;option value=&quot;Mongolia&quot;&gt;Mongolia&lt;/option&gt;
+                      &lt;option value=&quot;Montserrat&quot;&gt;Montserrat&lt;/option&gt;
+                      &lt;option value=&quot;Morocco&quot;&gt;Morocco&lt;/option&gt;
+                      &lt;option value=&quot;Mozambique&quot;&gt;Mozambique&lt;/option&gt;
+                      &lt;option value=&quot;Myanmar&quot;&gt;Myanmar&lt;/option&gt;
+                      &lt;option value=&quot;Namibia&quot;&gt;Namibia&lt;/option&gt;
+                      &lt;option value=&quot;Nauru&quot;&gt;Nauru&lt;/option&gt;
+                      &lt;option value=&quot;Nepal&quot;&gt;Nepal&lt;/option&gt;
+                      &lt;option value=&quot;Netherlands&quot;&gt;Netherlands&lt;/option&gt;
+                      &lt;option value=&quot;Netherlands Antilles&quot;&gt;Netherlands Antilles&lt;/option&gt;
+                      &lt;option value=&quot;New Caledonia&quot;&gt;New Caledonia&lt;/option&gt;
+                      &lt;option value=&quot;New Zealand&quot;&gt;New Zealand&lt;/option&gt;
+                      &lt;option value=&quot;Nicaragua&quot;&gt;Nicaragua&lt;/option&gt;
+                      &lt;option value=&quot;Niger&quot;&gt;Niger&lt;/option&gt;
+                      &lt;option value=&quot;Nigeria&quot;&gt;Nigeria&lt;/option&gt;
+                      &lt;option value=&quot;Niue&quot;&gt;Niue&lt;/option&gt;
+                      &lt;option value=&quot;Norfolk Island&quot;&gt;Norfolk Island&lt;/option&gt;
+                      &lt;option value=&quot;Northern Mariana Islands&quot;&gt;Northern Mariana Islands&lt;/option&gt;
+                      &lt;option value=&quot;Norway&quot;&gt;Norway&lt;/option&gt;
+                      &lt;option value=&quot;Oman&quot;&gt;Oman&lt;/option&gt;
+                      &lt;option value=&quot;Pakistan&quot;&gt;Pakistan&lt;/option&gt;
+                      &lt;option value=&quot;Palau&quot;&gt;Palau&lt;/option&gt;
+                      &lt;option value=&quot;Panama&quot;&gt;Panama&lt;/option&gt;
+                      &lt;option value=&quot;Papua New Guinea&quot;&gt;Papua New Guinea&lt;/option&gt;
+                      &lt;option value=&quot;Paraguay&quot;&gt;Paraguay&lt;/option&gt;
+                      &lt;option value=&quot;Peru&quot;&gt;Peru&lt;/option&gt;
+                      &lt;option value=&quot;Philippines&quot;&gt;Philippines&lt;/option&gt;
+                      &lt;option value=&quot;Pitcairn&quot;&gt;Pitcairn&lt;/option&gt;
+                      &lt;option value=&quot;Poland&quot;&gt;Poland&lt;/option&gt;
+                      &lt;option value=&quot;Portugal&quot;&gt;Portugal&lt;/option&gt;
+                      &lt;option value=&quot;Puerto Rico&quot;&gt;Puerto Rico&lt;/option&gt;
+                      &lt;option value=&quot;Qatar&quot;&gt;Qatar&lt;/option&gt;
+                      &lt;option value=&quot;Reunion&quot;&gt;Reunion&lt;/option&gt;
+                      &lt;option value=&quot;Romania&quot;&gt;Romania&lt;/option&gt;
+                      &lt;option value=&quot;Russian Federation&quot;&gt;Russian Federation&lt;/option&gt;
+                      &lt;option value=&quot;Rwanda&quot;&gt;Rwanda&lt;/option&gt;
+                      &lt;option value=&quot;Saint Kitts and Nevis&quot;&gt;Saint Kitts and Nevis&lt;/option&gt;
+                      &lt;option value=&quot;Saint Lucia&quot;&gt;Saint Lucia&lt;/option&gt;
+                      &lt;option value=&quot;Saint Vincent and the Grenadines&quot;&gt;Saint Vincent and the Grenadines&lt;/option&gt;
+                      &lt;option value=&quot;Samoa&quot;&gt;Samoa&lt;/option&gt;
+                      &lt;option value=&quot;San Marino&quot;&gt;San Marino&lt;/option&gt;
+                      &lt;option value=&quot;Sao Tome and Principe&quot;&gt;Sao Tome and Principe&lt;/option&gt;
+                      &lt;option value=&quot;Saudi Arabia&quot;&gt;Saudi Arabia&lt;/option&gt;
+                      &lt;option value=&quot;Senegal&quot;&gt;Senegal&lt;/option&gt;
+                      &lt;option value=&quot;Seychelles&quot;&gt;Seychelles&lt;/option&gt;
+                      &lt;option value=&quot;Sierra Leone&quot;&gt;Sierra Leone&lt;/option&gt;
+                      &lt;option value=&quot;Singapore&quot;&gt;Singapore&lt;/option&gt;
+                      &lt;option value=&quot;Slovakia (Slovak Republic)&quot;&gt;Slovakia (Slovak Republic)&lt;/option&gt;
+                      &lt;option value=&quot;Slovenia&quot;&gt;Slovenia&lt;/option&gt;
+                      &lt;option value=&quot;Solomon Islands&quot;&gt;Solomon Islands&lt;/option&gt;
+                      &lt;option value=&quot;Somalia&quot;&gt;Somalia&lt;/option&gt;
+                      &lt;option value=&quot;South Africa&quot;&gt;South Africa&lt;/option&gt;
+                      &lt;option value=&quot;South Georgia and the South Sandwich Islands&quot;&gt;South Georgia and the South Sandwich Islands&lt;/option&gt;
+                      &lt;option value=&quot;Spain&quot;&gt;Spain&lt;/option&gt;
+                      &lt;option value=&quot;Sri Lanka&quot;&gt;Sri Lanka&lt;/option&gt;
+                      &lt;option value=&quot;St. Helena&quot;&gt;St. Helena&lt;/option&gt;
+                      &lt;option value=&quot;St. Pierre and Miquelon&quot;&gt;St. Pierre and Miquelon&lt;/option&gt;
+                      &lt;option value=&quot;Sudan&quot;&gt;Sudan&lt;/option&gt;
+                      &lt;option value=&quot;Suriname&quot;&gt;Suriname&lt;/option&gt;
+                      &lt;option value=&quot;Svalbard and Jan Mayen Islands&quot;&gt;Svalbard and Jan Mayen Islands&lt;/option&gt;
+                      &lt;option value=&quot;Swaziland&quot;&gt;Swaziland&lt;/option&gt;
+                      &lt;option value=&quot;Sweden&quot;&gt;Sweden&lt;/option&gt;
+                      &lt;option value=&quot;Switzerland&quot;&gt;Switzerland&lt;/option&gt;
+                      &lt;option value=&quot;Syrian Arab Republic&quot;&gt;Syrian Arab Republic&lt;/option&gt;
+                      &lt;option value=&quot;Taiwan, Province of China&quot;&gt;Taiwan, Province of China&lt;/option&gt;
+                      &lt;option value=&quot;Tajikistan&quot;&gt;Tajikistan&lt;/option&gt;
+                      &lt;option value=&quot;Tanzania, United Republic of&quot;&gt;Tanzania, United Republic of&lt;/option&gt;
+                      &lt;option value=&quot;Thailand&quot;&gt;Thailand&lt;/option&gt;
+                      &lt;option value=&quot;Togo&quot;&gt;Togo&lt;/option&gt;
+                      &lt;option value=&quot;Tokelau&quot;&gt;Tokelau&lt;/option&gt;
+                      &lt;option value=&quot;Tonga&quot;&gt;Tonga&lt;/option&gt;
+                      &lt;option value=&quot;Trinidad and Tobago&quot;&gt;Trinidad and Tobago&lt;/option&gt;
+                      &lt;option value=&quot;Tunisia&quot;&gt;Tunisia&lt;/option&gt;
+                      &lt;option value=&quot;Turkey&quot;&gt;Turkey&lt;/option&gt;
+                      &lt;option value=&quot;Turkmenistan&quot;&gt;Turkmenistan&lt;/option&gt;
+                      &lt;option value=&quot;Turks and Caicos Islands&quot;&gt;Turks and Caicos Islands&lt;/option&gt;
+                      &lt;option value=&quot;Tuvalu&quot;&gt;Tuvalu&lt;/option&gt;
+                      &lt;option value=&quot;Uganda&quot;&gt;Uganda&lt;/option&gt;
+                      &lt;option value=&quot;Ukraine&quot;&gt;Ukraine&lt;/option&gt;
+                      &lt;option value=&quot;United Arab Emirates&quot;&gt;United Arab Emirates&lt;/option&gt;
+                      &lt;option value=&quot;United Kingdom&quot;&gt;United Kingdom&lt;/option&gt;
+                      &lt;option value=&quot;United States&quot;&gt;United States&lt;/option&gt;
+                      &lt;option value=&quot;United States Minor Outlying Islands&quot;&gt;United States Minor Outlying Islands&lt;/option&gt;
+                      &lt;option value=&quot;Uruguay&quot;&gt;Uruguay&lt;/option&gt;
+                      &lt;option value=&quot;Uzbekistan&quot;&gt;Uzbekistan&lt;/option&gt;
+                      &lt;option value=&quot;Vanuatu&quot;&gt;Vanuatu&lt;/option&gt;
+                      &lt;option value=&quot;Venezuela&quot;&gt;Venezuela&lt;/option&gt;
+                      &lt;option value=&quot;Vietnam&quot;&gt;Vietnam&lt;/option&gt;
+                      &lt;option value=&quot;Virgin Islands (British)&quot;&gt;Virgin Islands (British)&lt;/option&gt;
+                      &lt;option value=&quot;Virgin Islands (U.S.)&quot;&gt;Virgin Islands (U.S.)&lt;/option&gt;
+                      &lt;option value=&quot;Wallis and Futuna Islands&quot;&gt;Wallis and Futuna Islands&lt;/option&gt;
+                      &lt;option value=&quot;Western Sahara&quot;&gt;Western Sahara&lt;/option&gt;
+                      &lt;option value=&quot;Yemen&quot;&gt;Yemen&lt;/option&gt;
+                      &lt;option value=&quot;Yugoslavia&quot;&gt;Yugoslavia&lt;/option&gt;
+                      &lt;option value=&quot;Zambia&quot;&gt;Zambia&lt;/option&gt;
+                      &lt;option value=&quot;Zimbabwe&quot;&gt;Zimbabwe&lt;/option&gt;
+                    &lt;/select&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-6&quot;&gt;
+                  &lt;div class=&quot;form-group form-group&quot;&gt;&lt;label for=&quot;card-holder-zip-code&quot;&gt;Zip Code&lt;/label&gt;&lt;input class=&quot;form-control&quot; id=&quot;card-holder-zip-code&quot; placeholder=&quot;1234&quot; name=&quot;zipCode&quot; type=&quot;text&quot; /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-6&quot;&gt;
+                  &lt;div class=&quot;form-group mb-0&quot;&gt;&lt;label for=&quot;card-exp-date&quot;&gt;Exp Date&lt;/label&gt;&lt;input class=&quot;form-control&quot; id=&quot;card-exp-date&quot; placeholder=&quot;15/2024&quot; name=&quot;expDate&quot; type=&quot;text&quot; /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-6&quot;&gt;
+                  &lt;div class=&quot;form-group mb-0&quot;&gt;&lt;label for=&quot;card-cvv&quot;&gt;CVV&lt;span class=&quot;fa fa-question-circle ml-2&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;top&quot; title=&quot;Card verification value&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input class=&quot;form-control&quot; id=&quot;card-cvv&quot; placeholder=&quot;123&quot; name=&quot;cvv&quot; maxlength=&quot;3&quot; pattern=&quot;[0-9]{3}&quot; type=&quot;text&quot; /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane text-center px-sm-3 px-md-5&quot; id=&quot;bootstrap-wizard-tab4&quot;&gt;
+            &lt;div class=&quot;wizard-lottie-wrapper&quot;&gt;
+              &lt;div class=&quot;wizard-lottie mx-auto my-3&quot; data-options='{&quot;path&quot;:&quot;../assets/img/animated-icons/celebration.json&quot;}'&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;h4 class=&quot;mb-1&quot;&gt;Your account is all set!&lt;/h4&gt;
+            &lt;p&gt;Now you can access to your account&lt;/p&gt;&lt;a class=&quot;btn btn-primary px-5 my-3&quot; href=&quot;../plugins/bootstrap-wizard.html&quot;&gt;Start Over&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;card-footer&quot; id=&quot;wizard-controller&quot;&gt;
+        &lt;div class=&quot;px-sm-3 px-md-5&quot;&gt;
+          &lt;ul class=&quot;pager wizard list-inline mb-0&quot;&gt;
+            &lt;li class=&quot;previous&quot;&gt;&lt;button class=&quot;btn btn-link pl-0&quot; type=&quot;button&quot; style=&quot;display: none;&quot;&gt;&lt;span class=&quot;fas fa-chevron-left mr-2&quot; data-fa-transform=&quot;shrink-3&quot;&gt;&lt;/span&gt;Prev&lt;/button&gt;&lt;/li&gt;
+            &lt;li class=&quot;next&quot;&gt;&lt;a class=&quot;btn btn-primary px-5 px-sm-6&quot; href=&quot;#&quot;&gt;Next&lt;span class=&quot;fas fa-chevron-right ml-2&quot; data-fa-transform=&quot;shrink-3&quot;&gt; &lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;modal fade&quot; id=&quot;error-modal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-hidden=&quot;true&quot;&gt;
+  &lt;div class=&quot;modal-dialog modal-dialog-centered&quot; role=&quot;document&quot; style=&quot;max-width: 400px&quot;&gt;
+    &lt;div class=&quot;modal-content position-relative p-5&quot;&gt;
+      &lt;div class=&quot;media align-items-center&quot;&gt;
+        &lt;div class=&quot;lottie mr-3&quot; data-options='{&quot;path&quot;:&quot;../assets/img/animated-icons/warning-light.json&quot;}'&gt;&lt;/div&gt;
+        &lt;div class=&quot;media-body&quot;&gt;&lt;button class=&quot;btn btn-link text-danger position-absolute t-0 r-0 mt-2 mr-2&quot; data-dismiss=&quot;modal&quot;&gt;&lt;span class=&quot;fas fa-times&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+          &lt;p class=&quot;mb-0&quot;&gt;You don't have access to the link. Please try again.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-header">
+              <h5 class="mb-0">Javascript</h5>
+            </div>
+            <div class="card-body bg-light"><pre class="mt-2"><code class="language-html">&lt;script src=&quot;assets/lib/twitter-bootstrap-wizard/jquery.bootstrap-wizard.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+          <footer>
+            <div class="row no-gutters justify-content-between fs--1 mt-4 mb-3">
+              <div class="col-12 col-sm-auto text-center">
+                <p class="mb-0 text-600">Thank you for creating with Falcon <span class="d-none d-sm-inline-block">| </span><br class="d-sm-none" /> 2021 &copy; <a href="https://themewagon.com/">Themewagon</a></p>
+              </div>
+              <div class="col-12 col-sm-auto text-center">
+                <p class="mb-0 text-600">v2.8.1</p>
+              </div>
+            </div>
+          </footer>
+        </div>
+        <div class="modal fade modal-fixed-right modal-theme overflow-hidden" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="settings-modal-label" aria-hidden="true" data-options='{"autoShow":true,"autoShowDelay":3000,"showOnce":true}'>
+          <div class="modal-dialog modal-dialog-vertical" role="document">
+            <div class="modal-content border-0 vh-100 scrollbar perfect-scrollbar">
+              <div class="modal-header modal-header-settings">
+                <div class="z-index-1 py-1 flex-grow-1">
+                  <h5 class="text-white" id="settings-modal-label"> <span class="fas fa-palette mr-2 fs-0"></span>Settings</h5>
+                  <p class="mb-0 fs--1 text-white opacity-75"> Set your own customized style</p>
+                </div><button class="close z-index-1" type="button" data-dismiss="modal" aria-label="Close"><span class="font-weight-light" aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body px-card">
+                <h5 class="fs-0">Color Scheme</h5>
+                <p class="fs--1">Choose the perfect color mode for your app. </p>
+                <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                  <div class="btn btn-theme-default custom-control custom-radio custom-radio-success active"><label class="cursor-pointer hover-overlay" for="theme-mode-default"><img class="w-100" src="../assets/img/generic/falcon-mode-default.jpg" alt="" /></label><label class="cursor-pointer mb-0 d-flex justify-content-center pl-3" for="theme-mode-default"><input class="custom-control-input" id="theme-mode-default" type="radio" name="colorScheme" data-mode="DEFAULT" checked="checked" value="theme-mode-default" data-page-url="../index.html" /><span class="custom-control-label">Light</span></label></div>
+                  <div class="btn btn-theme-dark custom-control custom-radio custom-radio-success"><label class="cursor-pointer hover-overlay" for="theme-mode-dark"><img class="w-100" src="../assets/img/generic/falcon-mode-dark.jpg" alt="" /></label><label class="cursor-pointer mb-0 d-flex justify-content-center pl-3" for="theme-mode-dark"><input class="custom-control-input" id="theme-mode-dark" type="radio" name="colorScheme" data-mode="DEFAULT" value="theme-mode-dark" data-page-url="../documentation/dark-mode.html" /><span class="custom-control-label">Dark</span></label></div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div class="media flex-grow-1"><img class="mr-2" src="../assets/img/icons/left-arrow-from-left.svg" width="20" alt="" />
+                    <div class="media-body">
+                      <h5 class="fs-0">RTL Mode</h5>
+                      <p class="fs--1 mb-0">Switch your language direction </p>
+                    </div>
+                  </div>
+                  <div class="custom-control custom-switch"><input class="custom-control-input" id="mode-rtl" type="checkbox" data-mode="DEFAULT" /><label class="custom-control-label" for="mode-rtl"> </label></div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div class="media flex-grow-1"><img class="mr-2" src="../assets/img/icons/arrows-h.svg" width="20" alt="" />
+                    <div class="media-body">
+                      <h5 class="fs-0">Fluid Layout</h5>
+                      <p class="fs--1 mb-0">Toggle container layout system </p>
+                    </div>
+                  </div>
+                  <div class="custom-control custom-switch"><input class="custom-control-input" id="mode-fluid" type="checkbox" /><label class="custom-control-label" for="mode-fluid"> </label></div>
+                </div>
+                <hr />
+                <div class="media"><img class="mr-2" src="../assets/img/icons/paragraph.svg" width="20" alt="" />
+                  <div class="media-body">
+                    <h5 class="fs-0 d-flex align-items-center">Navigation Position <span class="badge badge-pill badge-soft-success fs--2 ml-2">Updated</span></h5>
+                    <p class="fs--1 mb-2">Select a suitable navigation system for your web application </p>
+                    <div class="custom-control custom-radio custom-control-inline"><input class="custom-control-input" id="option-navbar-vertical" type="radio" name="navbar" value="vertical" checked="checked" /><label class="custom-control-label" for="option-navbar-vertical">Vertical</label></div>
+                    <div class="custom-control custom-radio custom-control-inline"><input class="custom-control-input" id="option-navbar-top" type="radio" name="navbar" value="top" /><label class="custom-control-label" for="option-navbar-top">Top</label></div>
+                    <div class="custom-control custom-radio custom-control-inline mr-0"><input class="custom-control-input" id="option-navbar-combo" type="radio" name="navbar" value="combo" /><label class="custom-control-label" for="option-navbar-combo">Combo</label></div>
+                  </div>
+                </div>
+                <hr />
+                <h5 class="fs-0 d-flex align-items-center">Vertical Navbar Style</h5>
+                <p class="fs--1">Switch between styles for your vertical navbar </p>
+                <div class="btn-group-toggle btn-block btn-group-navbar-style" data-toggle="buttons">
+                  <div class="btn-group btn-block">
+                    <div class="btn p-0 text-left custom-control custom-radio custom-radio-success mr-2"><label class="cursor-pointer w-100" for="navbar-style-transparent"><img class="w-100" src="../assets/img/generic/default.png" alt="" /></label><label class="cursor-pointer d-flex mb-0 pl-3 ml-2" for="navbar-style-transparent"><input class="custom-control-input" id="navbar-style-transparent" type="radio" name="navbarVertical" value="transparent" /><span class="custom-control-label"> Transparent</span></label></div>
+                    <div class="btn p-0 text-left custom-control custom-radio custom-radio-success mr-2"><label class="cursor-pointer w-100" for="navbar-style-inverted"><img class="w-100" src="../assets/img/generic/inverted.png" alt="" /></label><label class="cursor-pointer d-flex mb-0 pl-3 ml-2" for="navbar-style-inverted"><input class="custom-control-input" id="navbar-style-inverted" type="radio" name="navbarVertical" value="inverted" /><span class="custom-control-label"> Inverted</span></label></div>
+                  </div>
+                  <div class="btn-group btn-block mt-3">
+                    <div class="btn p-0 text-left custom-control custom-radio custom-radio-success mr-2"><label class="cursor-pointer w-100" for="navbar-style-card"><img class="w-100" src="../assets/img/generic/card.png" alt="" /></label><label class="cursor-pointer d-flex mb-0 pl-3 ml-2" for="navbar-style-card"><input class="custom-control-input" id="navbar-style-card" type="radio" name="navbarVertical" value="card" /><span class="custom-control-label"> Card</span></label></div>
+                    <div class="btn p-0 text-left custom-control custom-radio custom-radio-success mr-2"><label class="cursor-pointer w-100" for="navbar-style-vibrant"><img class="w-100" src="../assets/img/generic/vibrant.png" alt="" /></label><label class="cursor-pointer d-flex mb-0 pl-3 ml-2" for="navbar-style-vibrant"><input class="custom-control-input" id="navbar-style-vibrant" type="radio" name="navbarVertical" value="vibrant" /><span class="custom-control-label"> Vibrant</span></label></div>
+                  </div>
+                </div>
+                <hr />
+                <div class="text-center mt-5"><img class="mb-4" src="../assets/img/illustrations/settings.png" alt="" width="120" />
+                  <h5>Like What You See?</h5>
+                  <p class="fs--1">Get Falcon now and create beautiful dashboards with hundreds of widgets.</p><a class="btn btn-primary" href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/">Purchase</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="authentication-modal" tabindex="-1" role="dialog" aria-labelledby="authentication-modal-label" aria-hidden="true">
+          <div class="modal-dialog mt-6" role="document">
+            <div class="modal-content border-0">
+              <div class="modal-header px-5 text-white position-relative modal-shape-header">
+                <div class="position-relative z-index-1">
+                  <div>
+                    <h4 class="mb-0 text-white" id="authentication-modal-label">Register</h4>
+                    <p class="fs--1 mb-0">Please create your free Falcon account</p>
+                  </div>
+                </div><button class="close text-white position-absolute t-0 r-0 mt-1 mr-1" data-dismiss="modal" aria-label="Close"><span class="font-weight-light" aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body py-4 px-5">
+                <form>
+                  <div class="form-group"><label for="modal-auth-name">Name</label><input class="form-control" type="text" id="modal-auth-name" /></div>
+                  <div class="form-group"><label for="modal-auth-email">Email address</label><input class="form-control" type="email" id="modal-auth-email" /></div>
+                  <div class="form-row">
+                    <div class="form-group col-6"><label for="modal-auth-password">Password</label><input class="form-control" type="password" id="modal-auth-password" /></div>
+                    <div class="form-group col-6"><label for="modal-auth-confirm-password">Confirm Password</label><input class="form-control" type="password" id="modal-auth-confirm-password" /></div>
+                  </div>
+                  <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="modal-auth-register-checkbox" /><label class="custom-control-label" for="modal-auth-register-checkbox">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label></div>
+                  <div class="form-group"><button class="btn btn-primary btn-block mt-3" type="submit" name="submit">Register</button></div>
+                </form>
+                <div class="w-100 position-relative mt-5">
+                  <hr class="text-300" />
+                  <div class="position-absolute absolute-centered t-0 px-3 bg-white text-sans-serif fs--1 text-500 text-nowrap">or register with</div>
+                </div>
+                <div class="form-group mb-0">
+                  <div class="row no-gutters">
+                    <div class="col-sm-6 pr-sm-1"><a class="btn btn-outline-google-plus btn-sm btn-block mt-2" href="#"><span class="fab fa-google-plus-g mr-2" data-fa-transform="grow-8"></span> google</a></div>
+                    <div class="col-sm-6 pl-sm-1"><a class="btn btn-outline-facebook btn-sm btn-block mt-2" href="#"><span class="fab fa-facebook-square mr-2" data-fa-transform="grow-8"></span> facebook</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main><!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+    <script>
+      var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+      if (isFluid) {
+        var container = document.querySelector('[data-layout]');
+        container.classList.remove('container');
+        container.classList.add('container-fluid');
+      }
+    </script>
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/lib/%40fortawesome/all.min.js"></script>
+    <script src="../assets/lib/stickyfilljs/stickyfill.min.js"></script>
+    <script src="../assets/lib/sticky-kit/sticky-kit.min.js"></script>
+    <script src="../assets/lib/is_js/is.min.js"></script>
+    <script src="../assets/lib/lodash/lodash.min.js"></script>
+    <script src="../assets/lib/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <script src="../assets/lib/prismjs/prism.js"></script>
+    <script src="../assets/lib/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="../assets/lib/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../assets/lib/flatpickr/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.7/polyfill.min.js"></script>
+    <script src="../assets/lib/dropzone/dropzone.min.js"></script>
+    <script src="../assets/lib/lottie/lottie.min.js"></script>
+    <script src="../assets/js/theme.min.js"></script>
+  </body>
+
+
+<!-- Mirrored from prium.github.io/falcon/v2.8.1/default/plugins/bootstrap-wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Mar 2021 10:59:40 GMT -->
+</html>
