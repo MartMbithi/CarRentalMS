@@ -77,9 +77,10 @@ require_once('../app/partials/landing_head.php');
             <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
                 <div class="col-lg-8 ftco-animate">
                     <div class="text w-100 text-center mb-md-5 pb-md-5">
-                        <h1 class="mb-4">CarRental MS </h1>
+                        <h1 class="mb-4">CarRentals</h1>
                         <p style="font-size: 18px;">
-                            The fast, exquisite, easy and robust way to rent a car.
+                            The quickest, most elegant,
+                            simplest, and most robust approach to rent an automobile.
                         </p>
                         <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
                             <div class="icon d-flex align-items-center justify-content-center">
