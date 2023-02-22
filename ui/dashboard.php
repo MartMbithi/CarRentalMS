@@ -93,7 +93,7 @@ require_once('../app/partials/back_office_head.php');
                             <!--/.bg-holder-->
                             <div class="card-body position-relative">
                                 <h6>Staffs</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">73.46k</div>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $staffs; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_users">All staffs
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
                             </div>
@@ -106,7 +106,7 @@ require_once('../app/partials/back_office_head.php');
                             <!--/.bg-holder-->
                             <div class="card-body position-relative">
                                 <h6>Clients</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">73.46k</div>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $clients; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_clients">All clients
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
                             </div>
@@ -119,7 +119,7 @@ require_once('../app/partials/back_office_head.php');
                             <!--/.bg-holder-->
                             <div class="card-body position-relative">
                                 <h6>Rented Vehicles</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">73.46k</div>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $rented_cars; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">
                                     All orders
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
@@ -134,7 +134,7 @@ require_once('../app/partials/back_office_head.php');
                             <!--/.bg-holder-->
                             <div class="card-body position-relative">
                                 <h6>Available Vehicles</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">73.46k</div>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $available_cars; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">All orders
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>
@@ -149,7 +149,7 @@ require_once('../app/partials/back_office_head.php');
                             <div class="card-body position-relative">
                                 <h6>Car rentals</h6>
                                 <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">
-                                    73.46k
+                                    <?php echo $car_rentals; ?>
                                 </div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_rentals">All orders
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
@@ -164,7 +164,7 @@ require_once('../app/partials/back_office_head.php');
                             <!--/.bg-holder-->
                             <div class="card-body position-relative">
                                 <h6>Revenue</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">73.46k</div>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $payment_amount; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All orders
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>
