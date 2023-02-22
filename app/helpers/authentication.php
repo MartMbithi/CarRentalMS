@@ -77,6 +77,7 @@ if (isset($_POST['Login'])) {
     if (mysqli_num_rows($res) > 0) {
         $row = mysqli_fetch_assoc($res);
         $_SESSION['client_id'] = $row['client_id'];
+        $_SESSION['client_dpic'] = $row['client_dpic'];
         $_SESSION['success'] = 'Logged in successfully';
         header('Location: home');
         exit;
@@ -88,6 +89,7 @@ if (isset($_POST['Login'])) {
             $row = mysqli_fetch_assoc($res);
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_access_level'] = $row['user_access_level'];
+            $_SESSION['user_dpic'] = $row['user_dpic'];
             $_SESSION['success'] = 'Login successful';
             header('Location: dashboard');
             exit;

@@ -64,3 +64,24 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
+
+/* Terminate Active Sessions */
+if (isset($_SESSION['user_id'])) {
+    unset($_SESSION['user_id']);
+    unset($_SESSION['user_access_level']);
+    unset($_SESSION['user_dpic']);
+    session_destroy();
+    header("Location: login");
+    exit();
+} else if (isset($_SESSION['client_id'])) {
+    unset($_SESSION['client_id']);
+    unset($_SESSION['client_dpic']);
+    session_destroy();
+    header("Location: login");
+    exit();
+} else {
+    session_unset();
+    session_destroy();
+    header("Location: login");
+    exit();
+}
