@@ -86,101 +86,92 @@ require_once('../app/partials/back_office_head.php');
                 ?>
                 <!-- End Navigations -->
                 <div class="row no-gutters">
-                    <div class="col-md-6 col-xxl-3 mb-3 pr-md-2">
-                        <div class="card h-md-100">
-                            <div class="card-header pb-0">
-                                <h6 class="mb-0 mt-2 d-flex align-items-center">Weekly Sales<span class="ml-1 text-400" data-toggle="tooltip" data-placement="top" title="Calculated according to last week's sales"><span class="far fa-question-circle" data-fa-transform="shrink-1"></span></span></h6>
-                            </div>
-                            <div class="card-body d-flex align-items-end">
-                                <div class="row flex-grow-1">
-                                    <div class="col">
-                                        <div class="fs-4 font-weight-normal text-sans-serif text-700 line-height-1 mb-1">$47K</div><span class="badge badge-pill fs--2 badge-soft-success">+3.5%</span>
-                                    </div>
-                                    <div class="col-auto pl-0">
-                                        <div class="echart-bar-weekly-sales h-100"></div>
-                                    </div>
-                                </div>
+
+                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                        <div class="card h-md-100 verflow-hidden">
+                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                            <!--/.bg-holder-->
+                            <div class="card-body position-relative">
+                                <h6>Staffs</h6>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $staffs; ?></div>
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_users">All staffs
+                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xxl-3 mb-3 pl-md-2 pr-xxl-2">
-                        <div class="card h-md-100">
-                            <div class="card-header pb-0">
-                                <h6 class="mb-0 mt-2">Total Order</h6>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row h-100">
-                                    <div class="col align-self-end">
-                                        <div class="fs-4 font-weight-normal text-sans-serif text-700 line-height-1 mb-1">58.4K</div><span class="badge badge-pill fs--2 bg-200 text-primary"><span class="fas fa-caret-up mr-1"></span>13.6%</span>
-                                    </div>
-                                    <div class="col-auto pl-0">
-                                        <div class="echart-line-total-order h-100"></div>
-                                    </div>
-                                </div>
+
+                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                        <div class="card h-md-100 verflow-hidden">
+                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                            <!--/.bg-holder-->
+                            <div class="card-body position-relative">
+                                <h6>Clients</h6>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $clients; ?></div>
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_clients">All clients
+                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xxl-3 mb-3 pr-md-2 pl-xxl-2">
-                        <div class="card h-md-100">
-                            <div class="card-body">
-                                <div class="row h-100 justify-content-between no-gutters">
-                                    <div class="col-5 col-sm-6 col-xxl pr-2">
-                                        <h6 class="mt-1">Market Share</h6>
-                                        <div class="fs--2 mt-3">
-                                            <div class="d-flex flex-between-center mb-1">
-                                                <div class="d-flex align-items-center"><span class="dot bg-primary"></span><span class="font-weight-semi-bold">Samsung</span></div>
-                                                <div class="d-xxl-none">33%</div>
-                                            </div>
-                                            <div class="d-flex flex-between-center mb-1">
-                                                <div class="d-flex align-items-center"><span class="dot bg-info"></span><span class="font-weight-semi-bold">Huawei</span></div>
-                                                <div class="d-xxl-none"> 29%</div>
-                                            </div>
-                                            <div class="d-flex flex-between-center mb-1">
-                                                <div class="d-flex align-items-center"><span class="dot bg-300"></span><span class="font-weight-semi-bold">Apple</span></div>
-                                                <div class="d-xxl-none"> 20%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="echart-doughnut"></div>
-                                        <div class="absolute-centered font-weight-medium text-dark fs-2">26M</div>
-                                    </div>
-                                </div>
+
+                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                        <div class="card h-md-100 verflow-hidden">
+                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
+                            <!--/.bg-holder-->
+                            <div class="card-body position-relative">
+                                <h6>Rented Vehicles</h6>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $rented_cars; ?></div>
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">
+                                    All rentals
+                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xxl-3 mb-3 pl-md-2">
-                        <div class="card h-md-100">
-                            <div class="card-header d-flex flex-between-center pb-0">
-                                <h6 class="mb-0">Weather</h6>
-                                <div class="dropdown text-sans-serif btn-reveal-trigger"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button" id="dropdown-weather-update" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-0" aria-labelledby="dropdown-weather-update">
-                                        <div class="bg-white py-2"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body pt-2">
-                                <div class="row no-gutters h-100 align-items-center">
-                                    <div class="col">
-                                        <div class="media align-items-center"><img class="mr-3" src="../assets/img/icons/weather-icon.png" alt="" height="60" />
-                                            <div class="media-body">
-                                                <h6 class="mb-2">New York City</h6>
-                                                <div class="fs--2 font-weight-semi-bold">
-                                                    <div class="text-warning">Sunny</div>Precipitation: 50%
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto text-center pl-2">
-                                        <div class="fs-4 font-weight-normal text-sans-serif text-primary mb-1 line-height-1">31&deg;</div>
-                                        <div class="fs--1 text-800">32&deg; / 25&deg;</div>
-                                    </div>
-                                </div>
+
+                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                        <div class="card h-md-100 verflow-hidden">
+                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-1.png);"></div>
+                            <!--/.bg-holder-->
+                            <div class="card-body position-relative">
+                                <h6>Available Vehicles</h6>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $available_cars; ?></div>
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">Available vehicles
+                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                        <div class="card h-md-100 verflow-hidden">
+                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                            <!--/.bg-holder-->
+                            <div class="card-body position-relative">
+                                <h6>Car rentals</h6>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">
+                                    <?php echo $car_rentals; ?>
+                                </div>
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_rentals">All rentals
+                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                        <div class="card h-md-100 verflow-hidden">
+                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
+                            <!--/.bg-holder-->
+                            <div class="card-body position-relative">
+                                <h6>Revenue</h6>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $payment_amount; ?></div>
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All payments
+                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="row no-gutters">
                     <div class="col-lg-6 pr-lg-2 mb-3">
@@ -194,7 +185,8 @@ require_once('../app/partials/back_office_head.php');
                                             <option>Working Time</option>
                                             <option>Estimated Time</option>
                                             <option>Billable Time</option>
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body p-0">
