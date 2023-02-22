@@ -121,7 +121,7 @@ require_once('../app/partials/back_office_head.php');
                                 <h6>Rented Vehicles</h6>
                                 <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $rented_cars; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">
-                                    All orders
+                                    All rentals
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>
                             </div>
@@ -135,7 +135,7 @@ require_once('../app/partials/back_office_head.php');
                             <div class="card-body position-relative">
                                 <h6>Available Vehicles</h6>
                                 <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $available_cars; ?></div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">All orders
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">Available vehicles
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>
                             </div>
@@ -151,7 +151,7 @@ require_once('../app/partials/back_office_head.php');
                                 <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">
                                     <?php echo $car_rentals; ?>
                                 </div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_rentals">All orders
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_rentals">All rentals
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>
                             </div>
@@ -165,7 +165,7 @@ require_once('../app/partials/back_office_head.php');
                             <div class="card-body position-relative">
                                 <h6>Revenue</h6>
                                 <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $payment_amount; ?></div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All orders
+                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All payments
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>
                             </div>
@@ -185,7 +185,8 @@ require_once('../app/partials/back_office_head.php');
                                             <option>Working Time</option>
                                             <option>Estimated Time</option>
                                             <option>Billable Time</option>
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body p-0">
