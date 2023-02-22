@@ -577,7 +577,8 @@ require_once('../app/partials/back_office_head.php');
             </nav>
             <div class="content">
                 <!-- Navigations -->
-                <?php require_once('../app/partials/back_office_sidebar.php'); ?>
+                <?php require_once('../app/partials/back_office_sidebar.php');
+                echo $_SESSION['user_id'] ?>
                 <!-- End Navigations -->
                 <div class="row no-gutters">
                     <div class="col-md-6 col-xxl-3 mb-3 pr-md-2">
