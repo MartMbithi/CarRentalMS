@@ -258,12 +258,55 @@ require_once('../app/partials/back_office_head.php');
                             <div class="card-header">
                                 <div class="row flex-between-center">
                                     <div class="col-auto">
-                                        <h6 class="mb-0">Vehicles per category</h6>
+                                        <h6 class="mb-0">Payments logs</h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body h-100 pr-0">
-                                <canvas class="max-w-100" id="chart-doughnut" width="1618" height="1000"></canvas>
+                                <?php
+                                /* Fetch Recently Received Payments */
+                                $payments_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM payments ORDER BY  payment_date_posted  ASC
+                                    LIMIT 5
+                                    "
+                                );
+                                if (mysqli_num_rows($payments_sql) > 0) {
+                                    while ($payments = mysqli_fetch_array($payments_sql)) {
+                                ?>
+                                        <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                            <div class="col pl-card py-1 position-static">
+                                                <div class="media align-items-center">
+                                                    <div class="avatar avatar-xl mr-3">
+                                                        <div class="avatar-name rounded-circle bg-soft-primary text-dark">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 d-flex align-items-center">
+                                                            <a class="text-800 stretched-link" href="backoffice_payment?payment=<?php echo $payments['payment_id']; ?>">
+                                                                <?php echo $payments['payment_ref_code']; ?> Confirmed, Payment of
+                                                                Ksh <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($paymets['client_date_joined'])); ?>
+                                                            </a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php }
+                                } else { ?>
+                                    <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                        <div class="col pl-card py-1 position-static">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 d-flex align-items-center">
+                                                        Woops!😦, we cannot find any payment details
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -320,7 +363,7 @@ require_once('../app/partials/back_office_head.php');
                                                     <div class="media align-items-center position-relative">
                                                         <div class="media-body ml-3">
                                                             <h6 class="mb-1 font-weight-semi-bold text-danger text-center">
-                                                                We cannot find recently rented vehicles
+                                                                Woops!😦, we cannot find any vehicles here
                                                             </h6>
                                                         </div>
                                                     </div>
