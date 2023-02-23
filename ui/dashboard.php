@@ -246,25 +246,66 @@ require_once('../app/partials/back_office_head.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="border-bottom border-200">
-                                            <td>
-                                                <div class="media align-items-center position-relative"><img class="rounded border border-200" src="../assets/img/products/12.png" width="60" alt="" />
-                                                    <div class="media-body ml-3">
-                                                        <h6 class="mb-1 font-weight-semi-bold"><a class="text-dark stretched-link" href="#!">Raven Pro</a></h6>
-                                                        <p class="font-weight-semi-bold mb-0 text-500">Landing</p>
+                                        <?php
+                                        /* Fetch Recently Hired Cars */
+                                        $recent_hires = mysqli_query(
+                                            $mysqli,
+                                            "SELECT * FROM car_rentals cr
+                                            INNER JOIN cars c ON c.car_id = cr.rental_car_id
+                                            "
+                                        );
+                                        if (mysqli_num_rows($recent_hires) > 0) {
+                                            while ($rentals = mysqli_fetch_array($recent_hires)) {
+                                        ?>
+                                                <tr class="border-bottom border-200">
+                                                    <td>
+                                                        <div class="media align-items-center position-relative">
+                                                            <div class="media-body ml-3">
+                                                                <h6 class="mb-1 font-weight-semi-bold">
+                                                                    <a class="text-dark stretched-link" href="backoffice_rental?rental=<?php echo $rentals['car_id']; ?>">
+                                                                        <?php echo $rentals['car_reg_number']; ?>
+                                                                    </a>
+                                                                </h6>
+                                                                <p class="font-weight-semi-bold mb-0 text-500"><?php echo $rentals['car_model']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-right font-weight-semi-bold"></td>
+                                                    <td class="align-middle pr-card">
+                                                        <div class="d-flex flex-between-center">
+                                                            <div class="font-weight-semi-bold">
+                                                                Rented From <?php echo date('d M Y', strtotime($rentals['rental_from_date'])); ?>
+                                                                To <?php echo date('d M Y', strtotime($rentals['rental_to_date'])); ?>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                        } else {
+                                            ?><tr class="border-bottom border-200">
+                                                <td>
+                                                    <div class="media align-items-center position-relative">
+                                                        <div class="media-body ml-3">
+                                                            <h6 class="mb-1 font-weight-semi-bold">
+                                                                <a class="text-dark stretched-link" href="#!">
+                                                                    Car
+                                                                </a>
+                                                            </h6>
+                                                            <p class="font-weight-semi-bold mb-0 text-500">Landing</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle text-right font-weight-semi-bold">$1311</td>
-                                            <td class="align-middle pr-card">
-                                                <div class="d-flex flex-between-center">
-                                                    <div class="progress w-100 mr-3 rounded-soft bg-200" style="height: 5px; max-width: 54px">
-                                                        <div class="progress-bar rounded-capsule" role="progressbar" style="width: 41%;" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </td>
+                                                <td class="align-middle text-right font-weight-semi-bold">$1311</td>
+                                                <td class="align-middle pr-card">
+                                                    <div class="d-flex flex-between-center">
+                                                        <div class="progress w-100 mr-3 rounded-soft bg-200" style="height: 5px; max-width: 54px">
+                                                            <div class="progress-bar rounded-capsule" role="progressbar" style="width: 41%;" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <div class="font-weight-semi-bold">41%</div>
                                                     </div>
-                                                    <div class="font-weight-semi-bold">41%</div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
