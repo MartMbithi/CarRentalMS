@@ -5,6 +5,12 @@
     <title>CarRentals</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../storage/system/favicon/backapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../storage/system/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../storage/system/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../storage/system/favicon/site.webmanifest">
+    <!-- End Favicons -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../public/landing_assets/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="../public/landing_assets/css/animate.css">
@@ -28,6 +34,7 @@
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/relax.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/semanticui.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/sunset.css">
+
     <?php
     /* Alert Sesion Via Alerts */
     if (isset($_SESSION['success'])) {
