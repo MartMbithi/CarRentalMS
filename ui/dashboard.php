@@ -189,6 +189,7 @@ require_once('../app/partials/back_office_head.php');
                                 $clients_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM clients ORDER BY  client_date_joined  ASC
+                                    LIMIT 5
                                     "
                                 );
                                 if (mysqli_num_rows($clients_sql) > 0) {
@@ -262,7 +263,7 @@ require_once('../app/partials/back_office_head.php');
                                 </div>
                             </div>
                             <div class="card-body h-100 pr-0">
-                                <div class="echart-line-total-sales h-100" data-echart-responsive="true"></div>
+                                <canvas class="max-w-100" id="chart-doughnut" width="1618" height="1000"></canvas>
                             </div>
                         </div>
                     </div>
