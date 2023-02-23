@@ -193,28 +193,37 @@ require_once('../app/partials/back_office_head.php');
                                 );
                                 if (mysqli_num_rows($clients_sql) > 0) {
                                     while ($clients = mysqli_fetch_array($clients_sql)) {
+                                        /* Image Url */
+                                        if (!empty($clients['client_dpic'])) {
+                                            $client_image_url = '../storage/clients/' . $clients['client_dpic'];
+                                        } else {
+                                            $client_image_url = '../storage/clients/no-profile.png';
+                                        }
                                 ?>
                                         <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
                                             <div class="col pl-card py-1 position-static">
                                                 <div class="media align-items-center">
                                                     <div class="avatar avatar-xl mr-3">
                                                         <div class="avatar-name rounded-circle bg-soft-primary text-dark">
-                                                            <span class="fs-0 text-primary">F</span>
+                                                            <img src="<?php echo $client_image_url; ?>" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="media-body">
                                                         <h6 class="mb-0 d-flex align-items-center">
-                                                            <a class="text-800 stretched-link" href="#!">
-                                                                Client name
+                                                            <a class="text-800 stretched-link" href="backoffice_client?client=<?php echo $clients['client_id']; ?>">
+                                                                <?php echo $clients['client_names']; ?>
                                                             </a>
                                                         </h6>
+                                                        <small class="mb-0 d-flex align-items-center">
+                                                            <?php echo $clients['client_email']; ?>
+                                                        </small>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col py-1">
                                                 <div class="row flex-end-center no-gutters">
                                                     <div class="col-auto pr-2">
-                                                        <div class="fs--1 font-weight-semi-bold">Date joined 12:50:00</div>
+                                                        <div class="fs--1 font-weight-semi-bold">Date joined <?php echo date('d M Y', strtotime($clients['client_date_joined'])); ?></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,7 +244,7 @@ require_once('../app/partials/back_office_head.php');
                                 <?php } ?>
                             </div>
                             <div class="card-footer bg-light p-0">
-                                <a class="btn btn-sm btn-link btn-block py-2" href="backoffice_rentals">Show all clients
+                                <a class="btn btn-sm btn-link btn-block py-2" href="backoffice_clients">Show all clients
                                     <span class="fas fa-chevron-right ml-1 fs--2">
                                     </span>
                                 </a>
