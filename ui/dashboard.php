@@ -283,25 +283,13 @@ require_once('../app/partials/back_office_head.php');
                                             <?php }
                                         } else {
                                             ?><tr class="border-bottom border-200">
-                                                <td>
+                                                <td colspan="3">
                                                     <div class="media align-items-center position-relative">
                                                         <div class="media-body ml-3">
-                                                            <h6 class="mb-1 font-weight-semi-bold">
-                                                                <a class="text-dark stretched-link" href="#!">
-                                                                    Car
-                                                                </a>
+                                                            <h6 class="mb-1 font-weight-semi-bold text-danger text-center">
+                                                                We cannot find recently rented vehicles
                                                             </h6>
-                                                            <p class="font-weight-semi-bold mb-0 text-500">Landing</p>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle text-right font-weight-semi-bold">$1311</td>
-                                                <td class="align-middle pr-card">
-                                                    <div class="d-flex flex-between-center">
-                                                        <div class="progress w-100 mr-3 rounded-soft bg-200" style="height: 5px; max-width: 54px">
-                                                            <div class="progress-bar rounded-capsule" role="progressbar" style="width: 41%;" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                        <div class="font-weight-semi-bold">41%</div>
                                                     </div>
                                                 </td>
                                             </tr>
