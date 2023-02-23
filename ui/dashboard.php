@@ -179,13 +179,7 @@ require_once('../app/partials/back_office_head.php');
                             <div class="card-header bg-light">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h6 class="mb-0">Running Projects</h6>
-                                    </div>
-                                    <div class="col-auto text-center pr-card"><select class="custom-select custom-select-sm">
-                                            <option>Working Time</option>
-                                            <option>Estimated Time</option>
-                                            <option>Billable Time</option>
-                                        </select>
+                                        <h6 class="mb-0">Recently joined clients</h6>
                                     </div>
                                 </div>
                             </div>
@@ -194,192 +188,49 @@ require_once('../app/partials/back_office_head.php');
                                     <div class="col pl-card py-1 position-static">
                                         <div class="media align-items-center">
                                             <div class="avatar avatar-xl mr-3">
-                                                <div class="avatar-name rounded-circle bg-soft-primary text-dark"><span class="fs-0 text-primary">F</span></div>
+                                                <div class="avatar-name rounded-circle bg-soft-primary text-dark">
+                                                    <span class="fs-0 text-primary">F</span>
+                                                </div>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="mb-0 d-flex align-items-center"><a class="text-800 stretched-link" href="#!">Falcon</a><span class="badge badge-pill ml-2 bg-200 text-primary">38%</span></h6>
+                                                <h6 class="mb-0 d-flex align-items-center">
+                                                    <a class="text-800 stretched-link" href="#!">
+                                                        Client name
+                                                    </a>
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col py-1">
                                         <div class="row flex-end-center no-gutters">
                                             <div class="col-auto pr-2">
-                                                <div class="fs--1 font-weight-semi-bold">12:50:00</div>
-                                            </div>
-                                            <div class="col-5 pr-card pl-2">
-                                                <div class="progress mr-2" style="height: 5px;">
-                                                    <div class="progress-bar rounded-capsule" role="progressbar" style="width: 38%" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
+                                                <div class="fs--1 font-weight-semi-bold">Date joined 12:50:00</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
-                                    <div class="col pl-card py-1 position-static">
-                                        <div class="media align-items-center">
-                                            <div class="avatar avatar-xl mr-3">
-                                                <div class="avatar-name rounded-circle bg-soft-success text-dark"><span class="fs-0 text-success">R</span></div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 d-flex align-items-center"><a class="text-800 stretched-link" href="#!">Reign</a><span class="badge badge-pill ml-2 bg-200 text-primary">79%</span></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col py-1">
-                                        <div class="row flex-end-center no-gutters">
-                                            <div class="col-auto pr-2">
-                                                <div class="fs--1 font-weight-semi-bold">25:20:00</div>
-                                            </div>
-                                            <div class="col-5 pr-card pl-2">
-                                                <div class="progress mr-2" style="height: 5px;">
-                                                    <div class="progress-bar rounded-capsule" role="progressbar" style="width: 79%" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
-                                    <div class="col pl-card py-1 position-static">
-                                        <div class="media align-items-center">
-                                            <div class="avatar avatar-xl mr-3">
-                                                <div class="avatar-name rounded-circle bg-soft-info text-dark"><span class="fs-0 text-info">B</span></div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 d-flex align-items-center"><a class="text-800 stretched-link" href="#!">Boots4</a><span class="badge badge-pill ml-2 bg-200 text-primary">90%</span></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col py-1">
-                                        <div class="row flex-end-center no-gutters">
-                                            <div class="col-auto pr-2">
-                                                <div class="fs--1 font-weight-semi-bold">58:20:00</div>
-                                            </div>
-                                            <div class="col-5 pr-card pl-2">
-                                                <div class="progress mr-2" style="height: 5px;">
-                                                    <div class="progress-bar rounded-capsule" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
-                                    <div class="col pl-card py-1 position-static">
-                                        <div class="media align-items-center">
-                                            <div class="avatar avatar-xl mr-3">
-                                                <div class="avatar-name rounded-circle bg-soft-warning text-dark"><span class="fs-0 text-warning">R</span></div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 d-flex align-items-center"><a class="text-800 stretched-link" href="#!">Raven</a><span class="badge badge-pill ml-2 bg-200 text-primary">40%</span></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col py-1">
-                                        <div class="row flex-end-center no-gutters">
-                                            <div class="col-auto pr-2">
-                                                <div class="fs--1 font-weight-semi-bold">21:20:00</div>
-                                            </div>
-                                            <div class="col-5 pr-card pl-2">
-                                                <div class="progress mr-2" style="height: 5px;">
-                                                    <div class="progress-bar rounded-capsule" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row no-gutters align-items-center py-2 position-relative">
-                                    <div class="col pl-card py-1 position-static">
-                                        <div class="media align-items-center">
-                                            <div class="avatar avatar-xl mr-3">
-                                                <div class="avatar-name rounded-circle bg-soft-danger text-dark"><span class="fs-0 text-danger">S</span></div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 d-flex align-items-center"><a class="text-800 stretched-link" href="#!">Slick</a><span class="badge badge-pill ml-2 bg-200 text-primary">70%</span></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col py-1">
-                                        <div class="row flex-end-center no-gutters">
-                                            <div class="col-auto pr-2">
-                                                <div class="fs--1 font-weight-semi-bold">31:20:00</div>
-                                            </div>
-                                            <div class="col-5 pr-card pl-2">
-                                                <div class="progress mr-2" style="height: 5px;">
-                                                    <div class="progress-bar rounded-capsule" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
-                            <div class="card-footer bg-light p-0"><a class="btn btn-sm btn-link btn-block py-2" href="#!">Show all projects<span class="fas fa-chevron-right ml-1 fs--2"></span></a></div>
+                            <div class="card-footer bg-light p-0">
+                                <a class="btn btn-sm btn-link btn-block py-2" href="backoffice_rentals">Show all clients
+                                    <span class="fas fa-chevron-right ml-1 fs--2">
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
+
                     <div class="col-lg-6 pl-lg-2 mb-3">
                         <div class="card h-lg-100">
                             <div class="card-header">
                                 <div class="row flex-between-center">
                                     <div class="col-auto">
-                                        <h6 class="mb-0">Total Sales</h6>
-                                    </div>
-                                    <div class="col-auto d-flex"><select class="custom-select custom-select-sm select-month mr-2">
-                                            <option value="0">January</option>
-                                            <option value="1">February</option>
-                                            <option value="2">March</option>
-                                            <option value="3">April</option>
-                                            <option value="4">May</option>
-                                            <option value="5">Jun</option>
-                                            <option value="6">July</option>
-                                            <option value="7">August</option>
-                                            <option value="8">September</option>
-                                            <option value="9">October</option>
-                                            <option value="10">November</option>
-                                            <option value="11">December</option>
-                                        </select>
-                                        <div class="dropdown text-sans-serif btn-reveal-trigger"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button" id="dropdown-total-saldes" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                                            <div class="dropdown-menu dropdown-menu-right border py-0" aria-labelledby="dropdown-total-saldes">
-                                                <div class="bg-white py-2"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                                    <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <h6 class="mb-0">Vehicles per category</h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body h-100 pr-0">
                                 <div class="echart-line-total-sales h-100" data-echart-responsive="true"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row no-gutters">
-                    <div class="col-lg-6 col-xl-7 col-xxl-8 mb-3 pr-lg-2 mb-3">
-                        <div class="card h-lg-100">
-                            <div class="card-body d-flex align-items-center">
-                                <div class="w-100">
-                                    <h6 class="mb-3 text-800">Using Storage <strong class="text-dark">1775.06 MB </strong>of 2 GB</h6>
-                                    <div class="progress mb-3 rounded-soft" style="height: 10px;">
-                                        <div class="progress-bar bg-card-gradient border-right border-white border-2x" role="progressbar" style="width: 43.72%" aria-valuenow="43.72" aria-valuemin="0" aria-valuemax="100"></div>
-                                        <div class="progress-bar bg-info border-right border-white border-2x" role="progressbar" style="width: 18.76%" aria-valuenow="18.76" aria-valuemin="0" aria-valuemax="100"></div>
-                                        <div class="progress-bar bg-success border-right border-white border-2x" role="progressbar" style="width: 9.38%" aria-valuenow="9.38" aria-valuemin="0" aria-valuemax="100"></div>
-                                        <div class="progress-bar bg-200" role="progressbar" style="width: 28.14%" aria-valuenow="28.14" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <div class="row fs--1 font-weight-semi-bold text-500">
-                                        <div class="col-auto d-flex align-items-center pr-2"><span class="dot bg-primary"></span><span>Regular</span><span class="d-none d-md-inline-block d-lg-none d-xxl-inline-block ml-1">(895MB)</span></div>
-                                        <div class="col-auto d-flex align-items-center px-2"><span class="dot bg-info"></span><span>System</span><span class="d-none d-md-inline-block d-lg-none d-xxl-inline-block ml-1">(379MB)</span></div>
-                                        <div class="col-auto d-flex align-items-center px-2"><span class="dot bg-success"></span><span>Shared</span><span class="d-none d-md-inline-block d-lg-none d-xxl-inline-block ml-1">(192MB)</span></div>
-                                        <div class="col-auto d-flex align-items-center pl-2"><span class="dot bg-200"></span><span>Free</span><span class="d-none d-md-inline-block d-lg-none d-xxl-inline-block ml-1">(576MB)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-5 col-xxl-4 mb-3 pl-lg-2">
-                        <div class="card h-lg-100">
-                            <div class="bg-holder bg-card" style="background-image:url(../assets/img/illustrations/corner-1.png);"></div>
-                            <!--/.bg-holder-->
-                            <div class="card-body position-relative">
-                                <h5 class="text-warning">Running out of your space?</h5>
-                                <p class="fs--1 mb-0">Your storage will be running out soon. Get more<br /> space and powerful productivity features.</p><a class="btn btn-link fs--1 text-warning mt-4 mt-lg-3 pl-0" href="#!">Upgrade storage<span class="fas fa-chevron-right ml-1" data-fa-transform="shrink-4 down-1"></span></a>
                             </div>
                         </div>
                     </div>
