@@ -184,32 +184,55 @@ require_once('../app/partials/back_office_head.php');
                                 </div>
                             </div>
                             <div class="card-body p-0">
-                                <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
-                                    <div class="col pl-card py-1 position-static">
-                                        <div class="media align-items-center">
-                                            <div class="avatar avatar-xl mr-3">
-                                                <div class="avatar-name rounded-circle bg-soft-primary text-dark">
-                                                    <span class="fs-0 text-primary">F</span>
+                                <?php
+                                /* Fetch Recently Hired Clients */
+                                $clients_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM clients ORDER BY  client_date_joined  ASC
+                                    "
+                                );
+                                if (mysqli_num_rows($clients_sql) > 0) {
+                                    while ($clients = mysqli_fetch_array($clients_sql)) {
+                                ?>
+                                        <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                            <div class="col pl-card py-1 position-static">
+                                                <div class="media align-items-center">
+                                                    <div class="avatar avatar-xl mr-3">
+                                                        <div class="avatar-name rounded-circle bg-soft-primary text-dark">
+                                                            <span class="fs-0 text-primary">F</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 d-flex align-items-center">
+                                                            <a class="text-800 stretched-link" href="#!">
+                                                                Client name
+                                                            </a>
+                                                        </h6>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 d-flex align-items-center">
-                                                    <a class="text-800 stretched-link" href="#!">
-                                                        Client name
-                                                    </a>
-                                                </h6>
+                                            <div class="col py-1">
+                                                <div class="row flex-end-center no-gutters">
+                                                    <div class="col-auto pr-2">
+                                                        <div class="fs--1 font-weight-semi-bold">Date joined 12:50:00</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php }
+                                } else { ?>
+                                    <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                        <div class="col pl-card py-1 position-static">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 d-flex align-items-center">
+                                                        Woops!😦, we cannot find any client details
+                                                    </h6>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col py-1">
-                                        <div class="row flex-end-center no-gutters">
-                                            <div class="col-auto pr-2">
-                                                <div class="fs--1 font-weight-semi-bold">Date joined 12:50:00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <?php } ?>
                             </div>
                             <div class="card-footer bg-light p-0">
                                 <a class="btn btn-sm btn-link btn-block py-2" href="backoffice_rentals">Show all clients
