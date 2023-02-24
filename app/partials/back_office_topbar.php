@@ -148,7 +148,7 @@ include('../app/helpers/notifications.php');
                             <?php }
                             } ?>
                         </div>
-                        <div class="card-footer text-center border-top"><a class="card-link d-block" href="backoffice_notifications?owner=<?php echo $notifications['notification_user_id']; ?>">View all</a></div>
+                        <div class="card-footer text-center border-top"><a class="card-link d-block" href="backoffice_notifications?owner=<?php echo $_SESSION['user_id']; ?>">View all</a></div>
                     </div>
                 </div>
             </li>

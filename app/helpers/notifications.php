@@ -66,14 +66,14 @@
  */
 
 /* Mark All As Read */
-if ($_POST['User_Mark_As_Read']) {
-    $notification_user_id = mysqli_real_escape_string($mysql, $_POST['notification_user_id']);
+if (isset($_POST['User_Mark_As_Read'])) {
+    $notification_user_id = mysqli_real_escape_string($mysqli, $_POST['notification_user_id']);
 
     /* Persist */
     $sql = "UPDATE notifications SET notification_status = '1'
     WHERE notification_user_id = '{$notification_user_id}'";
 
-    if (mysqli_query($mysql, $sql)) {
+    if (mysqli_query($mysqli, $sql)) {
         $success = "Notifications marked as read";
     } else {
         $err =  "Failed, please try again";
