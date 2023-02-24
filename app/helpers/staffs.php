@@ -120,3 +120,25 @@ if (isset($_POST['Update_Staff_Password'])) {
         }
     }
 }
+
+/* Update Staff Images */
+if ($_POST['Update_Staff_Profile']) {
+    $user_dpic  = mysqli_real_escape_string($mysqli, $_FILES['user_dpic']['name']);
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+
+    /* Files  */
+    $temp_dpic = explode('.', $user_dpic);
+    $new_user_dpic = 'Car_Rental_Staff_DPIC_' . time() . '.' . end($temp_dpic);
+    move_uploaded_file(
+        $_FILES['user_dpic']['tmp_name'],
+        '../storage/users/' . $new_user_dpic
+    );
+
+    /* Persist */
+    $update_dpic_sql = "UPDATE users SET user_dpic = '{$new_user_dpic}' WHERE user_id = '{$user_id}'";
+    if (mysqli_query($mysqli, $update_dpic_sql)) {
+        $success = "Profile picture updated successfully";
+    } else {
+        $err = "Failed, please try again later";
+    }
+}
