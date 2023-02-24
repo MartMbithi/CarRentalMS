@@ -91,3 +91,32 @@ if (isset($_POST['Update_Staff_Profile'])) {
         $err = "Failed, please try again later";
     }
 }
+
+/* Update Staff Passwords */
+if (isset($_POST['Update_Staff_Password'])) {
+    $old_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['old_password'])));
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+
+    /* Check Passwords match */
+    if ($confirm_password != $new_password) {
+        $err =  "Passwords do not match";
+    } else {
+        /* Check If Old Passwords Do Match */
+        $sql = "SELECT * FROM  users WHERE user_id = '{$user_id}'
+        AND user_password = '{$old_password}'";
+        $res = mysqli_query($mysqli, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            /* Update Password */
+            $update_sql = "UPDATE users SET user_password = '{$new_password}' WHERE user_id = '{$user_id}'";
+            if (mysqli_query($mysqli, $update_sql)) {
+                $success = "Password updated successfully";
+            } else {
+                $err = "Failed, please try again later";
+            }
+        } else {
+            $err = "Old Password is incorrect";
+        }
+    }
+}
