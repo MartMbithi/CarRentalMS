@@ -122,7 +122,7 @@ if (isset($_POST['Update_Staff_Password'])) {
 }
 
 /* Update Staff Images */
-if ($_POST['Update_Staff_Profile']) {
+if (isset($_POST['Update_Staff_Profile_Photo'])) {
     $user_dpic  = mysqli_real_escape_string($mysqli, $_FILES['user_dpic']['name']);
     $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 

@@ -197,7 +197,7 @@ require_once('../app/partials/back_office_head.php');
                                                         </div>
                                                     </div>
                                                     <div class="text-right">
-                                                        <button class="btn btn-primary" type="submit" name="Update_Staff_Profile">Update profile</button>
+                                                        <button class="btn btn-primary" type="submit" name="Update_Staff_Profile_Photo">Update profile</button>
                                                     </div>
                                                 </form>
                                             </div>
