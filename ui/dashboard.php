@@ -82,8 +82,7 @@ require_once('../app/partials/back_office_head.php');
             <?php require_once('../app/partials/back_office_sidebar.php'); ?>
             <div class="content">
                 <!-- Navigations -->
-                <?php require_once('../app/partials/back_office_topbar.php');
-                ?>
+                <?php require_once('../app/partials/back_office_topbar.php'); ?>
                 <!-- End Navigations -->
                 <div class="row no-gutters">
 
