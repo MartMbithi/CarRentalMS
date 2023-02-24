@@ -67,6 +67,7 @@
 session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
+require_once('../app/helpers/staffs.php');
 require_once('../app/partials/back_office_head.php');
 ?>
 
@@ -134,50 +135,32 @@ require_once('../app/partials/back_office_head.php');
                                         </ul>
                                         <div class="tab-content border-x border-bottom p-3" id="myTabContent">
                                             <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
-                                                <form class="needs-validation" novalidate>
+                                                <form method="POST">
                                                     <div class="form-row">
                                                         <div class="col-md-6 mb-3">
-                                                            <label for="validationTooltip01">First name</label>
-                                                            <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
-                                                            <div class="valid-tooltip">
-                                                                Looks good!
-                                                            </div>
+                                                            <label for="validationTooltip01">Full names</label>
+                                                            <input name="user_name" type="text" class="form-control" value="<?php echo $staffs['user_name']; ?>" required>
                                                         </div>
                                                         <div class="col-md-6 mb-3">
-                                                            <label for="validationTooltip02">Last name</label>
-                                                            <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
-                                                            <div class="valid-tooltip">
-                                                                Looks good!
-                                                            </div>
+                                                            <label for="validationTooltip02">Email address</label>
+                                                            <input name="user_email" type="email" class="form-control" value="<?php echo $staffs['user_email']; ?>" required>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-row">
                                                         <div class="col-md-6 mb-3">
-                                                            <label for="validationTooltip03">City</label>
-                                                            <input type="text" class="form-control" id="validationTooltip03" required>
-                                                            <div class="invalid-tooltip">
-                                                                Please provide a valid city.
-                                                            </div>
+                                                            <label for="validationTooltip02">National ID Number</label>
+                                                            <input name="user_id_number" type="text" class="form-control" value="<?php echo $staffs['user_id_number']; ?>" required>
                                                         </div>
-                                                        <div class="col-md-3 mb-3">
-                                                            <label for="validationTooltip04">State</label>
-                                                            <select class="custom-select" id="validationTooltip04" required>
-                                                                <option selected disabled value="">Choose...</option>
-                                                                <option>...</option>
-                                                            </select>
-                                                            <div class="invalid-tooltip">
-                                                                Please select a valid state.
-                                                            </div>
+                                                        <div class="col-md-6 mb-3">
+                                                            <label for="validationTooltip02">Mobile Phone Number</label>
+                                                            <input name="user_phone_number" type="text" class="form-control" value="<?php echo $staffs['user_phone_number']; ?>" required>
                                                         </div>
-                                                        <div class="col-md-3 mb-3">
-                                                            <label for="validationTooltip05">Zip</label>
-                                                            <input type="text" class="form-control" id="validationTooltip05" required>
-                                                            <div class="invalid-tooltip">
-                                                                Please provide a valid zip.
-                                                            </div>
+                                                        <div class="col-md-12 mb-3">
+                                                            <label for="validationTooltip02">Address</label>
+                                                            <textarea name="user_address" type="text" class="form-control" required><?php echo $staffs['user_address']; ?></textarea>
                                                         </div>
                                                     </div>
-                                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                                    <div class="text-right">
+                                                        <button class="btn btn-primary" type="submit" name="Update_Staff_Profile">Update profile</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                             <div class="tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
