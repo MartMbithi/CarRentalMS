@@ -69,6 +69,8 @@ if (!empty($_SESSION['user_dpic'])) {
 } else {
     $image_url = '../storage/users/no-profile.png';
 }
+/* Notifications Helpers*/
+include('../app/helpers/notifications.php');
 ?>
 <nav class="navbar navbar-light navbar-glass navbar-top sticky-kit navbar-expand" style="display:none;">
     <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
@@ -109,9 +111,10 @@ if (!empty($_SESSION['user_dpic'])) {
                                     <h6 class="card-header-title mb-0">Notifications</h6>
                                 </div>
                                 <div class="col-auto">
-                                    <a class="card-link font-weight-normal" href="#">
-                                        Mark all as read
-                                    </a>
+                                    <form method="POST">
+                                        <input type="hidden" name="notification_user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                                        <input type="submit" name="User_Mark_As_Read" class="card-link font-weight-normal text-primary" value="Mark all as read">
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -129,22 +132,23 @@ if (!empty($_SESSION['user_dpic'])) {
                                 while ($notifications = mysqli_fetch_array($notifications_sql)) {
                             ?>
                                     <div class="list-group-item">
-                                        <a class="notification notification-flush bg-200" href="#!">
-                                            <div class="notification-avatar">
-                                                <div class="avatar avatar-2xl mr-3">
-
-                                                </div>
-                                            </div>
+                                        <a class="notification notification-flush bg-200" href="backoffice_notifications?owner=<?php echo $notifications['notification_user_id']; ?>">
                                             <div class="notification-body">
-                                                <p class="mb-1"><strong>Emma Watson</strong> replied to your comment : "Hello world 😍"</p>
-                                                <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">💬</span>Just now</span>
+                                                <p class="mb-1">
+                                                    <strong><?php echo $notifications['notification_title']; ?></strong>
+                                                    <?php echo $notifications['notification_details']; ?>
+                                                </p>
+                                                <span class="notification-time">
+                                                    <span class="mr-1" role="img" aria-label="Emoji">🕗</span>
+                                                    <?php echo date('d M Y g:ia', strtotime($notifications['notifcation_created_on'])); ?>
+                                                </span>
                                             </div>
                                         </a>
                                     </div>
                             <?php }
                             } ?>
                         </div>
-                        <div class="card-footer text-center border-top"><a class="card-link d-block" href="backoffice_notifications?owner=<?php echo $notifications['notification_owner_id']; ?>">View all</a></div>
+                        <div class="card-footer text-center border-top"><a class="card-link d-block" href="backoffice_notifications?owner=<?php echo $notifications['notification_user_id']; ?>">View all</a></div>
                     </div>
                 </div>
             </li>
