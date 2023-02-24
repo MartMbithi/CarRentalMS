@@ -78,6 +78,7 @@ if (isset($_POST['Login'])) {
         $row = mysqli_fetch_assoc($res);
         $_SESSION['client_id'] = $row['client_id'];
         $_SESSION['client_dpic'] = $row['client_dpic'];
+        $_SESSION['user_access_level'] = 'Client';
         $_SESSION['success'] = 'Logged in successfully';
         header('Location: home');
         exit;

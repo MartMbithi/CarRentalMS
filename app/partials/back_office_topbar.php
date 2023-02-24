@@ -178,7 +178,7 @@ include('../app/helpers/notifications.php');
             <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
                 <div class="bg-white rounded-soft py-2">
                     <a class="dropdown-item" href="backoffice_settings">Settings</a>
-                    <a class="dropdown-item" href="#logout_modal">Logout</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#logoutModal">Logout</a>
                 </div>
             </div>
         </li>
