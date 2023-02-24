@@ -168,7 +168,7 @@ require_once('../app/partials/back_office_head.php');
                                                     <div class="form-row">
                                                         <div class="col-md-12 mb-3">
                                                             <label for="validationTooltip01">Old password</label>
-                                                            <input name="old_passsword" type="password" class="form-control" required>
+                                                            <input name="old_password" type="password" class="form-control" required>
                                                         </div>
                                                         <div class="col-md-12 mb-3">
                                                             <label for="validationTooltip02">New password</label>
