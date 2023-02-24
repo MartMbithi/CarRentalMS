@@ -122,325 +122,67 @@ require_once('../app/partials/back_office_head.php');
                         </div>
 
                         <div class="row no-gutters">
-                            <div class="col-lg-8 pr-lg-2">
+                            <div class="col-lg-12 pr-lg-2">
                                 <div class="card mb-3">
                                     <div class="card-header bg-light">
-                                        <h5 class="mb-0">Intro</h5>
+                                        <h5 class="mb-0">Profile settings</h5>
                                     </div>
-                                    <div class="card-body text-justify">
-                                        <p class="mb-0 text-1000">Dedicated, passionate, and accomplished Full Stack Developer with 9+ years of progressive experience working as an Independent Contractor for Google and developing and growing my educational social network that helps others learn programming, web design, game development, networking.</p>
-                                        <div class="collapse show" id="profile-intro">
-                                            <p class="mt-3 text-1000">I’ve acquired a wide depth of knowledge and expertise in using my technical skills in programming, computer science, software development, and mobile app development to developing solutions to help organizations increase productivity, and accelerate business performance. </p>
-                                            <p class="text-1000">It’s great that we live in an age where we can share so much with technology but I’m but I’m ready for the next phase of my career, with a healthy balance between the virtual world and a workplace where I help others face-to-face.</p>
-                                            <p class="text-1000 mb-0">There’s always something new to learn, especially in IT-related fields. People like working with me because I can explain technology to everyone, from staff to executives who need me to tie together the details and the big picture. I can also implement the technologies that successful projects need.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-light p-0 border-top"><button class="btn btn-link btn-block btn-intro-collapse" type="button" data-toggle="collapse" data-target="#profile-intro" aria-expanded="true" aria-controls="profile-intro">Show <span class="less">less<span class="fas fa-chevron-up ml-2 fs--2"></span></span><span class="full">full<span class="fas fa-chevron-down ml-2 fs--2"></span></span></button></div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="card-header bg-light d-flex justify-content-between">
-                                        <h5 class="mb-0">Associations</h5><a class="text-sans-serif" href="associations.html">All Associations</a>
-                                    </div>
-                                    <div class="card-body fs--1">
-                                        <div class="row">
-                                            <div class="col-sm-6 mb-3">
-                                                <div class="media position-relative align-items-center mb-2"><img class="d-flex align-self-center mr-2" src="../assets/img/logos/apple.png" alt="" width="50" />
-                                                    <div class="media-body">
-                                                        <h6 class="fs-0 mb-0"><a class="stretched-link" href="#!">Apple</a></h6>
-                                                        <p class="mb-0">3243 associates</p>
+                                    <div class="card-body">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Update profile</a></li>
+                                            <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-profile" role="tab" aria-controls="tab-profile" aria-selected="false">Update passwords</a></li>
+                                        </ul>
+                                        <div class="tab-content border-x border-bottom p-3" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
+                                                <form class="needs-validation" novalidate>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6 mb-3">
+                                                            <label for="validationTooltip01">First name</label>
+                                                            <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
+                                                            <div class="valid-tooltip">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 mb-3">
+                                                            <label for="validationTooltip02">Last name</label>
+                                                            <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
+                                                            <div class="valid-tooltip">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 mb-3">
-                                                <div class="media position-relative align-items-center mb-2"><img class="d-flex align-self-center mr-2" src="../assets/img/logos/g.png" alt="" width="50" />
-                                                    <div class="media-body">
-                                                        <h6 class="fs-0 mb-0"><a class="stretched-link" href="#!">Google</a></h6>
-                                                        <p class="mb-0">34598 associates</p>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6 mb-3">
+                                                            <label for="validationTooltip03">City</label>
+                                                            <input type="text" class="form-control" id="validationTooltip03" required>
+                                                            <div class="invalid-tooltip">
+                                                                Please provide a valid city.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 mb-3">
+                                                            <label for="validationTooltip04">State</label>
+                                                            <select class="custom-select" id="validationTooltip04" required>
+                                                                <option selected disabled value="">Choose...</option>
+                                                                <option>...</option>
+                                                            </select>
+                                                            <div class="invalid-tooltip">
+                                                                Please select a valid state.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 mb-3">
+                                                            <label for="validationTooltip05">Zip</label>
+                                                            <input type="text" class="form-control" id="validationTooltip05" required>
+                                                            <div class="invalid-tooltip">
+                                                                Please provide a valid zip.
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                                </form>
                                             </div>
-                                            <div class="col-sm-6 mb-3">
-                                                <div class="media position-relative align-items-center mb-2"><img class="d-flex align-self-center mr-2" src="../assets/img/logos/intel.png" alt="" width="50" />
-                                                    <div class="media-body">
-                                                        <h6 class="fs-0 mb-0"><a class="stretched-link" href="#!">Intel</a></h6>
-                                                        <p class="mb-0">7652 associates</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 mb-3">
-                                                <div class="media position-relative align-items-center mb-2"><img class="d-flex align-self-center mr-2" src="../assets/img/logos/nike.png" alt="" width="50" />
-                                                    <div class="media-body">
-                                                        <h6 class="fs-0 mb-0"><a class="stretched-link" href="#!">Nike</a></h6>
-                                                        <p class="mb-0">765 associates</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="card-header bg-light d-flex justify-content-between">
-                                        <h5 class="mb-0">Activity log</h5><a class="text-sans-serif" href="activity.html">All logs</a>
-                                    </div>
-                                    <div class="card-body fs--1 p-0">
-                                        <a class="border-bottom-0 notification rounded-0 border-x-0 border border-300" href="#!">
-                                            <div class="notification-avatar">
-                                                <div class="avatar avatar-xl mr-3">
-                                                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">🎁</span></div>
-                                                </div>
-                                            </div>
-                                            <div class="notification-body">
-                                                <p class="mb-1"><strong>Jennifer Kent</strong> Congratulated <strong>Anthony Hopkins</strong></p>
-                                                <span class="notification-time">November 13, 5:00 Am</span>
-                                            </div>
-                                        </a>
+                                            <div class="tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
 
-                                        <a class="border-bottom-0 notification rounded-0 border-x-0 border border-300" href="#!">
-                                            <div class="notification-avatar">
-                                                <div class="avatar avatar-xl mr-3">
-                                                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">🏷️</span></div>
-                                                </div>
                                             </div>
-                                            <div class="notification-body">
-                                                <p class="mb-1"><strong>California Institute of Technology</strong> tagged <strong>Anthony Hopkins</strong> in a post.</p>
-                                                <span class="notification-time">November 8, 5:00 PM</span>
-                                            </div>
-                                        </a>
-
-                                        <a class="border-bottom-0 notification rounded-0 border-x-0 border border-300" href="#!">
-                                            <div class="notification-avatar">
-                                                <div class="avatar avatar-xl mr-3">
-                                                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">📋️</span></div>
-                                                </div>
-                                            </div>
-                                            <div class="notification-body">
-                                                <p class="mb-1"><strong>Anthony Hopkins</strong> joined <strong>Victory day cultural Program</strong> with <strong>Tony Stark</strong></p>
-                                                <span class="notification-time">November 01, 11:30 AM</span>
-                                            </div>
-                                        </a>
-
-                                        <a class="notification border-x-0 border-bottom-0 border-300 rounded-top-0" href="#!">
-                                            <div class="notification-avatar">
-                                                <div class="avatar avatar-xl mr-3">
-                                                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">📅️</span></div>
-                                                </div>
-                                            </div>
-                                            <div class="notification-body">
-                                                <p class="mb-1"><strong>Massachusetts Institute of Technology</strong> invited <strong>Anthony Hopkin</strong> to an event</p>
-                                                <span class="notification-time">October 28, 12:00 PM</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card mb-3 mb-xl-0">
-                                    <div class="card-header bg-light">
-                                        <h5 class="mb-0">Photos</h5>
-                                    </div>
-                                    <div class="card-body overflow-hidden">
-                                        <div class="row no-gutters">
-                                            <div class="col-6 p-1"><a href="../assets/img/generic/4.jpg" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="../assets/img/generic/4.jpg" alt="" /></a></div>
-                                            <div class="col-6 p-1"><a href="../assets/img/generic/5.jpg" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="../assets/img/generic/5.jpg" alt="" /></a></div>
-                                            <div class="col-4 p-1"><a href="../assets/img/gallery/4.jpg" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="../assets/img/gallery/4.jpg" alt="" /></a></div>
-                                            <div class="col-4 p-1"><a href="../assets/img/gallery/5.jpg" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="../assets/img/gallery/5.jpg" alt="" /></a></div>
-                                            <div class="col-4 p-1"><a href="../assets/img/gallery/3.jpg" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="../assets/img/gallery/3.jpg" alt="" /></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 pl-lg-2">
-                                <div class="sticky-top sticky-sidebar">
-                                    <div class="card mb-3">
-                                        <div class="card-header bg-light">
-                                            <h5 class="mb-0">Experience</h5>
-                                        </div>
-                                        <div class="card-body fs--1">
-                                            <div class="media"><a href="#!"> <img class="img-fluid" src="../assets/img/logos/g.png" alt="" width="56" /></a>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0">Big Data Engineer<small class="fas fa-check-circle text-primary ml-1" data-toggle="tooltip" data-placement="top" title="Verified" data-fa-transform="shrink-4 down-2"></small></h6>
-                                                    <p class="mb-1"> <a href="#!">Google</a></p>
-                                                    <p class="text-1000 mb-0">Apr 2012 - Present &bull; 6 yrs 9 mos</p>
-                                                    <p class="text-1000 mb-0">California, USA</p>
-                                                    <hr class="border-dashed border-bottom-0" />
-                                                </div>
-                                            </div>
-                                            <div class="media"><a href="#!"> <img class="img-fluid" src="../assets/img/logos/apple.png" alt="" width="56" /></a>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0">Software Engineer<small class="fas fa-check-circle text-primary ml-1" data-toggle="tooltip" data-placement="top" title="Verified" data-fa-transform="shrink-4 down-2"></small></h6>
-                                                    <p class="mb-1"> <a href="#!">Apple</a></p>
-                                                    <p class="text-1000 mb-0">Jan 2012 - Apr 2012 &bull; 4 mos</p>
-                                                    <p class="text-1000 mb-0">California, USA</p>
-                                                    <hr class="border-dashed border-bottom-0" />
-                                                </div>
-                                            </div>
-                                            <div class="media"><a href="#!"> <img class="img-fluid" src="../assets/img/logos/nike.png" alt="" width="56" /></a>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0">Mobile App Developer<small class="fas fa-check-circle text-primary ml-1" data-toggle="tooltip" data-placement="top" title="Verified" data-fa-transform="shrink-4 down-2"></small></h6>
-                                                    <p class="mb-1"> <a href="#!">Nike</a></p>
-                                                    <p class="text-1000 mb-0">Jan 2011 - Apr 2012 &bull; 1 yr 4 mos</p>
-                                                    <p class="text-1000 mb-0">Beaverton, USA</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-header bg-light">
-                                            <h5 class="mb-0">Education</h5>
-                                        </div>
-                                        <div class="card-body fs--1">
-                                            <div class="media"><a href="#!">
-                                                    <div class="avatar avatar-3xl">
-                                                        <div class="avatar-name rounded-circle"><span>SU</span></div>
-                                                    </div>
-                                                </a>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0"> <a href="#!">Stanford University<small class="fas fa-check-circle text-primary ml-1" data-toggle="tooltip" data-placement="top" title="Verified" data-fa-transform="shrink-4 down-2"></small></a></h6>
-                                                    <p class="mb-1">Computer Science and Engineering</p>
-                                                    <p class="text-1000 mb-0">2010 - 2014 • 4 yrs</p>
-                                                    <p class="text-1000 mb-0">California, USA</p>
-                                                    <hr class="border-dashed border-bottom-0" />
-                                                </div>
-                                            </div>
-                                            <div class="media"><a href="#!"> <img class="img-fluid" src="../assets/img/logos/staten.png" alt="" width="56" /></a>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0"> <a href="#!">Staten Island Technical High School<small class="fas fa-check-circle text-primary ml-1" data-toggle="tooltip" data-placement="top" title="Verified" data-fa-transform="shrink-4 down-2"></small></a></h6>
-                                                    <p class="mb-1">Higher Secondary School Certificate, Science</p>
-                                                    <p class="text-1000 mb-0">2008 - 2010 &bull; 2 yrs</p>
-                                                    <p class="text-1000 mb-0">New York, USA</p>
-                                                    <hr class="border-dashed border-bottom-0" />
-                                                </div>
-                                            </div>
-                                            <div class="media"><a href="#!"> <img class="img-fluid" src="../assets/img/logos/tj-heigh-school.png" alt="" width="56" /></a>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0"> <a href="#!">Thomas Jefferson High School for Science and Technology<small class="fas fa-check-circle text-primary ml-1" data-toggle="tooltip" data-placement="top" title="Verified" data-fa-transform="shrink-4 down-2"></small></a></h6>
-                                                    <p class="mb-1">Secondary School Certificate, Science</p>
-                                                    <p class="text-1000 mb-0">2003 - 2008 &bull; 5 yrs</p>
-                                                    <p class="text-1000 mb-0">Alexandria, USA</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3 mb-lg-0">
-                                        <div class="card-header bg-light">
-                                            <h5 class="mb-0">Events</h5>
-                                        </div>
-                                        <div class="card-body fs--1">
-                                            <div class="media btn-reveal-trigger">
-                                                <div class="calendar"><span class="calendar-month">Feb</span><span class="calendar-day">21</span></div>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0"><a href="event-detail.html">Newmarket Nights</a></h6>
-                                                    <p class="mb-1">Organized by <a href="#!" class="text-700">University of Oxford</a></p>
-                                                    <p class="text-1000 mb-0">Time: 6:00AM</p>
-                                                    <p class="text-1000 mb-0">Duration: 6:00AM - 5:00PM</p>Place: Cambridge Boat Club, Cambridge
-                                                    <hr class="border-dashed border-bottom-0" />
-                                                </div>
-                                            </div>
-                                            <div class="media btn-reveal-trigger">
-                                                <div class="calendar"><span class="calendar-month">Dec</span><span class="calendar-day">31</span></div>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0"><a href="event-detail.html">31st Night Celebration</a></h6>
-                                                    <p class="mb-1">Organized by <a href="#!" class="text-700">Chamber Music Society</a></p>
-                                                    <p class="text-1000 mb-0">Time: 11:00PM</p>
-                                                    <p class="text-1000 mb-0">280 people interested</p>Place: Tavern on the Greend, New York
-                                                    <hr class="border-dashed border-bottom-0" />
-                                                </div>
-                                            </div>
-                                            <div class="media btn-reveal-trigger">
-                                                <div class="calendar"><span class="calendar-month">Dec</span><span class="calendar-day">16</span></div>
-                                                <div class="media-body position-relative pl-3">
-                                                    <h6 class="fs-0 mb-0"><a href="event-detail.html">Folk Festival</a></h6>
-                                                    <p class="mb-1">Organized by <a href="#!" class="text-700">Harvard University</a></p>
-                                                    <p class="text-1000 mb-0">Time: 9:00AM</p>
-                                                    <p class="text-1000 mb-0">Location: Cambridge Masonic Hall Association</p>Place: Porter Square, North Cambridge
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer bg-light py-0 border-top"><a class="btn btn-link btn-block" href="events.html">All Events<span class="fas fa-chevron-right ml-1 fs--2"></span></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mt-3">
-                            <div class="card-header bg-light">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h5 class="mb-0" id="followers">Followers <span class="d-none d-sm-inline-block">(233)</span></h5>
-                                    </div>
-                                    <div class="col text-right"><a class="text-sans-serif" href="people.html">All Members</a></div>
-                                </div>
-                            </div>
-                            <div class="card-body bg-light p-0">
-                                <div class="row no-gutters text-center fs--1">
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/1.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Emilia Clarke</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Technext limited</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/2.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Kit Harington</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Harvard Korea Society</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/3.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Sophie Turner</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Graduate Student Council</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/4.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Peter Dinklage</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Art Club, MIT</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/5.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Nikolaj Coster</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Archery Club, MIT</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/6.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Isaac Hempstead</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Asymptones</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/7.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Alfie Allen</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Brain Trust</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/8.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Iain Glen</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">GSAS Action Coalition</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/9.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Liam Cunningham</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Caving Club, MIT</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/10.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">John Bradley</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Chess Club</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/11.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Rory McCann</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Chamber Music Society</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-                                        <div class="bg-white p-3 h-100"><a href="profile.html"><img class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm" src="../assets/img/team/12.jpg" alt="" width="100" /></a>
-                                            <h6 class="mb-1"><a href="profile.html">Joe Dempsie</a></h6>
-                                            <p class="fs--2 mb-1"><a class="text-700" href="#!">Clubchem</a></p>
                                         </div>
                                     </div>
                                 </div>
