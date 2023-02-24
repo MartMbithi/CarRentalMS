@@ -64,26 +64,26 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-$access_level = $_GET['user_access_level'];
-
 /* Terminate Active Sessions */
-if ($access_level == 'Administator' || $access_level == 'Staff') {
+$access_level = $_GET['access_level'];
+
+if ($access_level == 'Administrator' || $access_level == 'Staff') {
     session_start();
     unset($_SESSION['user_id']);
     unset($_SESSION['user_access_level']);
     unset($_SESSION['user_dpic']);
     session_destroy();
     header("Location: login");
-    exit();
+    exit;
 } else if ($access_level == 'Client') {
     session_start();
     unset($_SESSION['client_id']);
+    unset($_SESSION['client_access_level']);
     unset($_SESSION['client_dpic']);
     session_destroy();
     header("Location: login");
-    exit();
+    exit;
 } else {
-    session_destroy();
     header("Location: login");
-    exit();
+    exit;
 }
