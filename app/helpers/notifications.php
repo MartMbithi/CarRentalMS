@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Tue Feb 21 2023
+ *   Crafted On Fri Feb 24 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -64,26 +64,18 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-/* Terminate Active Sessions */
-$access_level = $_GET['access_level'];
 
-if ($access_level == 'Administrator' || $access_level == 'Staff') {
-    session_start();
-    unset($_SESSION['user_id']);
-    unset($_SESSION['user_access_level']);
-    unset($_SESSION['user_dpic']);
-    session_destroy();
-    header("Location: login");
-    exit;
-} else if ($access_level == 'Client') {
-    session_start();
-    unset($_SESSION['client_id']);
-    unset($_SESSION['client_access_level']);
-    unset($_SESSION['client_dpic']);
-    session_destroy();
-    header("Location: login");
-    exit;
-} else {
-    header("Location: login");
-    exit;
+/* Mark All As Read */
+if (isset($_POST['User_Mark_As_Read'])) {
+    $notification_user_id = mysqli_real_escape_string($mysqli, $_POST['notification_user_id']);
+
+    /* Persist */
+    $sql = "UPDATE notifications SET notification_status = '1'
+    WHERE notification_user_id = '{$notification_user_id}'";
+
+    if (mysqli_query($mysqli, $sql)) {
+        $success = "Notifications marked as read";
+    } else {
+        $err =  "Failed, please try again";
+    }
 }

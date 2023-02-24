@@ -82,8 +82,7 @@ require_once('../app/partials/back_office_head.php');
             <?php require_once('../app/partials/back_office_sidebar.php'); ?>
             <div class="content">
                 <!-- Navigations -->
-                <?php require_once('../app/partials/back_office_topbar.php');
-                ?>
+                <?php require_once('../app/partials/back_office_topbar.php'); ?>
                 <!-- End Navigations -->
                 <div class="row no-gutters">
 
@@ -184,35 +183,68 @@ require_once('../app/partials/back_office_head.php');
                                 </div>
                             </div>
                             <div class="card-body p-0">
-                                <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
-                                    <div class="col pl-card py-1 position-static">
-                                        <div class="media align-items-center">
-                                            <div class="avatar avatar-xl mr-3">
-                                                <div class="avatar-name rounded-circle bg-soft-primary text-dark">
-                                                    <span class="fs-0 text-primary">F</span>
+                                <?php
+                                /* Fetch Recently Hired Clients */
+                                $clients_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM clients ORDER BY  client_date_joined  ASC
+                                    LIMIT 5
+                                    "
+                                );
+                                if (mysqli_num_rows($clients_sql) > 0) {
+                                    while ($clients = mysqli_fetch_array($clients_sql)) {
+                                        /* Image Url */
+                                        if (!empty($clients['client_dpic'])) {
+                                            $client_image_url = '../storage/clients/' . $clients['client_dpic'];
+                                        } else {
+                                            $client_image_url = '../storage/clients/no-profile.png';
+                                        }
+                                ?>
+                                        <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                            <div class="col pl-card py-1 position-static">
+                                                <div class="media align-items-center">
+                                                    <div class="avatar avatar-xl mr-3">
+                                                        <div class="avatar-name rounded-circle bg-soft-primary text-dark">
+                                                            <img src="<?php echo $client_image_url; ?>" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 d-flex align-items-center">
+                                                            <a class="text-800 stretched-link" href="backoffice_client?client=<?php echo $clients['client_id']; ?>">
+                                                                <?php echo $clients['client_names']; ?>
+                                                            </a>
+                                                        </h6>
+                                                        <small class="mb-0 d-flex align-items-center">
+                                                            <?php echo $clients['client_email']; ?>
+                                                        </small>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 d-flex align-items-center">
-                                                    <a class="text-800 stretched-link" href="#!">
-                                                        Client name
-                                                    </a>
-                                                </h6>
+                                            <div class="col py-1">
+                                                <div class="row flex-end-center no-gutters">
+                                                    <div class="col-auto pr-2">
+                                                        <div class="fs--1 font-weight-semi-bold">Date joined <?php echo date('d M Y', strtotime($clients['client_date_joined'])); ?></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php }
+                                } else { ?>
+                                    <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                        <div class="col pl-card py-1 position-static">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 d-flex align-items-center">
+                                                        Woops!😦, we cannot find any client details
+                                                    </h6>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col py-1">
-                                        <div class="row flex-end-center no-gutters">
-                                            <div class="col-auto pr-2">
-                                                <div class="fs--1 font-weight-semi-bold">Date joined 12:50:00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <?php } ?>
                             </div>
                             <div class="card-footer bg-light p-0">
-                                <a class="btn btn-sm btn-link btn-block py-2" href="backoffice_rentals">Show all clients
+                                <a class="btn btn-sm btn-link btn-block py-2" href="backoffice_clients">Show all clients
                                     <span class="fas fa-chevron-right ml-1 fs--2">
                                     </span>
                                 </a>
@@ -225,12 +257,55 @@ require_once('../app/partials/back_office_head.php');
                             <div class="card-header">
                                 <div class="row flex-between-center">
                                     <div class="col-auto">
-                                        <h6 class="mb-0">Vehicles per category</h6>
+                                        <h6 class="mb-0">Payments logs</h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body h-100 pr-0">
-                                <div class="echart-line-total-sales h-100" data-echart-responsive="true"></div>
+                                <?php
+                                /* Fetch Recently Received Payments */
+                                $payments_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM payments ORDER BY  payment_date_posted  ASC
+                                    LIMIT 5
+                                    "
+                                );
+                                if (mysqli_num_rows($payments_sql) > 0) {
+                                    while ($payments = mysqli_fetch_array($payments_sql)) {
+                                ?>
+                                        <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                            <div class="col pl-card py-1 position-static">
+                                                <div class="media align-items-center">
+                                                    <div class="avatar avatar-xl mr-3">
+                                                        <div class="avatar-name rounded-circle bg-soft-primary text-dark">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 d-flex align-items-center">
+                                                            <a class="text-800 stretched-link" href="backoffice_payment?payment=<?php echo $payments['payment_id']; ?>">
+                                                                <?php echo $payments['payment_ref_code']; ?> Confirmed, Payment of
+                                                                Ksh <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($paymets['client_date_joined'])); ?>
+                                                            </a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php }
+                                } else { ?>
+                                    <div class="row no-gutters align-items-center py-2 position-relative border-bottom border-200">
+                                        <div class="col pl-card py-1 position-static">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 d-flex align-items-center">
+                                                        Woops!😦, we cannot find any payment details
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -246,25 +321,54 @@ require_once('../app/partials/back_office_head.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="border-bottom border-200">
-                                            <td>
-                                                <div class="media align-items-center position-relative"><img class="rounded border border-200" src="../assets/img/products/12.png" width="60" alt="" />
-                                                    <div class="media-body ml-3">
-                                                        <h6 class="mb-1 font-weight-semi-bold"><a class="text-dark stretched-link" href="#!">Raven Pro</a></h6>
-                                                        <p class="font-weight-semi-bold mb-0 text-500">Landing</p>
+                                        <?php
+                                        /* Fetch Recently Hired Cars */
+                                        $recent_hires = mysqli_query(
+                                            $mysqli,
+                                            "SELECT * FROM car_rentals cr
+                                            INNER JOIN cars c ON c.car_id = cr.rental_car_id
+                                            "
+                                        );
+                                        if (mysqli_num_rows($recent_hires) > 0) {
+                                            while ($rentals = mysqli_fetch_array($recent_hires)) {
+                                        ?>
+                                                <tr class="border-bottom border-200">
+                                                    <td>
+                                                        <div class="media align-items-center position-relative">
+                                                            <div class="media-body ml-3">
+                                                                <h6 class="mb-1 font-weight-semi-bold">
+                                                                    <a class="text-dark stretched-link" href="backoffice_rental?rental=<?php echo $rentals['car_id']; ?>">
+                                                                        <?php echo $rentals['car_reg_number']; ?>
+                                                                    </a>
+                                                                </h6>
+                                                                <p class="font-weight-semi-bold mb-0 text-500"><?php echo $rentals['car_model']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-right font-weight-semi-bold"></td>
+                                                    <td class="align-middle pr-card">
+                                                        <div class="d-flex flex-between-center">
+                                                            <div class="font-weight-semi-bold">
+                                                                Rented From <?php echo date('d M Y', strtotime($rentals['rental_from_date'])); ?>
+                                                                To <?php echo date('d M Y', strtotime($rentals['rental_to_date'])); ?>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                        } else {
+                                            ?><tr class="border-bottom border-200">
+                                                <td colspan="3">
+                                                    <div class="media align-items-center position-relative">
+                                                        <div class="media-body ml-3">
+                                                            <h6 class="mb-1 font-weight-semi-bold text-danger text-center">
+                                                                Woops!😦, we cannot find any vehicles here
+                                                            </h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle text-right font-weight-semi-bold">$1311</td>
-                                            <td class="align-middle pr-card">
-                                                <div class="d-flex flex-between-center">
-                                                    <div class="progress w-100 mr-3 rounded-soft bg-200" style="height: 5px; max-width: 54px">
-                                                        <div class="progress-bar rounded-capsule" role="progressbar" style="width: 41%;" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                    <div class="font-weight-semi-bold">41%</div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

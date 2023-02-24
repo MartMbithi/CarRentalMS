@@ -69,6 +69,8 @@ if (!empty($_SESSION['user_dpic'])) {
 } else {
     $image_url = '../storage/users/no-profile.png';
 }
+/* Notifications Helpers*/
+include('../app/helpers/notifications.php');
 ?>
 <nav class="navbar navbar-light navbar-glass navbar-top sticky-kit navbar-expand" style="display:none;">
     <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
@@ -88,39 +90,86 @@ if (!empty($_SESSION['user_dpic'])) {
             </div>
         </li>
     </ul>
+
     <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
-        <li class="nav-item dropdown dropdown-on-hover">
-            <a class="nav-link notification-indicator notification-indicator-primary px-0 icon-indicator" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span></a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="navbarDropdownNotification">
-                <div class="card card-notification shadow-none" style="max-width: 20rem">
-                    <div class="card-header">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <h6 class="card-header-title mb-0">Notifications</h6>
+        <?php
+        /* Pull Notifications */
+        $sql = "SELECT * FROM notifications WHERE notification_user_id = '{$_SESSION['user_id']}' 
+        AND notification_status = '0'";
+        $res = mysqli_query($mysqli, $sql);
+        if (mysqli_num_rows($res) > 0) {
+        ?>
+            <li class="nav-item dropdown dropdown-on-hover">
+                <a class="nav-link notification-indicator notification-indicator-primary px-0 icon-indicator" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="navbarDropdownNotification">
+                    <div class="card card-notification shadow-none" style="max-width: 20rem">
+                        <div class="card-header">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h6 class="card-header-title mb-0">Notifications</h6>
+                                </div>
+                                <div class="col-auto">
+                                    <form method="POST">
+                                        <input type="hidden" name="notification_user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                                        <input type="submit" name="User_Mark_As_Read" class="card-link font-weight-normal text-primary" value="Mark all as read">
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col-auto"><a class="card-link font-weight-normal" href="#">Mark all as read</a></div>
                         </div>
-                    </div>
-                    <div class="list-group list-group-flush font-weight-normal fs--1">
-                        <div class="list-group-title border-bottom">NEW</div>
-                        <div class="list-group-item">
-                            <a class="notification notification-flush bg-200" href="#!">
-                                <div class="notification-avatar">
-                                    <div class="avatar avatar-2xl mr-3">
-                                        <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="" />
+                        <div class="list-group list-group-flush font-weight-normal fs--1">
+                            <div class="list-group-title border-bottom">NEW</div>
+                            <!-- Fetch All Notification -->
+                            <?php
+                            $notifications_sql = mysqli_query(
+                                $mysqli,
+                                "SELECT * FROM notifications WHERE notification_user_id = '{$_SESSION['user_id']}' 
+                                AND notification_status = '0' ORDER BY notifcation_created_on DESC LIMIT 5
+                                "
+                            );
+                            if (mysqli_num_rows($notifications_sql) > 0) {
+                                while ($notifications = mysqli_fetch_array($notifications_sql)) {
+                            ?>
+                                    <div class="list-group-item">
+                                        <a class="notification notification-flush bg-200" href="backoffice_notifications?owner=<?php echo $notifications['notification_user_id']; ?>">
+                                            <div class="notification-body">
+                                                <p class="mb-1">
+                                                    <strong><?php echo $notifications['notification_title']; ?></strong>
+                                                    <?php echo $notifications['notification_details']; ?>
+                                                </p>
+                                                <span class="notification-time">
+                                                    <span class="mr-1" role="img" aria-label="Emoji">🕗</span>
+                                                    <?php echo date('d M Y g:ia', strtotime($notifications['notifcation_created_on'])); ?>
+                                                </span>
+                                            </div>
+                                        </a>
                                     </div>
+                            <?php }
+                            } ?>
+                        </div>
+                        <div class="card-footer text-center border-top"><a class="card-link d-block" href="backoffice_notifications?owner=<?php echo $_SESSION['user_id']; ?>">View all</a></div>
+                    </div>
+                </div>
+            </li>
+        <?php } else { ?>
+            <li class="nav-item dropdown dropdown-on-hover">
+                <a class="nav-link" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="navbarDropdownNotification">
+                    <div class="card card-notification shadow-none" style="max-width: 20rem">
+                        <div class="card-header">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h6 class="card-header-title mb-0">No new notifications</h6>
                                 </div>
-                                <div class="notification-body">
-                                    <p class="mb-1"><strong>Emma Watson</strong> replied to your comment : "Hello world 😍"</p>
-                                    <span class="notification-time"><span class="mr-1" role="img" aria-label="Emoji">💬</span>Just now</span>
-                                </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer text-center border-top"><a class="card-link d-block" href="../pages/notifications.html">View all</a></div>
                 </div>
-            </div>
-        </li>
+            </li>
+        <?php } ?>
         <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-xl">
                     <img class="rounded-circle" src="<?php echo $image_url; ?>" alt="" />
@@ -129,11 +178,12 @@ if (!empty($_SESSION['user_dpic'])) {
             <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
                 <div class="bg-white rounded-soft py-2">
                     <a class="dropdown-item" href="backoffice_settings">Settings</a>
-                    <a class="dropdown-item" href="#logout_modal">Logout</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#logoutModal">Logout</a>
                 </div>
             </div>
         </li>
     </ul>
+
 </nav>
 
 <script>

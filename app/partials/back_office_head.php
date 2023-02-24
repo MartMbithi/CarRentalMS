@@ -19,13 +19,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../storage/system/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../storage/system/favicon/favicon-16x16.png">
     <link rel="manifest" href="../storage/system/favicon/site.webmanifest">
-
-    <!-- ===============================================-->
-    <!--    Stylesheets-->
-    <!-- ===============================================-->
+    <!-- Config navbar -->
     <script src="../public/backoffice_assets/js/config.navbar-vertical.min.js"></script>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <!-- Scrollbar -->
     <link href="../public/backoffice_assets/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet">
+    <!-- Theme  -->
     <link href="../public/backoffice_assets/css/theme.min.css" rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/noty.css">

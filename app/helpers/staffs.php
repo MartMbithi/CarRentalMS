@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Tue Feb 21 2023
+ *   Crafted On Fri Feb 24 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -64,26 +64,81 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-/* Terminate Active Sessions */
-$access_level = $_GET['access_level'];
 
-if ($access_level == 'Administrator' || $access_level == 'Staff') {
-    session_start();
-    unset($_SESSION['user_id']);
-    unset($_SESSION['user_access_level']);
-    unset($_SESSION['user_dpic']);
-    session_destroy();
-    header("Location: login");
-    exit;
-} else if ($access_level == 'Client') {
-    session_start();
-    unset($_SESSION['client_id']);
-    unset($_SESSION['client_access_level']);
-    unset($_SESSION['client_dpic']);
-    session_destroy();
-    header("Location: login");
-    exit;
-} else {
-    header("Location: login");
-    exit;
+/* Bulk Import */
+
+/* Add Staff */
+
+/* Update Staff */
+
+/* Delete Staff */
+
+/* Update Staff Profile */
+if (isset($_POST['Update_Staff_Profile'])) {
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+    $user_name = mysqli_real_escape_string($mysqli, $_POST['user_name']);
+    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+    $user_phone_number = mysqli_real_escape_string($mysqli, $_POST['user_phone_number']);
+    $user_id_number = mysqli_real_escape_string($mysqli, $_POST['user_id_number']);
+    $user_address = mysqli_real_escape_string($mysqli, $_POST['user_address']);
+
+    /* Perist */
+    $update_sql = "UPDATE users SET user_name = '{$user_name}', user_email  = '{$user_email}', user_phone_number = '{$user_phone_number}', user_id_number = '{$user_id_number}', 
+    user_address = '{$user_address}' WHERE user_id = '{$user_id}'";
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success  = "Profile updated successfully";
+    } else {
+        $err = "Failed, please try again later";
+    }
+}
+
+/* Update Staff Passwords */
+if (isset($_POST['Update_Staff_Password'])) {
+    $old_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['old_password'])));
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+
+    /* Check Passwords match */
+    if ($confirm_password != $new_password) {
+        $err =  "Passwords do not match";
+    } else {
+        /* Check If Old Passwords Do Match */
+        $sql = "SELECT * FROM  users WHERE user_id = '{$user_id}'
+        AND user_password = '{$old_password}'";
+        $res = mysqli_query($mysqli, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            /* Update Password */
+            $update_sql = "UPDATE users SET user_password = '{$new_password}' WHERE user_id = '{$user_id}'";
+            if (mysqli_query($mysqli, $update_sql)) {
+                $success = "Password updated successfully";
+            } else {
+                $err = "Failed, please try again later";
+            }
+        } else {
+            $err = "Old Password is incorrect";
+        }
+    }
+}
+
+/* Update Staff Images */
+if (isset($_POST['Update_Staff_Profile_Photo'])) {
+    $user_dpic  = mysqli_real_escape_string($mysqli, $_FILES['user_dpic']['name']);
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+
+    /* Files  */
+    $temp_dpic = explode('.', $user_dpic);
+    $new_user_dpic = 'Car_Rental_Staff_DPIC_' . time() . '.' . end($temp_dpic);
+    move_uploaded_file(
+        $_FILES['user_dpic']['tmp_name'],
+        '../storage/users/' . $new_user_dpic
+    );
+
+    /* Persist */
+    $update_dpic_sql = "UPDATE users SET user_dpic = '{$new_user_dpic}' WHERE user_id = '{$user_id}'";
+    if (mysqli_query($mysqli, $update_dpic_sql)) {
+        $success = "Profile picture updated successfully";
+    } else {
+        $err = "Failed, please try again later";
+    }
 }
