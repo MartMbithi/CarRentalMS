@@ -132,6 +132,7 @@ require_once('../app/partials/back_office_head.php');
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Update profile</a></li>
                                             <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-profile" role="tab" aria-controls="tab-profile" aria-selected="false">Update passwords</a></li>
+                                            <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-contact" role="tab" aria-controls="tab-contact" aria-selected="false">Update profile photo</a></li>
                                         </ul>
                                         <div class="tab-content border-x border-bottom p-3" id="myTabContent">
                                             <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
@@ -181,6 +182,22 @@ require_once('../app/partials/back_office_head.php');
                                                     </div>
                                                     <div class="text-right">
                                                         <button class="btn btn-primary" type="submit" name="Update_Staff_Password">Update passwords</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab-contact" role="tabpanel" aria-labelledby="contact-tab">
+                                                <form method="POST" enctype="multipart/form-data">
+                                                    <div class="form-row">
+                                                        <div class="col-md-12 mb-3">
+                                                            <label for="validationTooltip01">Profile photo</label>
+                                                            <div class="custom-file">
+                                                                <input type="file" name="user_dpic" required class="custom-file-input" id="inputGroupFile02">
+                                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <button class="btn btn-primary" type="submit" name="Update_Staff_Profile">Update profile</button>
                                                     </div>
                                                 </form>
                                             </div>
