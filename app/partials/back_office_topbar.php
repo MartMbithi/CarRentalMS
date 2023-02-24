@@ -125,8 +125,8 @@ include('../app/helpers/notifications.php');
                             $notifications_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM notifications WHERE notification_user_id = '{$_SESSION['user_id']}' 
-                            AND notification_status = '0' ORDER BY notifcation_created_on DESC LIMIT 5
-                            "
+                                AND notification_status = '0' ORDER BY notifcation_created_on DESC LIMIT 5
+                                "
                             );
                             if (mysqli_num_rows($notifications_sql) > 0) {
                                 while ($notifications = mysqli_fetch_array($notifications_sql)) {
