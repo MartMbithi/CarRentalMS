@@ -75,7 +75,7 @@
 
 /* Update Staff Profile */
 if (isset($_POST['Update_Staff_Profile'])) {
-    $user_id = mysqli_real_escape_string($mysqli, $_POST['user_id']);
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
     $user_name = mysqli_real_escape_string($mysqli, $_POST['user_name']);
     $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
     $user_phone_number = mysqli_real_escape_string($mysqli, $_POST['user_phone_number']);
