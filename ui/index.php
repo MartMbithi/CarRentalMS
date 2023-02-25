@@ -155,7 +155,9 @@ require_once('../app/partials/landing_head.php');
                     /* Fetch available cars */
                     $available_cars_sql = mysqli_query(
                         $mysqli,
-                        "SELECT * FROM  cars c INNER JOIN car_images ci ON ci.image_car_id = c.car_id
+                        "SELECT * FROM  cars c 
+                        INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
+                        INNER JOIN car_images ci ON ci.image_car_id = c.car_id
                         WHERE car_availability_status = '0'
                         LIMIT 5 "
                     );
