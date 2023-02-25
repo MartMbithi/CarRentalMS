@@ -165,7 +165,7 @@ require_once('../app/partials/landing_head.php');
                             <div class="carousel-car owl-carousel">
                                 <div class="item">
                                     <div class="car-wrap rounded ftco-animate">
-                                        <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
+                                        <div class="img rounded d-flex align-items-end" style="background-image: url(../storage/cars/<?php echo $cars['image_file_name']; ?>">
                                         </div>
                                         <div class="text">
                                             <h2 class="mb-0"><a href="#"><?php echo $cars['car_model']; ?></a></h2>
@@ -173,13 +173,26 @@ require_once('../app/partials/landing_head.php');
                                                 <span class="cat"><?php echo $cars['category_name']; ?></span>
                                                 <p class="price ml-auto">Ksh <?php echo number_format($cars['car_renting_rate']); ?> <span>/day</span></p>
                                             </div>
-                                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                            <p class="d-flex mb-0 d-block">
+                                                <a href="login" class="btn btn-primary py-2 mr-1">Book now</a>
+                                                <a href="car?view=<?php echo $cars['car_id']; ?>" class="btn btn-secondary py-2 ml-1">Details</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    <?php }
-                    } ?>
+                        <?php }
+                    } else { ?>
+                        <div class="item">
+                            <div class="car-wrap rounded ftco-animate">
+                                <div class="text">
+                                    <h2 class="mb-0 text-danger text-center">
+                                        No available cars for the moment
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
