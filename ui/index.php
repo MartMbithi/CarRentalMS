@@ -157,7 +157,7 @@ require_once('../app/partials/landing_head.php');
                         $mysqli,
                         "SELECT * FROM  cars c INNER JOIN car_images ci ON ci.image_car_id = c.car_id
                         WHERE car_availability_status = '0'
-                        LIMIT 5 ORDER BY RAND() "
+                        LIMIT 5 "
                     );
                     if (mysqli_num_rows($available_cars_sql) > 0) {
                         while ($cars = mysqli_fetch_array($available_cars_sql)) {
