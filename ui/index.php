@@ -137,6 +137,7 @@ require_once('../app/partials/landing_head.php');
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
 
@@ -145,69 +146,40 @@ require_once('../app/partials/landing_head.php');
             <div class="row justify-content-center">
                 <div class="col-md-12 heading-section text-center ftco-animate mb-5">
                     <span class="subheading">What we offer</span>
-                    <h2 class="mb-2">Featured Vehicles</h2>
+                    <h2 class="mb-2">Available Vehicles</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="carousel-car owl-carousel">
-                        <div class="item">
-                            <div class="car-wrap rounded ftco-animate">
-                                <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
-                                </div>
-                                <div class="text">
-                                    <h2 class="mb-0"><a href="#">Mercedes Grand Sedan</a></h2>
-                                    <div class="d-flex mb-3">
-                                        <span class="cat">Cheverolet</span>
-                                        <p class="price ml-auto">$500 <span>/day</span></p>
+                    <?php
+                    /* Fetch available cars */
+                    $available_cars_sql = mysqli_query(
+                        $mysqli,
+                        "SELECT * FROM  cars c INNER JOIN car_images ci ON ci.image_car_id = c.car_id
+                        WHERE car_availability_status = '0'
+                        LIMIT 5 ORDER BY RAND() "
+                    );
+                    if (mysqli_num_rows($available_cars_sql) > 0) {
+                        while ($cars = mysqli_fetch_array($available_cars_sql)) {
+                    ?>
+                            <div class="carousel-car owl-carousel">
+                                <div class="item">
+                                    <div class="car-wrap rounded ftco-animate">
+                                        <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
+                                        </div>
+                                        <div class="text">
+                                            <h2 class="mb-0"><a href="#">Mercedes Grand Sedan</a></h2>
+                                            <div class="d-flex mb-3">
+                                                <span class="cat">Cheverolet</span>
+                                                <p class="price ml-auto">$500 <span>/day</span></p>
+                                            </div>
+                                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                        </div>
                                     </div>
-                                    <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="car-wrap rounded ftco-animate">
-                                <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-2.jpg);">
-                                </div>
-                                <div class="text">
-                                    <h2 class="mb-0"><a href="#">Mercedes Grand Sedan</a></h2>
-                                    <div class="d-flex mb-3">
-                                        <span class="cat">Cheverolet</span>
-                                        <p class="price ml-auto">$500 <span>/day</span></p>
-                                    </div>
-                                    <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="car-wrap rounded ftco-animate">
-                                <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-3.jpg);">
-                                </div>
-                                <div class="text">
-                                    <h2 class="mb-0"><a href="#">Mercedes Grand Sedan</a></h2>
-                                    <div class="d-flex mb-3">
-                                        <span class="cat">Cheverolet</span>
-                                        <p class="price ml-auto">$500 <span>/day</span></p>
-                                    </div>
-                                    <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="car-wrap rounded ftco-animate">
-                                <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-4.jpg);">
-                                </div>
-                                <div class="text">
-                                    <h2 class="mb-0"><a href="#">Mercedes Grand Sedan</a></h2>
-                                    <div class="d-flex mb-3">
-                                        <span class="cat">Cheverolet</span>
-                                        <p class="price ml-auto">$500 <span>/day</span></p>
-                                    </div>
-                                    <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php }
+                    } ?>
                 </div>
             </div>
         </div>
