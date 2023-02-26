@@ -3,7 +3,11 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2"><a href="../" class="logo">Car<span>Rentals</span></a></h2>
+                    <h2 class="ftco-heading-2">
+                        <a href="../">
+                            <img class="navbar-brand" src="../storage/system/logo.png" />
+                        </a>
+                    </h2>
                     <p>
                         We are a popular option for individuals and businesses who need access to a vehicle for a
                         short period of time. Our service offers are convenient,

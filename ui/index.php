@@ -83,14 +83,14 @@ require_once('../app/partials/landing_head.php');
                             We are a popular option for individuals and businesses who need access to a vehicle for a short period of time.
                             Our service offers are convenient, flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
                         </p>
-                        <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
+                        <!-- <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
                             <div class="icon d-flex align-items-center justify-content-center">
                                 <span class="ion-ios-play"></span>
                             </div>
                             <div class="heading-title ml-5">
                                 <span>Easy steps for renting a car</span>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
@@ -208,6 +208,8 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 wrap-about ftco-animate">
                     <div class="heading-section heading-section-white pl-md-5">
                         <span class="subheading">About us</span>
+                        <h2 class="mb-2">Who Are We</h2>
+
                         <p>
                             We are a popular option for individuals and businesses who need access to a vehicle for a short period of time.
                             Our service offers are convenient, flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
@@ -222,7 +224,7 @@ require_once('../app/partials/landing_head.php');
                             With a wide range of vehicles available, and the ability to rent for as long or as short a period as needed,
                             we are a popular choice for those who need access to transportation without the commitment of car ownership.
                         </p>
-                        <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
+                        <p><a href="about" class="btn btn-primary py-3 px-4">Read more</a></p>
                     </div>
                 </div>
             </div>
@@ -303,61 +305,48 @@ require_once('../app/partials/landing_head.php');
             <div class="row ftco-animate">
                 <div class="col-md-12">
                     <div class="carousel-testimony owl-carousel ftco-owl">
-                        <div class="item">
-                            <div class="testimony-wrap rounded text-center py-4 pb-5">
-                                <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
+                        <?php
+                        /* Load Testimonials */
+                        $testimonials_sql = mysqli_query(
+                            $mysqli,
+                            "SELECT * FROM ratings r 
+                            INNER JOIN clients c ON c.client_id = r.rating_client_id
+                            LIMIT 5"
+                        );
+                        if (mysqli_num_rows($testimonials_sql) > 0) {
+                            while ($testimonials = mysqli_fetch_array($testimonials_sql)) {
+                                /* Image Url */
+                                if (!empty($testimonials['client_dpic'])) {
+                                    $client_image_url = '../storage/clients/' . $testimonials['client_dpic'];
+                                } else {
+                                    $client_image_url = '../storage/clients/no-profile.png';
+                                }
+                        ?>
+                                <div class="item">
+                                    <div class="testimony-wrap rounded text-center py-4 pb-5">
+                                        <div class="user-img mb-2" style="background-image: url(<?php echo $client_image_url; ?>)">
+                                        </div>
+                                        <div class="text pt-4">
+                                            <p class="mb-4">
+                                                <?php echo $testimonials['rating_details']; ?>
+                                            </p>
+                                            <p class="name"><?php echo $testimonials['client_names']; ?></p>
+                                            <span class="position"><?php echo date('d M Y g:ia', strtotime($testimonials['rating_date_posted'])); ?></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text pt-4">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap rounded text-center py-4 pb-5">
-                                <div class="user-img mb-2" style="background-image: url(images/person_2.jpg)">
-                                </div>
-                                <div class="text pt-4">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Interface Designer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap rounded text-center py-4 pb-5">
-                                <div class="user-img mb-2" style="background-image: url(images/person_3.jpg)">
-                                </div>
-                                <div class="text pt-4">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">UI Designer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap rounded text-center py-4 pb-5">
-                                <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
-                                </div>
-                                <div class="text pt-4">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Web Developer</span>
+                            <?php }
+                        } else { ?>
+                            <div class="item">
+                                <div class="car-wrap rounded ftco-animate">
+                                    <div class="text">
+                                        <h2 class="mb-0 text-danger text-center">
+                                            No available testimonials for the moment
+                                        </h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap rounded text-center py-4 pb-5">
-                                <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
-                                </div>
-                                <div class="text pt-4">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">System Analyst</span>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
