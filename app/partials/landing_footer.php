@@ -5,7 +5,7 @@
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">
                         <a href="../">
-                            <img class="navbar-brand" src="../storage/system/logo_backoffice.png" />
+                            <img class="navbar-brand" src="../storage/system/logo.png" />
                         </a>
                     </h2>
                     <p>

@@ -83,14 +83,14 @@ require_once('../app/partials/landing_head.php');
                             We are a popular option for individuals and businesses who need access to a vehicle for a short period of time.
                             Our service offers are convenient, flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
                         </p>
-                        <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
+                        <!-- <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
                             <div class="icon d-flex align-items-center justify-content-center">
                                 <span class="ion-ios-play"></span>
                             </div>
                             <div class="heading-title ml-5">
                                 <span>Easy steps for renting a car</span>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
