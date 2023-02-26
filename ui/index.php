@@ -328,6 +328,7 @@ require_once('../app/partials/landing_head.php');
                                         </div>
                                         <div class="text pt-4">
                                             <p class="mb-4">
+                                                <?php echo $testimonials['rating_details']; ?>
                                             </p>
                                             <p class="name"><?php echo $testimonials['client_names']; ?></p>
                                             <span class="position"><?php echo date('d M Y g:ia', strtotime($testimonials['rating_date_posted'])); ?></span>
