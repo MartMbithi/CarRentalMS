@@ -307,20 +307,45 @@ require_once('../app/partials/landing_head.php');
                     <div class="carousel-testimony owl-carousel ftco-owl">
                         <?php
                         /* Load Testimonials */
-                        
+                        $testimonials_sql = mysqli_query(
+                            $mysqli,
+                            "SELECT * FROM ratings r 
+                            INNER JOIN clients c ON c.client_id = r.rating_client_id
+                            LIMIT 5"
+                        );
+                        if (mysqli_num_rows($testimonials_sql) > 0) {
+                            while ($testimonials = mysqli_fetch_array($testimonials_sql)) {
+                                /* Image Url */
+                                if (!empty($testimonials['client_dpic'])) {
+                                    $client_image_url = '../storage/clients/' . $testimonials['client_dpic'];
+                                } else {
+                                    $client_image_url = '../storage/clients/no-profile.png';
+                                }
                         ?>
-                        <div class="item">
-                            <div class="testimony-wrap rounded text-center py-4 pb-5">
-                                <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
+                                <div class="item">
+                                    <div class="testimony-wrap rounded text-center py-4 pb-5">
+                                        <div class="user-img mb-2" style="background-image: url(<?php echo $client_image_url; ?>)">
+                                        </div>
+                                        <div class="text pt-4">
+                                            <p class="mb-4">
+                                            </p>
+                                            <p class="name"><?php echo $testimonials['client_names']; ?></p>
+                                            <span class="position"><?php echo date('d M Y g:ia', strtotime($testimonials['rating_date_posted'])); ?></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text pt-4">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
+                            <?php }
+                        } else { ?>
+                            <div class="item">
+                                <div class="car-wrap rounded ftco-animate">
+                                    <div class="text">
+                                        <h2 class="mb-0 text-danger text-center">
+                                            No available testimonials for the moment
+                                        </h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
+                        <?php } ?>
                     </div>
                 </div>
             </div>
