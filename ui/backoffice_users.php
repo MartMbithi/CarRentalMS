@@ -100,11 +100,44 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                 </div>
                 <div class="row no-gutters">
-
+                    <div class="card mb-3 col-12">
+                        <div class="card-header text-center">
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStaffModal">
+                                <i class="fas fa-plus"></i> Add Staff
+                            </button>
+                        </div>
+                        <div class="card-body bg-light px-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="table table-sm table-dashboard data-table no-wrap mb-0 fs--1 w-100">
+                                        <thead class="bg-200">
+                                            <tr>
+                                                <th class="sort">Name</th>
+                                                <th class="sort">Position</th>
+                                                <th class="sort">Office</th>
+                                                <th class="sort">Age</th>
+                                                <th class="sort">Start date</th>
+                                                <th class="sort">Salary</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white">
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
-                <?php require_once('../app/partials/back_office_footer.php'); ?>
             </div>
-
         </div>
     </main><!-- ===============================================-->
     <!--    End of Main Content-->
