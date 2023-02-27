@@ -101,9 +101,17 @@ require_once('../app/partials/back_office_head.php');
                 </div>
                 <div class="row no-gutters">
                     <div class="card mb-3 col-12">
-                        <div class="card-header text-center">
+                        <div class="card-header text-right">
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStaffModal">
                                 <i class="fas fa-plus"></i> Add Staff
+                            </button>
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#bulkImportStaffs">
+                                <i class="fas fa-upload"></i>
+                                Bulk Import Staffs
+                            </button>
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadStaffModal">
+                                <i class="fas fa-download"></i>
+                                Download Staffs
                             </button>
                         </div>
                         <div class="card-body bg-light px-0">
@@ -137,6 +145,43 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
+                <!-- Add Staff Modals -->
+                <div class="modal fade fixed-right" id="addStaffModal" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header align-items-center">
+                                <div class="text-center">
+                                    <h6 class="mb-0 text-bold">Register new system user</h6>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Product code</label>
+                                            <input type="text" value="PRD-<?php echo $code; ?>" required name="product_code" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">Product name</label>
+                                            <input type="text" required name="product_name" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="">Product details</label>
+                                            <textarea type="text" required name="product_details" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" name="Add_Products" class="btn btn-outline-success">Add product</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Add Staff Modal -->
             </div>
         </div>
     </main><!-- ===============================================-->
