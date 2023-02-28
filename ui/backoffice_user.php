@@ -84,7 +84,7 @@ require_once('../app/partials/back_office_head.php');
                 /* Load this partial with logged in user session */
                 $staff_sql = mysqli_query(
                     $mysqli,
-                    "SELECT * FROM users WHERE user_id = '{$_SESSION['user_id']}'"
+                    "SELECT * FROM users WHERE user_id = '{$_GET['view']}'"
                 );
                 if (mysqli_num_rows($staff_sql) > 0) {
                     while ($staffs = mysqli_fetch_array($staff_sql)) {
