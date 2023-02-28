@@ -104,9 +104,39 @@ if (isset($_POST['Add_Staff'])) {
         }
     }
 }
+
 /* Update Staff */
+if (isset($_POST['Update_Staff'])) {
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+    $user_name = mysqli_real_escape_string($mysqli, $_POST['user_name']);
+    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+    $user_phone_number = mysqli_real_escape_string($mysqli, $_POST['user_phone_number']);
+    $user_id_number = mysqli_real_escape_string($mysqli, $_POST['user_id_number']);
+    $user_address = mysqli_real_escape_string($mysqli, $_POST['user_address']);
+    $user_access_level = mysqli_real_escape_string($mysqli, $_POST['user_access_level']);
+
+    /* Perist */
+    $update_sql = "UPDATE users SET user_name = '{$user_name}', user_email  = '{$user_email}', user_phone_number = '{$user_phone_number}', user_id_number = '{$user_id_number}', 
+    user_address = '{$user_address}', user_access_level = '{$user_access_level}' WHERE user_id = '{$user_id}'";
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success  = "Details updated successfully";
+    } else {
+        $err = "Failed, please try again later";
+    }
+}
 
 /* Delete Staff */
+if (isset($_POST['Delete_Staff'])) {
+    $staff_id  = mysqli_real_escape_string($mysqli, $_POST['staff_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM users WHERE user_id = '{$staff_id}'";
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success  = "Details deleted successfully";
+    } else {
+        $err = "Failed, please try again later";
+    }
+}
 
 /* Update Staff Profile */
 if (isset($_POST['Update_Staff_Profile'])) {
@@ -132,7 +162,7 @@ if (isset($_POST['Update_Staff_Password'])) {
     $old_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['old_password'])));
     $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
     $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
-    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+    $user_id = mysqli_real_escape_string($mysqli, $_POST['user_id']);
 
     /* Check Passwords match */
     if ($confirm_password != $new_password) {
@@ -159,7 +189,7 @@ if (isset($_POST['Update_Staff_Password'])) {
 /* Update Staff Images */
 if (isset($_POST['Update_Staff_Profile_Photo'])) {
     $user_dpic  = mysqli_real_escape_string($mysqli, $_FILES['user_dpic']['name']);
-    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+    $user_id = mysqli_real_escape_string($mysqli, $_POST['user_id']);
 
     /* Files  */
     $temp_dpic = explode('.', $user_dpic);

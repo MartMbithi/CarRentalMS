@@ -169,6 +169,7 @@ require_once('../app/partials/back_office_head.php');
                                                     <div class="form-row">
                                                         <div class="col-md-12 mb-3">
                                                             <label for="validationTooltip01">Old password</label>
+                                                            <input name="user_id" type="hidden" class="form-control" value="<?php echo $staffs['user_id']; ?>" required>
                                                             <input name="old_password" type="password" class="form-control" required>
                                                         </div>
                                                         <div class="col-md-12 mb-3">
@@ -191,6 +192,7 @@ require_once('../app/partials/back_office_head.php');
                                                         <div class="col-md-12 mb-3">
                                                             <label for="validationTooltip01">Profile photo</label>
                                                             <div class="custom-file">
+                                                                <input name="user_id" type="hidden" class="form-control" value="<?php echo $staffs['user_id']; ?>" required>
                                                                 <input type="file" name="user_dpic" required class="custom-file-input" id="inputGroupFile02">
                                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                                             </div>
