@@ -141,14 +141,19 @@ require_once('../app/partials/back_office_head.php');
                                                 while ($staffs = mysqli_fetch_array($staffs_sql)) {
                                             ?>
                                                     <tr>
-                                                        <td><?php echo $staffs['user_number']; ?></td>
+                                                        <td>
+                                                            <a href="backoffice_users?view=<?php echo $staffs['user_id']; ?>">
+                                                                <?php echo $staffs['user_number']; ?>
+                                                            </a>
+                                                        </td>
                                                         <td><?php echo $staffs['user_name']; ?></td>
                                                         <td><?php echo $staffs['user_phone_number']; ?></td>
                                                         <td><?php echo $staffs['user_email']; ?></td>
                                                         <td><?php echo $staffs['user_id_number']; ?></td>
                                                         <td><?php echo $staffs['user_access_level']; ?></td>
                                                         <td>
-
+                                                            <a data-toggle="modal" href="#update_<?php echo $staffs['user_id']; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
+                                                            <a data-toggle="modal" href="#delete_<?php echo $staffs['user_id']; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
                                                         </td>
                                                     </tr>
                                             <?php }
