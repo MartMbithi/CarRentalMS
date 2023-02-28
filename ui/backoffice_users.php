@@ -155,7 +155,10 @@ require_once('../app/partials/back_office_head.php');
                                                             <a data-toggle="modal" href="#delete_<?php echo $staffs['user_id']; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
                                                         </td>
                                                     </tr>
-                                            <?php }
+
+                                            <?php
+                                                    include('../app/modals/user_delete.php');
+                                                }
                                             } ?>
                                         </tbody>
                                     </table>
@@ -232,6 +235,7 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                 </div>
                 <!-- End Add Staff Modal -->
+
             </div>
         </div>
     </main><!-- ===============================================-->

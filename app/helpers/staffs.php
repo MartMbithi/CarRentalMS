@@ -127,10 +127,10 @@ if (isset($_POST['Update_Staff'])) {
 
 /* Delete Staff */
 if (isset($_POST['Delete_Staff'])) {
-    $staff_id  = mysqli_real_escape_string($mysqli, $_POST['staff_id']);
+    $user_id  = mysqli_real_escape_string($mysqli, $_POST['user_id']);
 
     /* Persist */
-    $delete_sql = "DELETE FROM users WHERE user_id = '{$staff_id}'";
+    $delete_sql = "DELETE FROM users WHERE user_id = '{$user_id}'";
     if (mysqli_query($mysqli, $delete_sql)) {
         $success  = "Details deleted successfully";
     } else {
