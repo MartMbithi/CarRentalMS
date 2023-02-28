@@ -77,3 +77,6 @@ $ref_code = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 10);
 
 /* System Gen Password */
 $plain_password = substr(str_shuffle("QWERTYUIOPLKjhgfdsazxcvbnmJHGFDSAZXCVBNM1234567890"), 1, 6);
+
+/* Staff Numbers */
+$number = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 10);

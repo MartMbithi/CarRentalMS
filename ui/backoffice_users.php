@@ -68,6 +68,7 @@
 session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
+require_once('../app/settings/codeGen.php');
 require_once('../app/functions/back_office_functions.php');
 require_once('../app/partials/back_office_head.php');
 
@@ -160,21 +161,47 @@ require_once('../app/partials/back_office_head.php');
                             <div class="modal-body">
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Product code</label>
-                                            <input type="text" value="PRD-<?php echo $code; ?>" required name="product_code" class="form-control">
+                                        <div class="form-group col-md-4">
+                                            <label for="">Staff number</label>
+                                            <input type="text" value="USR-<?php echo $number; ?>" required name="user_number" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-8">
+                                            <label for="">Staff full names</label>
+                                            <input type="text" required name="user_name" class="form-control">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="">Product name</label>
-                                            <input type="text" required name="product_name" class="form-control">
+                                            <label for="">Staff email</label>
+                                            <input type="email" required name="user_email" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">Staff national id number</label>
+                                            <input type="text" required name="user_id_number" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-8">
+                                            <label for="">Staff phone number</label>
+                                            <input type="text" required name="user_phone_number" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="">Access level </label>
+                                            <select type="text" required name="user_access_level" class="form-control">
+                                                <option>Staff</option>
+                                                <option>Administrator</option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="">Product details</label>
-                                            <textarea type="text" required name="product_details" class="form-control"></textarea>
+                                            <label for="validationTooltip01">Profile photo</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="user_dpic" required class="custom-file-input" id="inputGroupFile02">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="">Staff address</label>
+                                            <textarea type="text" required name="user_address" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Add_Products" class="btn btn-outline-success">Add product</button>
+                                        <button type="submit" name="Add_Staff" class="btn btn-outline-success">Add staff</button>
                                     </div>
                                 </form>
                             </div>
