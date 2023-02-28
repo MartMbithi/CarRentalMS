@@ -163,7 +163,7 @@ require_once('../app/partials/back_office_head.php');
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="">Staff number</label>
-                                            <input type="text" value="USR-<?php echo $number; ?>" required name="user_number" class="form-control">
+                                            <input type="text" value="<?php echo $number; ?>" required name="user_number" class="form-control">
                                         </div>
                                         <div class="form-group col-md-8">
                                             <label for="">Staff full names</label>
@@ -183,7 +183,7 @@ require_once('../app/partials/back_office_head.php');
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">Staff login password</label>
-                                            <input type="password" required name="password" class="form-control">
+                                            <input type="password" required name="user_password" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">Access level </label>
