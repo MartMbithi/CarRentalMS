@@ -121,23 +121,38 @@ require_once('../app/partials/back_office_head.php');
                                     <table class="table table-sm table-dashboard data-table no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
+                                                <th class="sort">Number</th>
                                                 <th class="sort">Name</th>
-                                                <th class="sort">Position</th>
-                                                <th class="sort">Office</th>
-                                                <th class="sort">Age</th>
-                                                <th class="sort">Start date</th>
-                                                <th class="sort">Salary</th>
+                                                <th class="sort">Contacts</th>
+                                                <th class="sort">Email</th>
+                                                <th class="sort">ID number</th>
+                                                <th class="sort">Access level</th>
+                                                <th class="sort">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
+                                            <?php
+                                            /* Fetch Recently Hired Clients */
+                                            $staffs_sql = mysqli_query(
+                                                $mysqli,
+                                                "SELECT * FROM users"
+                                            );
+                                            if (mysqli_num_rows($staffs_sql) > 0) {
+                                                while ($staffs = mysqli_fetch_array($staffs_sql)) {
+                                            ?>
+                                                    <tr>
+                                                        <td><?php echo $staffs['user_number']; ?></td>
+                                                        <td><?php echo $staffs['user_name']; ?></td>
+                                                        <td><?php echo $staffs['user_phone_number']; ?></td>
+                                                        <td><?php echo $staffs['user_email']; ?></td>
+                                                        <td><?php echo $staffs['user_id_number']; ?></td>
+                                                        <td><?php echo $staffs['user_access_level']; ?></td>
+                                                        <td>
+
+                                                        </td>
+                                                    </tr>
+                                            <?php }
+                                            } ?>
                                         </tbody>
                                     </table>
                                 </div>
