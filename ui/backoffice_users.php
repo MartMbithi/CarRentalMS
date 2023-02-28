@@ -69,7 +69,7 @@ session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
 require_once('../app/settings/codeGen.php');
-require_once('../app/functions/back_office_functions.php');
+require_once('../app/helpers/staffs.php');
 require_once('../app/partials/back_office_head.php');
 
 ?>
@@ -177,9 +177,13 @@ require_once('../app/partials/back_office_head.php');
                                             <label for="">Staff national id number</label>
                                             <input type="text" required name="user_id_number" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-8">
+                                        <div class="form-group col-md-4">
                                             <label for="">Staff phone number</label>
                                             <input type="text" required name="user_phone_number" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="">Staff login password</label>
+                                            <input type="password" required name="password" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">Access level </label>

@@ -68,7 +68,42 @@
 /* Bulk Import */
 
 /* Add Staff */
+if (isset($_POST['Add_Staff'])) {
+    $user_name = mysqli_real_escape_string($mysqli, $_POST['user_name']);
+    $user_number = mysqli_real_escape_string($mysqli, $_POST['user_number']);
+    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+    $user_id_number = mysqli_real_escape_string($mysqli, $_POST['user_id_number']);
+    $user_phone_number = mysqli_real_escape_string($mysqli, $_POST['user_phone_number']);
+    $user_address = mysqli_real_escape_string($mysqli, $_POST['user_address']);
+    $user_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['user_password'])));
+    $user_access_level = mysqli_real_escape_string($mysqli, $_POST['user_access_level']);
+    $user_dpic  = mysqli_real_escape_string($mysqli, $_FILES['user_dpic']['name']);
 
+    /* Process DPIC */
+    $temp_dpic = explode('.', $user_dpic);
+    $new_user_dpic = 'Car_Rental_' . $user_access_level . '_DPIC_' . time() . '.' . end($temp_dpic);
+    move_uploaded_file(
+        $_FILES['user_dpic']['tmp_name'],
+        '../storage/users/' . $new_user_dpic
+    );
+
+    /* Prevent duplicates */
+    $check_sql = "SELECT * FROM users WHERE user_email = '{$user_email}' OR user_phone_number = '{$user_phone_number}' OR user_id_number = '{$user_id_number}'";
+    $check_result = mysqli_query($mysqli, $check_sql);
+    if (mysqli_num_rows($check_result) > 0) {
+        $err = 'User already exists';
+    } else {
+        /* Perist */
+        $add_sql = "INSERT INTO users (user_name, user_number, user_email, user_id_number, user_phone_number, user_address, user_password, user_access_level, user_dpic)
+        VALUES ('{$user_name}', '{$user_number}', '{$user_email}', '{$user_id_number}', '{$user_phone_number}', '{$user_address}', '{$user_password}', '{$user_access_level}', '{$new_user_dpic}')";
+        $add_result = mysqli_query($mysqli, $add_sql);
+        if ($add_result) {
+            $success = 'User added successfully';
+        } else {
+            $err =  'Something went wrong. Please try again';
+        }
+    }
+}
 /* Update Staff */
 
 /* Delete Staff */
