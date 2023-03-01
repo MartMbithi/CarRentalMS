@@ -117,8 +117,8 @@ require_once('../app/partials/back_office_head.php');
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div class="card-body bg-light px-5">
-                                    <table class="table table-sm table-dashboard data-table no-wrap mb-0 fs--1 w-100">
+                                <div class="card-body bg-light">
+                                    <table class="table table-sm no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
                                                 <th class="sort">Number</th>
