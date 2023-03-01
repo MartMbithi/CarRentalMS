@@ -65,6 +65,7 @@
  *
  */
 include('../app/settings/config.php');
+include('../app/functions/back_office_functions.php');
 require_once('../app/partials/landing_head.php');
 ?>
 
@@ -83,14 +84,6 @@ require_once('../app/partials/landing_head.php');
                             We are a popular option for individuals and businesses who need access to a vehicle for a short period of time.
                             Our service offers are convenient, flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
                         </p>
-                        <!-- <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
-                            <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="ion-ios-play"></span>
-                            </div>
-                            <div class="heading-title ml-5">
-                                <span>Easy steps for renting a car</span>
-                            </div>
-                        </a> -->
                     </div>
                 </div>
             </div>
@@ -131,7 +124,9 @@ require_once('../app/partials/landing_head.php');
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                                <p>
+                                    <a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -361,7 +356,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text text-border d-flex align-items-center">
-                            <strong class="number" data-number="60">0</strong>
+                            <strong class="number" data-number="20">0</strong>
                             <span>Year <br>Experienced</span>
                         </div>
                     </div>
@@ -369,7 +364,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text text-border d-flex align-items-center">
-                            <strong class="number" data-number="1090">0</strong>
+                            <strong class="number" data-number="<?php echo $cars; ?>">0</strong>
                             <span>Total <br>Cars</span>
                         </div>
                     </div>
@@ -377,7 +372,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text text-border d-flex align-items-center">
-                            <strong class="number" data-number="2590">0</strong>
+                            <strong class="number" data-number="<?php echo $clients; ?>">0</strong>
                             <span>Happy <br>Customers</span>
                         </div>
                     </div>
@@ -385,7 +380,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text d-flex align-items-center">
-                            <strong class="number" data-number="67">0</strong>
+                            <strong class="number" data-number="1">0</strong>
                             <span>Total <br>Branches</span>
                         </div>
                     </div>
