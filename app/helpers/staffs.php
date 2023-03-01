@@ -64,8 +64,93 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
+require_once('../vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 /* Bulk Import */
+
+if (isset($_POST['Bulk_Import_Staffs'])) {
+    /* Proccess Bulk Import */
+    $allowedFileType = [
+        'application/vnd.ms-excel',
+        'text/xls',
+        'text/xlsx',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    ];
+
+    /* Where Magic Happens */
+    if (in_array($_FILES["staffs_details"]["type"], $allowedFileType)) {
+        $targetPath = '../storage/bulk_uploads/' . 'Bulk Import Users ' . time() . ' ' . $_FILES['staffs_details']['name'];
+        move_uploaded_file($_FILES['staffs_details']['tmp_name'], $targetPath);
+
+        $Reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+
+        $spreadSheet = $Reader->load($targetPath);
+        $excelSheet = $spreadSheet->getActiveSheet();
+        $spreadSheetAry = $excelSheet->toArray();
+        $sheetCount = count($spreadSheetAry);
+
+        for ($i = 1; $i <= $sheetCount; $i++) {
+
+            $user_name = "";
+            if (isset($spreadSheetAry[$i][0])) {
+                $user_name = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][0]);
+            }
+
+            $user_email = "";
+            if (isset($spreadSheetAry[$i][1])) {
+                $user_email = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][1]);
+            }
+
+            $user_id_number = "";
+            if (isset($spreadSheetAry[$i][2])) {
+                $user_id_number = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][2]);
+            }
+
+            $user_phone_number = "";
+            if (isset($spreadSheetAry[$i][3])) {
+                $user_phone_number = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][3]);
+            }
+
+            $user_access_level = "";
+            if (isset($spreadSheetAry[$i][4])) {
+                $user_access_level = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][4]);
+            }
+
+            $user_address = "";
+            if (isset($spreadSheetAry[$i][5])) {
+                $user_address = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][5]);
+            }
+            
+            /* Static Values */
+            $user_password = sha1(md5('User@CarRentals')); /* Default Staff Password */
+            $user_number = $number;
+
+            /* Prevent Duplicates */
+            $check_user = mysqli_query($mysqli, "SELECT * FROM users WHERE user_email = '{$user_email}' 
+                OR user_phone_number = '{$user_phone_number}' OR user_id_number = '{$user_id_number}'");
+            if (mysqli_num_rows($check_user) > 0) {
+                $info = "Duplicate Entry, Please Check Your File";
+            } else {
+                if (!empty($user_name) && !empty($user_email) && !empty($user_id_number) && !empty($user_phone_number) && !empty($user_access_level) && !empty($user_address)) {
+                    /* Persist */
+                    $add_sql = "INSERT INTO users (user_name, user_email, user_id_number, user_phone_number, user_access_level, user_address, user_password, user_number)
+                    VALUES('{$user_name}', '{$user_email}', '{$user_id_number}', '{$user_phone_number}', '{$user_access_level}', '{$user_address}', '{$user_password}', '{$user_number}')";
+
+                    if (mysqli_query($mysqli, $add_sql)) {
+                        $success = "Data imported successfully";
+                    } else {
+                        $err = "Failed, please try again";
+                    }
+                }
+            }
+        }
+    } else {
+        $info = "Invalid file type. please upload excel file";
+    }
+}
+
 
 /* Add Staff */
 if (isset($_POST['Add_Staff'])) {
