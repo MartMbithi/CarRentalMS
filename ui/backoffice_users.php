@@ -117,7 +117,7 @@ require_once('../app/partials/back_office_head.php');
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div class="card-body bg-light px-0">
+                                <div class="card-body bg-light px-5">
                                     <table class="table table-sm table-dashboard data-table no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
@@ -127,7 +127,7 @@ require_once('../app/partials/back_office_head.php');
                                                 <th class="sort">Email</th>
                                                 <th class="sort">ID number</th>
                                                 <th class="sort">Access level</th>
-                                                <th class="sort">Manage</th>
+                                                <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
