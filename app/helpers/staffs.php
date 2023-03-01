@@ -81,7 +81,7 @@ if (isset($_POST['Bulk_Import_Staffs'])) {
 
     /* Where Magic Happens */
     if (in_array($_FILES["staffs_details"]["type"], $allowedFileType)) {
-        $targetPath = '../storage/bulk_uploads/' . 'Bulk Import Users ' . time() . ' ' . $_FILES['staffs_details']['name'];
+        $targetPath = '../storage/templates/' . 'Bulk Import Users ' . time() . ' ' . $_FILES['staffs_details']['name'];
         move_uploaded_file($_FILES['staffs_details']['tmp_name'], $targetPath);
 
         $Reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
@@ -122,10 +122,11 @@ if (isset($_POST['Bulk_Import_Staffs'])) {
             if (isset($spreadSheetAry[$i][5])) {
                 $user_address = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][5]);
             }
-            
+
             /* Static Values */
             $user_password = sha1(md5('User@CarRentals')); /* Default Staff Password */
-            $user_number = $number;
+            $user_number = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 10);
+
 
             /* Prevent Duplicates */
             $check_user = mysqli_query($mysqli, "SELECT * FROM users WHERE user_email = '{$user_email}' 
@@ -146,6 +147,8 @@ if (isset($_POST['Bulk_Import_Staffs'])) {
                 }
             }
         }
+        /* Unlink Files */
+        unlink($targetPath);
     } else {
         $info = "Invalid file type. please upload excel file";
     }

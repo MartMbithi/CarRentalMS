@@ -252,7 +252,7 @@ require_once('../app/partials/back_office_head.php');
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
                                         <div class="form-group col-md-12 text-center">
-                                            <a  href="../storage/templates/users.xlsx"> Download a template here</a>
+                                            <a class="text-center" href="../storage/templates/users.xlsx"> Download a template here</a>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="validationTooltip01">XLS File</label>
