@@ -33,13 +33,15 @@
 <!-- Google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
-<!-- Theme Js -->
-<script src="../public/backoffice_assets/js/theme.min.js"></script>
+
 <!-- Data Tables -->
+<script src="../public/backoffice_assets/lib/prismjs/prism.js"></script>
 <script src="../public/backoffice_assets/lib/datatables/js/jquery.dataTables.min.js"></script>
 <script src="../public/backoffice_assets/lib/datatables-bs4/dataTables.bootstrap4.min.js"></script>
 <script src="../public/backoffice_assets/lib/datatables.net-responsive/dataTables.responsive.js"></script>
 <script src="../public/backoffice_assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script>
+<!-- Theme Js -->
+<script src="../public/backoffice_assets/js/theme.min.js"></script>
 
 <!-- Mojs -->
 <script src="../public/backoffice_assets/plugins/mojs/mo.js"></script>
@@ -58,10 +60,14 @@
     }).parent().addClass('active');
 
     /* Show File Name */
-    $('#inputGroupFile02').on('change', function() {
+    $('.custom-file-input').on('change', function() {
         //get the file name
         var fileName = $(this).val().replace('C:\\fakepath\\', " ");
         //replace the "Choose a file" label
         $(this).next('.custom-file-label').html(fileName);
     })
+    /* Data tables */
+    $(document).ready(function() {
+        $('.table').DataTable();
+    });
 </script>

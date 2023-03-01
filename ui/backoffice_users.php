@@ -115,10 +115,10 @@ require_once('../app/partials/back_office_head.php');
                                 Download Staffs
                             </button>
                         </div>
-                        <div class="card-body bg-light px-0">
-                            <div class="row">
-                                <div class="col-12">
-                                    <table class="table table-sm table-dashboard data-table no-wrap mb-0 fs--1 w-100">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-body bg-light">
+                                    <table class="table table-sm no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
                                                 <th class="sort">Number</th>
@@ -127,7 +127,7 @@ require_once('../app/partials/back_office_head.php');
                                                 <th class="sort">Email</th>
                                                 <th class="sort">ID number</th>
                                                 <th class="sort">Access level</th>
-                                                <th class="sort">Manage</th>
+                                                <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
@@ -235,6 +235,42 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                 </div>
                 <!-- End Add Staff Modal -->
+
+                <!-- Bulk import staffs modal-->
+                <div class="modal fade fixed-right" id="bulkImportStaffs" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header align-items-center">
+                                <div class="text-center">
+                                    <h6 class="mb-0 text-bold">Bulk import system users</h6>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                    <div class="row">
+                                        <div class="form-group col-md-12 text-center">
+                                            <a class="text-center" href="../storage/templates/users.xlsx"> Download a template here</a>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="validationTooltip01">XLS File</label>
+                                            <div class="custom-file">
+                                                <input type="file" accept=".xlsx" name="staffs_details" required class="custom-file-input" id="inputGroupFile02">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" name="Bulk_Import_Staffs" class="btn btn-outline-success">Upload staffs</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End bulk import staffs modal -->
 
             </div>
         </div>

@@ -97,6 +97,14 @@ $stmt->bind_result($available_cars);
 $stmt->fetch();
 $stmt->close();
 
+/* All cars */
+$query = "SELECT COUNT(*) FROM cars";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($cars);
+$stmt->fetch();
+$stmt->close();
+
 /* Car Rentals */
 $query = "SELECT COUNT(*) FROM car_rentals";
 $stmt = $mysqli->prepare($query);
