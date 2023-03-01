@@ -58,10 +58,14 @@
     }).parent().addClass('active');
 
     /* Show File Name */
-    $('#inputGroupFile02').on('change', function() {
+    $('.custom-file-input').on('change', function() {
         //get the file name
         var fileName = $(this).val().replace('C:\\fakepath\\', " ");
         //replace the "Choose a file" label
         $(this).next('.custom-file-label').html(fileName);
     })
+    /* Init Data Tables */
+    $(document).ready(function() {
+        $('.data-table').DataTable();
+    });
 </script>

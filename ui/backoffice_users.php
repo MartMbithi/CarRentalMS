@@ -115,9 +115,9 @@ require_once('../app/partials/back_office_head.php');
                                 Download Staffs
                             </button>
                         </div>
-                        <div class="card-body bg-light px-0">
-                            <div class="row">
-                                <div class="col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-body bg-light px-0">
                                     <table class="table table-sm table-dashboard data-table no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
