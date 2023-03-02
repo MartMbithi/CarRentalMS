@@ -147,7 +147,32 @@ if (isset($_POST['Bulk_Import_Clients'])) {
     }
 }
 
- /* Add Client */
+/* Add Client */
+if (isset($_POST['Add_Clients'])) {
+    $client_names = mysqli_real_escape_string($mysqli, trim($_POST['client_names']));
+    $client_id_no = mysqli_real_escape_string($mysqli, trim($_POST['client_id_no']));
+    $client_email = mysqli_real_escape_string($mysqli, trim($_POST['client_email']));
+    $client_phone_number = mysqli_real_escape_string($mysqli, trim($_POST['client_phone_number']));
+    $client_address = mysqli_real_escape_string($mysqli, trim($_POST['client_address']));
+    $client_password = sha1(md5('Client@CarRentals')); /* Default Client Password */
+    $client_date_joined = date('d M Y g:ia');
+
+    /* Prevent Duplicates */
+    $sql = "SELECT * FROM clients WHERE client_id_no = '{$client_id_no}' || client_email = '{$client_email}' || client_phone_number = '{$client_phone_number}' ";
+    $res = mysqli_query($mysqli, $sql);
+    if (mysqli_num_rows($res) > 0) {
+        $info = "A Client with the same details already exists";
+    } else {
+        $sql = "INSERT INTO clients (client_names, client_id_no, client_email, client_phone_number, client_address, client_password, client_date_joined) 
+        VALUES ('{$client_names}', '{$client_id_no}', '{$client_email}', '{$client_phone_number}', '{$client_address}', '{$client_password}', '{$client_date_joined}')";
+        $res = mysqli_query($mysqli, $sql);
+        if ($res) {
+            $info = "Client added successfully";
+        } else {
+            $info = "Failed to Add Client, please try again";
+        }
+    }
+}
 
  /* Update Client */
 
