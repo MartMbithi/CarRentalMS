@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Tue Feb 28 2023
+ *   Crafted On Thu Mar 02 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -69,7 +69,7 @@ session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
 require_once('../app/settings/codeGen.php');
-require_once('../app/helpers/staffs.php');
+require_once('../app/helpers/clients.php');
 require_once('../app/partials/back_office_head.php');
 
 ?>
@@ -88,31 +88,31 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End Navigations -->
                 <div class="media mb-4 mt-3"><span class="fa-stack mr-2 ml-n1">
                         <i class="fas fa-circle fa-stack-2x text-300"></i>
-                        <i class="fa-inverse fa-stack-1x text-primary fas fa-user-tie"></i>
+                        <i class="fa-inverse fa-stack-1x text-primary fas fa-users"></i>
                     </span>
                     <div class="media-body">
                         <h5 class="mb-0 text-primary position-relative">
-                            <span class="bg-200 pr-3">System Users Module</span>
+                            <span class="bg-200 pr-3">Clients</span>
                             <span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span>
                         </h5>
                         <p class="mb-0 text-justify">
-                            This module allows you to manage your system users. You can add, edit, delete and view staffs.
+                            This module allows you to manage your clients. You can add, edit, delete and view clients.
                         </p>
                     </div>
                 </div>
                 <div class="row no-gutters">
                     <div class="card mb-3 col-12">
                         <div class="card-header text-right">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStaffModal">
-                                <i class="fas fa-plus"></i> Add Staff
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addClientModal">
+                                <i class="fas fa-plus"></i> Add Client
                             </button>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#bulkImportStaffs">
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#bulkImportClients">
                                 <i class="fas fa-upload"></i>
-                                Bulk Import Staffs
+                                Bulk Import Clients
                             </button>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadStaffModal">
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadClientsModal">
                                 <i class="fas fa-download"></i>
-                                Download Staffs
+                                Download Clients
                             </button>
                         </div>
                         <div class="row">
@@ -121,43 +121,42 @@ require_once('../app/partials/back_office_head.php');
                                     <table class="data table table-sm no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
-                                                <th class="sort">Number</th>
                                                 <th class="sort">Name</th>
                                                 <th class="sort">Contacts</th>
                                                 <th class="sort">Email</th>
-                                                <th class="sort">ID number</th>
-                                                <th class="sort">Access level</th>
+                                                <th class="sort">Date joined</th>
+                                                <th class="sort">Address</th>
                                                 <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
                                             <?php
-                                            /* Fetch Recently Hired Clients */
-                                            $staffs_sql = mysqli_query(
+                                            $clients_sql = mysqli_query(
                                                 $mysqli,
-                                                "SELECT * FROM users"
+                                                "SELECT * FROM clients"
                                             );
-                                            if (mysqli_num_rows($staffs_sql) > 0) {
-                                                while ($staffs = mysqli_fetch_array($staffs_sql)) {
+                                            if (mysqli_num_rows($clients_sql) > 0) {
+                                                while ($clients = mysqli_fetch_array($clients_sql)) {
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="backoffice_user?view=<?php echo $staffs['user_id']; ?>">
-                                                                <?php echo $staffs['user_number']; ?>
+                                                            <a href="backoffice_client?view=<?php echo $clients['client_id']; ?>">
+                                                                <?php echo $clients['client_names']; ?>
                                                             </a>
                                                         </td>
-                                                        <td><?php echo $staffs['user_name']; ?></td>
-                                                        <td><?php echo $staffs['user_phone_number']; ?></td>
-                                                        <td><?php echo $staffs['user_email']; ?></td>
-                                                        <td><?php echo $staffs['user_id_number']; ?></td>
-                                                        <td><?php echo $staffs['user_access_level']; ?></td>
+                                                        <td><?php echo $clients['client_phone_number']; ?></td>
+                                                        <td><?php echo $clients['client_email']; ?></td>
+                                                        <td><?php echo $clients['client_date_joined']; ?></td>
+                                                        <td><?php echo $clients['client_address']; ?></td>
                                                         <td>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $staffs['user_id']; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
+                                                            <a data-toggle="modal" href="#delete_<?php echo $clients['client_id']; ?>" class="badge badge-danger">
+                                                                <i class="fas fa-trash"></i> Delete
+                                                            </a>
                                                         </td>
                                                     </tr>
 
                                             <?php
-                                                    include('../app/modals/user_delete.php');
+                                                    include('../app/modals/client_delete.php');
                                                 }
                                             } ?>
                                         </tbody>
@@ -169,12 +168,12 @@ require_once('../app/partials/back_office_head.php');
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
                 <!-- Add Staff Modals -->
-                <div class="modal fade fixed-right" id="addStaffModal" role="dialog" aria-hidden="true">
+                <div class="modal fade fixed-right" id="addClientModal" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Register new system user</h6>
+                                    <h6 class="mb-0 text-bold">Register new client</h6>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -183,51 +182,33 @@ require_once('../app/partials/back_office_head.php');
                             <div class="modal-body">
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label for="">Staff number</label>
-                                            <input type="text" value="<?php echo $number; ?>" required name="user_number" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-8">
-                                            <label for="">Staff full names</label>
-                                            <input type="text" required name="user_name" class="form-control">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Full names</label>
+                                            <input type="text" required name="client_names" class="form-control">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="">Staff email</label>
-                                            <input type="email" required name="user_email" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Staff national id number</label>
-                                            <input type="text" required name="user_id_number" class="form-control">
+                                            <label for="">Email</label>
+                                            <input type="email" required name="client_email" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">Staff phone number</label>
-                                            <input type="text" required name="user_phone_number" class="form-control">
+                                            <label for="">National id number</label>
+                                            <input type="text" required name="client_id_no" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">Staff login password</label>
-                                            <input type="password" required name="user_password" class="form-control">
+                                            <label for="">Phone number</label>
+                                            <input type="text" required name="client_phone_number" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">Access level </label>
-                                            <select type="text" required name="user_access_level" class="form-control">
-                                                <option>Staff</option>
-                                                <option>Administrator</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="validationTooltip01">Profile photo</label>
-                                            <div class="custom-file">
-                                                <input type="file" name="user_dpic" required class="custom-file-input" id="inputGroupFile02">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
+                                            <label for="">Default login password</label>
+                                            <input type="text" value="Client@Carentals" required name="client_password" class="form-control">
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">Staff address</label>
-                                            <textarea type="text" required name="user_address" class="form-control"></textarea>
+                                            <textarea type="text" required name="client_address" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Add_Staff" class="btn btn-outline-success">Add staff</button>
+                                        <button type="submit" name="Add_Client" class="btn btn-outline-success">Add client</button>
                                     </div>
                                 </form>
                             </div>
@@ -237,12 +218,12 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End Add Staff Modal -->
 
                 <!-- Bulk import staffs modal-->
-                <div class="modal fade fixed-right" id="bulkImportStaffs" role="dialog" aria-hidden="true">
+                <div class="modal fade fixed-right" id="bulkImportClients" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Bulk import system users</h6>
+                                    <h6 class="mb-0 text-bold">Bulk import clients</h6>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -252,18 +233,18 @@ require_once('../app/partials/back_office_head.php');
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
                                         <div class="form-group col-md-12 text-center">
-                                            <a class="text-center" href="../storage/templates/users.xlsx"> Download a template here</a>
+                                            <a class="text-center" href="../storage/templates/clients.xlsx"> Download a template here</a>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="validationTooltip01">XLS File</label>
                                             <div class="custom-file">
-                                                <input type="file" accept=".xlsx" name="staffs_details" required class="custom-file-input" id="inputGroupFile02">
+                                                <input type="file" accept=".xlsx" name="client_details" required class="custom-file-input" id="inputGroupFile02">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Bulk_Import_Staffs" class="btn btn-outline-success">Upload staffs</button>
+                                        <button type="submit" name="Bulk_Import_Clients" class="btn btn-outline-success">Upload staffs</button>
                                     </div>
                                 </form>
                             </div>
@@ -273,16 +254,16 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End bulk import staffs modal -->
 
                 <!-- Download Staff Details -->
-                <div class="modal fade" id="downloadStaffModal" role="dialog">
+                <div class="modal fade" id="downloadClientsModal" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <form method="POST">
                                 <div class="modal-body text-center text-danger">
                                     <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export system users details as</h5> <br>
+                                    <h5>Export client details as</h5> <br>
                                     <!-- Hide This -->
-                                    <a href="reports?module=System_Users&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=System_Users&type=csv" class="text-center btn btn-primary">CSV</a>
+                                    <a href="reports?module=Clients&type=pdf" class="text-center btn btn-success">PDF</a>
+                                    <a href="reports?module=Clients&type=csv" class="text-center btn btn-primary">CSV</a>
                                 </div>
                             </form>
                         </div>

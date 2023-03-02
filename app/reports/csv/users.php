@@ -1,7 +1,7 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
- *
+ *   Crafted On Thu Mar 02 2023
+ *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
  *   hello@devlan.co.ke
@@ -65,12 +65,57 @@
  *
  */
 
+require_once('../vendor/autoload.php');
 
-/* Procedural Database Connecrions */
-$dbuser = "root"; /* Database Username */
-$dbpass = ""; /* Database Username Password */
-$host = "localhost"; /* Database Host */
-$db = "car_rental_mis";  /* Database Name */
-$mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
-$log_ip = $_SERVER['REMOTE_ADDR'];/* Server ip address */
-date_default_timezone_set("Africa/Nairobi");/* Default Time Zone */
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+/* Load XLS Template */
+
+$report_template = '../storage/templates/reports.xlsx';
+$spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($report_template);
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setTitle('Users List On' . date('d M Y'), true);
+
+/* Sheet columns head names */
+$sheet->setCellValue('A5', 'S/N');
+$sheet->setCellValue('B5', 'User Number');
+$sheet->setCellValue('C5', 'Full Names');
+$sheet->setCellValue('D5', 'National ID Number');
+$sheet->setCellValue('E5', 'Phone Number');
+$sheet->setCellValue('F5', 'Email Address');
+$sheet->setCellValue('G5', 'Access Level');
+$sheet->setCellValue('H5', 'Address');
+
+
+/* Fetch asset details */
+$query = $mysqli->query("SELECT * FROM users");
+if ($query->num_rows > 0) {
+    $cnt = 1;
+    $row = 6;/* Start filling data from row */
+    while ($users = $query->fetch_assoc()) {
+        /* Populate cell data */
+        $sheet->setCellValue('A' . $row, $cnt);
+        $sheet->setCellValue('B' . $row, $users['user_number']);
+        $sheet->setCellValue('C' . $row, $users['user_name']);
+        $sheet->setCellValue('D' . $row, $users['user_id_number']);
+        $sheet->setCellValue('E' . $row, $users['user_phone_number']);
+        $sheet->setCellValue('F' . $row, $users['user_email']);
+        $sheet->setCellValue('G' . $row, $users['user_access_level']);
+        $sheet->setCellValue('H' . $row, $users['user_address']);
+        $row++;
+        $cnt = $cnt + 1;
+    }
+}
+
+$file_name = 'Users List On ' . date('d M Y') . '.xlsx';
+ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename=' . $file_name . '');
+header('Cache-Control: max-age=0');
+
+$xlsxWriter = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+$xlsxWriter = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+exit($xlsxWriter->save('php://output'));

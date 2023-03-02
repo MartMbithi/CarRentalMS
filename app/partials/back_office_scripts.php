@@ -68,6 +68,6 @@
     })
     /* Data tables */
     $(document).ready(function() {
-        $('.table').DataTable();
+        $('.data').DataTable();
     });
 </script>

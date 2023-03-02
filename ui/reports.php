@@ -1,7 +1,7 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
- *
+ *   Crafted On Thu Mar 02 2023
+ *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
  *   hello@devlan.co.ke
@@ -66,11 +66,40 @@
  */
 
 
-/* Procedural Database Connecrions */
-$dbuser = "root"; /* Database Username */
-$dbpass = ""; /* Database Username Password */
-$host = "localhost"; /* Database Host */
-$db = "car_rental_mis";  /* Database Name */
-$mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
-$log_ip = $_SERVER['REMOTE_ADDR'];/* Server ip address */
-date_default_timezone_set("Africa/Nairobi");/* Default Time Zone */
+session_start();
+require_once('../app/settings/config.php');
+require_once('../app/settings/back_office_checklogin.php');
+
+/* Global variables */
+$module = mysqli_real_escape_string($mysqli, $_GET['module']);
+
+/* Convert logo to a base 64 image */
+$path = '../storage/system/logo_backoffice.png';
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+/* System Users Reports */
+if ($module == 'System_Users') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
+    if ($type == 'pdf') {
+        require_once('../app/reports/pdf/users.php');
+    } else if ($type == 'csv') {
+        require_once('../app/reports/csv/users.php');
+    } else {
+        header('location: logout');
+        exit();
+    }
+    
+    /* Clients */
+} else if ($module == 'Clients') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
+    if ($type == 'pdf') {
+        require_once('../app/reports/pdf/clients.php');
+    } else if ($type == 'csv') {
+        require_once('../app/reports/csv/clients.php');
+    } else {
+        header('location: logout');
+        exit();
+    }
+}
