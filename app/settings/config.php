@@ -73,3 +73,4 @@ $host = "localhost"; /* Database Host */
 $db = "car_rental_mis";  /* Database Name */
 $mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
 $log_ip = $_SERVER['REMOTE_ADDR'];/* Server ip address */
+date_default_timezone_set("Africa/Nairobi");/* Default Time Zone */
