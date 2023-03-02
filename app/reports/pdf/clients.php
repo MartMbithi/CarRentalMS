@@ -166,7 +166,7 @@ $html =
                                 <th style="width:50%">ID Number</th>
                                 <th style="width:80%">Phone Number</th>
                                 <th style="width:100%">Email Address</th>
-                                <th style="width:50%">Date Joined</th>
+                                <th style="width:80%">Date Joined</th>
                                 <th style="width:100%">Physical Address</th>
                             </tr>
                         </thead>

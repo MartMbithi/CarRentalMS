@@ -71,7 +71,6 @@ require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
 
 /* Global variables */
-$type = mysqli_real_escape_string($mysqli, $_GET['type']);
 $module = mysqli_real_escape_string($mysqli, $_GET['module']);
 
 /* Convert logo to a base 64 image */
@@ -82,10 +81,23 @@ $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
 /* System Users Reports */
 if ($module == 'System_Users') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
     if ($type == 'pdf') {
         require_once('../app/reports/pdf/users.php');
     } else if ($type == 'csv') {
         require_once('../app/reports/csv/users.php');
+    } else {
+        header('location: logout');
+        exit();
+    }
+    
+    /* Clients */
+} else if ($module == 'Clients') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
+    if ($type == 'pdf') {
+        require_once('../app/reports/pdf/clients.php');
+    } else if ($type == 'csv') {
+        require_once('../app/reports/csv/clients.php');
     } else {
         header('location: logout');
         exit();
