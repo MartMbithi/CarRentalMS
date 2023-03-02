@@ -192,9 +192,34 @@ if (isset($_POST['Update_Client'])) {
     }
 }
 
- /* Update Client Passwords */
+/* Update Client Passwords */
+if (isset($_POST['Update_Client_Passwords'])) {
+    $client_id = mysqli_real_escape_string($mysqli, trim($_POST['client_id']));
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, trim($_POST['new_password']))));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, trim($_POST['confirm_password']))));
+
+    /* Check if passwords match */
+    if ($new_password != $confirm_password) {
+        $err = "Passwords do not match, please try again";
+    } else {
+        $sql = "UPDATE clients SET client_password = '{$new_password}' WHERE client_id = '{$client_id}' ";
+        if ($res = mysqli_query($mysqli, $sql)) {
+            $success = "Password updated successfully";
+        } else {
+            $err = "Failed to update password, please try again";
+        }
+    }
+}
 
 
- /* Update Client Photo */
+/* Delete Client */
+if (isset($_POST['Delete_Client'])) {
+    $client_id = mysqli_real_escape_string($mysqli, trim($_POST['client_id']));
 
- /* Delete Client */
+    $sql = "DELETE FROM clients WHERE client_id = '{$client_id}' ";
+    if ($res = mysqli_query($mysqli, $sql)) {
+        $success = "Details successfully";
+    } else {
+        $err = "Failed to delete Client, please try again";
+    }
+}
