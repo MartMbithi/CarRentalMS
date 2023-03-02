@@ -174,9 +174,26 @@ if (isset($_POST['Add_Clients'])) {
     }
 }
 
- /* Update Client */
+/* Update Client */
+if (isset($_POST['Update_Client'])) {
+    $client_id = mysqli_real_escape_string($mysqli, trim($_POST['client_id']));
+    $client_names = mysqli_real_escape_string($mysqli, trim($_POST['client_names']));
+    $client_id_no = mysqli_real_escape_string($mysqli, trim($_POST['client_id_no']));
+    $client_email = mysqli_real_escape_string($mysqli, trim($_POST['client_email']));
+    $client_phone_number = mysqli_real_escape_string($mysqli, trim($_POST['client_phone_number']));
+    $client_address = mysqli_real_escape_string($mysqli, trim($_POST['client_address']));
+
+    $sql = "UPDATE clients SET client_names = '{$client_names}', client_id_no = '{$client_id_no}', client_email = '{$client_email}', client_phone_number = '{$client_phone_number}', client_address = '{$client_address}'
+    WHERE client_id = '{$client_id}' ";
+    if ($res = mysqli_query($mysqli, $sql)) {
+        $success = "Details updated successfully";
+    } else {
+        $err = "Failed to update details, please try again";
+    }
+}
 
  /* Update Client Passwords */
+
 
  /* Update Client Photo */
 
