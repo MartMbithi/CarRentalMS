@@ -122,21 +122,22 @@ if (isset($_POST['Bulk_Import_Clients'])) {
             /* Static Values */
             $client_password = sha1(md5('Client@CarRentals')); /* Default Staff Password */
             $client_date_joined = date('d M Y g:ia'); /* Default Staff Password */
-
-            /* Prevent Duplicates */
-            $sql = "SELECT * FROM clients WHERE client_id_no = '{$client_id_no}' 
-            OR client_email = '{$client_email}' OR client_phone_number = '{$client_phone_number}' ";
-            $res = mysqli_query($mysqli, $sql);
-            if (mysqli_num_rows($check_user) > 0) {
-                $info = "Duplicate entry, please check your data file";
-            } else {
-                $sql = "INSERT INTO clients (client_names, client_id_no, client_email, client_phone_number, client_address, client_password, client_date_joined) 
-                VALUES ('{$client_names}', '{$client_id_no}', '{$client_email}', '{$client_phone_number}', '{$client_address}', '{$client_password}', '{$client_date_joined}')";
-                $res = mysqli_query($mysqli, $sql);
-                if ($res) {
-                    $info = "Data imported successfully";
+            if (!empty($client_names) || !empty($client_id_no) || !empty($client_email) || !empty($client_phone_number) || !empty($client_address)) {
+                /* Prevent Duplicates */
+                $sql = "SELECT * FROM clients WHERE client_id_no = '{$client_id_no}' 
+                OR client_email = '{$client_email}' OR client_phone_number = '{$client_phone_number}' ";
+                $check_user = mysqli_query($mysqli, $sql);
+                if (mysqli_num_rows($check_user) > 0) {
+                    $info = "Duplicate entry, please check your data file";
                 } else {
-                    $info = "Failed to import data, please check your data file and try again";
+                    $sql = "INSERT INTO clients (client_names, client_id_no, client_email, client_phone_number, client_address, client_password, client_date_joined) 
+                VALUES ('{$client_names}', '{$client_id_no}', '{$client_email}', '{$client_phone_number}', '{$client_address}', '{$client_password}', '{$client_date_joined}')";
+                    $res = mysqli_query($mysqli, $sql);
+                    if ($res) {
+                        $success = "Data imported successfully";
+                    } else {
+                        $info = "Failed to import data, please check your data file and try again";
+                    }
                 }
             }
         }
@@ -148,13 +149,13 @@ if (isset($_POST['Bulk_Import_Clients'])) {
 }
 
 /* Add Client */
-if (isset($_POST['Add_Clients'])) {
+if (isset($_POST['Add_Client'])) {
     $client_names = mysqli_real_escape_string($mysqli, trim($_POST['client_names']));
     $client_id_no = mysqli_real_escape_string($mysqli, trim($_POST['client_id_no']));
     $client_email = mysqli_real_escape_string($mysqli, trim($_POST['client_email']));
     $client_phone_number = mysqli_real_escape_string($mysqli, trim($_POST['client_phone_number']));
     $client_address = mysqli_real_escape_string($mysqli, trim($_POST['client_address']));
-    $client_password = sha1(md5($mysqli, trim($_POST['client_password'])));  /* Default Client Password = Client@CarRentals */
+    $client_password = sha1(md5(mysqli_real_escape_string($mysqli, trim($_POST['client_password']))));  /* Default Client Password = Client@CarRentals */
     $client_date_joined = date('d M Y g:ia');
 
     /* Prevent Duplicates */
@@ -167,9 +168,9 @@ if (isset($_POST['Add_Clients'])) {
         VALUES ('{$client_names}', '{$client_id_no}', '{$client_email}', '{$client_phone_number}', '{$client_address}', '{$client_password}', '{$client_date_joined}')";
         $res = mysqli_query($mysqli, $sql);
         if ($res) {
-            $info = "Client added successfully";
+            $success = "Client added successfully";
         } else {
-            $info = "Failed to Add Client, please try again";
+            $err = "Failed to Add Client, please try again";
         }
     }
 }
@@ -217,7 +218,7 @@ if (isset($_POST['Delete_Client'])) {
 
     $sql = "DELETE FROM clients WHERE client_id = '{$client_id}' ";
     if ($res = mysqli_query($mysqli, $sql)) {
-        $success = "Details successfully";
+        $success = "Details deleted successfully";
     } else {
         $err = "Failed to delete Client, please try again";
     }

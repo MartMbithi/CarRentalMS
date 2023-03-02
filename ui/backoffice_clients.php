@@ -124,7 +124,6 @@ require_once('../app/partials/back_office_head.php');
                                                 <th class="sort">Name</th>
                                                 <th class="sort">Contacts</th>
                                                 <th class="sort">Email</th>
-                                                <th class="sort">ID number</th>
                                                 <th class="sort">Date joined</th>
                                                 <th class="sort">Address</th>
                                                 <th class="">Manage</th>
@@ -147,7 +146,6 @@ require_once('../app/partials/back_office_head.php');
                                                         </td>
                                                         <td><?php echo $clients['client_phone_number']; ?></td>
                                                         <td><?php echo $clients['client_email']; ?></td>
-                                                        <td><?php echo $clients['client_id_no']; ?></td>
                                                         <td><?php echo $clients['client_date_joined']; ?></td>
                                                         <td><?php echo $clients['client_address']; ?></td>
                                                         <td>
