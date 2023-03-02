@@ -154,7 +154,7 @@ if (isset($_POST['Add_Clients'])) {
     $client_email = mysqli_real_escape_string($mysqli, trim($_POST['client_email']));
     $client_phone_number = mysqli_real_escape_string($mysqli, trim($_POST['client_phone_number']));
     $client_address = mysqli_real_escape_string($mysqli, trim($_POST['client_address']));
-    $client_password = sha1(md5('Client@CarRentals')); /* Default Client Password */
+    $client_password = sha1(md5($mysqli, trim($_POST['client_password'])));  /* Default Client Password = Client@CarRentals */
     $client_date_joined = date('d M Y g:ia');
 
     /* Prevent Duplicates */
@@ -210,7 +210,6 @@ if (isset($_POST['Update_Client_Passwords'])) {
         }
     }
 }
-
 
 /* Delete Client */
 if (isset($_POST['Delete_Client'])) {
