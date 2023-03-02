@@ -74,6 +74,12 @@ require_once('../app/settings/back_office_checklogin.php');
 $type = mysqli_real_escape_string($mysqli, $_GET['type']);
 $module = mysqli_real_escape_string($mysqli, $_GET['module']);
 
+/* Convert logo to a base 64 image */
+$path = '../storage/system/logo_backoffice.png';
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
 /* System Users Reports */
 if ($module == 'System_Users') {
     if ($type == 'pdf') {
