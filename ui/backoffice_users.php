@@ -272,6 +272,24 @@ require_once('../app/partials/back_office_head.php');
                 </div>
                 <!-- End bulk import staffs modal -->
 
+                <!-- Download Staff Details -->
+                <div class="modal fade" id="downloadStaffModal" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <form method="POST">
+                                <div class="modal-body text-center text-danger">
+                                    <i class="fas fa-download fa-4x"></i><br><br>
+                                    <h5>Export system users details as</h5> <br>
+                                    <!-- Hide This -->
+                                    <a href="reports?module=System_Users&type=pdf" class="text-center btn btn-success">PDF</a>
+                                    <a href="reports?module=System_Users&type=csv" class="text-center btn btn-primary">CSV</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+
             </div>
         </div>
     </main><!-- ===============================================-->

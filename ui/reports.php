@@ -77,12 +77,11 @@ $module = mysqli_real_escape_string($mysqli, $_GET['module']);
 /* System Users Reports */
 if ($module == 'System_Users') {
     if ($type == 'pdf') {
-        require_once('../app/reports/users.php');
+        require_once('../app/reports/pdf/users.php');
     } else if ($type == 'csv') {
-        require_once('../app/reports/users.php');
+        require_once('../app/reports/csv/users.php');
     } else {
-        $_SESSION['error'] = 'Invalid report type';
-        header('dashboard');
+        header('location: logout');
         exit();
     }
 }
