@@ -134,7 +134,7 @@ require_once('../app/partials/back_office_head.php');
                                             <?php
                                             $clients_sql = mysqli_query(
                                                 $mysqli,
-                                                "SELECT * FROM users"
+                                                "SELECT * FROM clients"
                                             );
                                             if (mysqli_num_rows($clients_sql) > 0) {
                                                 while ($clients = mysqli_fetch_array($clients_sql)) {
@@ -147,7 +147,7 @@ require_once('../app/partials/back_office_head.php');
                                                         </td>
                                                         <td><?php echo $clients['client_phone_number']; ?></td>
                                                         <td><?php echo $clients['client_email']; ?></td>
-                                                        <td><?php echo $clients['client_id_number']; ?></td>
+                                                        <td><?php echo $clients['client_id_no']; ?></td>
                                                         <td><?php echo $clients['client_date_joined']; ?></td>
                                                         <td><?php echo $clients['client_address']; ?></td>
                                                         <td>
@@ -194,7 +194,7 @@ require_once('../app/partials/back_office_head.php');
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">National id number</label>
-                                            <input type="text" required name="client_id_number" class="form-control">
+                                            <input type="text" required name="client_id_no" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">Phone number</label>
