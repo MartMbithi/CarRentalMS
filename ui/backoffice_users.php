@@ -92,11 +92,11 @@ require_once('../app/partials/back_office_head.php');
                     </span>
                     <div class="media-body">
                         <h5 class="mb-0 text-primary position-relative">
-                            <span class="bg-200 pr-3">Staffs Module</span>
+                            <span class="bg-200 pr-3">System Users Module</span>
                             <span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span>
                         </h5>
                         <p class="mb-0 text-justify">
-                            This module allows you to manage your staffs. You can add, edit, delete and view staffs.
+                            This module allows you to manage your system users. You can add, edit, delete and view staffs.
                         </p>
                     </div>
                 </div>
