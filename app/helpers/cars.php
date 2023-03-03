@@ -171,3 +171,99 @@ if (isset($_POST['Delete_Categories'])) {
         $err = "Something went wrong. Please try again";
     }
 }
+
+
+/* Add Vehicles */
+if (isset($_POST['Add_Car_Details'])) {
+    $car_category_id = mysqli_real_escape_string($mysqli, $_POST['car_category_id']);
+    $car_model = mysqli_real_escape_string($mysqli, $_POST['car_model']);
+    $car_yom = mysqli_real_escape_string($mysqli, $_POST['car_yom']);
+    $car_reg_number = mysqli_real_escape_string($mysqli, $_POST['car_reg_number']);
+    $car_mileage = mysqli_real_escape_string($mysqli, $_POST['car_mileage']);
+    $car_transmission_type = mysqli_real_escape_string($mysqli, $_POST['car_transmission_type']);
+    $car_seats = mysqli_real_escape_string($mysqli, $_POST['car_seats']);
+    $car_fuel_type = mysqli_real_escape_string($mysqli, $_POST['car_fuel_type']);
+    $car_description = mysqli_real_escape_string($mysqli, $_POST['car_description']);
+    $car_renting_rate = mysqli_real_escape_string($mysqli, $_POST['car_renting_rate']);
+
+    /* Prevent Duplications */
+    $check = mysqli_query($mysqli, "SELECT * FROM cars WHERE car_reg_number = '{$car_reg_number}'");
+    if (mysqli_num_rows($check) > 0) {
+        $err = "Registration plate number already exists";
+    } else {
+        $add_vehicle_sql = "INSERT INTO cars (car_category_id, car_model, car_yom, car_reg_number, car_mileage, car_transmission_type, car_seats, car_fuel_type, car_description, car_renting_rate)
+        VALUES ('{$car_category_id}', '{$car_model}', '{$car_yom}', '{$car_reg_number}', '{$car_mileage}', '{$car_transmission_type}', '{$car_seats}', '{$car_fuel_type}', '{$car_description}', '{$car_renting_rate}')";
+        if (mysqli_query($mysqli, $add_vehicle_sql)) {
+            $success = "Vehicle added successfully";
+        } else {
+            $err = "Something went wrong. Please try again";
+        }
+    }
+}
+
+
+/* Update Cars */
+if (isset($_POST['Update_Car_Details'])) {
+    $car_id = mysqli_real_escape_string($mysqli, $_POST['car_id']);
+    $car_category_id = mysqli_real_escape_string($mysqli, $_POST['car_category_id']);
+    $car_model = mysqli_real_escape_string($mysqli, $_POST['car_model']);
+    $car_yom = mysqli_real_escape_string($mysqli, $_POST['car_yom']);
+    $car_reg_number = mysqli_real_escape_string($mysqli, $_POST['car_reg_number']);
+    $car_mileage = mysqli_real_escape_string($mysqli, $_POST['car_mileage']);
+    $car_transmission_type = mysqli_real_escape_string($mysqli, $_POST['car_transmission_type']);
+    $car_seats = mysqli_real_escape_string($mysqli, $_POST['car_seats']);
+    $car_fuel_type = mysqli_real_escape_string($mysqli, $_POST['car_fuel_type']);
+    $car_description = mysqli_real_escape_string($mysqli, $_POST['car_description']);
+    $car_renting_rate = mysqli_real_escape_string($mysqli, $_POST['car_renting_rate']);
+
+    /* Update */
+    $update_sql = "UPDATE cars SET car_category_id = '{$car_category_id}', car_model = '{$car_model}', car_yom = '{$car_yom}',
+    car_reg_number = '{$car_reg_number}', car_mileage = '{$car_mileage}', car_transmission_type = '{$car_transmission_type}', 
+    car_seats = '{$car_seats}', car_fuel_type = '{$car_fuel_type}', car_description = '{$car_description}', car_renting_rate = '{$car_renting_rate}' WHERE car_id = '{$car_id}'";
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Vehicle details updated successfully";
+    } else {
+        $err = "Something went wrong. Please try again";
+    }
+}
+
+/* Upload Car Images */
+if (isset($_POST['Update_Vehicle_Images'])) {
+    $fileNames = array_filter($_FILES['files']['name']);
+    $car_id = mysqli_real_escape_string($mysqli, $_POST['car_id']);
+    $allowTypes = array('jpg', 'png', 'jpeg', 'webp');
+    $image_code = rand(999999, 111111);
+    $targetDir = "../storage/cars/";
+    if (!empty($fileNames)) {
+        foreach ($_FILES['files']['name'] as $key => $val) {
+            $fileName = basename($image_code . $_FILES['files']['name'][$key]);
+            $targetFilePath = $targetDir . $fileName;
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+            if (in_array($fileType, $allowTypes)) {
+                if (move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)) {
+                    $insert = mysqli_query($mysqli, "INSERT INTO car_images (image_car_id, image_file_name) VALUES ('{$car_id}', '" . $fileName . "')");
+                }
+            } else {
+                $err = "Sorry, only JPG, JPEG, PNG, WEBP files are allowed to upload.";
+            }
+        }
+        if ($insert == '1') {
+            $success = "Images uploaded successfully";
+        } else {
+            $err = "Something went wrong. Please try again";
+        }
+    } else {
+        $err = "Please select images to upload";
+    }
+}
+
+/* Delete Cars */
+if (isset($_POST['Delete_Cars'])) {
+    $car_id = mysqli_real_escape_string($mysqli, $_POST['car_id']);
+    $query = "DELETE FROM cars WHERE car_id = '{$car_id}'";
+    if (mysqli_query($mysqli, $query)) {
+        $success = "Car deleted successfully";
+    } else {
+        $err = "Something went wrong. Please try again";
+    }
+}
