@@ -244,10 +244,10 @@ if (isset($_POST['Update_Vehicle_Images'])) {
                     $insert = mysqli_query($mysqli, "INSERT INTO car_images (image_car_id, image_file_name) VALUES ('{$car_id}', '" . $fileName . "')");
                 }
             } else {
-                $err = "Sorry, only JPG, JPEG, PNG files are allowed to upload.";
+                $err = "Sorry, only JPG, JPEG, PNG, WEBP files are allowed to upload.";
             }
         }
-        if ($insert) {
+        if ($insert == '1') {
             $success = "Images uploaded successfully";
         } else {
             $err = "Something went wrong. Please try again";
