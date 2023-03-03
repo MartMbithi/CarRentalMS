@@ -228,7 +228,30 @@ if (isset($_POST['Update_Car_Details'])) {
 }
 
 /* Upload Car Images */
-
+if (isset($_POST['Update_Vehicle_Images'])) {
+    $fileNames = array_filter($_FILES['files']['name']);
+    $car_id = mysqli_real_escape_string($mysqli, $_POST['car_id']);
+    $allowTypes = array('jpg', 'png', 'jpeg');
+    $image_code = rand(999999, 111111);
+    $targetDir = "../storage/cars/";
+    if (!empty($fileNames)) {
+        foreach ($_FILES['files']['name'] as $key => $val) {
+            $fileName = basename($image_code . $_FILES['files']['name'][$key]);
+            $targetFilePath = $targetDir . $fileName;
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+            if (in_array($fileType, $allowTypes)) {
+                if (move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)) {
+                    $insert = $mysqli->query("INSERT into car_images (car_id, image_name) VALUES ('{$car_id}', '" . $fileName . "')");
+                }
+            }
+        }
+        if ($insert) {
+            $success = "Images uploaded successfully";
+        } else {
+            $err = "Something went wrong. Please try again";
+        }
+    }
+}
 
 /* Delete Cars */
 if (isset($_POST['Delete_Cars'])) {
