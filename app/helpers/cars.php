@@ -126,7 +126,24 @@ if (isset($_POST['Bulk_Import_Car_Categories'])) {
 }
 
 
- /* Add Vehicle Categories */
+/* Add Vehicle Categories */
+if (isset($_POST['Add_Categories'])) {
+    $category_code = mysqli_real_escape_string($mysqli, $_POST['category_code']);
+    $category_name = mysqli_real_escape_string($mysqli, $_POST['category_name']);
+
+    /* Prevent Duplications */
+    $check = mysqli_query($mysqli, "SELECT * FROM car_categories WHERE category_name = '{$category_name}'");
+    if (mysqli_num_rows($check) > 0) {
+        $err = "Category already exists";
+    } else {
+        $query = "INSERT INTO car_categories (category_name, category_code) VALUES ('{$category_name}', '{$category_code}')";
+        if (mysqli_query($mysqli, $query)) {
+            $success = "Category added successfully";
+        } else {
+            $err = "Something went wrong. Please try again";
+        }
+    }
+}
 
  /* Update Vehicle Categories */
 
