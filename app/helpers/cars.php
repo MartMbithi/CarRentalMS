@@ -102,7 +102,7 @@ if (isset($_POST['Bulk_Import_Car_Categories'])) {
             }
 
             /* Static Values */
-            // $category_code = substr(str_shuffle("0987654321QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);
+            $category_code = substr(str_shuffle("0987654321QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);
             if ($category_name != "") {
                 /* Prevent Duplicates */
                 $check = mysqli_query($mysqli, "SELECT * FROM car_categories WHERE category_name = '{$category_name}'");

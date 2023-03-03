@@ -15,6 +15,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="">Category code</label>
+                            <input type="hidden" value="<?php echo $categories['category_id']; ?>" required name="category_id" class="form-control">
                             <input type="text" value="<?php echo $categories['category_code']; ?>" required name="category_code" class="form-control">
                         </div>
                         <div class="form-group col-md-8">
