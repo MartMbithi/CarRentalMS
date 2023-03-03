@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Tue Feb 21 2023
+ *   Crafted On Thu Mar 02 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,21 +65,47 @@
  *
  */
 
+require_once('../vendor/autoload.php');
 
 
-/* Password Reset Token */
-$length = 16;
-$tk = substr(str_shuffle("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, $length);
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+/* Load XLS Template */
+
+$report_template = '../storage/templates/reports.xlsx';
+$spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($report_template);
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setTitle('Categories List On' . date('d M Y'), true);
+
+/* Sheet columns head names */
+$sheet->setCellValue('A5', 'S/N');
+$sheet->setCellValue('B5', 'Category Code');
+$sheet->setCellValue('C5', 'Category Name');
 
 
-/* REF Codes */
-$ref_code = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 10);
+/* Fetch asset details */
+$query = $mysqli->query("SELECT * FROM car_categories ORDER BY category_name DESC");
+if ($query->num_rows > 0) {
+    $cnt = 1;
+    $row = 6;/* Start filling data from row */
+    while ($users = $query->fetch_assoc()) {
+        /* Populate cell data */
+        $sheet->setCellValue('A' . $row, $cnt);
+        $sheet->setCellValue('B' . $row, $users['category_code']);
+        $sheet->setCellValue('C' . $row, $users['category_name']);
+        $row++;
+        $cnt = $cnt + 1;
+    }
+}
 
-/* System Gen Password */
-$plain_password = substr(str_shuffle("QWERTYUIOPLKjhgfdsazxcvbnmJHGFDSAZXCVBNM1234567890"), 1, 6);
+$file_name = 'Vehicle Categories List On ' . date('d M Y') . '.xlsx';
+ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename=' . $file_name . '');
+header('Cache-Control: max-age=0');
 
-/* Staff Numbers */
-$number = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 10);
-
-/*Rentals Categories */
-$category_code = substr(str_shuffle("0987654321QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);
+$xlsxWriter = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+$xlsxWriter = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+exit($xlsxWriter->save('php://output'));

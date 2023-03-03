@@ -90,7 +90,7 @@ if ($module == 'System_Users') {
         header('location: logout');
         exit();
     }
-    
+
     /* Clients */
 } else if ($module == 'Clients') {
     $type = mysqli_real_escape_string($mysqli, $_GET['type']);
@@ -98,6 +98,16 @@ if ($module == 'System_Users') {
         require_once('../app/reports/pdf/clients.php');
     } else if ($type == 'csv') {
         require_once('../app/reports/csv/clients.php');
+    } else {
+        header('location: logout');
+        exit();
+    }
+} else if ($module == 'Categories') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
+    if ($type == 'pdf') {
+        require_once('../app/reports/pdf/categories.php');
+    } else if ($type == 'csv') {
+        require_once('../app/reports/csv/categories.php');
     } else {
         header('location: logout');
         exit();
