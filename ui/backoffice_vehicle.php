@@ -93,20 +93,38 @@ require_once('../app/partials/back_office_head.php');
                 );
                 if (mysqli_num_rows($vehicle_sql) > 0) {
                     while ($vehicles = mysqli_fetch_array($vehicle_sql)) {
+
                 ?>
                         <div class="card">
                             <div class="bg-light overflow-hidden">
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="../public/backoffice_assets/img/generic/4.jpg" class="rounded d-block w-100">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="../public/backoffice_assets/img/generic/4.jpg" class="rounded d-block w-100">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="../public/backoffice_assets/img/generic/4.jpg" class="rounded d-block w-100">
-                                        </div>
+                                        <?php
+                                        /* Get the first car image - use it as a key */
+                                        $car_images = mysqli_query($mysqli, "SELECT * FROM car_images 
+                                        WHERE image_car_id = '{$vehicles['car_id']}' LIMIT 1");
+                                        if (mysqli_num_rows($car_images) > 0) {
+                                            while ($car_image = mysqli_fetch_array($car_images)) {
+                                                /* Get Car Image ID and put it as global */
+                                                $car_image_id = $car_image['image_id'];
+                                                global $car_image_id;
+                                        ?>
+                                                <div class="carousel-item active">
+                                                    <img src="../storage/cars/<?php echo $car_image['image_file_name']; ?>" class="rounded d-block w-100">
+                                                </div>
+                                            <?php }
+                                        }
+                                        /* Get the rest of the car images */
+                                        $car_images = mysqli_query($mysqli, "SELECT * FROM car_images 
+                                        WHERE image_car_id = '{$vehicles['car_id']}' AND image_id != '{$car_image_id}'");
+                                        if (mysqli_num_rows($car_images) > 0) {
+                                            while ($car_image = mysqli_fetch_array($car_images)) {
+                                            ?>
+                                                <div class="carousel-item">
+                                                    <img src="../storage/cars/<?php echo $car_image['image_file_name']; ?>" class="rounded d-block w-100">
+                                                </div>
+                                        <?php }
+                                        } ?>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
