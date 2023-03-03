@@ -200,3 +200,17 @@ if (isset($_POST['Add_Car_Details'])) {
         }
     }
 }
+
+
+/* Update Cars */
+
+/* Delete Cars */
+if (isset($_POST['Delete_Cars'])) {
+    $car_id = mysqli_real_escape_string($mysqli, $_POST['car_id']);
+    $query = "DELETE FROM cars WHERE car_id = '{$car_id}'";
+    if (mysqli_query($mysqli, $query)) {
+        $success = "Car deleted successfully";
+    } else {
+        $err = "Something went wrong. Please try again";
+    }
+}

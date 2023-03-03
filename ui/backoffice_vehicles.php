@@ -219,13 +219,17 @@ require_once('../app/partials/back_office_head.php');
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-3">
                                             <label for="">Mileage (Kms)</label>
                                             <input type="text" required name="car_mileage" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-3">
+                                            <label for="">Seats</label>
+                                            <input type="text" required name="car_seats" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-3">
                                             <label for="">Transmission</label>
-                                            <select type="text" required name="car_mileage" class="form-control">
+                                            <select type="text" required name="car_transmission_type" class="form-control">
                                                 <option>Manual</option>
                                                 <option>Automatic</option>
                                             </select>
@@ -244,7 +248,7 @@ require_once('../app/partials/back_office_head.php');
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">Detailed Description of the vehicle</label>
-                                            <textarea type="text" rows="5" required name="car_description" class="form-control"></textarea>
+                                            <textarea type="text" rows="5" required name="car_description" class="summernote form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="text-right">

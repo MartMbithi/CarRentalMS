@@ -47,6 +47,9 @@
 <script src="../public/backoffice_assets/plugins/mojs/mo.js"></script>
 <!-- Noty -->
 <script src="../public/backoffice_assets/plugins/noty/noty.js"></script>
+<!-- Summernote -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <!-- Load Alerts -->
 <?php include('alerts.php'); ?>
 <script>
@@ -69,5 +72,12 @@
     /* Data tables */
     $(document).ready(function() {
         $('.data').DataTable();
+    });
+
+    /* Initialize summernote */
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 100
+        });
     });
 </script>

@@ -42,6 +42,10 @@
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/relax.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/semanticui.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/sunset.css">
+
+    <!-- Summernote -->
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <?php
     /* Alert Sesion Via Alerts */
     if (isset($_SESSION['success'])) {
