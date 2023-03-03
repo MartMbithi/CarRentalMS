@@ -227,6 +227,9 @@ if (isset($_POST['Update_Car_Details'])) {
     }
 }
 
+/* Upload Car Images */
+
+
 /* Delete Cars */
 if (isset($_POST['Delete_Cars'])) {
     $car_id = mysqli_real_escape_string($mysqli, $_POST['car_id']);
