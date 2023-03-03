@@ -154,6 +154,115 @@ require_once('../app/partials/back_office_head.php');
                                 </div>
                             </div>
                         </div>
+                        <br>
+                        <div class="row no-gutters">
+                            <div class="col-lg-12 pr-lg-2">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Update vehicle</a></li>
+                                            <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-profile" role="tab" aria-controls="tab-profile" aria-selected="false">Upload images</a></li>
+                                        </ul>
+                                        <div class="tab-content border-x border-bottom p-3" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
+                                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-4">
+                                                            <label for="">Registration number</label>
+                                                            <input type="hidden" name="car_id" value="<?php echo $vehicles['car_id']; ?>">
+                                                            <input type=" text" value="<?php echo $vehicles['car_reg_number']; ?>" required name="car_reg_number" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="">Model name</label>
+                                                            <input type="text" value="<?php echo $vehicles['car_model']; ?>" required name="car_model" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="">Year of manufacture</label>
+                                                            <input type="text" value="<?php echo $vehicles['car_yom']; ?>" required name="car_yom" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="">Vehicle category</label>
+                                                            <select type="" required name="car_category_id" class="form-control">
+                                                                <option value="<?php echo $vehicles['car_category_id']; ?>"><?php echo $vehicles['category_name']; ?></option>
+                                                                <?php
+                                                                $categories_sql = mysqli_query($mysqli, "SELECT * FROM car_categories WHERE category_id != '" . $vehicles['car_category_id'] . "'");
+                                                                while ($categories = mysqli_fetch_array($categories_sql)) {
+                                                                    echo '<option value="' . $categories['category_id'] . '">' . $categories['category_name'] . '</option>';
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="">Mileage (Kms)</label>
+                                                            <input type="text" value="<?php echo $vehicles['car_mileage']; ?>" required name="car_mileage" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="">Seats</label>
+                                                            <input type="text" value="<?php echo $vehicles['car_seats']; ?>" required name="car_seats" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="">Transmission</label>
+                                                            <select type="text" required name="car_transmission_type" class="form-control">
+                                                                <?php if ($vehicles['car_transmission_type'] == "Manual") { ?>
+                                                                    <option selected>Manual</option>
+                                                                    <option>Automatic</option>
+                                                                <?php } else { ?>
+                                                                    <option>Manual</option>
+                                                                    <option selected>Automatic</option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="">Renting rate (Per Hour)</label>
+                                                            <input type="text" value="<?php echo $vehicles['car_renting_rate']; ?>" required name="car_renting_rate" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="">Fuel type</label>
+                                                            <select type="text" required name="car_fuel_type" class="form-control">
+                                                                <?php if ($vehicles['car_fuel_type'] == "Petrol") { ?>
+                                                                    <option selected>Petrol</option>
+                                                                    <option>Diesel</option>
+                                                                    <option>Electric</option>
+                                                                <?php } else if ($vehicles['car_fuel_type'] == "Diesel") { ?>
+                                                                    <option>Petrol</option>
+                                                                    <option selected>Diesel</option>
+                                                                    <option>Electric</option>
+                                                                <?php } else { ?>
+                                                                    <option>Petrol</option>
+                                                                    <option>Diesel</option>
+                                                                    <option selected>Electric</option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label for="">Detailed description of the vehicle</label>
+                                                            <textarea type="text" rows="5" required name="car_description" class="summernote form-control"><?php echo $vehicles['car_description']; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <button type="submit" name="Update_Car_Details" class="btn btn-outline-success">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                <form method="POST">
+                                                    <div class="form-row">
+                                                        <div class="col-md-12 mb-3">
+                                                            <label for="validationTooltip01">Vehicle images</label>
+                                                            <input name="car_id" type="hidden" class="form-control" value="<?php echo $vehicles['car_id']; ?>" required>
+                                                            <input name="old_password" type="password" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <button class="btn btn-primary" type="submit" name="Update_Vehicle_Images">Upload</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <?php }
                 } else { ?>
 
