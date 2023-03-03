@@ -82,7 +82,7 @@ $sheet->setTitle('Categories List On' . date('d M Y'), true);
 /* Sheet columns head names */
 $sheet->setCellValue('A5', 'S/N');
 $sheet->setCellValue('B5', 'Category Code');
-$sheet->setCellValue('C5', 'Ctegory Name');
+$sheet->setCellValue('C5', 'Category Name');
 
 
 /* Fetch asset details */

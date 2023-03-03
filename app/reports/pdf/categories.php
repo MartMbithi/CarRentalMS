@@ -153,7 +153,7 @@ $html =
                 <body style="margin:1px;">
                     <div class="list_header" align="center">
                         <h3>
-                        <img src="' . $base64 . '" width="290" alt="Logo"> <br> <br>
+                        <img src="' . $base64 . '" width="200" alt="Logo"> <br> <br>
                             The Ultimate Car Rental Information Management System
                         </h3>                        
                         <hr style="width:100%" , color=black>
@@ -171,7 +171,7 @@ $html =
                             ';
                                 $categories_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM clients ORDER BY client_date_joined DESC"
+                                    "SELECT * FROM car_categories ORDER BY category_name DESC"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($categories_sql) > 0) {
