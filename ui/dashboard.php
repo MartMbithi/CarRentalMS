@@ -210,7 +210,7 @@ require_once('../app/partials/back_office_head.php');
                                                     </div>
                                                     <div class="media-body">
                                                         <h6 class="mb-0 d-flex align-items-center">
-                                                            <a class="text-800 stretched-link" href="backoffice_client?client=<?php echo $clients['client_id']; ?>">
+                                                            <a class="text-800 stretched-link" href="backoffice_client?view=<?php echo $clients['client_id']; ?>">
                                                                 <?php echo $clients['client_names']; ?>
                                                             </a>
                                                         </h6>
