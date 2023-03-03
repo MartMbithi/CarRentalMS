@@ -134,7 +134,7 @@ require_once('../app/partials/back_office_head.php');
                                             $cars_sql = mysqli_query(
                                                 $mysqli,
                                                 "SELECT * FROM cars c
-                                                INNER JOIN categories cat ON c.category_id = cat.category_id"
+                                                INNER JOIN car_categories cat ON c.car_category_id = cat.category_id"
                                             );
                                             if (mysqli_num_rows($cars_sql) > 0) {
                                                 while ($cars = mysqli_fetch_array($cars_sql)) {
@@ -186,7 +186,7 @@ require_once('../app/partials/back_office_head.php');
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Register new rentals vehicle category</h6>
+                                    <h6 class="mb-0 text-bold">Register new rentals vehicle</h6>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -196,78 +196,81 @@ require_once('../app/partials/back_office_head.php');
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
                                         <div class="form-group col-md-4">
-                                            <label for="">Category code</label>
-                                            <input type="text" value="<?php echo $category_code; ?>" required name="category_code" class="form-control">
+                                            <label for="">Registration number</label>
+                                            <input type="text" required name="car_reg_number" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-8">
-                                            <label for="">Category name</label>
-                                            <input type="" required name="category_name" class="form-control">
+                                        <div class="form-group col-md-4">
+                                            <label for="">Model name</label>
+                                            <input type="text" required name="car_model" class="form-control">
                                         </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Add_Categories" class="btn btn-outline-success">Add category</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Add Staff Modal -->
-
-                <!-- Bulk import staffs modal-->
-                <div class="modal fade fixed-right" id="bulkImportCategories" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header align-items-center">
-                                <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Bulk import rentals categories</h6>
-                                </div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-12 text-center">
-                                            <a class="text-center" href="../storage/templates/categories.xlsx"> Download a template here</a>
+                                        <div class="form-group col-md-4">
+                                            <label for="">Year of Manufacture</label>
+                                            <input type="text" required name="car_yom" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="">Vehicle category</label>
+                                            <select type="" required name="car_category_id" class="form-control">
+                                                <option value="">Select category</option>
+                                                <?php
+                                                $categories_sql = mysqli_query($mysqli, "SELECT * FROM car_categories");
+                                                while ($categories = mysqli_fetch_array($categories_sql)) {
+                                                    echo '<option value="' . $categories['category_id'] . '">' . $categories['category_name'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="">Mileage (Kms)</label>
+                                            <input type="text" required name="car_mileage" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="">Transmission</label>
+                                            <select type="text" required name="car_mileage" class="form-control">
+                                                <option>Manual</option>
+                                                <option>Automatic</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">Renting rate (Per Hour)</label>
+                                            <input type="text" required name="car_renting_rate" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">Fuel type</label>
+                                            <select type="text" required name="car_fuel_type" class="form-control">
+                                                <option>Petrol</option>
+                                                <option>Diesel</option>
+                                                <option>Electric</option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="validationTooltip01">XLS File</label>
-                                            <div class="custom-file">
-                                                <input type="file" accept=".xlsx" name="car_categories" required class="custom-file-input" id="inputGroupFile02">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
+                                            <label for="">Detailed Description of the vehicle</label>
+                                            <textarea type="text" rows="5" required name="car_description" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Bulk_Import_Car_Categories" class="btn btn-outline-success">Upload</button>
+                                        <button type="submit" name="Add_Car_Details" class="btn btn-outline-success">Add vehicle</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End bulk import staffs modal -->
 
-                <!-- Download Staff Details -->
                 <div class="modal fade" id="downloadCategoriesModal" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <form method="POST">
                                 <div class="modal-body text-center text-danger">
                                     <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export rentals vehicle categories details as</h5> <br>
+                                    <h5>Export vehicle details as</h5> <br>
                                     <!-- Hide This -->
-                                    <a href="reports?module=Categories&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Categories&type=csv" class="text-center btn btn-primary">CSV</a>
+                                    <a href="reports?module=Vehicles&type=pdf" class="text-center btn btn-success">PDF</a>
+                                    <a href="reports?module=Vehicles&type=csv" class="text-center btn btn-primary">CSV</a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- End Modal -->
-
             </div>
         </div>
     </main><!-- ===============================================-->

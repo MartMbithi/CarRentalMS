@@ -171,3 +171,32 @@ if (isset($_POST['Delete_Categories'])) {
         $err = "Something went wrong. Please try again";
     }
 }
+
+
+/* Add Vehicles */
+if (isset($_POST['Add_Car_Details'])) {
+    $car_category_id = mysqli_real_escape_string($mysqli, $_POST['car_category_id']);
+    $car_model = mysqli_real_escape_string($mysqli, $_POST['car_model']);
+    $car_yom = mysqli_real_escape_string($mysqli, $_POST['car_yom']);
+    $car_reg_number = mysqli_real_escape_string($mysqli, $_POST['car_reg_number']);
+    $car_mileage = mysqli_real_escape_string($mysqli, $_POST['car_mileage']);
+    $car_transmission_type = mysqli_real_escape_string($mysqli, $_POST['car_transmission_type']);
+    $car_seats = mysqli_real_escape_string($mysqli, $_POST['car_seats']);
+    $car_fuel_type = mysqli_real_escape_string($mysqli, $_POST['car_fuel_type']);
+    $car_description = mysqli_real_escape_string($mysqli, $_POST['car_description']);
+    $car_renting_rate = mysqli_real_escape_string($mysqli, $_POST['car_renting_rate']);
+
+    /* Prevent Duplications */
+    $check = mysqli_query($mysqli, "SELECT * FROM cars WHERE car_reg_number = '{$car_reg_number}'");
+    if (mysqli_num_rows($check) > 0) {
+        $err = "Registration plate number already exists";
+    } else {
+        $add_vehicle_sql = "INSERT INTO cars (car_category_id, car_model, car_yom, car_reg_number, car_mileage, car_transmission_type, car_seats, car_fuel_type, car_description, car_renting_rate)
+        VALUES ('{$car_category_id}', '{$car_model}', '{$car_yom}', '{$car_reg_number}', '{$car_mileage}', '{$car_transmission_type}', '{$car_seats}', '{$car_fuel_type}', '{$car_description}', '{$car_renting_rate}')";
+        if (mysqli_query($mysqli, $add_vehicle_sql)) {
+            $success = "Vehicle added successfully";
+        } else {
+            $err = "Something went wrong. Please try again";
+        }
+    }
+}
