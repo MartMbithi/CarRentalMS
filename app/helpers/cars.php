@@ -145,6 +145,30 @@ if (isset($_POST['Add_Categories'])) {
     }
 }
 
- /* Update Vehicle Categories */
+/* Update Vehicle Categories */
+if (isset($_POST['Update_Categories'])) {
+    $category_code = mysqli_real_escape_string($mysqli, $_POST['category_code']);
+    $category_name = mysqli_real_escape_string($mysqli, $_POST['category_name']);
+    $category_id = mysqli_real_escape_string($mysqli, $_POST['category_id']);
 
- /* Delete Vehicled Categories */
+    $query = "UPDATE car_categories SET category_name = '{$category_name}', category_code = '{$category_code}' 
+    WHERE category_id = '{$category_id}'";
+    if (mysqli_query($mysqli, $query)) {
+        $success = "Category updated successfully";
+    } else {
+        $err = "Something went wrong. Please try again";
+    }
+}
+
+
+/* Delete Vehicled Categories */
+
+if (isset($_POST['Delete_Categories'])) {
+    $category_id = $_POST['category_id'];
+    $query = "DELETE FROM car_categories WHERE category_id = '{$category_id}'";
+    if (mysqli_query($mysqli, $query)) {
+        $success = "Category deleted successfully";
+    } else {
+        $err = "Something went wrong. Please try again";
+    }
+}
