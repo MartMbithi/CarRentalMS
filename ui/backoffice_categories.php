@@ -233,7 +233,7 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End bulk import staffs modal -->
 
                 <!-- Download Staff Details -->
-                <div class="modal fade" id="downloadClientsModal" role="dialog">
+                <div class="modal fade" id="downloadCategoriesModal" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <form method="POST">
