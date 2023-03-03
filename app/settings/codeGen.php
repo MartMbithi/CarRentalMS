@@ -80,3 +80,6 @@ $plain_password = substr(str_shuffle("QWERTYUIOPLKjhgfdsazxcvbnmJHGFDSAZXCVBNM12
 
 /* Staff Numbers */
 $number = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 10);
+
+/*Rentals Categories */
+$category_code = substr(str_shuffle("0987654321QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);

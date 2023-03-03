@@ -263,7 +263,7 @@ require_once('../app/partials/back_office_head.php');
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Bulk_Import_Staffs" class="btn btn-outline-success">Upload staffs</button>
+                                        <button type="submit" name="Bulk_Import_Staffs" class="btn btn-outline-success">Upload</button>
                                     </div>
                                 </form>
                             </div>

@@ -68,7 +68,7 @@
 session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
-require_once('../app/settings/codeGen.php');
+include('../app/settings/codeGen.php');
 require_once('../app/helpers/cars.php');
 require_once('../app/partials/back_office_head.php');
 
@@ -88,31 +88,31 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End Navigations -->
                 <div class="media mb-4 mt-3"><span class="fa-stack mr-2 ml-n1">
                         <i class="fas fa-circle fa-stack-2x text-300"></i>
-                        <i class="fa-inverse fa-stack-1x text-primary fas fa-users"></i>
+                        <i class="fa-inverse fa-stack-1x text-primary fas fa-list"></i>
                     </span>
                     <div class="media-body">
                         <h5 class="mb-0 text-primary position-relative">
-                            <span class="bg-200 pr-3">Clients</span>
+                            <span class="bg-200 pr-3">Rentals Vehicles Categories</span>
                             <span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span>
                         </h5>
                         <p class="mb-0 text-justify">
-                            This module allows you to manage your clients. You can add, edit, delete and view clients.
+                            This module allows you to manage your rentals vehicles categories. You can add, edit, delete and view vehicle categories.
                         </p>
                     </div>
                 </div>
                 <div class="row no-gutters">
                     <div class="card mb-3 col-12">
                         <div class="card-header text-right">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addClientModal">
-                                <i class="fas fa-plus"></i> Add Client
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCategoriesModal">
+                                <i class="fas fa-plus"></i> Add Categories
                             </button>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#bulkImportClients">
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#bulkImportCategories">
                                 <i class="fas fa-upload"></i>
-                                Bulk Import Clients
+                                Bulk Import Categories
                             </button>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadClientsModal">
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadCategoriesModal">
                                 <i class="fas fa-download"></i>
-                                Download Clients
+                                Download Categories
                             </button>
                         </div>
                         <div class="row">
@@ -121,42 +121,37 @@ require_once('../app/partials/back_office_head.php');
                                     <table class="data table table-sm no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
-                                                <th class="sort">Name</th>
-                                                <th class="sort">Contacts</th>
-                                                <th class="sort">Email</th>
-                                                <th class="sort">Date joined</th>
-                                                <th class="sort">Address</th>
+                                                <th class="sort">Category code</th>
+                                                <th class="sort">Category name</th>
                                                 <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
                                             <?php
-                                            $clients_sql = mysqli_query(
+                                            $categories_sql = mysqli_query(
                                                 $mysqli,
-                                                "SELECT * FROM clients"
+                                                "SELECT * FROM car_categories"
                                             );
-                                            if (mysqli_num_rows($clients_sql) > 0) {
-                                                while ($clients = mysqli_fetch_array($clients_sql)) {
+                                            if (mysqli_num_rows($categories_sql) > 0) {
+                                                while ($categories = mysqli_fetch_array($categories_sql)) {
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="backoffice_client?view=<?php echo $clients['client_id']; ?>">
-                                                                <?php echo $clients['client_names']; ?>
-                                                            </a>
+                                                            <?php echo $categories['category_code']; ?>
                                                         </td>
-                                                        <td><?php echo $clients['client_phone_number']; ?></td>
-                                                        <td><?php echo $clients['client_email']; ?></td>
-                                                        <td><?php echo $clients['client_date_joined']; ?></td>
-                                                        <td><?php echo $clients['client_address']; ?></td>
+                                                        <td><?php echo $categories['category_name']; ?></td>
                                                         <td>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $clients['client_id']; ?>" class="badge badge-danger">
+                                                            <a data-toggle="modal" href="#update_<?php echo $categories['category_id']; ?>" class="badge badge-warning">
+                                                                <i class="fas fa-edit"></i> Update
+                                                            </a>
+                                                            <a data-toggle="modal" href="#delete_<?php echo $categories['category_id']; ?>" class="badge badge-danger">
                                                                 <i class="fas fa-trash"></i> Delete
                                                             </a>
                                                         </td>
                                                     </tr>
 
                                             <?php
-                                                    include('../app/modals/client_delete.php');
+                                                    include('../app/modals/categories_modal.php');
                                                 }
                                             } ?>
                                         </tbody>
@@ -168,12 +163,12 @@ require_once('../app/partials/back_office_head.php');
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
                 <!-- Add Staff Modals -->
-                <div class="modal fade fixed-right" id="addClientModal" role="dialog" aria-hidden="true">
+                <div class="modal fade fixed-right" id="addCategoriesModal" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Register new client</h6>
+                                    <h6 class="mb-0 text-bold">Register new rentals vehicle category</h6>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -182,33 +177,17 @@ require_once('../app/partials/back_office_head.php');
                             <div class="modal-body">
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Full names</label>
-                                            <input type="text" required name="client_names" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Email</label>
-                                            <input type="email" required name="client_email" class="form-control">
-                                        </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">National id number</label>
-                                            <input type="text" required name="client_id_no" class="form-control">
+                                            <label for="">Category code</label>
+                                            <input type="text" value="<?php echo $category_code; ?>" required name="category_code" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Phone number</label>
-                                            <input type="text" required name="client_phone_number" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Default login password</label>
-                                            <input type="text" value="Client@Carentals" required name="client_password" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="">Staff address</label>
-                                            <textarea type="text" required name="client_address" class="form-control"></textarea>
+                                        <div class="form-group col-md-8">
+                                            <label for="">Category name</label>
+                                            <input type="" required name="category_name" class="form-control">
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Add_Client" class="btn btn-outline-success">Add client</button>
+                                        <button type="submit" name="Add_Categories" class="btn btn-outline-success">Add category</button>
                                     </div>
                                 </form>
                             </div>
@@ -218,12 +197,12 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End Add Staff Modal -->
 
                 <!-- Bulk import staffs modal-->
-                <div class="modal fade fixed-right" id="bulkImportClients" role="dialog" aria-hidden="true">
+                <div class="modal fade fixed-right" id="bulkImportCategories" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Bulk import clients</h6>
+                                    <h6 class="mb-0 text-bold">Bulk import rentals categories</h6>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -233,18 +212,18 @@ require_once('../app/partials/back_office_head.php');
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
                                         <div class="form-group col-md-12 text-center">
-                                            <a class="text-center" href="../storage/templates/clients.xlsx"> Download a template here</a>
+                                            <a class="text-center" href="../storage/templates/categories.xlsx"> Download a template here</a>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="validationTooltip01">XLS File</label>
                                             <div class="custom-file">
-                                                <input type="file" accept=".xlsx" name="client_details" required class="custom-file-input" id="inputGroupFile02">
+                                                <input type="file" accept=".xlsx" name="car_categories" required class="custom-file-input" id="inputGroupFile02">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Bulk_Import_Clients" class="btn btn-outline-success">Upload staffs</button>
+                                        <button type="submit" name="Bulk_Import_Car_Categories" class="btn btn-outline-success">Upload</button>
                                     </div>
                                 </form>
                             </div>
@@ -260,10 +239,10 @@ require_once('../app/partials/back_office_head.php');
                             <form method="POST">
                                 <div class="modal-body text-center text-danger">
                                     <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export client details as</h5> <br>
+                                    <h5>Export rentals vehicle categories details as</h5> <br>
                                     <!-- Hide This -->
-                                    <a href="reports?module=Clients&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Clients&type=csv" class="text-center btn btn-primary">CSV</a>
+                                    <a href="reports?module=Categories&type=pdf" class="text-center btn btn-success">PDF</a>
+                                    <a href="reports?module=Categories&type=csv" class="text-center btn btn-primary">CSV</a>
                                 </div>
                             </form>
                         </div>
