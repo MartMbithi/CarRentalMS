@@ -204,10 +204,10 @@ require_once('../app/partials/back_office_head.php');
                                             <input type="text" required name="car_model" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">Year of Manufacture</label>
+                                            <label for="">Year of manufacture</label>
                                             <input type="text" required name="car_yom" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-3">
                                             <label for="">Vehicle category</label>
                                             <select type="" required name="car_category_id" class="form-control">
                                                 <option value="">Select category</option>
@@ -247,7 +247,7 @@ require_once('../app/partials/back_office_head.php');
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="">Detailed Description of the vehicle</label>
+                                            <label for="">Detailed description of the vehicle</label>
                                             <textarea type="text" rows="5" required name="car_description" class="summernote form-control"></textarea>
                                         </div>
                                     </div>
