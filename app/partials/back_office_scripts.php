@@ -40,15 +40,14 @@
 <script src="../public/backoffice_assets/lib/datatables-bs4/dataTables.bootstrap4.min.js"></script>
 <script src="../public/backoffice_assets/lib/datatables.net-responsive/dataTables.responsive.js"></script>
 <script src="../public/backoffice_assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script>
-<!-- Theme Js -->
-<script src="../public/backoffice_assets/js/theme.min.js"></script>
-
 <!-- Mojs -->
 <script src="../public/backoffice_assets/plugins/mojs/mo.js"></script>
 <!-- Noty -->
 <script src="../public/backoffice_assets/plugins/noty/noty.js"></script>
 <!-- Summernote -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- Theme Js -->
+<script src="../public/backoffice_assets/js/theme.min.js"></script>
 
 <!-- Load Alerts -->
 <?php include('alerts.php'); ?>

@@ -27,7 +27,6 @@
     <link href="../public/backoffice_assets/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet">
     <!-- Theme  -->
     <link href="../public/backoffice_assets/css/theme.min.css" rel="stylesheet">
-
     <link href="../public/backoffice_assets/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet">
     <link href="../public/backoffice_assets/lib/prismjs/prism-okaidia.css" rel="stylesheet">
     <link href="../public/backoffice_assets/lib/datatables-bs4/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -42,8 +41,6 @@
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/relax.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/semanticui.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/sunset.css">
-
-    <!-- Summernote -->
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <?php
