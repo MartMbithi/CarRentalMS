@@ -44,6 +44,8 @@
 <script src="../public/backoffice_assets/plugins/mojs/mo.js"></script>
 <!-- Noty -->
 <script src="../public/backoffice_assets/plugins/noty/noty.js"></script>
+<!-- Drop Zone -->
+<script src="../public/backoffice_assets/lib/dropzone/dropzone.min.js"></script>
 <!-- Summernote -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <!-- Theme Js -->
@@ -79,4 +81,9 @@
             height: 100
         });
     });
+    /* Initialize Dropzone */
+    Dropzone.options.imageUpload = {
+        maxFilesize: 1,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif"
+    };
 </script>

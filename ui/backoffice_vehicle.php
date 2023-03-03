@@ -245,12 +245,15 @@ require_once('../app/partials/back_office_head.php');
                                                 </form>
                                             </div>
                                             <div class="tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
-                                                <form method="POST">
+                                                <form method="POST" enctype="multipart/form-data">
                                                     <div class="form-row">
                                                         <div class="col-md-12 mb-3">
                                                             <label for="validationTooltip01">Vehicle images</label>
-                                                            <input name="car_id" type="hidden" class="form-control" value="<?php echo $vehicles['car_id']; ?>" required>
-                                                            <input name="old_password" type="password" class="form-control" required>
+                                                            <div class="custom-file">
+                                                                <input name="car_id" type="hidden" class="form-control" value="<?php echo $vehicles['car_id']; ?>" required>
+                                                                <input type="file" name="files[]" multiple accept=".png, .jpg, .jpeg, .webp" required class="custom-file-input" id="inputGroupFile02">
+                                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="text-right">

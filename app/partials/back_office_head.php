@@ -31,6 +31,8 @@
     <link href="../public/backoffice_assets/lib/prismjs/prism-okaidia.css" rel="stylesheet">
     <link href="../public/backoffice_assets/lib/datatables-bs4/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="../public/backoffice_assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.css" rel="stylesheet">
+    <!-- Dropzone -->
+    <link href="../public/backoffice_assets/lib/dropzone/dropzone.min.css" rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/noty.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/bootstrap-v4.css">
