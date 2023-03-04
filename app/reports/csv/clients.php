@@ -89,7 +89,6 @@ $sheet->setCellValue('F5', 'Date Joined');
 $sheet->setCellValue('G5', 'Address');
 
 
-/* Fetch asset details */
 $query = $mysqli->query("SELECT * FROM clients ORDER BY client_date_joined DESC");
 if ($query->num_rows > 0) {
     $cnt = 1;

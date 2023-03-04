@@ -112,4 +112,14 @@ if ($module == 'System_Users') {
         header('location: logout');
         exit();
     }
+} else if ($module == 'Vehicles') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
+    if ($type == 'pdf') {
+        require_once('../app/reports/pdf/vehicles.php');
+    } else if ($type == 'csv') {
+        require_once('../app/reports/csv/vehicles.php');
+    } else {
+        header('location: logout');
+        exit();
+    }
 }

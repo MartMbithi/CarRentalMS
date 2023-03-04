@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Thu Mar 02 2023
+ *   Crafted On Sat Mar 04 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -77,39 +77,55 @@ $report_template = '../storage/templates/reports.xlsx';
 $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($report_template);
 $sheet = $spreadsheet->getActiveSheet();
-$sheet->setTitle('Users List On' . date('d M Y'), true);
+$sheet->setTitle('Vehicles List On' . date('d M Y'), true);
 
 /* Sheet columns head names */
 $sheet->setCellValue('A5', 'S/N');
-$sheet->setCellValue('B5', 'User Number');
-$sheet->setCellValue('C5', 'Full Names');
-$sheet->setCellValue('D5', 'National ID Number');
-$sheet->setCellValue('E5', 'Phone Number');
-$sheet->setCellValue('F5', 'Email Address');
-$sheet->setCellValue('G5', 'Access Level');
-$sheet->setCellValue('H5', 'Address');
+$sheet->setCellValue('B5', 'Category Code');
+$sheet->setCellValue('C5', 'Category Name');
+$sheet->setCellValue('D5', 'Registration Number');
+$sheet->setCellValue('E5', 'Model Name');
+$sheet->setCellValue('F5', 'Year of Manufacture');
+$sheet->setCellValue('G5', 'Mileage');
+$sheet->setCellValue('H5', 'Transmission Type');
+$sheet->setCellValue('I5', 'No of Seats');
+$sheet->setCellValue('J5', 'Fuel Type');
+$sheet->setCellValue('K5', 'Availability Status');
+$sheet->setCellValue('L5', 'Renting Rate(Per Hour)');
 
 
-$query = $mysqli->query("SELECT * FROM users");
+$query = $mysqli->query("SELECT * FROM cars c
+INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
+ORDER BY car_reg_number DESC");
 if ($query->num_rows > 0) {
     $cnt = 1;
     $row = 6;/* Start filling data from row */
-    while ($users = $query->fetch_assoc()) {
+    while ($vehicles = $query->fetch_assoc()) {
+        if ($vehicles['car_availability_status'] == '0') {
+            $availability = 'Available';
+        } else {
+            $availability = 'Rented';
+        }
         /* Populate cell data */
         $sheet->setCellValue('A' . $row, $cnt);
-        $sheet->setCellValue('B' . $row, $users['user_number']);
-        $sheet->setCellValue('C' . $row, $users['user_name']);
-        $sheet->setCellValue('D' . $row, $users['user_id_number']);
-        $sheet->setCellValue('E' . $row, $users['user_phone_number']);
-        $sheet->setCellValue('F' . $row, $users['user_email']);
-        $sheet->setCellValue('G' . $row, $users['user_access_level']);
-        $sheet->setCellValue('H' . $row, $users['user_address']);
+        $sheet->setCellValue('B' . $row, $vehicles['category_code']);
+        $sheet->setCellValue('C' . $row, $vehicles['category_name']);
+        $sheet->setCellValue('D' . $row, $vehicles['car_reg_number']);
+        $sheet->setCellValue('E' . $row, $vehicles['car_model']);
+        $sheet->setCellValue('F' . $row, $vehicles['car_yom']);
+        $sheet->setCellValue('G' . $row, $vehicles['car_mileage']);
+        $sheet->setCellValue('H' . $row, $vehicles['car_transmission_type']);
+        $sheet->setCellValue('I' . $row, $vehicles['car_seats']);
+        $sheet->setCellValue('J' . $row, $vehicles['car_fuel_type']);
+        $sheet->setCellValue('K' . $row, $availability);
+        $sheet->setCellValue('L' . $row, $vehicles['car_renting_rate']);
+
         $row++;
         $cnt = $cnt + 1;
     }
 }
 
-$file_name = 'Users List On ' . date('d M Y') . '.xlsx';
+$file_name = 'Vehicle List On ' . date('d M Y') . '.xlsx';
 ob_end_clean();
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename=' . $file_name . '');
