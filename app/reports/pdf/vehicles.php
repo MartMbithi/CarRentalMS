@@ -158,20 +158,20 @@ $html =
                         <hr style="width:100%" , color=black>
                         <h5>Vehicle List - Generated On ' . date('d M Y') . '</h5>
                     </div>
-                    <table border="1" cellspacing="0" width="98%" style="font-size:9pt">
+                    <table border="1" cellspacing="0" width="100%" style="font-size:9pt">
                         <thead>
                             <tr>
                                 <th style="width:20%">S/N</th>
-                                <th style="width:50%">Category Name</th>
-                                <th style="width:50%">Reg Number</th>
+                                <th style="width:100%">Category Name</th>
+                                <th style="width:100%">Reg Number</th>
                                 <th style="width:100%">Model</th>
-                                <th style="width:50%">Year</th>
-                                <th style="width:50%">Mileage</th>
-                                <th style="width:50%">Transmission</th>
-                                <th style="width:50%">No of Seats</th>
-                                <th style="width:50%">Fuel</th>
-                                <th style="width:50%">Status</th>
-                                <th style="width:50%">Rate Per Hour</th>
+                                <th style="width:100%">Year</th>
+                                <th style="width:100%">Mileage</th>
+                                <th style="width:100%">Transmission</th>
+                                <th style="width:100%">No of Seats</th>
+                                <th style="width:100%">Fuel</th>
+                                <th style="width:100%">Status</th>
+                                <th style="width:100%">Rate Per Hour</th>
 
                             </tr>
                         </thead>
@@ -201,10 +201,10 @@ $html =
                                                 <td>' . $vehicles['car_yom'] . '</td>
                                                 <td>' . $vehicles['car_mileage'] . '</td>
                                                 <td>' . $vehicles['car_transmission_type'] . '</td>
-                                                <td>' . $vehicles['car_seats'] . '</td>
+                                                <td>' . $vehicles['car_seats'] . ' Seats</td>
                                                 <td>' . $vehicles['car_fuel_type'] . '</td>
                                                 <td>' . $availability . '</td>
-                                                <td>' . $vehicles['car_renting_rate'] . '</td>
+                                                <td>Ksh ' . $vehicles['car_renting_rate'] . '</td>
 
                                             </tr>
                                         ';
@@ -219,7 +219,7 @@ $html =
     ';
 $dompdf = new Dompdf();
 $dompdf->load_html($html);
-$dompdf->set_paper('A4', 'potrait');
+$dompdf->set_paper('A4', 'landscape');
 $dompdf->set_option('isHtml5ParserEnabled', true);
 $dompdf->render();
 $dompdf->stream('Vehicle Generated On' . date('d M Y'), array("Attachment" => 1));
