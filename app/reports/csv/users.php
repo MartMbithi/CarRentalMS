@@ -90,7 +90,6 @@ $sheet->setCellValue('G5', 'Access Level');
 $sheet->setCellValue('H5', 'Address');
 
 
-/* Fetch asset details */
 $query = $mysqli->query("SELECT * FROM users");
 if ($query->num_rows > 0) {
     $cnt = 1;

@@ -85,7 +85,6 @@ $sheet->setCellValue('B5', 'Category Code');
 $sheet->setCellValue('C5', 'Category Name');
 
 
-/* Fetch asset details */
 $query = $mysqli->query("SELECT * FROM car_categories ORDER BY category_name DESC");
 if ($query->num_rows > 0) {
     $cnt = 1;
