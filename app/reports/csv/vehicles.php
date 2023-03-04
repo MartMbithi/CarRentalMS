@@ -91,7 +91,7 @@ $sheet->setCellValue('H5', 'Transmission Type');
 $sheet->setCellValue('I5', 'No of Seats');
 $sheet->setCellValue('J5', 'Fuel Type');
 $sheet->setCellValue('K5', 'Availability Status');
-$sheet->setCellValue('L5', 'Renting Rate');
+$sheet->setCellValue('L5', 'Renting Rate(Per Hour)');
 
 
 $query = $mysqli->query("SELECT * FROM cars c
@@ -101,6 +101,11 @@ if ($query->num_rows > 0) {
     $cnt = 1;
     $row = 6;/* Start filling data from row */
     while ($vehicles = $query->fetch_assoc()) {
+        if ($vehicles['car_availability_status'] == '0') {
+            $availability = 'Available';
+        } else {
+            $availability = 'Rented';
+        }
         /* Populate cell data */
         $sheet->setCellValue('A' . $row, $cnt);
         $sheet->setCellValue('B' . $row, $vehicles['category_code']);
@@ -112,7 +117,7 @@ if ($query->num_rows > 0) {
         $sheet->setCellValue('H' . $row, $vehicles['car_transmission_type']);
         $sheet->setCellValue('I' . $row, $vehicles['car_seats']);
         $sheet->setCellValue('J' . $row, $vehicles['car_fuel_type']);
-        $sheet->setCellValue('K' . $row, $vehicles['car_availability_status']);
+        $sheet->setCellValue('K' . $row, $availability);
         $sheet->setCellValue('L' . $row, $vehicles['car_renting_rate']);
 
         $row++;
