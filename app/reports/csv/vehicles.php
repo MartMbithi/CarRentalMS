@@ -94,24 +94,33 @@ $sheet->setCellValue('K5', 'Availability Status');
 $sheet->setCellValue('L5', 'Renting Rate');
 
 
-/* Fetch asset details */
 $query = $mysqli->query("SELECT * FROM cars c
 INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
 ORDER BY car_reg_number DESC");
 if ($query->num_rows > 0) {
     $cnt = 1;
     $row = 6;/* Start filling data from row */
-    while ($users = $query->fetch_assoc()) {
+    while ($vehicles = $query->fetch_assoc()) {
         /* Populate cell data */
         $sheet->setCellValue('A' . $row, $cnt);
-        $sheet->setCellValue('B' . $row, $users['category_code']);
-        $sheet->setCellValue('C' . $row, $users['category_name']);
+        $sheet->setCellValue('B' . $row, $vehicles['category_code']);
+        $sheet->setCellValue('C' . $row, $vehicles['category_name']);
+        $sheet->setCellValue('D' . $row, $vehicles['car_reg_number']);
+        $sheet->setCellValue('E' . $row, $vehicles['car_model']);
+        $sheet->setCellValue('F' . $row, $vehicles['car_yom']);
+        $sheet->setCellValue('G' . $row, $vehicles['car_mileage']);
+        $sheet->setCellValue('H' . $row, $vehicles['car_transmission_type']);
+        $sheet->setCellValue('I' . $row, $vehicles['car_seats']);
+        $sheet->setCellValue('J' . $row, $vehicles['car_fuel_type']);
+        $sheet->setCellValue('K' . $row, $vehicles['car_availability_status']);
+        $sheet->setCellValue('L' . $row, $vehicles['car_renting_rate']);
+
         $row++;
         $cnt = $cnt + 1;
     }
 }
 
-$file_name = 'Vehicle Categories List On ' . date('d M Y') . '.xlsx';
+$file_name = 'Vehicle List On ' . date('d M Y') . '.xlsx';
 ob_end_clean();
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename=' . $file_name . '');
