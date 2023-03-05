@@ -84,7 +84,6 @@ require_once('../app/partials/back_office_head.php');
 
             <div class="content">
                 <?php require_once('../app/partials/back_office_topbar.php');
-                /* Load this partial with logged in user session */
                 $vehicle_sql = mysqli_query(
                     $mysqli,
                     "SELECT * FROM cars c

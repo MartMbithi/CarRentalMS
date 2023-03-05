@@ -145,53 +145,60 @@ require_once('../app/partials/landing_head.php');
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <?php
-                    /* Fetch available cars */
-                    $available_cars_sql = mysqli_query(
-                        $mysqli,
-                        "SELECT * FROM  cars c 
+                <?php
+                /* Fetch available cars */
+                $available_cars_sql = mysqli_query(
+                    $mysqli,
+                    "SELECT * FROM  cars c 
                         INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
-                        INNER JOIN car_images ci ON ci.image_car_id = c.car_id
                         WHERE car_availability_status = '0'
                         LIMIT 5 "
-                    );
-                    if (mysqli_num_rows($available_cars_sql) > 0) {
-                        while ($cars = mysqli_fetch_array($available_cars_sql)) {
-                    ?>
-                            <div class="carousel-car owl-carousel">
-                                <div class="item">
-                                    <div class="car-wrap rounded ftco-animate">
-                                        <div class="img rounded d-flex align-items-end" style="background-image: url(../storage/cars/<?php echo $cars['image_file_name']; ?>">
-                                        </div>
-                                        <div class="text">
-                                            <h2 class="mb-0"><a href="#"><?php echo $cars['car_model']; ?></a></h2>
-                                            <div class="d-flex mb-3">
-                                                <span class="cat"><?php echo $cars['category_name']; ?></span>
-                                                <p class="price ml-auto">Ksh <?php echo number_format($cars['car_renting_rate']); ?> <span>/day</span></p>
+                );
+                if (mysqli_num_rows($available_cars_sql) > 0) {
+                    while ($cars = mysqli_fetch_array($available_cars_sql)) {
+                ?>
+                        <div class="col-md-4">
+                            <div class="item">
+                                <div class="car-wrap rounded ftco-animate">
+                                    <?php
+                                    /* Get the first car image - use it as a key */
+                                    $car_images = mysqli_query($mysqli, "SELECT * FROM car_images 
+                                        WHERE image_car_id = '{$cars['car_id']}' LIMIT 1");
+                                    if (mysqli_num_rows($car_images) > 0) {
+                                        while ($car_image = mysqli_fetch_array($car_images)) {
+                                    ?>
+                                            <div class="img rounded d-flex align-items-end" style="background-image: url(../storage/cars/<?php echo $car_image['image_file_name']; ?>">
                                             </div>
-                                            <p class="d-flex mb-0 d-block">
-                                                <a href="login" class="btn btn-primary py-2 mr-1">Book now</a>
-                                                <a href="car?view=<?php echo $cars['car_id']; ?>" class="btn btn-secondary py-2 ml-1">Details</a>
-                                            </p>
+                                    <?php }
+                                    } ?>
+                                    <div class="text">
+                                        <h2 class="mb-0"><a href="#"><?php echo $cars['car_model']; ?></a></h2>
+                                        <div class="d-flex mb-3">
+                                            <span class="cat"><?php echo $cars['category_name']; ?></span>
+                                            <p class="price ml-auto">Ksh <?php echo number_format($cars['car_renting_rate']); ?> <span>/day</span></p>
                                         </div>
+                                        <p class="d-flex mb-0 d-block">
+                                            <a href="login" class="btn btn-primary py-2 mr-1">Book now</a>
+                                            <a href="car?view=<?php echo $cars['car_id']; ?>" class="btn btn-secondary py-2 ml-1">Details</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                        <?php }
-                    } else { ?>
-                        <div class="item">
-                            <div class="car-wrap rounded ftco-animate">
-                                <div class="text">
-                                    <h2 class="mb-0 text-danger text-center">
-                                        No available cars for the moment
-                                    </h2>
-                                </div>
+                        </div>
+                    <?php }
+                } else { ?>
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="text">
+                                <h2 class="mb-0 text-danger text-center">
+                                    No available cars for the moment
+                                </h2>
                             </div>
                         </div>
-                    <?php } ?>
-                </div>
+                    </div>
+                <?php } ?>
             </div>
+        </div>
         </div>
     </section>
 
