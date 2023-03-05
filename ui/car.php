@@ -281,6 +281,7 @@ require_once('../app/partials/landing_head.php');
                             "SELECT * FROM  cars c 
                             INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
                             WHERE car_availability_status = '0' AND cc.category_id = '{$vehicles['car_category_id']}'
+                            AND c.car_id != '{$_GET['view']}'
                             LIMIT 5"
                         );
                         if (mysqli_num_rows($related_cars_sql) > 0) {
@@ -291,12 +292,12 @@ require_once('../app/partials/landing_head.php');
                                         <div class="car-wrap rounded ftco-animate">
                                             <?php
                                             /* Get the first car image - use it as a key */
-                                            $car_images = mysqli_query($mysqli, "SELECT * FROM car_images 
-                                            WHERE image_car_id = '{$cars['car_id']}' LIMIT 1");
-                                            if (mysqli_num_rows($car_images) > 0) {
-                                                while ($car_image = mysqli_fetch_array($car_images)) {
+                                            $related_car_images = mysqli_query($mysqli, "SELECT * FROM car_images 
+                                            WHERE image_car_id = '{$related_cars['car_id']}' LIMIT 1");
+                                            if (mysqli_num_rows($related_car_images) > 0) {
+                                                while ($related_car_image = mysqli_fetch_array($related_car_images)) {
                                             ?>
-                                                    <div class="img rounded d-flex align-items-end" style="background-image: url(../storage/cars/<?php echo $car_image['image_file_name']; ?>">
+                                                    <div class="img rounded d-flex align-items-end" style="background-image: url(../storage/cars/<?php echo $related_car_image['image_file_name']; ?>">
                                                     </div>
                                             <?php }
                                             } ?>
