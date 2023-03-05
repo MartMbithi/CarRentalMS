@@ -250,9 +250,9 @@ require_once('../app/partials/landing_head.php');
                                                 $ratings_sql = mysqli_query(
                                                     $mysqli,
                                                     "SELECT * FROM ratings r
-                                                    INNER JOIN car_rentals cr ON cr.rental_car_id = r.rating_rental_id
                                                     INNER JOIN clients c ON c.client_id = r.rating_client_id
-                                                    WHERE rental_car_id = '{$_GET['view']}'"
+                                                    INNER JOIN car_rentals cr ON cr.rental_id = r.rating_rental_id
+                                                    WHERE cr.rental_car_id = '{$_GET['view']}'"
                                                 );
                                                 if (mysqli_num_rows($ratings_sql) > 0) {
                                                     while ($ratings = mysqli_fetch_array($ratings_sql)) {
@@ -273,8 +273,26 @@ require_once('../app/partials/landing_head.php');
                                                                 <p class="star">
                                                                     <span>
                                                                         <?php
-                                                                        for ($ratings['rating_stars'] = 0; $ratings['rating_stars'] > 5; $ratings['rating_stars']++) {
+                                                                        if ($ratings['rating_stars'] == '1') {
                                                                         ?>
+                                                                            <i class="ion-ios-star"></i>
+                                                                        <?php } else if ($ratings['rating_stars'] == '2') { ?>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                        <?php } else if ($ratings['rating_stars'] == '3') { ?>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                        <?php } else if ($ratings['rating_stars'] == '4') { ?>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                        <?php } else if ($ratings['rating_stars'] == '5') { ?>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
+                                                                            <i class="ion-ios-star"></i>
                                                                             <i class="ion-ios-star"></i>
                                                                         <?php } ?>
                                                                     </span>
