@@ -160,8 +160,17 @@ require_once('../app/partials/landing_head.php');
                         <div class="col-md-4">
                             <div class="item">
                                 <div class="car-wrap rounded ftco-animate">
-                                    <div class="img rounded d-flex align-items-end" style="background-image: url(../storage/cars/<?php echo $cars['image_file_name']; ?>">
-                                    </div>
+                                    <?php
+                                    /* Get the first car image - use it as a key */
+                                    $car_images = mysqli_query($mysqli, "SELECT * FROM car_images 
+                                        WHERE image_car_id = '{$cars['car_id']}' LIMIT 1");
+                                    if (mysqli_num_rows($car_images) > 0) {
+                                        while ($car_image = mysqli_fetch_array($car_images)) {
+                                    ?>
+                                            <div class="img rounded d-flex align-items-end" style="background-image: url(../storage/cars/<?php echo $car_image['image_file_name']; ?>">
+                                            </div>
+                                    <?php }
+                                    } ?>
                                     <div class="text">
                                         <h2 class="mb-0"><a href="#"><?php echo $cars['car_model']; ?></a></h2>
                                         <div class="d-flex mb-3">
