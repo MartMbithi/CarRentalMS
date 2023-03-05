@@ -190,12 +190,8 @@ require_once('../app/partials/landing_head.php');
                             <div class="bd-example bd-example-tabs">
                                 <div class="d-flex justify-content-center">
                                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Features</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
+                                            <a class="nav-link active" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Review</a>
@@ -204,41 +200,9 @@ require_once('../app/partials/landing_head.php');
                                 </div>
 
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <ul class="features">
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Airconditions</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Child Seat</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Luggage</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Music</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <ul class="features">
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Seat Belt</li>
-                                                    <li class="remove"><span class="ion-ios-close"></span>Sleeping Bed</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Water</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
-                                                    <li class="remove"><span class="ion-ios-close"></span>Onboard computer</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <ul class="features">
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Audio input</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Long Term Trips</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Car Kit</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Remote central locking</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Climate control</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                                    <div class="tab-pane fade show active" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+                                        <?php echo $vehicles['car_description']; ?>
                                     </div>
 
                                     <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
