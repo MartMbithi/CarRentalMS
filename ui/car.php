@@ -230,19 +230,21 @@ require_once('../app/partials/landing_head.php');
                                                             <div class="user-img" style="background-image: url(<?php echo $image; ?>)"></div>
                                                             <div class="desc">
                                                                 <h4>
-                                                                    <span class="text-left">Jacob Webb</span>
-                                                                    <span class="text-right">14 March 2018</span>
+                                                                    <span class="text-left"><?php echo $ratings['client_names']; ?></span>
+                                                                    <span class="text-right"><?php echo date('d M Y', strtotime($ratings['rating_date_posted'])); ?></span>
                                                                 </h4>
                                                                 <p class="star">
                                                                     <span>
-                                                                        <i class="ion-ios-star"></i>
-                                                                        <i class="ion-ios-star"></i>
-                                                                        <i class="ion-ios-star"></i>
-                                                                        <i class="ion-ios-star"></i>
-                                                                        <i class="ion-ios-star"></i>
+                                                                        <?php
+                                                                        for ($ratings['rating_stars'] = 0; $ratings['rating_stars'] > 5; $ratings['rating_stars']++) {
+                                                                        ?>
+                                                                            <i class="ion-ios-star"></i>
+                                                                        <?php } ?>
                                                                     </span>
                                                                 </p>
-                                                                <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+                                                                <p>
+                                                                    <?php echo $ratings['rating_details']; ?>
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     <?php
