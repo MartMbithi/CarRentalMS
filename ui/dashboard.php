@@ -278,14 +278,14 @@ require_once('../app/partials/back_office_head.php');
                                                 <div class="media align-items-center">
                                                     <div class="avatar avatar-xl mr-3">
                                                         <div class="avatar-name rounded-circle bg-soft-primary text-dark">
-
+                                                            <img src="../storage/system/check.png" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="media-body">
                                                         <h6 class="mb-0 d-flex align-items-center">
                                                             <a class="text-800 stretched-link" href="backoffice_payment?payment=<?php echo $payments['payment_id']; ?>">
                                                                 <?php echo $payments['payment_ref_code']; ?> Confirmed, Payment of
-                                                                Ksh <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($paymets['client_date_joined'])); ?>
+                                                                Ksh <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
                                                             </a>
                                                         </h6>
                                                     </div>
