@@ -94,7 +94,7 @@ $sheet->setCellValue('J5', 'Payment Status');
 
 $query = $mysqli->query("SELECT * FROM car_rentals cr 
 INNER JOIN cars c ON c.car_id = cr.rental_car_id
-INNER JOIN clients cl ON cl.client_id = cr.rental_client_id ");
+INNER JOIN clients cl ON cl.client_id = cr.rental_client_id");
 if ($query->num_rows > 0) {
     $cnt = 1;
     $row = 6;/* Start filling data from row */
