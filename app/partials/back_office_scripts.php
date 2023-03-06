@@ -86,4 +86,17 @@
         maxFilesize: 1,
         acceptedFiles: ".jpeg,.jpg,.png,.gif"
     };
+    /* Ajax to get vehicle details using vehicle ID */
+    function GetCarDetails(val) {
+        $.ajax({
+            //get price 
+            type: "POST",
+            url: "ajax.php",
+            data: 'CarID=' + val,
+            success: function(data) {
+                $('#CarRentalCost').val(data);
+            }
+        });
+
+    }
 </script>

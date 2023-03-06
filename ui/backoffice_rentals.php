@@ -162,9 +162,9 @@ require_once('../app/partials/back_office_head.php');
                                                         <td>
                                                             <?php
                                                             if ($rental['rental_payment_status'] == '0') {
-                                                                echo '<span class="badge badge-success">Pending</span>';
+                                                                echo '<span class="badge badge-danger">Pending</span>';
                                                             } else {
-                                                                echo '<span class="badge badge-danger">Paid</span>';
+                                                                echo '<span class="badge badge-success">Paid</span>';
                                                             }
                                                             ?>
                                                         </td>
@@ -224,7 +224,7 @@ require_once('../app/partials/back_office_head.php');
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">Vehicle Details</label>
-                                            <select type="" required name="rental_car_id" class="form-control">
+                                            <select type="" required name="rental_car_id" class="form-control" onchange="GetCarDetails(this.value)" id="CarID">
                                                 <option value="">Select vehicle Registration number</option>
                                                 <?php
                                                 $vehicles_sql = mysqli_query($mysqli, "SELECT * FROM cars WHERE car_availability_status = '0'");
@@ -234,6 +234,8 @@ require_once('../app/partials/back_office_head.php');
                                                 ?>
                                             </select>
                                         </div>
+                                        <!-- Hide this -->
+                                        <input type="hidden" name="rental_cost" id="CarRentalCost">
                                         <div class="form-group col-md-6">
                                             <label for="">From date</label>
                                             <input type="hidden" required name="rental_ref_code" value="<?php echo $ref_code; ?>" class="form-control">

@@ -53,12 +53,13 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="">Rental from date</label>
-                            <input type="hidden" value="<?php echo $rental['rental_id']; ?>" required name="payment_rental_id" class="form-control">
-                            <input type="date" value="<?php echo $rental_from_date; ?>" required name="rental_from_date" class="form-control">
+                            <input type="hidden" value="<?php echo $rental['rental_id']; ?>" required name="rental_id" class="form-control">
+                            <input type="hidden" value="<?php echo $rental['rental_cost']; ?>" required name="rental_cost" class="form-control">
+                            <input type="date" required name="rental_from_date" value="<?php echo $rental['rental_from_date']; ?>" class="form-control">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="">Rental to date</label>
-                            <input type="date" readonly required name="rental_to_date" value="<?php echo $rental['rental_to_date']; ?>" class="form-control">
+                            <input type="date" required name="rental_to_date" value="<?php echo $rental['rental_to_date']; ?>" class="form-control">
                         </div>
                     </div>
                     <div class="text-right">

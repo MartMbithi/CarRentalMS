@@ -73,10 +73,12 @@ if (isset($_POST['Add_Rental'])) {
     $rental_client_id = mysqli_real_escape_string($mysqli, $_POST['rental_client_id']);
     $rental_from_date = mysqli_real_escape_string($mysqli, $_POST['rental_from_date']);
     $rental_to_date = mysqli_real_escape_string($mysqli, $_POST['rental_to_date']);
-    $rental_cost = mysqli_real_escape_string($mysqli, $_POST['rental_cost']);
+    /* Number of days rented */
+    $number_of_days = ceil(abs(strtotime($rental_to_date) - strtotime($rental_from_date)) / 86400);
+    $rental_cost = (mysqli_real_escape_string($mysqli, $_POST['rental_cost']) * $number_of_days);
 
     /* Persist */
-    $add_rental_sql = "INSERT INTO rentals (rental_ref_code, rental_car_id, rental_client_id, rental_from_date, rental_to_date, rental_cost)
+    $add_rental_sql = "INSERT INTO car_rentals (rental_ref_code, rental_car_id, rental_client_id, rental_from_date, rental_to_date, rental_cost)
     VALUES ('{$rental_ref_code}', '{$rental_car_id}', '{$rental_client_id}', '{$rental_from_date}', '{$rental_to_date}', '{$rental_cost}')";
     $car_status_sql = "UPDATE cars SET car_availability_status = '1' WHERE car_id = '{$rental_car_id}'";
 
@@ -92,10 +94,12 @@ if (isset($_POST['Update_Rental'])) {
     $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
     $rental_from_date = mysqli_real_escape_string($mysqli, $_POST['rental_from_date']);
     $rental_to_date = mysqli_real_escape_string($mysqli, $_POST['rental_to_date']);
-    $rental_cost = mysqli_real_escape_string($mysqli, $_POST['rental_cost']);
+    /* Number of days rented */
+    $number_of_days = ceil(abs(strtotime($rental_to_date) - strtotime($rental_from_date)) / 86400);
+    $rental_cost = (mysqli_real_escape_string($mysqli, $_POST['rental_cost']) * $number_of_days);
 
     /* Persist */
-    $update_rental_sql = "UPDATE rentals SET rental_from_date = '{$rental_from_date}', rental_to_date = '{$rental_to_date}', rental_cost = '{$rental_cost}' WHERE rental_id = '{$rental_id}'";
+    $update_rental_sql = "UPDATE car_rentals SET rental_from_date = '{$rental_from_date}', rental_to_date = '{$rental_to_date}', rental_cost = '{$rental_cost}' WHERE rental_id = '{$rental_id}'";
     if (mysqli_query($mysqli, $update_rental_sql)) {
         $success = "Rental updated successfully";
     } else {
@@ -129,7 +133,7 @@ if (isset($_POST['Delete_Rentals'])) {
     $rental_car_id = mysqli_real_escape_string($mysqli, $_POST['rental_car_id']);
 
     /* Persist */
-    $delete_sql = "DELETE FROM rentals WHERE rental_id = '{$rental_id}'";
+    $delete_sql = "DELETE FROM car_rentals WHERE rental_id = '{$rental_id}'";
     $car_status_sql = "UPDATE cars SET car_availability_status = '0' WHERE car_id = '{$rental_car_id}'";
 
     if (mysqli_query($mysqli, $delete_sql) && mysqli_query($mysqli, $car_status_sql)) {
