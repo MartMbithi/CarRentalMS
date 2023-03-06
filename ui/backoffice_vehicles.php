@@ -234,11 +234,15 @@ require_once('../app/partials/back_office_head.php');
                                                 <option>Automatic</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
+                                            <label for="">Pickup location</label>
+                                            <input type="text" required name="car_pick_up_location" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
                                             <label for="">Renting rate (Per Hour)</label>
                                             <input type="text" required name="car_renting_rate" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label for="">Fuel type</label>
                                             <select type="text" required name="car_fuel_type" class="form-control">
                                                 <option>Petrol</option>
