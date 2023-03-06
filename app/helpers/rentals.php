@@ -104,6 +104,22 @@ if (isset($_POST['Update_Rental'])) {
 }
 
 /* Pay Rentals */
+if (isset($_POST['Pay_Rentals'])) {
+    $payment_rental_id = mysqli_real_escape_string($mysqli, $_POST['payment_rental_id']);
+    $payment_means = mysqli_real_escape_string($mysqli, $_POST['payment_means']);
+    $payment_ref_code = mysqli_real_escape_string($mysqli, $_POST['payment_ref_code']);
+    $payment_amount = mysqli_real_escape_string($mysqli, $_POST['payment_amount']);
+
+
+    /* Persist payment */
+    $pay_rental_sql = "INSERT INTO payments (payment_rental_id, payment_means, payment_ref_code, payment_amount)
+    VALUES ('{$payment_rental_id}', '{$payment_means}', '{$payment_ref_code}', '{$payment_amount}')";
+    if (mysqli_query($mysqli, $pay_rental_sql)) {
+        $success = "Payment made successfully";
+    } else {
+        $err = "Something went wrong, try again";
+    }
+}
 
 /* Delete Rentals */
 if (isset($_POST['Delete_Rentals'])) {
