@@ -106,5 +106,19 @@ if (isset($_POST['Update_Rental'])) {
 /* Pay Rentals */
 
 /* Delete Rentals */
+if (isset($_POST['Delete_Rentals'])) {
+    $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
+    $rental_car_id = mysqli_real_escape_string($mysqli, $_POST['rental_car_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM rentals WHERE rental_id = '{$rental_id}'";
+    $car_status_sql = "UPDATE cars SET car_availability_status = '0' WHERE car_id = '{$rental_car_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql) && mysqli_query($mysqli, $car_status_sql)) {
+        $success = "Rental record deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 /* Return Cars */
