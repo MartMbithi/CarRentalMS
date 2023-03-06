@@ -234,15 +234,6 @@ if (isset($_POST['Update_Vehicle_Images'])) {
     $allowTypes = array('jpg', 'png', 'jpeg', 'webp');
     $image_code = rand(999999, 111111);
     $targetDir = "../storage/cars/";
-    /* Watermark */
-    $watermark = imagecreatefrompng("../storage/system/logo.png");
-    $margin_right = 10;
-    $margin_bottom = 10;
-
-    $sx = imagesx($watermark);
-    $sy = imagesy($watermark);
-
-    $images = array_diff(scandir($fileNames), array('..', '.'));
 
     if (!empty($fileNames)) {
         foreach ($_FILES['files']['name'] as $key => $val) {
@@ -252,12 +243,6 @@ if (isset($_POST['Update_Vehicle_Images'])) {
 
             if (in_array($fileType, $allowTypes)) {
                 if (move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)) {
-                    /* Persist watermarks */
-                    $img = imagecreatefromjpeg($fileName);
-                    imagecopy($img, $watermark, imagesx($img) - $sx - $margin_right, imagesy($img) - $sy - $margin_bottom, 0, 0, $sx, $sy);
-                    $i = imagejpeg($img, $fileName, 100);
-                    imagedestroy($img);
-
                     $insert = mysqli_query($mysqli, "INSERT INTO car_images (image_car_id, image_file_name) VALUES ('{$car_id}', '" . $fileName . "')");
                 }
             } else {
