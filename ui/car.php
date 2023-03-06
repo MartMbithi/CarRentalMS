@@ -359,7 +359,7 @@ require_once('../app/partials/landing_head.php');
                                             <div class="text">
                                                 <h2 class="mb-0"><a href="#"><?php echo $related_cars['car_model']; ?></a></h2>
                                                 <div class="d-flex mb-3">
-                                                    <span class="cat"><?php echo $carelated_carsrs['category_name']; ?></span>
+                                                    <span class="cat"><?php echo $related_cars['category_name']; ?></span>
                                                     <p class="price ml-auto">Ksh <?php echo number_format($related_cars['car_renting_rate']); ?> <span>/day</span></p>
                                                 </div>
                                                 <p class="d-flex mb-0 d-block">
