@@ -130,9 +130,9 @@ require_once('../app/partials/back_office_head.php');
                                             <?php
                                             $rentals_sql = mysqli_query(
                                                 $mysqli,
-                                                "SELECT * FROM rentals r INNER JOIN cars c ON r.rental_car_id = c.car_id 
-                                                INNER JOIN clients cl ON r.client_id = cl.client_id 
-                                                ORDER BY r.rental_id DESC                                            
+                                                "SELECT * FROM car_rentals cr 
+                                                INNER JOIN cars c ON c.car_id = cr.rental_car_id
+                                                INNER JOIN clients cl ON cl.client_id = cr.rental_client_id                                    
                                                 "
                                             );
                                             if (mysqli_num_rows($rentals_sql) > 0) {
@@ -149,19 +149,19 @@ require_once('../app/partials/back_office_head.php');
                                                             Model: <?php echo $rental['car_model']; ?>
                                                         </td>
                                                         <td>
-                                                            Name: <?php echo $rental['client_names']; ?>
-                                                            Contacts: <?php echo $rentals['client_phone_number']; ?>
+                                                            Name: <?php echo $rental['client_names']; ?><br>
+                                                            Contacts: <?php echo $rental['client_phone_number']; ?>
                                                         </td>
                                                         <td>
-                                                            From date: <?php echo $cars['rental_from_date']; ?> <br>
-                                                            To date: <?php echo $cars['rental_to_date']; ?> <br>
+                                                            From date: <?php echo date('d M Y', strtotime($rental['rental_from_date'])); ?> <br>
+                                                            To date: <?php echo date('d M Y', strtotime($rental['rental_to_date'])); ?>
                                                         </td>
                                                         <td>
-                                                            Ksh <?php echo number_format($cars['rental_cost']); ?>
+                                                            Ksh <?php echo number_format($rental['rental_cost']); ?>
                                                         </td>
                                                         <td>
                                                             <?php
-                                                            if ($cars['rental_payment_status'] == '0') {
+                                                            if ($rental['rental_payment_status'] == '0') {
                                                                 echo '<span class="badge badge-success">Pending</span>';
                                                             } else {
                                                                 echo '<span class="badge badge-danger">Paid</span>';
@@ -169,7 +169,7 @@ require_once('../app/partials/back_office_head.php');
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <?php if ($cars['rental_payment_status'] == '0') { ?>
+                                                            <?php if ($rental['rental_payment_status'] == '0') { ?>
                                                                 <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
                                                                     <i class="fas fa-hand-holding-usd"></i> Pay
                                                                 </a>
@@ -195,13 +195,13 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
-                <!-- Add Staff Modals -->
+                <!-- Add  Modals -->
                 <div class="modal fade fixed-right" id="addCategoriesModal" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Register new rentals vehicle</h6>
+                                    <h6 class="mb-0 text-bold">Register new vehicle rental record</h6>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -210,68 +210,42 @@ require_once('../app/partials/back_office_head.php');
                             <div class="modal-body">
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label for="">Registration number</label>
-                                            <input type="text" required name="car_reg_number" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Model name</label>
-                                            <input type="text" required name="car_model" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Year of manufacture</label>
-                                            <input type="text" required name="car_yom" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="">Vehicle category</label>
-                                            <select type="" required name="car_category_id" class="form-control">
-                                                <option value="">Select category</option>
+                                        <div class="form-group col-md-12">
+                                            <label for="">Client Details</label>
+                                            <select type="" required name="rental_client_id" class="form-control">
+                                                <option value="">Select client</option>
                                                 <?php
-                                                $categories_sql = mysqli_query($mysqli, "SELECT * FROM car_categories");
-                                                while ($categories = mysqli_fetch_array($categories_sql)) {
-                                                    echo '<option value="' . $categories['category_id'] . '">' . $categories['category_name'] . '</option>';
+                                                $clients_sql = mysqli_query($mysqli, "SELECT * FROM clients");
+                                                while ($clients = mysqli_fetch_array($clients_sql)) {
+                                                    echo '<option value="' . $clients['client_id'] . '">' . $clients['client_names'] . ' - ' . $clients['client_email'] . '</option>';
                                                 }
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="">Mileage (Kms)</label>
-                                            <input type="text" required name="car_mileage" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="">Seats</label>
-                                            <input type="text" required name="car_seats" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="">Transmission</label>
-                                            <select type="text" required name="car_transmission_type" class="form-control">
-                                                <option>Manual</option>
-                                                <option>Automatic</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Pickup location</label>
-                                            <input type="text" required name="car_pick_up_location" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Renting rate (Per Hour)</label>
-                                            <input type="text" required name="car_renting_rate" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Fuel type</label>
-                                            <select type="text" required name="car_fuel_type" class="form-control">
-                                                <option>Petrol</option>
-                                                <option>Diesel</option>
-                                                <option>Electric</option>
-                                            </select>
-                                        </div>
                                         <div class="form-group col-md-12">
-                                            <label for="">Detailed description of the vehicle</label>
-                                            <textarea type="text" rows="5" required name="car_description" class="summernote form-control"></textarea>
+                                            <label for="">Vehicle Details</label>
+                                            <select type="" required name="rental_car_id" class="form-control">
+                                                <option value="">Select vehicle Registration number</option>
+                                                <?php
+                                                $vehicles_sql = mysqli_query($mysqli, "SELECT * FROM cars WHERE car_availability_status = '0'");
+                                                while ($vehicles = mysqli_fetch_array($vehicles_sql)) {
+                                                    echo '<option value="' . $vehicles['car_id'] . '">' . $vehicles['car_reg_number'] . ' ' . $vehicles['car_model'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">From date</label>
+                                            <input type="hidden" required name="rental_ref_code" value="<?php echo $ref_code; ?>" class="form-control">
+                                            <input type="date" required name="rental_from_date" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">Return date</label>
+                                            <input type="date" required name="rental_to_date" class="form-control">
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" name="Add_Car_Details" class="btn btn-outline-success">Add vehicle</button>
+                                        <button type="submit" name="Add_Rental" class="btn btn-outline-success">Add rental</button>
                                     </div>
                                 </form>
                             </div>

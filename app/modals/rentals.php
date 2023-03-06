@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="">Amount (Ksh)</label>
-                            <input type="text" readonly required name="payment_amount" value="<?php echo $rental['rental_amount']; ?>" class="form-control">
+                            <input type="text" readonly required name="payment_amount" value="<?php echo $rental['rental_cost']; ?>" class="form-control">
                         </div>
                     </div>
                     <div class="text-right">
@@ -77,12 +77,13 @@
             <form method="POST">
                 <div class="modal-body text-center text-danger">
                     <i class="fas fa-exclamation-triangle fa-4x"></i><br>
-                    <h5>Heads up!, you are about to delete <?php echo $categories['category_name']; ?> details</h5>
-                    <p>Are you sure you want to delete this vehicle category details?</p>
+                    <h5>Heads up!, you are about to delete <?php echo $rental['rental_ref_code']; ?> details</h5>
+                    <p>Are you sure you want to delete this vehicle rental record details?</p>
                     <!-- Hide This -->
-                    <input type="hidden" name="category_id" value="<?php echo $categories['category_id']; ?>">
+                    <input type="hidden" name="rental_id" value="<?php echo $rental['rental_id']; ?>">
+                    <input type="hidden" name="rental_car_id" value="<?php echo $rental['rental_car_id']; ?>">
                     <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                    <button type="submit" name="Delete_Categories" class="text-center btn btn-danger">Yes, Delete</button>
+                    <button type="submit" name="Delete_Rentals" class="text-center btn btn-danger">Yes, Delete</button>
                 </div>
             </form>
         </div>

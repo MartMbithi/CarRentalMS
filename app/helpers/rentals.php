@@ -114,7 +114,9 @@ if (isset($_POST['Pay_Rentals'])) {
     /* Persist payment */
     $pay_rental_sql = "INSERT INTO payments (payment_rental_id, payment_means, payment_ref_code, payment_amount)
     VALUES ('{$payment_rental_id}', '{$payment_means}', '{$payment_ref_code}', '{$payment_amount}')";
-    if (mysqli_query($mysqli, $pay_rental_sql)) {
+    $update_rental_sql = "UPDATE car_rentals SET rental_payment_status = '1' WHERE rental_id = '{$payment_rental_id}'";
+
+    if (mysqli_query($mysqli, $pay_rental_sql) && mysqli_query($mysqli, $update_rental_sql)) {
         $success = "Payment made successfully";
     } else {
         $err = "Something went wrong, try again";
