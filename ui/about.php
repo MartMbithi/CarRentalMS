@@ -66,6 +66,7 @@
  */
 session_start();
 require_once('../app/settings/config.php');
+include('../app/functions/back_office_functions.php');
 require_once('../app/partials/landing_head.php');
 ?>
 
@@ -132,7 +133,7 @@ require_once('../app/partials/landing_head.php');
                             "SELECT * FROM ratings r
                             INNER JOIN clients c ON c.client_id = r.rating_client_id
                             INNER JOIN car_rentals cr ON cr.rental_id = r.rating_rental_id
-                            WHERE cr.rental_car_id = '{$_GET['view']}'"
+                            "
                         );
                         if (mysqli_num_rows($ratings_sql) > 0) {
                             while ($ratings = mysqli_fetch_array($ratings_sql)) {
@@ -164,14 +165,14 @@ require_once('../app/partials/landing_head.php');
         </div>
     </section>
 
-    <section class="ftco-counter ftco-section img" id="section-counter">
+    <section class="ftco-counter ftco-section img bg-light" id="section-counter">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text text-border d-flex align-items-center">
-                            <strong class="number" data-number="60">0</strong>
+                            <strong class="number" data-number="20">0</strong>
                             <span>Year <br>Experienced</span>
                         </div>
                     </div>
@@ -179,7 +180,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text text-border d-flex align-items-center">
-                            <strong class="number" data-number="1090">0</strong>
+                            <strong class="number" data-number="<?php echo $cars; ?>">0</strong>
                             <span>Total <br>Cars</span>
                         </div>
                     </div>
@@ -187,7 +188,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text text-border d-flex align-items-center">
-                            <strong class="number" data-number="2590">0</strong>
+                            <strong class="number" data-number="<?php echo $clients; ?>">0</strong>
                             <span>Happy <br>Customers</span>
                         </div>
                     </div>
@@ -195,7 +196,7 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18">
                         <div class="text d-flex align-items-center">
-                            <strong class="number" data-number="67">0</strong>
+                            <strong class="number" data-number="1">0</strong>
                             <span>Total <br>Branches</span>
                         </div>
                     </div>
