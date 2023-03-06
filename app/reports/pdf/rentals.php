@@ -185,9 +185,9 @@ $html =
                                 if (mysqli_num_rows($vehicles_sql) > 0) {
                                     while ($vehicles = mysqli_fetch_array($vehicles_sql)) {
                                         if ($vehicles['rental_payment_status'] == '0') {
-                                            $availability = 'Paid';
-                                        } else {
                                             $availability = 'Pending';
+                                        } else {
+                                            $availability = 'Paid';
                                         }
                                         $html .=
                                             '
