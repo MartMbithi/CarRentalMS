@@ -111,11 +111,10 @@ if ($query->num_rows > 0) {
         $sheet->setCellValue('D' . $row, $vehicles['car_model']);
         $sheet->setCellValue('E' . $row, $vehicles['client_names']);
         $sheet->setCellValue('F' . $row, $vehicles['client_phone_number']);
-        $sheet->setCellValue('G' . $row, $vehicles['rental_date']);
-        $sheet->setCellValue('H' . $row, date('d M Y', strtotime($vehicles['rental_from_date'])));
-        $sheet->setCellValue('I' . $row, date('d M Y', strtotime($vehicles['rental_to_date'])));
-        $sheet->setCellValue('J' . $row, $vehicles['rental_cost']);
-        $sheet->setCellValue('K' . $row, $payment);
+        $sheet->setCellValue('G' . $row, date('d M Y', strtotime($vehicles['rental_from_date'])));
+        $sheet->setCellValue('H' . $row, date('d M Y', strtotime($vehicles['rental_to_date'])));
+        $sheet->setCellValue('I' . $row, $vehicles['rental_cost']);
+        $sheet->setCellValue('J' . $row, $payment);
 
         $row++;
         $cnt = $cnt + 1;
