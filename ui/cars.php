@@ -92,13 +92,20 @@ require_once('../app/partials/landing_head.php');
             <div class="row">
                 <div class="row">
                     <?php
+                    $per_page_record = 9;
+                    if (isset($_GET["page"])) {
+                        $page  = $_GET["page"];
+                    } else {
+                        $page = 1;
+                    }
+                    $start_from = ($page - 1) * $per_page_record;
                     /* Fetch available cars */
                     $available_cars_sql = mysqli_query(
                         $mysqli,
                         "SELECT * FROM  cars c 
                         INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
                         WHERE car_availability_status = '0'
-                        LIMIT 12"
+                        LIMIT $start_from, $per_page_record"
                     );
                     if (mysqli_num_rows($available_cars_sql) > 0) {
                         while ($cars = mysqli_fetch_array($available_cars_sql)) {
@@ -145,21 +152,7 @@ require_once('../app/partials/landing_head.php');
                     <?php } ?>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col text-center">
-                    <div class="block-27">
-                        <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&gt;</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <?php include('../app/paginations/cars.php'); ?>
         </div>
     </section>
 
