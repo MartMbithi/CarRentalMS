@@ -88,6 +88,20 @@ if (isset($_POST['Add_Rental'])) {
 }
 
 /* Update Rentals */
+if (isset($_POST['Update_Rental'])) {
+    $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
+    $rental_from_date = mysqli_real_escape_string($mysqli, $_POST['rental_from_date']);
+    $rental_to_date = mysqli_real_escape_string($mysqli, $_POST['rental_to_date']);
+    $rental_cost = mysqli_real_escape_string($mysqli, $_POST['rental_cost']);
+
+    /* Persist */
+    $update_rental_sql = "UPDATE rentals SET rental_from_date = '{$rental_from_date}', rental_to_date = '{$rental_to_date}', rental_cost = '{$rental_cost}' WHERE rental_id = '{$rental_id}'";
+    if (mysqli_query($mysqli, $update_rental_sql)) {
+        $success = "Rental updated successfully";
+    } else {
+        $err = "Something went wrong, try again";
+    }
+}
 
 /* Pay Rentals */
 
