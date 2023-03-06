@@ -11,7 +11,6 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
                 <li class="nav-item"><a href="cars" class="nav-link">Cars</a></li>
                 <li class="nav-item"><a href="contacts" class="nav-link">Contact</a></li>
                 <li class="nav-item"><a target="_blank" href="login" class="nav-link">Login</a></li>

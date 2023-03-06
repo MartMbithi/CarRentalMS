@@ -152,7 +152,7 @@ require_once('../app/partials/landing_head.php');
                     "SELECT * FROM  cars c 
                         INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
                         WHERE car_availability_status = '0'
-                        LIMIT 5 "
+                        LIMIT 6 "
                 );
                 if (mysqli_num_rows($available_cars_sql) > 0) {
                     while ($cars = mysqli_fetch_array($available_cars_sql)) {

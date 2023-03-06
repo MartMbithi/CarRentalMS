@@ -122,4 +122,14 @@ if ($module == 'System_Users') {
         header('location: logout');
         exit();
     }
+} else if ($module == 'Rentals') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
+    if ($type == 'pdf') {
+        require_once('../app/reports/pdf/rentals.php');
+    } else if ($type == 'csv') {
+        require_once('../app/reports/csv/rentals.php');
+    } else {
+        header('location: logout');
+        exit();
+    }
 }

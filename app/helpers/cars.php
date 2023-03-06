@@ -185,14 +185,15 @@ if (isset($_POST['Add_Car_Details'])) {
     $car_fuel_type = mysqli_real_escape_string($mysqli, $_POST['car_fuel_type']);
     $car_description = mysqli_real_escape_string($mysqli, $_POST['car_description']);
     $car_renting_rate = mysqli_real_escape_string($mysqli, $_POST['car_renting_rate']);
+    $car_pick_up_location = mysqli_real_escape_string($mysqli, $_POST['car_pick_up_location']);
 
     /* Prevent Duplications */
     $check = mysqli_query($mysqli, "SELECT * FROM cars WHERE car_reg_number = '{$car_reg_number}'");
     if (mysqli_num_rows($check) > 0) {
         $err = "Registration plate number already exists";
     } else {
-        $add_vehicle_sql = "INSERT INTO cars (car_category_id, car_model, car_yom, car_reg_number, car_mileage, car_transmission_type, car_seats, car_fuel_type, car_description, car_renting_rate)
-        VALUES ('{$car_category_id}', '{$car_model}', '{$car_yom}', '{$car_reg_number}', '{$car_mileage}', '{$car_transmission_type}', '{$car_seats}', '{$car_fuel_type}', '{$car_description}', '{$car_renting_rate}')";
+        $add_vehicle_sql = "INSERT INTO cars (car_category_id, car_model, car_yom, car_reg_number, car_mileage, car_transmission_type, car_seats, car_fuel_type, car_description, car_renting_rate, car_pick_up_location)
+        VALUES ('{$car_category_id}', '{$car_model}', '{$car_yom}', '{$car_reg_number}', '{$car_mileage}', '{$car_transmission_type}', '{$car_seats}', '{$car_fuel_type}', '{$car_description}', '{$car_renting_rate}', '{$car_pick_up_location}')";
         if (mysqli_query($mysqli, $add_vehicle_sql)) {
             $success = "Vehicle added successfully";
         } else {
@@ -215,11 +216,14 @@ if (isset($_POST['Update_Car_Details'])) {
     $car_fuel_type = mysqli_real_escape_string($mysqli, $_POST['car_fuel_type']);
     $car_description = mysqli_real_escape_string($mysqli, $_POST['car_description']);
     $car_renting_rate = mysqli_real_escape_string($mysqli, $_POST['car_renting_rate']);
+    $car_pick_up_location = mysqli_real_escape_string($mysqli, $_POST['car_pick_up_location']);
 
     /* Update */
     $update_sql = "UPDATE cars SET car_category_id = '{$car_category_id}', car_model = '{$car_model}', car_yom = '{$car_yom}',
     car_reg_number = '{$car_reg_number}', car_mileage = '{$car_mileage}', car_transmission_type = '{$car_transmission_type}', 
-    car_seats = '{$car_seats}', car_fuel_type = '{$car_fuel_type}', car_description = '{$car_description}', car_renting_rate = '{$car_renting_rate}' WHERE car_id = '{$car_id}'";
+    car_seats = '{$car_seats}', car_fuel_type = '{$car_fuel_type}', car_description = '{$car_description}', car_renting_rate = '{$car_renting_rate}', car_pick_up_location = '{$car_pick_up_location}'
+    WHERE car_id = '{$car_id}'";
+
     if (mysqli_query($mysqli, $update_sql)) {
         $success = "Vehicle details updated successfully";
     } else {
@@ -234,11 +238,13 @@ if (isset($_POST['Update_Vehicle_Images'])) {
     $allowTypes = array('jpg', 'png', 'jpeg', 'webp');
     $image_code = rand(999999, 111111);
     $targetDir = "../storage/cars/";
+
     if (!empty($fileNames)) {
         foreach ($_FILES['files']['name'] as $key => $val) {
             $fileName = basename($image_code . $_FILES['files']['name'][$key]);
             $targetFilePath = $targetDir . $fileName;
             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
             if (in_array($fileType, $allowTypes)) {
                 if (move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)) {
                     $insert = mysqli_query($mysqli, "INSERT INTO car_images (image_car_id, image_file_name) VALUES ('{$car_id}', '" . $fileName . "')");
