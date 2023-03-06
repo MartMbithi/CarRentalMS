@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Thu Mar 02 2023
+ *   Crafted On Sat Mar 04 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,71 +65,69 @@
  *
  */
 
+require_once('../vendor/autoload.php');
 
-session_start();
-require_once('../app/settings/config.php');
-require_once('../app/settings/back_office_checklogin.php');
 
-/* Global variables */
-$module = mysqli_real_escape_string($mysqli, $_GET['module']);
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-/* Convert logo to a base 64 image */
-$path = '../storage/system/logo_backoffice.png';
-$type = pathinfo($path, PATHINFO_EXTENSION);
-$data = file_get_contents($path);
-$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+/* Load XLS Template */
 
-/* System Users Reports */
-if ($module == 'System_Users') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/users.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/users.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
+$report_template = '../storage/templates/reports.xlsx';
+$spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($report_template);
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setTitle('Rentals List On' . date('d M Y'), true);
 
-    /* Clients */
-} else if ($module == 'Clients') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/clients.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/clients.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-} else if ($module == 'Categories') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/categories.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/categories.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-} else if ($module == 'Vehicles') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/vehicles.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/vehicles.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-} else if ($module == 'Rentals') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/rentals.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/rentals.php');
-    } else {
-        header('location: logout');
-        exit();
+/* Sheet columns head names */
+$sheet->setCellValue('A5', 'S/N');
+$sheet->setCellValue('B5', 'Ref Number');
+$sheet->setCellValue('C5', 'Vehicle Reg Number');
+$sheet->setCellValue('D5', 'Model Name');
+$sheet->setCellValue('E5', 'Client Names');
+$sheet->setCellValue('F5', 'Client Contacts');
+$sheet->setCellValue('G5', 'Rented On');
+$sheet->setCellValue('H5', 'Returned On');
+$sheet->setCellValue('I5', 'Rental Amount');
+$sheet->setCellValue('J5', 'Payment Status');
+
+
+$query = $mysqli->query("SELECT * FROM car_rentals cr 
+INNER JOIN cars c ON c.car_id = cr.rental_car_id
+INNER JOIN clients cl ON cl.client_id = cr.rental_client_id ");
+if ($query->num_rows > 0) {
+    $cnt = 1;
+    $row = 6;/* Start filling data from row */
+    while ($vehicles = $query->fetch_assoc()) {
+        if ($vehicles['rental_payment_status'] == '0') {
+            $payment = 'Pending';
+        } else {
+            $payment = 'Paid';
+        }
+        /* Populate cell data */
+        $sheet->setCellValue('A' . $row, $cnt);
+        $sheet->setCellValue('B' . $row, $vehicles['rental_ref_code']);
+        $sheet->setCellValue('C' . $row, $vehicles['car_reg_number']);
+        $sheet->setCellValue('D' . $row, $vehicles['car_model']);
+        $sheet->setCellValue('E' . $row, $vehicles['client_names']);
+        $sheet->setCellValue('F' . $row, $vehicles['client_phone_number']);
+        $sheet->setCellValue('G' . $row, $vehicles['rental_date']);
+        $sheet->setCellValue('H' . $row, date('d M Y', strtotime($vehicles['rental_from_date'])));
+        $sheet->setCellValue('I' . $row, date('d M Y', strtotime($vehicles['rental_to_date'])));
+        $sheet->setCellValue('J' . $row, $vehicles['rental_cost']);
+        $sheet->setCellValue('K' . $row, $payment);
+
+        $row++;
+        $cnt = $cnt + 1;
     }
 }
+
+$file_name = 'Rentals List On ' . date('d M Y') . '.xlsx';
+ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename=' . $file_name . '');
+header('Cache-Control: max-age=0');
+
+$xlsxWriter = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+$xlsxWriter = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+exit($xlsxWriter->save('php://output'));

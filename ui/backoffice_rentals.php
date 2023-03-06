@@ -261,10 +261,10 @@ require_once('../app/partials/back_office_head.php');
                             <form method="POST">
                                 <div class="modal-body text-center text-danger">
                                     <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export vehicle details as</h5> <br>
+                                    <h5>Export vehicle rentals details as</h5> <br>
                                     <!-- Hide This -->
-                                    <a href="reports?module=Vehicles&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Vehicles&type=csv" class="text-center btn btn-primary">CSV</a>
+                                    <a href="reports?module=Rentals&type=pdf" class="text-center btn btn-success">PDF</a>
+                                    <a href="reports?module=Rentals&type=csv" class="text-center btn btn-primary">CSV</a>
                                 </div>
                             </form>
                         </div>
