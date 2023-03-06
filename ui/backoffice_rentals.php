@@ -170,8 +170,11 @@ require_once('../app/partials/back_office_head.php');
                                                         </td>
                                                         <td>
                                                             <?php if ($cars['rental_payment_status'] == '0') { ?>
-                                                                <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
+                                                                <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
                                                                     <i class="fas fa-hand-holding-usd"></i> Pay
+                                                                </a>
+                                                                <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
+                                                                    <i class="fas fa-edit"></i> Edit
                                                                 </a>
                                                             <?php } ?>
                                                             <a data-toggle="modal" href="#delete_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
