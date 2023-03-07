@@ -140,7 +140,7 @@ require_once('../app/partials/back_office_head.php');
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="backoffice_rental?view=<?php echo $rental['rental_ref_code']; ?>">
+                                                            <a href="backoffice_rental?view=<?php echo $rental['rental_id']; ?>">
                                                                 <?php echo $rental['rental_ref_code']; ?>
                                                             </a>
                                                         </td>

@@ -22,8 +22,8 @@
                             <input type="hidden" value="<?php echo $ref_code; ?>" required name="payment_ref_code" class="form-control">
                             <select type="text" required name="payment_means" class="form-control">
                                 <option value="">Select payment option</option>
-                                <option value="Mpesa">Mpesa</option>
-                                <option value="Card">Credit/Debit Card</option>
+                                <!-- <option value="Mpesa">Mpesa</option> -->
+                                <option value="Card">Credit/Debit Card OR Mobile Money</option>
                                 <option value="Cash">Cash</option>
                             </select>
                         </div>
