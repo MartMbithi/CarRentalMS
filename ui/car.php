@@ -199,7 +199,7 @@ require_once('../app/partials/landing_head.php');
                                         <div class="text">
                                             <h3 class="heading mb-0 pl-3">
                                                 Rate per hour
-                                                <span>Ksh <?php echo $vehicles['car_renting_rate']; ?></span>
+                                                <span>Kes <?php echo $vehicles['car_renting_rate']; ?></span>
                                             </h3>
                                         </div>
                                     </div>

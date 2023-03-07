@@ -157,7 +157,7 @@ require_once('../app/partials/back_office_head.php');
                                                                 echo  $number_of_days = ceil(abs(strtotime($rentals['rental_to_date']) - strtotime($rentals['rental_from_date'])) / 86400);
                                                                 ?> Days
                                                             </li>
-                                                            <li class="list-group-item">Cost: Ksh <?php echo number_format($rentals['rental_cost']); ?></li>
+                                                            <li class="list-group-item">Cost: Kes <?php echo number_format($rentals['rental_cost']); ?></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -319,8 +319,8 @@ require_once('../app/partials/back_office_head.php');
                                                                                     </p>
                                                                                 </td>
                                                                                 <td class="align-middle text-center">1</td>
-                                                                                <td class="align-middle text-right">Ksh <?php echo number_format($rentals['car_renting_rate'], 2); ?></td>
-                                                                                <td class="align-middle text-right">Ksh <?php echo number_format($payments['payment_amount']); ?></td>
+                                                                                <td class="align-middle text-right">Kes <?php echo number_format($rentals['car_renting_rate'], 2); ?></td>
+                                                                                <td class="align-middle text-right">Kes <?php echo number_format($payments['payment_amount']); ?></td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -337,11 +337,11 @@ require_once('../app/partials/back_office_head.php');
                                                                             ?>
                                                                             <tr>
                                                                                 <th class="text-900">Subtotal:</th>
-                                                                                <td class="font-weight-semi-bold">Ksh <?php echo number_format($untaxed_amount); ?></td>
+                                                                                <td class="font-weight-semi-bold">Kes <?php echo number_format($untaxed_amount); ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th class="text-900">Tax 16%:</th>
-                                                                                <td class="font-weight-semi-bold">Ksh <?php echo number_format($tax); ?></td>
+                                                                                <td class="font-weight-semi-bold">Kes <?php echo number_format($tax); ?></td>
                                                                             </tr>
                                                                             <tr class="border-top">
                                                                                 <th class="text-900">Total:</th>
@@ -349,7 +349,7 @@ require_once('../app/partials/back_office_head.php');
                                                                             </tr>
                                                                             <tr class="border-top border-2x font-weight-bold text-900">
                                                                                 <th>Amount Paid:</th>
-                                                                                <td>Ksh <?php echo number_format($taxed_amount); ?></td>
+                                                                                <td>Kes <?php echo number_format($taxed_amount); ?></td>
                                                                             </tr>
                                                                         </table>
                                                                     </div>

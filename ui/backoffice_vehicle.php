@@ -160,7 +160,7 @@ require_once('../app/partials/back_office_head.php');
                                             <li class="list-group-item">Transmission: <?php echo $vehicles['car_transmission_type']; ?></li>
                                             <li class="list-group-item">Fuel: <?php echo $vehicles['car_fuel_type']; ?></li>
                                             <li class="list-group-item">Seats: <?php echo $vehicles['car_seats']; ?></li>
-                                            <li class="list-group-item">Renting rate per hour: Ksh <?php echo number_format($vehicles['car_renting_rate']); ?></li>
+                                            <li class="list-group-item">Renting rate per hour: Kes <?php echo number_format($vehicles['car_renting_rate']); ?></li>
                                         </ul>
                                     </div>
 
