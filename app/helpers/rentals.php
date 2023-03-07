@@ -286,12 +286,12 @@ if (isset($_POST['Return_Car'])) {
     $return_user_id = mysqli_real_escape_string($mysqli, $_POST['return_user_id']);
     $return_comments = mysqli_real_escape_string($mysqli, $_POST['return_comments']);
 
-
     /* Persist */
     $return_sql = "INSERT INTO rental_returns (return_rental_id, return_user_id, return_comments) 
     VALUES ('{$return_rental_id}', '{$return_user_id}', '{$return_comments}')";
-    if (mysqli_query($mysqli, $return_sql)) {
-        $success = "Car inspected and returned";
+    $rental_status = "UPDATE car_rentals SET rental_return_status = '1' WHERE rental_id = '{$return_rental_id}'";
+    if (mysqli_query($mysqli, $return_sql) && mysqli_query($mysqli, $rental_status)) {
+        $success = "Vehicle inspected and returned";
     } else {
         $err = "Failed, please try again";
     }

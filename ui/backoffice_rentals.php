@@ -179,7 +179,7 @@ require_once('../app/partials/back_office_head.php');
                                                                     <i class="fas fa-edit"></i> Edit
                                                                 </a>
                                                             <?php }
-                                                            if ($date_now <= $return_date) { ?>
+                                                            if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
                                                                 <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
                                                                     <i class="fas fa-history"></i> Return
                                                                 </a>

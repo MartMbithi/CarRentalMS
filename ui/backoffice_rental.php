@@ -170,30 +170,31 @@ require_once('../app/partials/back_office_head.php');
                                                 </div>
                                                 <div class="row">
                                                     <?php
-                                                    $rentals_sql = mysqli_query(
+                                                    $inspection_sql = mysqli_query(
                                                         $mysqli,
                                                         "SELECT * FROM rental_returns rr INNER JOIN 
                                                         users u on u.user_id =  rr.return_user_id
                                                         WHERE rr.return_rental_id = '{$_GET['view']}'"
                                                     );
-                                                    if (mysqli_num_rows($rentals_sql) > 0) {
-                                                        while ($rentals = mysqli_fetch_array($rentals_sql)) {
+                                                    if (mysqli_num_rows($inspection_sql) > 0) {
+                                                        while ($rentals_inspection = mysqli_fetch_array($inspection_sql)) {
                                                     ?>
                                                             <div class="col-lg-6">
                                                                 <ul class="list-group list-group-flush">
-                                                                    <li class="list-group-item">Inspected by: <?php echo $rentals['user_number'] . ' ' . $rentals['user_name']; ?></li>
+                                                                    <li class="list-group-item">Inspected by: <?php echo $rentals_inspection['user_number'] . ' ' . $rentals_inspection['user_name']; ?></li>
                                                                     <li class="list-group-item"></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <ul class="list-group list-group-flush">
-                                                                    <li class="list-group-item">Date inspected: <?php echo date('d M Y', strtotime($rentals['return_date_posted'])); ?></li>
+                                                                    <li class="list-group-item">Date inspected: <?php echo date('d M Y', strtotime($rentals_inspection['return_date_posted'])); ?></li>
+                                                                    <li class="list-group-item"></li>
                                                                 </ul>
                                                             </div>
-                                                            <div class="col-lg-12">
+                                                            <div class="col-lg-12 text-center">
                                                                 <ul class="list-group list-group-flush">
-                                                                    <li class="list-group-item">Vehicle inspection comments : <br>
-                                                                        <?php echo date('d M Y', strtotime($rentals['return_date_posted'])); ?>
+                                                                    <li class="list-group-item">Vehicle inspection comments<br>
+                                                                        <?php echo $rentals_inspection['return_comments']; ?>
                                                                     </li>
                                                                 </ul>
                                                             </div>
