@@ -137,8 +137,6 @@ require_once('../app/partials/back_office_head.php');
                                             );
                                             if (mysqli_num_rows($rentals_sql) > 0) {
                                                 while ($rental = mysqli_fetch_array($rentals_sql)) {
-                                                    $date_now = strtotime(date('Y-m-d'));
-                                                    $return_date = strtotime($rental['rental_to_date']);
                                             ?>
                                                     <tr>
                                                         <td>
@@ -177,11 +175,6 @@ require_once('../app/partials/back_office_head.php');
                                                                 </a>
                                                                 <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
                                                                     <i class="fas fa-edit"></i> Edit
-                                                                </a>
-                                                            <?php }
-                                                            if ($date_now <= $return_date) { ?>
-                                                                <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
-                                                                    <i class="fas fa-history"></i> Return
                                                                 </a>
                                                             <?php } ?>
                                                             <a data-toggle="modal" href="#delete_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
