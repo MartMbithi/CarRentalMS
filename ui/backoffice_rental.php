@@ -138,6 +138,29 @@ require_once('../app/partials/back_office_head.php');
                                         </ul>
                                         <div class="tab-content border-x border-bottom p-3" id="myTabContent">
                                             <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-center">
+                                                        <h3 class="mb-0">Ref: <?php echo $rentals['rental_ref_code']; ?></h3>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Rental from date: <?php echo date('d M Y', strtotime($rentals['rental_from_date'])); ?></li>
+                                                            <li class="list-group-item">Return Date: <?php echo date('d M Y', strtotime($rentals['rental_to_date'])); ?></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Number of days:
+                                                                <?php
+                                                                echo  $number_of_days = ceil(abs(strtotime($rentals['rental_to_date']) - strtotime($rentals['rental_from_date'])) / 86400);
+                                                                ?> Days
+                                                            </li>
+                                                            <li class="list-group-item">Cost: Ksh <?php echo number_format($rentals['rental_cost']); ?></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
                                                 <div class="card-body">
