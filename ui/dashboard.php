@@ -163,7 +163,7 @@ require_once('../app/partials/back_office_head.php');
                             <!--/.bg-holder-->
                             <div class="card-body position-relative">
                                 <h6>Revenue</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $payment_amount; ?></div>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">Ksh <?php echo $beautified_cost; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All payments
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>

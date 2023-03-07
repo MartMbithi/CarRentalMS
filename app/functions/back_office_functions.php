@@ -120,3 +120,21 @@ $stmt->execute();
 $stmt->bind_result($payment_amount);
 $stmt->fetch();
 $stmt->close();
+
+/* Formart Newt Worth */
+function NumberBeautifier($digit)
+{
+    if ($digit >= 1000000000) {
+        return round($digit / 1000000000, 1) . 'B';
+    }
+    if ($digit >= 1000000) {
+        return round($digit / 1000000, 1) . 'M';
+    }
+    if ($digit >= 1000) {
+        return round($digit / 1000, 1) . 'K';
+    }
+    return $digit;
+}
+
+/* Return Beautified Asset NeT Worth */
+$beautified_cost  = NumberBeautifier($payment_amount);
