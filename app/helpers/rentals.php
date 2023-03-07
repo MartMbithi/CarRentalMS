@@ -116,6 +116,7 @@ if (isset($_POST['Pay_Rentals'])) {
     $client_phone_number  = mysqli_real_escape_string($mysqli, $_POST['client_phone_number']);
     $client_email = mysqli_real_escape_string($mysqli, $_POST['client_email']);
     $rental_ref_number = mysqli_real_escape_string($mysqli, $_POST['rental_ref_number']);
+    $client_names = mysqli_real_escape_string($mysqli, $_POST['client_names']);
 
 
     /* Check Payment Method */
@@ -141,14 +142,14 @@ if (isset($_POST['Pay_Rentals'])) {
         /* Handle mpesa payment */
 
         # access token - Automatically added to the database to avoid key bleeds
-        $consumerKey = 'KTx7bCwIe31noe1eM6cTyNL6wKY87JAZ';
-        $consumerSecret = 'DAuLAYejs6nonlA5';
+        $consumerKey = $consumer_key;
+        $consumerSecret = $consumer_secret;
 
         # define the variales
         # provide the following details, this part is found on your test credentials on the developer account
         $Amount = $payment_amount;
-        $BusinessShortCode = '174379'; /* Find this variable under app/settings/mpesa_daraja_api_config.php */
-        $Passkey = 'MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjMwMzA3MDkyNTI3';
+        $BusinessShortCode = $business_shortCode; /* Find this variable under app/settings/mpesa_daraja_api_config.php */
+        $Passkey = $passkey;
 
         /*
             This are your info, for
@@ -221,6 +222,56 @@ if (isset($_POST['Pay_Rentals'])) {
         $curl_response = curl_exec($curl);
     } else if ($payment_means == 'Card') {
         /* Handle card payments */
+        $request = [
+            'tx_ref' => time(), /* Just Timestamp Every Transaction */
+            'amount' => $payment_amount,
+            'currency' => 'KES',
+            'payment_options' => 'card',
+            /* Update This URL To Match Your Needs */
+            'redirect_url' => 'https://' . $_SERVER['HTTP_HOST'] . '/CarRentalMS/ui/payment_response?order=' . $payment_order_code . '&means=' . $payment_means_id,
+            'customer' => [
+                'email' => $client_email,
+                'name' => $client_names,
+            ],
+            'meta' => [
+                'price' => $payment_amount
+            ],
+            'customizations' => [
+                'title' => 'Vehicle Rental Ref Code:  ' . ' ' . $rental_ref_number . ' Payment',
+                'description' => $client_names . 'Order Payment'
+            ]
+        ];
+
+        /* Call Flutterwave Endpoint */
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.flutterwave.com/v3/payments',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($request),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer ' . $flutterwave_keys, /* To Do : Never hard code this bearer */
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $res = json_decode($response);
+        if ($res->status == 'success') {
+            $link = $res->data->link;
+            header('Location: ' . $link);
+        } else {
+            $err =  'We can not process your payment';
+        }
     }
 }
 
