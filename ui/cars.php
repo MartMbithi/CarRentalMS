@@ -128,7 +128,7 @@ require_once('../app/partials/landing_head.php');
                                             <h2 class="mb-0"><a href="#"><?php echo $cars['car_model']; ?></a></h2>
                                             <div class="d-flex mb-3">
                                                 <span class="cat"><?php echo $cars['category_name']; ?></span>
-                                                <p class="price ml-auto">Ksh <?php echo number_format($cars['car_renting_rate']); ?> <span>/day</span></p>
+                                                <p class="price ml-auto">Kes <?php echo number_format($cars['car_renting_rate']); ?> <span>/day</span></p>
                                             </div>
                                             <p class="d-flex mb-0 d-block">
                                                 <a href="login" class="btn btn-primary py-2 mr-1">Book now</a>

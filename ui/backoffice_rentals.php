@@ -159,7 +159,7 @@ require_once('../app/partials/back_office_head.php');
                                                             To date: <?php echo date('d M Y', strtotime($rental['rental_to_date'])); ?>
                                                         </td>
                                                         <td>
-                                                            Ksh <?php echo number_format($rental['rental_cost']); ?>
+                                                            Kes <?php echo number_format($rental['rental_cost']); ?>
                                                         </td>
                                                         <td>
                                                             <?php

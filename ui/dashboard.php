@@ -163,7 +163,7 @@ require_once('../app/partials/back_office_head.php');
                             <!--/.bg-holder-->
                             <div class="card-body position-relative">
                                 <h6>Revenue</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">Ksh <?php echo $beautified_cost; ?></div>
+                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">Kes <?php echo $beautified_cost; ?></div>
                                 <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All payments
                                     <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
                                 </a>
@@ -285,7 +285,7 @@ require_once('../app/partials/back_office_head.php');
                                                         <h6 class="mb-0 d-flex align-items-center">
                                                             <a class="text-800 stretched-link" href="backoffice_payment?payment=<?php echo $payments['payment_id']; ?>">
                                                                 <?php echo $payments['payment_ref_code']; ?> Confirmed, Payment of
-                                                                Ksh <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
+                                                                Kes <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
                                                             </a>
                                                         </h6>
                                                     </div>
@@ -337,7 +337,7 @@ require_once('../app/partials/back_office_head.php');
                                                         <div class="media align-items-center position-relative">
                                                             <div class="media-body ml-3">
                                                                 <h6 class="mb-1 font-weight-semi-bold">
-                                                                    <a class="text-dark stretched-link" href="backoffice_rental?rental=<?php echo $rentals['car_id']; ?>">
+                                                                    <a class="text-dark stretched-link" href="backoffice_rental?view=<?php echo $rentals['car_id']; ?>">
                                                                         <?php echo $rentals['car_reg_number']; ?>
                                                                     </a>
                                                                 </h6>

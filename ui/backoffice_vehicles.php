@@ -151,7 +151,7 @@ require_once('../app/partials/back_office_head.php');
                                                         <td><?php echo $cars['car_transmission_type']; ?></td>
                                                         <td><?php echo $cars['car_seats']; ?></td>
                                                         <td><?php echo $cars['car_fuel_type']; ?></td>
-                                                        <td>Ksh <?php echo $cars['car_renting_rate']; ?></td>
+                                                        <td>Kes <?php echo $cars['car_renting_rate']; ?></td>
                                                         <td>
                                                             <?php
                                                             if ($cars['car_availability_status'] == '0') {
