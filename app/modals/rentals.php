@@ -14,6 +14,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="">Payment means</label>
+                            <input type="hidden" value="<?php echo $rental['rental_ref_code']; ?>" required name="rental_ref_number" class="form-control">
                             <input type="hidden" value="<?php echo $rental['client_email']; ?>" required name="client_email" class="form-control">
                             <input type="hidden" value="<?php echo $rental['client_phone_number']; ?>" required name="client_phone_number" class="form-control">
                             <input type="hidden" value="<?php echo $rental['rental_id']; ?>" required name="payment_rental_id" class="form-control">

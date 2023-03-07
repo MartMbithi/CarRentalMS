@@ -115,6 +115,7 @@ if (isset($_POST['Pay_Rentals'])) {
     $payment_amount = mysqli_real_escape_string($mysqli, $_POST['payment_amount']);
     $client_phone_number  = mysqli_real_escape_string($mysqli, $_POST['client_phone_number']);
     $client_email = mysqli_real_escape_string($mysqli, $_POST['client_email']);
+    $rental_ref_number = mysqli_real_escape_string($mysqli, $_POST['rental_ref_number']);
 
 
     /* Check Payment Method */
@@ -130,19 +131,24 @@ if (isset($_POST['Pay_Rentals'])) {
             $err = "Something went wrong, try again";
         }
     } else if ($payment_means == 'Mpesa') {
+        /* Sanitize Phone numbers */
+        $client_phone = $client_phone_number;
+        $client_phone = preg_replace("/\s+/", "", $client_phone);
+        $arr = str_split($client_phone);
+
+        $client_phone = "254" . substr($client_phone, -9);
+
         /* Handle mpesa payment */
-        /* Load Mpesa STK PUSH */
-        date_default_timezone_set('Africa/Nairobi');
 
         # access token - Automatically added to the database to avoid key bleeds
-        $consumerKey = $consumer_key;
-        $consumerSecret = $consumer_secret;
+        $consumerKey = 'KTx7bCwIe31noe1eM6cTyNL6wKY87JAZ';
+        $consumerSecret = 'DAuLAYejs6nonlA5';
 
         # define the variales
         # provide the following details, this part is found on your test credentials on the developer account
         $Amount = $payment_amount;
-        $BusinessShortCode = $business_shortCode; /* Find this variable under app/settings/mpesa_daraja_api_config.php */
-        $Passkey = $passkey;
+        $BusinessShortCode = '174379'; /* Find this variable under app/settings/mpesa_daraja_api_config.php */
+        $Passkey = 'MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjMwMzA3MDkyNTI3';
 
         /*
             This are your info, for
@@ -154,9 +160,9 @@ if (isset($_POST['Pay_Rentals'])) {
             for developer/test accounts, this money will be reversed automatically by midnight.
         */
 
-        $PartyA =  $user_contacts;
-        $AccountReference = 'eArtworks';
-        $TransactionDesc = 'Mobile Payment for order number ' . $payment_order_code;
+        $PartyA =  $client_phone;
+        $AccountReference = 'CarRentals';
+        $TransactionDesc = 'Mobile Payment for vehicle rental reference number ' . $rental_ref_number;
 
         # Get the timestamp, format YYYYmmddhms -> 20181004151020
         $Timestamp = date('YmdHis');
@@ -172,7 +178,7 @@ if (isset($_POST['Pay_Rentals'])) {
         $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
         # callback url
-        $CallBackURL = 'https://' . $_SERVER['HTTP_HOST'] . '/eArtworks/ui/callback_url.php?order=' . $payment_order_code . '&means=' . $payment_means_id;
+        $CallBackURL = 'https://' . $_SERVER['HTTP_HOST'] . '/CarRentalMS/ui/callback_url.php?payment_rental_id=' . $payment_rental_id . '&payment_means=' . $payment_means;
 
         $curl = curl_init($access_token_url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
@@ -213,7 +219,6 @@ if (isset($_POST['Pay_Rentals'])) {
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $curl_response = curl_exec($curl);
-
     } else if ($payment_means == 'Card') {
         /* Handle card payments */
     }
