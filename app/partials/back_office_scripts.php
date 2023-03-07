@@ -48,6 +48,8 @@
 <script src="../public/backoffice_assets/lib/dropzone/dropzone.min.js"></script>
 <!-- Summernote -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- Select 2 -->
+<script src="../public/backoffice_assets/lib/select2/select2.min.js"></script>
 <!-- Theme Js -->
 <script src="../public/backoffice_assets/js/theme.min.js"></script>
 

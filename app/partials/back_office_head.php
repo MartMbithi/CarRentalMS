@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/relax.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/semanticui.css">
     <link rel="stylesheet" href="../public/backoffice_assets/plugins/noty/themes/sunset.css">
+    <link href="../public/backoffice_assets/lib/select2/select2.min.css" rel="stylesheet">
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <?php
