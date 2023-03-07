@@ -101,4 +101,8 @@
         });
 
     }
+    /* Initiate select2 */
+    $(document).ready(function() {
+        $('.selectpicker').select2();
+    });
 </script>

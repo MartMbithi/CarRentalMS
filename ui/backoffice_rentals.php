@@ -210,9 +210,9 @@ require_once('../app/partials/back_office_head.php');
                             <div class="modal-body">
                                 <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-6">
                                             <label for="">Client Details</label>
-                                            <select type="" required name="rental_client_id" class="form-control selectpicker" id="basic-example">
+                                            <select type="" required name="rental_client_id" class="form-control selectpicker" style="width: 100%;">
                                                 <option value="">Select client</option>
                                                 <?php
                                                 $clients_sql = mysqli_query($mysqli, "SELECT * FROM clients");
@@ -222,9 +222,9 @@ require_once('../app/partials/back_office_head.php');
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-6">
                                             <label for="">Vehicle Details</label>
-                                            <select type="" required name="rental_car_id" class="form-control selectpicker" id="basic-example" onchange="GetCarDetails(this.value)" id="CarID">
+                                            <select type="" required name="rental_car_id" class="form-control selectpicker" style="width: 100%;" onchange="GetCarDetails(this.value)" id="CarID">
                                                 <option value="">Select vehicle Registration number</option>
                                                 <?php
                                                 $vehicles_sql = mysqli_query($mysqli, "SELECT * FROM cars WHERE car_availability_status = '0'");
