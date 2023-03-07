@@ -161,6 +161,53 @@ require_once('../app/partials/back_office_head.php');
                                                         </ul>
                                                     </div>
                                                 </div>
+                                                <hr>
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-center">
+                                                        <h3 class="mb-0">Vehicle inspection details</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <?php
+                                                    $rentals_sql = mysqli_query(
+                                                        $mysqli,
+                                                        "SELECT * FROM rental_returns rr INNER JOIN 
+                                                        users u on u.user_id =  rr.return_user_id
+                                                        WHERE rr.return_rental_id = '{$_GET['view']}'"
+                                                    );
+                                                    if (mysqli_num_rows($rentals_sql) > 0) {
+                                                        while ($rentals = mysqli_fetch_array($rentals_sql)) {
+                                                    ?>
+                                                            <div class="col-lg-6">
+                                                                <ul class="list-group list-group-flush">
+                                                                    <li class="list-group-item">Inspected by: <?php echo $rentals['user_number'] . ' ' . $rentals['user_name']; ?></li>
+                                                                    <li class="list-group-item"></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <ul class="list-group list-group-flush">
+                                                                    <li class="list-group-item">Date inspected: <?php echo date('d M Y', strtotime($rentals['return_date_posted'])); ?></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <ul class="list-group list-group-flush">
+                                                                    <li class="list-group-item">Vehicle inspection comments : <br>
+                                                                        <?php echo date('d M Y', strtotime($rentals['return_date_posted'])); ?>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        <?php }
+                                                    } else { ?>
+                                                        <div class="col-lg-12 text-center">
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item text-danger">
+                                                                    No inspection records available for this vehicle rental
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
                                                 <div class="card-body">
@@ -195,6 +242,7 @@ require_once('../app/partials/back_office_head.php');
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="tab-contact" role="tabpanel" aria-labelledby="contact-tab">
+
                                             </div>
                                         </div>
                                     </div>
