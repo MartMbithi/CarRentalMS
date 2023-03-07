@@ -14,12 +14,16 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="">Payment means</label>
+                            <input type="hidden" value="<?php echo $rental['client_names']; ?>" required name="client_names" class="form-control">
+                            <input type="hidden" value="<?php echo $rental['rental_ref_code']; ?>" required name="rental_ref_number" class="form-control">
+                            <input type="hidden" value="<?php echo $rental['client_email']; ?>" required name="client_email" class="form-control">
+                            <input type="hidden" value="<?php echo $rental['client_phone_number']; ?>" required name="client_phone_number" class="form-control">
                             <input type="hidden" value="<?php echo $rental['rental_id']; ?>" required name="payment_rental_id" class="form-control">
                             <input type="hidden" value="<?php echo $ref_code; ?>" required name="payment_ref_code" class="form-control">
                             <select type="text" required name="payment_means" class="form-control">
                                 <option value="">Select payment option</option>
-                                <option value="Mpesa">Mpesa</option>
-                                <option value="Card">Credit/Debit Card</option>
+                                <!-- <option value="Mpesa">Mpesa</option> -->
+                                <option value="Card">Credit/Debit Card OR Mobile Money</option>
                                 <option value="Cash">Cash</option>
                             </select>
                         </div>
@@ -91,3 +95,33 @@
     </div>
 </div>
 <!-- End Delete -->
+
+<div class="modal fade fixed-right" id="return_<?php echo $rental['rental_id']; ?>" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header align-items-center">
+                <div class="text-center">
+                    <h6 class="mb-0 text-bold">Inspect This Rental Return</h6>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="">Return inspection comments</label>
+                            <input type="hidden" value="<?php echo $rental['rental_id']; ?>" required name="return_rental_id" class="form-control">
+                            <input type="hidden" value="<?php echo $_SESSION['user_id']; ?>" required name="return_user_id" class="form-control">
+                            <textarea required name="return_comments" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" name="Return_Car" class="btn btn-outline-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

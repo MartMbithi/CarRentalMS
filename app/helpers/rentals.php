@@ -109,23 +109,194 @@ if (isset($_POST['Update_Rental'])) {
 
 /* Pay Rentals */
 if (isset($_POST['Pay_Rentals'])) {
+    /* Fluuterwaver Rave API Configs */
+    include('../app/settings/fluttterwave_api_configs.php');
+    /* Mpesa Daraja API */
+    include('../app/settings/mpesa_daraja_api_config.php');
+
     $payment_rental_id = mysqli_real_escape_string($mysqli, $_POST['payment_rental_id']);
     $payment_means = mysqli_real_escape_string($mysqli, $_POST['payment_means']);
     $payment_ref_code = mysqli_real_escape_string($mysqli, $_POST['payment_ref_code']);
     $payment_amount = mysqli_real_escape_string($mysqli, $_POST['payment_amount']);
+    $client_phone_number  = mysqli_real_escape_string($mysqli, $_POST['client_phone_number']);
+    $client_email = mysqli_real_escape_string($mysqli, $_POST['client_email']);
+    $rental_ref_number = mysqli_real_escape_string($mysqli, $_POST['rental_ref_number']);
+    $client_names = mysqli_real_escape_string($mysqli, $_POST['client_names']);
 
 
-    /* Persist payment */
-    $pay_rental_sql = "INSERT INTO payments (payment_rental_id, payment_means, payment_ref_code, payment_amount)
-    VALUES ('{$payment_rental_id}', '{$payment_means}', '{$payment_ref_code}', '{$payment_amount}')";
-    $update_rental_sql = "UPDATE car_rentals SET rental_payment_status = '1' WHERE rental_id = '{$payment_rental_id}'";
+    /* Check Payment Method */
+    if ($payment_means == 'Cash') {
+        /* Persist payment */
+        $pay_rental_sql = "INSERT INTO payments (payment_rental_id, payment_means, payment_ref_code, payment_amount)
+        VALUES ('{$payment_rental_id}', '{$payment_means}', '{$payment_ref_code}', '{$payment_amount}')";
+        $update_rental_sql = "UPDATE car_rentals SET rental_payment_status = '1' WHERE rental_id = '{$payment_rental_id}'";
 
-    if (mysqli_query($mysqli, $pay_rental_sql) && mysqli_query($mysqli, $update_rental_sql)) {
-        $success = "Payment made successfully";
-    } else {
-        $err = "Something went wrong, try again";
+        if (mysqli_query($mysqli, $pay_rental_sql) && mysqli_query($mysqli, $update_rental_sql)) {
+            $success = "Payment made successfully";
+        } else {
+            $err = "Something went wrong, try again";
+        }
+    } else if ($payment_means == 'Mpesa') {
+        /* Sanitize Phone numbers */
+        $client_phone = $client_phone_number;
+        $client_phone = preg_replace("/\s+/", "", $client_phone);
+        $arr = str_split($client_phone);
+
+        $client_phone = "254" . substr($client_phone, -9);
+
+        /* Handle mpesa payment */
+
+        # access token - Automatically added to the database to avoid key bleeds
+        $consumerKey = $consumer_key;
+        $consumerSecret = $consumer_secret;
+
+        # define the variales
+        # provide the following details, this part is found on your test credentials on the developer account
+        $Amount = $payment_amount;
+        $BusinessShortCode = $business_shortCode; /* Find this variable under app/settings/mpesa_daraja_api_config.php */
+        $Passkey = $passkey;
+
+        /*
+            This are your info, for
+            $PartyA should be the ACTUAL clients phone number or your phone number, format 2547********
+            $AccountRefference, it maybe invoice number, account number etc on production systems, but for test just put anything
+            TransactionDesc can be anything, probably a better description of or the transaction
+            $Amount this is the total invoiced amount, Any amount here will be 
+            actually deducted from a clients side/your test phone number once the PIN has been entered to authorize the transaction. 
+            for developer/test accounts, this money will be reversed automatically by midnight.
+        */
+
+        $PartyA =  $client_phone;
+        $AccountReference = 'CarRentals';
+        $TransactionDesc = 'Mobile Payment for vehicle rental reference number ' . $rental_ref_number;
+
+        # Get the timestamp, format YYYYmmddhms -> 20181004151020
+        $Timestamp = date('YmdHis');
+
+        # Get the base64 encoded string -> $password. The passkey is the M-PESA Public Key
+        $Password = base64_encode($BusinessShortCode . $Passkey . $Timestamp);
+
+        # header for access token
+        $headers = ['Content-Type:application/json; charset=utf8'];
+
+        # M-PESA endpoint urls
+        $access_token_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
+        $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
+
+        # callback url
+        $CallBackURL = 'https://' . $_SERVER['HTTP_HOST'] . '/CarRentalMS/ui/callback_url.php?payment_rental_id=' . $payment_rental_id . '&payment_means=' . $payment_means;
+
+        $curl = curl_init($access_token_url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_HEADER, FALSE);
+        curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
+        $result = curl_exec($curl);
+        $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $result = json_decode($result);
+        $access_token = $result->access_token;
+        curl_close($curl);
+
+        # header for stk push
+        $stkheader = ['Content-Type:application/json', 'Authorization:Bearer ' . $access_token];
+
+        # initiating the transaction
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $initiate_url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $stkheader); //setting custom header
+
+        $curl_post_data = array(
+            //Fill in the request parameters with valid values
+            'BusinessShortCode' => $BusinessShortCode,
+            'Password' => $Password,
+            'Timestamp' => $Timestamp,
+            'TransactionType' => 'CustomerPayBillOnline',
+            'Amount' => $Amount,
+            'PartyA' => $PartyA,
+            'PartyB' => $BusinessShortCode,
+            'PhoneNumber' => $PartyA,
+            'CallBackURL' => $CallBackURL,
+            'AccountReference' => $AccountReference,
+            'TransactionDesc' => $TransactionDesc
+        );
+
+        $data_string = json_encode($curl_post_data);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+        $curl_response = curl_exec($curl);
+    } else if ($payment_means == 'Card') {
+        /* Handle card payments */
+        $request = [
+            'tx_ref' => time(), /* Just Timestamp Every Transaction */
+            'amount' => $payment_amount,
+            'currency' => 'KES',
+            'payment_options' => 'card',
+            /* Update This URL To Match Your Needs */
+            'redirect_url' => 'https://' . $_SERVER['HTTP_HOST'] . '/CarRentalMS/ui/payment_response?payment_rental_id=' . $payment_rental_id . '&payment_means=' . $payment_means,
+            'customer' => [
+                'email' => $client_email,
+                'name' => $client_names,
+            ],
+            'meta' => [
+                'price' => $payment_amount
+            ],
+            'customizations' => [
+                'title' => 'Vehicle Rental Ref Code:  ' . ' ' . $rental_ref_number . ' Payment',
+                'description' => $client_names . 'Order Payment'
+            ]
+        ];
+
+        /* Call Flutterwave Endpoint */
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.flutterwave.com/v3/payments',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($request),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer ' . $flutterwave_keys, /* To Do : Never hard code this bearer */
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $res = json_decode($response);
+        if ($res->status == 'success') {
+            $link = $res->data->link;
+            header('Location: ' . $link);
+        } else {
+            $err =  'We can not process your payment';
+        }
     }
 }
+
+/* Return Rentals */
+if (isset($_POST['Return_Car'])) {
+    $return_rental_id = mysqli_real_escape_string($mysqli, $_POST['return_rental_id']);
+    $return_user_id = mysqli_real_escape_string($mysqli, $_POST['return_user_id']);
+    $return_comments = mysqli_real_escape_string($mysqli, $_POST['return_comments']);
+
+    /* Persist */
+    $return_sql = "INSERT INTO rental_returns (return_rental_id, return_user_id, return_comments) 
+    VALUES ('{$return_rental_id}', '{$return_user_id}', '{$return_comments}')";
+    $rental_status = "UPDATE car_rentals SET rental_return_status = '1' WHERE rental_id = '{$return_rental_id}'";
+    if (mysqli_query($mysqli, $return_sql) && mysqli_query($mysqli, $rental_status)) {
+        $success = "Vehicle inspected and returned";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
+
 
 /* Delete Rentals */
 if (isset($_POST['Delete_Rentals'])) {

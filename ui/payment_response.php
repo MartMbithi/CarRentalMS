@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Wed Feb 22 2023
+ *   Crafted On Tue Mar 07 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,76 +65,79 @@
  *
  */
 
-/* Staffs Count */
-$query = "SELECT COUNT(*) FROM users WHERE user_access_level = 'Staff'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($staffs);
-$stmt->fetch();
-$stmt->close();
 
-/* Clients */
-$query = "SELECT COUNT(*) FROM clients";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($clients);
-$stmt->fetch();
-$stmt->close();
+/* Global Variables */
 
-/* Rented Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '1'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($rented_cars);
-$stmt->fetch();
-$stmt->close();
+session_start();
+include('../app/settings/config.php');
+include('../app/settings/fluttterwave_api_configs.php');
 
-/* Available Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '0'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($available_cars);
-$stmt->fetch();
-$stmt->close();
+if (isset($_GET['status'])) {
+    /* Check Payment Status */
+    if ($_GET['status'] == 'cancelled') {
+        $order_code = mysqli_real_escape_string($mysqli, $_GET['order']);
+        header("Location: backoffice_rentals");
+    } elseif ($_GET['status'] == 'successful') {
+        $txid = $_GET['transaction_id'];
 
-/* All cars */
-$query = "SELECT COUNT(*) FROM cars";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($cars);
-$stmt->fetch();
-$stmt->close();
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/{$txid}/verify",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "Authorization: Bearer $flutterwave_keys"
+            ),
+        ));
 
-/* Car Rentals */
-$query = "SELECT COUNT(*) FROM car_rentals";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($car_rentals);
-$stmt->fetch();
-$stmt->close();
+        $response = curl_exec($curl);
 
-/* Revenue */
-$query = "SELECT SUM(payment_amount) FROM payments";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($payment_amount);
-$stmt->fetch();
-$stmt->close();
+        curl_close($curl);
 
-/* Formart Newt Worth */
-function NumberBeautifier($digit)
-{
-    if ($digit >= 1000000000) {
-        return round($digit / 1000000000, 1) . 'B';
+        $res = json_decode($response);
+        if ($res->status) {
+            $amountPaid = $res->data->charged_amount;
+            $amountToPay = $res->data->meta->price;
+            if ($amountPaid >= $amountToPay) {
+
+                /* Insert This Payment Details To Payment*/
+                $payment_ref_code = $res->data->tx_ref;
+                $payment_amount = $amountPaid;
+                $payment_means = mysqli_real_escape_string($mysqli, $_GET['payment_means']);
+                $payment_rental_id = mysqli_real_escape_string($mysqli, $_GET['payment_rental_id']);
+
+                /* Persist This Order Payment Code */
+                $payment_sql = "INSERT INTO payments (payment_rental_id, payment_means, payment_ref_code, payment_amount) 
+                VALUES('{$payment_rental_id}', '{$payment_means}', '{$payment_ref_code}', '{$payment_amount}')";
+
+                /* Update Order Set Order Status As Paid */
+                $rental_status_sql = "UPDATE car_rentals SET rental_payment_status = '1' WHERE rental_id = '{$payment_rental_id}'";
+
+
+                if (mysqli_query($mysqli, $rental_status_sql) && mysqli_query($mysqli, $payment_sql)) {
+                    $_SESSION['success'] = 'Payment Ref ' . $payment_ref_code . ' Posted';
+                    header('Location: backoffice_rentals');
+                    exit;
+                } else {
+                    $_SESSION['err'] = 'Failed to persist transaction details';
+                    header('Location: backoffice_rentals');
+                    exit;
+                }
+            } else {
+                $_SESSION['err'] = 'We are having problem processing your payment';
+                header('Location: backoffice_rentals');
+                exit;
+            }
+        } else {
+            $_SESSION['err'] = 'Can not process payment, please use MPESA payment method';
+            header('Location: backoffice_rentals');
+            exit;
+        }
     }
-    if ($digit >= 1000000) {
-        return round($digit / 1000000, 1) . 'M';
-    }
-    if ($digit >= 1000) {
-        return round($digit / 1000, 1) . 'K';
-    }
-    return $digit;
 }
-
-/* Return Beautified Asset NeT Worth */
-$beautified_cost  = NumberBeautifier($payment_amount);

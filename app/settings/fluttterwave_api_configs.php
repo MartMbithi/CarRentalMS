@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Wed Feb 22 2023
+ *   Crafted On Tue Mar 07 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,76 +65,18 @@
  *
  */
 
-/* Staffs Count */
-$query = "SELECT COUNT(*) FROM users WHERE user_access_level = 'Staff'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($staffs);
-$stmt->fetch();
-$stmt->close();
 
-/* Clients */
-$query = "SELECT COUNT(*) FROM clients";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($clients);
-$stmt->fetch();
-$stmt->close();
+include('config.php');
 
-/* Rented Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '1'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($rented_cars);
-$stmt->fetch();
-$stmt->close();
-
-/* Available Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '0'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($available_cars);
-$stmt->fetch();
-$stmt->close();
-
-/* All cars */
-$query = "SELECT COUNT(*) FROM cars";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($cars);
-$stmt->fetch();
-$stmt->close();
-
-/* Car Rentals */
-$query = "SELECT COUNT(*) FROM car_rentals";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($car_rentals);
-$stmt->fetch();
-$stmt->close();
-
-/* Revenue */
-$query = "SELECT SUM(payment_amount) FROM payments";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($payment_amount);
-$stmt->fetch();
-$stmt->close();
-
-/* Formart Newt Worth */
-function NumberBeautifier($digit)
-{
-    if ($digit >= 1000000000) {
-        return round($digit / 1000000000, 1) . 'B';
+/* Get All APIs */
+$flutterwave = mysqli_query(
+    $mysqli,
+    "SELECT * FROM thirdparty_apis WHERE api_name = 'Flutterwave Rave'"
+);
+if (mysqli_num_rows($flutterwave) > 0) {
+    while ($flutterwave_auth = mysqli_fetch_array($flutterwave)) {
+        $flutterwave_keys = $flutterwave_auth['api_token'];
+        /* Push To Global */
+        global $flutterwave_keys;
     }
-    if ($digit >= 1000000) {
-        return round($digit / 1000000, 1) . 'M';
-    }
-    if ($digit >= 1000) {
-        return round($digit / 1000, 1) . 'K';
-    }
-    return $digit;
 }
-
-/* Return Beautified Asset NeT Worth */
-$beautified_cost  = NumberBeautifier($payment_amount);

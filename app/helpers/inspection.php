@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Wed Feb 22 2023
+ *   Crafted On Tue Mar 07 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,76 +65,33 @@
  *
  */
 
-/* Staffs Count */
-$query = "SELECT COUNT(*) FROM users WHERE user_access_level = 'Staff'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($staffs);
-$stmt->fetch();
-$stmt->close();
+/* Update Inspection */
+if (isset($_POST['Update_Rental_Return'])) {
+    $return_id = mysqli_real_escape_string($mysqli, $_POST['return_id']);
+    $return_comments = mysqli_real_escape_string($mysqli, $_Post['return_comments']);
 
-/* Clients */
-$query = "SELECT COUNT(*) FROM clients";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($clients);
-$stmt->fetch();
-$stmt->close();
-
-/* Rented Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '1'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($rented_cars);
-$stmt->fetch();
-$stmt->close();
-
-/* Available Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '0'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($available_cars);
-$stmt->fetch();
-$stmt->close();
-
-/* All cars */
-$query = "SELECT COUNT(*) FROM cars";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($cars);
-$stmt->fetch();
-$stmt->close();
-
-/* Car Rentals */
-$query = "SELECT COUNT(*) FROM car_rentals";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($car_rentals);
-$stmt->fetch();
-$stmt->close();
-
-/* Revenue */
-$query = "SELECT SUM(payment_amount) FROM payments";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($payment_amount);
-$stmt->fetch();
-$stmt->close();
-
-/* Formart Newt Worth */
-function NumberBeautifier($digit)
-{
-    if ($digit >= 1000000000) {
-        return round($digit / 1000000000, 1) . 'B';
+    /* Persist */
+    $update_sql = "UPDATE rental_returns SET return_comments = '{$return_comments}' WHERE return_id = '{$return_id}'";
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Rental return updated successfully";
+    } else {
+        $err = "Failed to update rental return";
     }
-    if ($digit >= 1000000) {
-        return round($digit / 1000000, 1) . 'M';
-    }
-    if ($digit >= 1000) {
-        return round($digit / 1000, 1) . 'K';
-    }
-    return $digit;
 }
 
-/* Return Beautified Asset NeT Worth */
-$beautified_cost  = NumberBeautifier($payment_amount);
+
+/* Delete Inspection */
+if (isset($_POST['Delete_Rentals_Return'])) {
+    $return_id = mysqli_real_escape_string($mysqli, $_POST['return_id']);
+    $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM rental_returns WHERE return_id = '{$return_id}'";
+    $update_status = "UPDATE car_rentals SET rental_return_status = '0' WHERE rental_id = '{$rental_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql) && mysqli_query($mysqli, $update_status)) {
+        $success = "Rental return deleted successfully";
+    } else {
+        $err = "Failed to delete rental return";
+    }
+}

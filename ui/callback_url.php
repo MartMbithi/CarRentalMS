@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Wed Feb 22 2023
+ *   Crafted On Tue Mar 07 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,76 +65,56 @@
  *
  */
 
-/* Staffs Count */
-$query = "SELECT COUNT(*) FROM users WHERE user_access_level = 'Staff'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($staffs);
-$stmt->fetch();
-$stmt->close();
+session_start();
+require_once('../app/settings/config.php');
 
-/* Clients */
-$query = "SELECT COUNT(*) FROM clients";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($clients);
-$stmt->fetch();
-$stmt->close();
+$callbackJSONData = file_get_contents('php://input');
 
-/* Rented Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '1'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($rented_cars);
-$stmt->fetch();
-$stmt->close();
+$logFile = "stkPush.json";
+$log = fopen($logFile, "a");
+fwrite($log, $callbackJSONData);
+fclose($log);
 
-/* Available Vehicles */
-$query = "SELECT COUNT(*) FROM cars WHERE car_availability_status = '0'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($available_cars);
-$stmt->fetch();
-$stmt->close();
+$callbackData = json_decode($callbackJSONData);
+$payment_rental_id = mysqli_real_escape_string($mysqli, $_GET['payment_rental_id']);
+$payment_means = mysqli_real_escape_string($mysqli, $_GET['payment_means']);
+$resultCode = $callbackData->Body->stkCallback->ResultCode;
+$resultDesc = $callbackData->Body->stkCallback->ResultDesc;
+$merchantRequestID = $callbackData->Body->stkCallback->MerchantRequestID;
+$checkoutRequestID = $callbackData->Body->stkCallback->CheckoutRequestID;
+$mpesa = $callbackData->stkCallback->Body->CallbackMetadata->Item[0]->Name;
+$amount = $callbackData->Body->stkCallback->CallbackMetadata->Item[0]->Value;
+$mpesaReceiptNumber = $callbackData->Body->stkCallback->CallbackMetadata->Item[1]->Value;
+$balance = $callbackData->stkCallback->Body->CallbackMetadata->Item[2]->Value;
+$b2CUtilityAccountAvailableFunds = $callbackData->Body->stkCallback->CallbackMetadata->Item[3]->Value;
+$transactionDate = $callbackData->Body->stkCallback->CallbackMetadata->Item[3]->Value;
+$phoneNumber = $callbackData->Body->stkCallback->CallbackMetadata->Item[4]->Value;
 
-/* All cars */
-$query = "SELECT COUNT(*) FROM cars";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($cars);
-$stmt->fetch();
-$stmt->close();
+$amount = strval($amount);
+if ($resultCode == 0) {
 
-/* Car Rentals */
-$query = "SELECT COUNT(*) FROM car_rentals";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($car_rentals);
-$stmt->fetch();
-$stmt->close();
+    /* Persit JSON Response From Safcom This Is For Reference Purposes */
+    $stk_response = "INSERT INTO stkpush (merchantRequestID, checkoutRequestID, resultCode, resultDesc, amount, mpesaReceiptNumber, transactionDate, phoneNumber)
+    VALUES ('{$merchantRequestID}', '{$checkoutRequestID}','{$resultCode}', '{$resultDesc}', '{$amount}','{$mpesaReceiptNumber}','{$transactionDate}','{$phoneNumber}')";
 
-/* Revenue */
-$query = "SELECT SUM(payment_amount) FROM payments";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($payment_amount);
-$stmt->fetch();
-$stmt->close();
+    /* Persist This Order Payment Code */
+    $payment_sql = "INSERT INTO payments (payment_rental_id, payment_means, payment_ref_code, payment_amount) 
+    VALUES('{$payment_rental_id}', '{$payment_means}', '{$mpesaReceiptNumber}', '$amount')";
 
-/* Formart Newt Worth */
-function NumberBeautifier($digit)
-{
-    if ($digit >= 1000000000) {
-        return round($digit / 1000000000, 1) . 'B';
-    }
-    if ($digit >= 1000000) {
-        return round($digit / 1000000, 1) . 'M';
-    }
-    if ($digit >= 1000) {
-        return round($digit / 1000, 1) . 'K';
-    }
-    return $digit;
+    /* Update Order Set Order Status As Paid */
+    $rental_status_sql = "UPDATE car_rentals SET rental_payment_status = '1' WHERE rental_id = '{$payment_rental_id}'";
+
+
+    /* Execute The Above Sqls */
+    mysqli_query($mysqli, $stk_response);
+    mysqli_query($mysqli, $payment_sql);
+    mysqli_query($mysqli, $rental_status_sql);
+} else {
+    /*
+    -> This exception handler is not invoked but lets keep it there.
+    -> Redirect User To Order Tracking Page But With An Error Message.
+     */
+    $_SESSION['err'] = 'Failed to persist transaction details, please pay with a different payment method';
+    header('Location: backoffice_rentals');
+    exit;
 }
-
-/* Return Beautified Asset NeT Worth */
-$beautified_cost  = NumberBeautifier($payment_amount);
