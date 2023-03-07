@@ -242,7 +242,128 @@ require_once('../app/partials/back_office_head.php');
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="tab-contact" role="tabpanel" aria-labelledby="contact-tab">
-
+                                                <div class="card mb-3">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center text-center mb-3">
+                                                            <div class="col-sm-6 text-sm-left">
+                                                                <img src="../storage/system/logo_backoffice.png" alt="invoice" width="150">
+                                                            </div>
+                                                            <div class="col text-sm-right mt-3 mt-sm-0">
+                                                                <h2 class="mb-3">Payment Receipt</h2>
+                                                                <h5>CarRentals Inc</h5>
+                                                                <p class="fs--1 mb-0">127001<br>Localhost</p>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <hr>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-between align-items-center">
+                                                            <div class="col">
+                                                                <h6 class="text-500">Payment from</h6>
+                                                                <h5><?php echo $rentals['client_names']; ?></h5>
+                                                                <p class="fs--1"><?php echo $rentals['client_phone_number']; ?>
+                                                                    <br><?php echo $rentals['client_email']; ?><br>
+                                                                    <?php echo $rentals['client_address']; ?>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-auto ml-auto">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-sm table-borderless fs--1">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th class="text-sm-right">Payment Ref:</th>
+                                                                                <td><?php echo $payments['payment_ref_code']; ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th class="text-sm-right">Rental Ref Number:</th>
+                                                                                <td><?php echo $rentals['rental_ref_code']; ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th class="text-sm-right">Payment Date:</th>
+                                                                                <td><?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-responsive mt-4 fs--1">
+                                                            <table class="table table-striped border-bottom">
+                                                                <thead>
+                                                                    <tr class="bg-primary text-white">
+                                                                        <th class="border-0">Products</th>
+                                                                        <th class="border-0 text-center">Quantity</th>
+                                                                        <th class="border-0 text-right">Rate</th>
+                                                                        <th class="border-0 text-right">Amount</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="align-middle">
+                                                                            <h6 class="mb-0 text-nowrap">Platinum web hosting package</h6>
+                                                                            <p class="mb-0">Down 35mb, Up 100mb</p>
+                                                                        </td>
+                                                                        <td class="align-middle text-center">2</td>
+                                                                        <td class="align-middle text-right">$65.00</td>
+                                                                        <td class="align-middle text-right">$130.00</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="align-middle">
+                                                                            <h6 class="mb-0 text-nowrap">2 Page website design</h6>
+                                                                            <p class="mb-0">Includes basic wireframes and responsive templates</p>
+                                                                        </td>
+                                                                        <td class="align-middle text-center">1</td>
+                                                                        <td class="align-middle text-right">$2,100.00</td>
+                                                                        <td class="align-middle text-right">$2,100.00</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="align-middle">
+                                                                            <h6 class="mb-0 text-nowrap">Mobile App Development</h6>
+                                                                            <p class="mb-0">Includes responsive navigation</p>
+                                                                        </td>
+                                                                        <td class="align-middle text-center">8</td>
+                                                                        <td class="align-middle text-right">$5,00.00</td>
+                                                                        <td class="align-middle text-right">$4,000.00</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="align-middle">
+                                                                            <h6 class="mb-0 text-nowrap">Web App Development</h6>
+                                                                            <p class="mb-0">Includes react spa</p>
+                                                                        </td>
+                                                                        <td class="align-middle text-center">6</td>
+                                                                        <td class="align-middle text-right">$2,000.00</td>
+                                                                        <td class="align-middle text-right">$12,000.00</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="row no-gutters justify-content-end">
+                                                            <div class="col-auto">
+                                                                <table class="table table-sm table-borderless fs--1 text-right">
+                                                                    <tr>
+                                                                        <th class="text-900">Subtotal:</th>
+                                                                        <td class="font-weight-semi-bold">$18,230.00 </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th class="text-900">Tax 8%:</th>
+                                                                        <td class="font-weight-semi-bold">$1458.40</td>
+                                                                    </tr>
+                                                                    <tr class="border-top">
+                                                                        <th class="text-900">Total:</th>
+                                                                        <td class="font-weight-semi-bold">$19688.40</td>
+                                                                    </tr>
+                                                                    <tr class="border-top border-2x font-weight-bold text-900">
+                                                                        <th>Amount Due:</th>
+                                                                        <td>$19688.40</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer bg-light">
+                                                        <p class="fs--1 mb-0"><strong>Notes: </strong>We really appreciate your business and if there’s anything else we can do, please let us know!</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
