@@ -109,32 +109,34 @@ if (isset($_GET['status'])) {
                 /* Insert This Payment Details To Payment*/
                 $payment_ref_code = $res->data->tx_ref;
                 $payment_amount = $amountPaid;
-                $order_payment_status = mysqli_real_escape_string($mysqli, 'Paid');
-                $means_id = mysqli_real_escape_string($mysqli, $_GET['means']);
-                $order_code = mysqli_real_escape_string($mysqli, $_GET['order']);
+                $payment_means = mysqli_real_escape_string($mysqli, $_GET['payment_means']);
+                $payment_rental_id = mysqli_real_escape_string($mysqli, $_GET['payment_rental_id']);
 
-                $sql = "INSERT INTO payments (payment_order_code, payment_means_id, payment_amount, payment_ref_code) 
-                VALUES('{$order_code}', '{$means_id}', '{$payment_amount}', '$payment_ref_code')";
+                /* Persist This Order Payment Code */
+                $payment_sql = "INSERT INTO payments (payment_rental_id, payment_means, payment_ref_code, payment_amount) 
+                VALUES('{$payment_rental_id}', '{$payment_means}', '{$payment_ref_code}', '{$payment_amount}')";
 
-                $order_status = "UPDATE orders SET order_payment_status = '{$order_payment_status}' WHERE order_code = '{$order_code}'";
+                /* Update Order Set Order Status As Paid */
+                $rental_status_sql = "UPDATE car_rentals SET rental_payment_status = '1' WHERE rental_id = '{$payment_rental_id}'";
 
-                if (mysqli_query($mysqli, $sql) && mysqli_query($mysqli, $order_status)) {
+
+                if (mysqli_query($mysqli, $rental_status_sql) && mysqli_query($mysqli, $payment_sql)) {
                     $_SESSION['success'] = 'Payment Ref ' . $payment_ref_code . ' Posted';
-                    header('Location: landing_track_order_details?view=' . $order_code);
+                    header('Location: backoffice_rentals');
                     exit;
                 } else {
                     $_SESSION['err'] = 'Failed to persist transaction details';
-                    header('Location: landing_track_order_details?view=' . $order_code);
+                    header('Location: backoffice_rentals');
                     exit;
                 }
             } else {
                 $_SESSION['err'] = 'We are having problem processing your payment';
-                header('Location: landing_track_order_details?view=' . $order_code);
+                header('Location: backoffice_rentals');
                 exit;
             }
         } else {
             $_SESSION['err'] = 'Can not process payment, please use MPESA payment method';
-            header('Location: landing_track_order_details?view=' . $order_code);
+            header('Location: backoffice_rentals');
             exit;
         }
     }

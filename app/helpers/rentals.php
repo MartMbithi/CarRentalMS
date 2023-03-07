@@ -109,6 +109,11 @@ if (isset($_POST['Update_Rental'])) {
 
 /* Pay Rentals */
 if (isset($_POST['Pay_Rentals'])) {
+    /* Fluuterwaver Rave API Configs */
+    include('../app/settings/fluttterwave_api_configs.php');
+    /* Mpesa Daraja API */
+    include('../app/settings/mpesa_daraja_api_config.php');
+
     $payment_rental_id = mysqli_real_escape_string($mysqli, $_POST['payment_rental_id']);
     $payment_means = mysqli_real_escape_string($mysqli, $_POST['payment_means']);
     $payment_ref_code = mysqli_real_escape_string($mysqli, $_POST['payment_ref_code']);
@@ -228,7 +233,7 @@ if (isset($_POST['Pay_Rentals'])) {
             'currency' => 'KES',
             'payment_options' => 'card',
             /* Update This URL To Match Your Needs */
-            'redirect_url' => 'https://' . $_SERVER['HTTP_HOST'] . '/CarRentalMS/ui/payment_response?order=' . $payment_order_code . '&means=' . $payment_means_id,
+            'redirect_url' => 'https://' . $_SERVER['HTTP_HOST'] . '/CarRentalMS/ui/payment_response?payment_rental_id=' . $payment_rental_id . '&payment_means=' . $payment_means,
             'customer' => [
                 'email' => $client_email,
                 'name' => $client_names,
