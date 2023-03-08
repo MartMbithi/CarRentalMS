@@ -138,6 +138,7 @@ require_once('../app/partials/back_office_head.php');
                         </div>
                     </div>
                 </div>
+
                 <!-- Mailer Modal -->
                 <div class="modal fade fixed-right" id="mailer_settings" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
@@ -203,6 +204,72 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                 </div>
                 <!-- End Mailer Modal -->
+
+                <!-- Lite cms modal -->
+                <div class="modal fade fixed-right" id="mailer_settings" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header align-items-center">
+                                <div class="text-center">
+                                    <h6 class="mb-0 text-bold">Update Landing Pages Content</h6>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <?php
+                                $cms_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM lite_cms                                
+                                    "
+                                );
+                                if (mysqli_num_rows($cms_sql) > 0) {
+                                    while ($cms = mysqli_fetch_array($cms_sql)) {
+                                ?>
+                                        <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="">STMP Host</label>
+                                                    <input type="hidden" required name="mailer_id" value="<?php echo $mailer['mailer_id']; ?>" class="form-control">
+                                                    <input type="text" value="<?php echo $mailer['mail_host']; ?>" required name="mail_host" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Mail port</label>
+                                                    <input type="text" required name="mail_port" value="<?php echo $mailer['mail_port']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Mail protocol</label>
+                                                    <input type="" required name="mail_protocol" value="<?php echo $mailer['mail_protocol']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Send email from</label>
+                                                    <input type="" required name="mail_from_email" value="<?php echo $mailer['mail_from_email']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Send email from name</label>
+                                                    <input type="" required name="mail_from_name" value="<?php echo $mailer['mail_from_name']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Username</label>
+                                                    <input type="" required name="mail_username" value="<?php echo $mailer['mail_username']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Password</label>
+                                                    <input type="password" required name="mail_password" value="<?php echo $mailer['mail_password']; ?>" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" name="Update_Mailers" class="btn btn-outline-success">Save</button>
+                                            </div>
+                                        </form>
+                                <?php }
+                                } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End lite cms modal -->
 
                 <!-- Lite Cms Modal -->
                 <!-- End CMS modal -->
