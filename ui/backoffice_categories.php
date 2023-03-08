@@ -162,7 +162,7 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
-                <!-- Add Staff Modals -->
+                <!-- Add  Modals -->
                 <div class="modal fade fixed-right" id="addCategoriesModal" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
                         <div class="modal-content">
@@ -194,9 +194,9 @@ require_once('../app/partials/back_office_head.php');
                         </div>
                     </div>
                 </div>
-                <!-- End Add Staff Modal -->
+                <!-- End Add  Modal -->
 
-                <!-- Bulk import staffs modal-->
+                <!-- Bulk import  modal-->
                 <div class="modal fade fixed-right" id="bulkImportCategories" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
                         <div class="modal-content">
@@ -230,9 +230,9 @@ require_once('../app/partials/back_office_head.php');
                         </div>
                     </div>
                 </div>
-                <!-- End bulk import staffs modal -->
+                <!-- End bulk import  modal -->
 
-                <!-- Download Staff Details -->
+                <!-- Download  Details -->
                 <div class="modal fade" id="downloadCategoriesModal" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
