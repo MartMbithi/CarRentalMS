@@ -95,104 +95,124 @@ require_once('../app/partials/back_office_head.php');
                 ?>
                         <div class="card mb-3">
                             <div class="card-body">
-                                <div class="row align-items-center text-center mb-3">
-                                    <div class="col-sm-6 text-sm-left">
-                                        <img src="../storage/system/logo_backoffice.png" alt="invoice" width="150">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-md">
+                                        <h5 class="mb-2 mb-md-0">Payment #<?php echo $payments['payment_ref_code']; ?></h5>
                                     </div>
-                                    <div class="col text-sm-right mt-3 mt-sm-0">
-                                        <h2 class="mb-3">Payment Receipt</h2>
-                                        <h5>CarRentals Inc</h5>
-                                        <p class="fs--1 mb-0">127001<br>Localhost</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <hr>
+                                    <div class="col-auto">
+                                        <button id="print" onclick="printDiv('PaymentReceipt');" class="btn btn-falcon-default btn-sm mr-2 mb-2 mb-sm-0" type="button"><span class="fas fa-print mr-1"> </span>Print</button>
                                     </div>
                                 </div>
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col">
-                                        <h6 class="text-500">Payment from</h6>
-                                        <h5><?php echo $payments['client_names']; ?></h5>
-                                        <p class="fs--1"><?php echo $payments['client_phone_number']; ?>
-                                            <br><?php echo $payments['client_email']; ?><br>
-                                            <?php echo $payments['client_address']; ?>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-auto ml-auto">
-                                        <div class="table-responsive">
-                                            <table class="table table-sm table-borderless fs--1">
-                                                <tbody>
-                                                    <tr>
-                                                        <th class="text-sm-right">Payment Ref:</th>
-                                                        <td><?php echo $payments['payment_ref_code']; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="text-sm-right">Rental Ref Number:</th>
-                                                        <td><?php echo $payments['rental_ref_code']; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="text-sm-right">Payment Date:</th>
-                                                        <td><?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div id="PaymentReceipt">
+                                <div class="card-body">
+                                    <div class="row align-items-center text-center mb-3">
+                                        <div class="col-sm-6 text-sm-left">
+                                            <img src="../storage/system/logo_backoffice.png" alt="invoice" width="150">
+                                        </div>
+                                        <div class="col text-sm-right mt-3 mt-sm-0">
+                                            <h2 class="mb-3">Payment Receipt</h2>
+                                            <h5>CarRentals Inc</h5>
+                                            <p class="fs--1 mb-0">127001<br>Localhost</p>
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="table-responsive mt-4 fs--1">
-                                    <table class="table table-striped border-bottom">
-                                        <thead>
-                                            <tr class="bg-primary text-white">
-                                                <th class="border-0">Products</th>
-                                                <th class="border-0 text-center">Quantity</th>
-                                                <th class="border-0 text-right">Rate per day</th>
-                                                <th class="border-0 text-right">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <h6 class="mb-0 text-nowrap">
-                                                        Rental of <?php echo $payments['car_reg_number']; ?>
-                                                    </h6>
-                                                    <p class="mb-0">
-                                                        from <?php echo date('d M Y', strtotime($payments['rental_from_date'])); ?> to
-                                                        <?php echo date('d M Y', strtotime($payments['rental_to_date'])); ?>
-                                                    </p>
-                                                </td>
-                                                <td class="align-middle text-center">1</td>
-                                                <td class="align-middle text-right">Kes <?php echo number_format($payments['car_renting_rate'], 2); ?></td>
-                                                <td class="align-middle text-right">Kes <?php echo number_format($payments['payment_amount']); ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="row no-gutters justify-content-end">
-                                    <div class="col-auto">
-                                        <table class="table table-sm table-borderless fs--1 text-right">
-                                            <?php
-                                            /* Compute Taxes */
-                                            $tax_rate = 0.16;
-                                            $taxed_amount = $payments['payment_amount'];
-                                            $tax = $taxed_amount * $tax_rate;
-                                            $untaxed_amount  = $taxed_amount - $tax;
-                                            ?>
-                                            <tr>
-                                                <th class="text-900">Subtotal:</th>
-                                                <td class="font-weight-semi-bold">Kes <?php echo number_format($untaxed_amount); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="text-900">Tax 16%:</th>
-                                                <td class="font-weight-semi-bold">Kes <?php echo number_format($tax); ?></td>
-                                            </tr>
-                                            <tr class="border-top">
-                                                <th class="text-900">Total:</th>
-                                                <td class="font-weight-semi-bold"><?php echo number_format($taxed_amount); ?></td>
-                                            </tr>
-                                            <tr class="border-top border-2x font-weight-bold text-900">
-                                                <th>Amount Paid:</th>
-                                                <td>Kes <?php echo number_format($taxed_amount); ?></td>
-                                            </tr>
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col">
+                                            <h6 class="text-500">Payment from</h6>
+                                            <h5><?php echo $payments['client_names']; ?></h5>
+                                            <p class="fs--1"><?php echo $payments['client_phone_number']; ?>
+                                                <br><?php echo $payments['client_email']; ?><br>
+                                                <?php echo $payments['client_address']; ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-auto ml-auto">
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-borderless fs--1">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="text-sm-right">Payment Ref:</th>
+                                                            <td><?php echo $payments['payment_ref_code']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-sm-right">Rental Ref Number:</th>
+                                                            <td><?php echo $payments['rental_ref_code']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-sm-right">Payment Date:</th>
+                                                            <td><?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive mt-4 fs--1">
+                                        <table class="table table-striped border-bottom">
+                                            <thead>
+                                                <tr class="bg-primary text-white">
+                                                    <th class="border-0">Products</th>
+                                                    <th class="border-0 text-center">Quantity</th>
+                                                    <th class="border-0 text-center">Rate per day</th>
+                                                    <th class="border-0 text-right">Days leased</th>
+                                                    <th class="border-0 text-right">Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        <h6 class="mb-0 text-nowrap">
+                                                            Rental of <?php echo $payments['car_reg_number']; ?>
+                                                        </h6>
+                                                        <p class="mb-0">
+                                                            from <?php echo date('d M Y', strtotime($payments['rental_from_date'])); ?> to
+                                                            <?php echo date('d M Y', strtotime($payments['rental_to_date'])); ?>
+                                                        </p>
+                                                    </td>
+                                                    <td class="align-middle text-center">1</td>
+                                                    <td class="align-middle text-center">Kes <?php echo number_format($payments['car_renting_rate'], 2); ?></td>
+                                                    <td class="align-middle text-right">
+                                                        <?php echo  $number_of_days = ceil(abs(strtotime($payments['rental_to_date']) - strtotime($payments['rental_from_date'])) / 86400);
+                                                        ?> Days
+                                                    </td>
+                                                    <td class="align-middle text-right">Kes <?php echo number_format($payments['payment_amount']); ?></td>
+                                                </tr>
+                                            </tbody>
                                         </table>
+                                    </div>
+                                    <div class="row no-gutters justify-content-end">
+                                        <div class="col-auto">
+                                            <table class="table table-sm table-borderless fs--1 text-right">
+                                                <?php
+                                                /* Compute Taxes */
+                                                $tax_rate = 0.16;
+                                                $taxed_amount = $payments['payment_amount'];
+                                                $tax = $taxed_amount * $tax_rate;
+                                                $untaxed_amount  = $taxed_amount - $tax;
+                                                ?>
+                                                <tr>
+                                                    <th class="text-900">Subtotal:</th>
+                                                    <td class="font-weight-semi-bold">Kes <?php echo number_format($untaxed_amount); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-900">Tax 16%:</th>
+                                                    <td class="font-weight-semi-bold">Kes <?php echo number_format($tax); ?></td>
+                                                </tr>
+                                                <tr class="border-top">
+                                                    <th class="text-900">Total:</th>
+                                                    <td class="font-weight-semi-bold"><?php echo number_format($taxed_amount); ?></td>
+                                                </tr>
+                                                <tr class="border-top border-2x font-weight-bold text-900">
+                                                    <th>Amount Paid:</th>
+                                                    <td>Kes <?php echo number_format($taxed_amount); ?></td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
