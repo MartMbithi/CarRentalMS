@@ -81,7 +81,6 @@ require_once('../app/partials/back_office_head.php');
             <?php require_once('../app/partials/back_office_sidebar.php'); ?>
             <div class="content">
                 <?php require_once('../app/partials/back_office_topbar.php');
-                /* Load this partial with logged in user session */
                 $client_sql = mysqli_query(
                     $mysqli,
                     "SELECT * FROM clients WHERE client_id = '{$_GET['view']}'"

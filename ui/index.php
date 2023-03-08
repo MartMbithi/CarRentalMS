@@ -150,9 +150,9 @@ require_once('../app/partials/landing_head.php');
                 $available_cars_sql = mysqli_query(
                     $mysqli,
                     "SELECT * FROM  cars c 
-                        INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
-                        WHERE car_availability_status = '0'
-                        LIMIT 6 "
+                    INNER JOIN car_categories cc ON cc.category_id = c.car_category_id
+                    WHERE car_availability_status = '0'
+                    LIMIT 6 "
                 );
                 if (mysqli_num_rows($available_cars_sql) > 0) {
                     while ($cars = mysqli_fetch_array($available_cars_sql)) {
@@ -199,37 +199,6 @@ require_once('../app/partials/landing_head.php');
                 <?php } ?>
             </div>
         </div>
-        </div>
-    </section>
-
-    <section class="ftco-section ftco-about">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../public/landing_assets/images/about.jpg);">
-                </div>
-                <div class="col-md-6 wrap-about ftco-animate">
-                    <div class="heading-section heading-section-white pl-md-5">
-                        <span class="subheading">About us</span>
-                        <h2 class="mb-2">Who Are We</h2>
-
-                        <p>
-                            We are a popular option for individuals and businesses who need access to a vehicle for a short period of time.
-                            Our service offers are convenient, flexible, and cost-effective to those who require transportation but do not want to purchase a vehicle outright.
-                        </p>
-                        <p>
-                            We have a fleet of vehicles available for rental, ranging from compact cars to luxury vehicles,
-                            and even larger vehicles like vans and trucks. As a customer, you can choose the vehicle that best suits your needs and budget,
-                            and you can often rent it for a period as short as a few hours or as long as several weeks or months.
-                        </p>
-                        <p>
-                            Overall, we provide a flexible, cost-effective, and convenient transportation option for individuals and businesses.
-                            With a wide range of vehicles available, and the ability to rent for as long or as short a period as needed,
-                            we are a popular choice for those who need access to transportation without the commitment of car ownership.
-                        </p>
-                        <p><a href="about" class="btn btn-primary py-3 px-4">Read more</a></p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 

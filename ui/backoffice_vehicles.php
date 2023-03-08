@@ -180,7 +180,7 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
-                <!-- Add Staff Modals -->
+                <!-- Add  Modals -->
                 <div class="modal fade fixed-right" id="addCategoriesModal" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
                         <div class="modal-content">
