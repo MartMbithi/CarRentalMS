@@ -179,65 +179,6 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
-                <!-- Add  Modals -->
-                <div class="modal fade fixed-right" id="addCategoriesModal" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header align-items-center">
-                                <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Register new vehicle rental record</h6>
-                                </div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Client Details</label>
-                                            <select type="" required name="rental_client_id" class="form-control selectpicker" style="width: 100%;">
-                                                <option value="">Select client</option>
-                                                <?php
-                                                $clients_sql = mysqli_query($mysqli, "SELECT * FROM clients");
-                                                while ($clients = mysqli_fetch_array($clients_sql)) {
-                                                    echo '<option value="' . $clients['client_id'] . '">' . $clients['client_names'] . ' - ' . $clients['client_email'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Vehicle Details</label>
-                                            <select type="" required name="rental_car_id" class="form-control selectpicker" style="width: 100%;" onchange="GetCarDetails(this.value)" id="CarID">
-                                                <option value="">Select vehicle Registration number</option>
-                                                <?php
-                                                $vehicles_sql = mysqli_query($mysqli, "SELECT * FROM cars WHERE car_availability_status = '0'");
-                                                while ($vehicles = mysqli_fetch_array($vehicles_sql)) {
-                                                    echo '<option value="' . $vehicles['car_id'] . '">' . $vehicles['car_reg_number'] . ' ' . $vehicles['car_model'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <!-- Hide this -->
-                                        <input type="hidden" name="rental_cost" id="CarRentalCost">
-                                        <div class="form-group col-md-6">
-                                            <label for="">From date</label>
-                                            <input type="hidden" required name="rental_ref_code" value="<?php echo $ref_code; ?>" class="form-control">
-                                            <input type="date" required name="rental_from_date" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Return date</label>
-                                            <input type="date" required name="rental_to_date" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Add_Rental" class="btn btn-outline-success">Add rental</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="modal fade" id="downloadCategoriesModal" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -245,10 +186,10 @@ require_once('../app/partials/back_office_head.php');
                             <form method="POST">
                                 <div class="modal-body text-center text-danger">
                                     <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export vehicle rentals details as</h5> <br>
+                                    <h5>Export vehicle payment details as</h5> <br>
                                     <!-- Hide This -->
-                                    <a href="reports?module=Rentals&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Rentals&type=csv" class="text-center btn btn-primary">CSV</a>
+                                    <a href="reports?module=Payments&type=pdf" class="text-center btn btn-success">PDF</a>
+                                    <a href="reports?module=Payments&type=csv" class="text-center btn btn-primary">CSV</a>
                                 </div>
                             </form>
                         </div>
