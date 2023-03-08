@@ -88,7 +88,7 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End Navigations -->
                 <div class="media mb-4 mt-3"><span class="fa-stack mr-2 ml-n1">
                         <i class="fas fa-circle fa-stack-2x text-300"></i>
-                        <i class="fa-inverse fa-stack-1x text-primary fas fa-list"></i>
+                        <i class="fa-inverse fa-stack-1x text-primary fas fa-cogs"></i>
                     </span>
                     <div class="media-body">
                         <h5 class="mb-0 text-primary position-relative">
@@ -101,143 +101,38 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                 </div>
                 <div class="row no-gutters">
-                    <div class="card mb-3 col-12">
-                        
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-body bg-light">
-                                    <table class="data table table-sm no-wrap mb-0 fs--1 w-100">
-                                        <thead class="bg-200">
-                                            <tr>
-                                                <th class="sort">Category code</th>
-                                                <th class="sort">Category name</th>
-                                                <th class="">Manage</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="bg-white">
-                                            <?php
-                                            $categories_sql = mysqli_query(
-                                                $mysqli,
-                                                "SELECT * FROM car_categories"
-                                            );
-                                            if (mysqli_num_rows($categories_sql) > 0) {
-                                                while ($categories = mysqli_fetch_array($categories_sql)) {
-                                            ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?php echo $categories['category_code']; ?>
-                                                        </td>
-                                                        <td><?php echo $categories['category_name']; ?></td>
-                                                        <td>
-                                                            <a data-toggle="modal" href="#update_<?php echo $categories['category_id']; ?>" class="badge badge-warning">
-                                                                <i class="fas fa-edit"></i>
-                                                            </a>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $categories['category_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-
-                                            <?php
-                                                    include('../app/modals/categories_modal.php');
-                                                }
-                                            } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php require_once('../app/partials/back_office_footer.php'); ?>
-                </div>
-                <!-- Add Staff Modals -->
-                <div class="modal fade fixed-right" id="addCategoriesModal" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header align-items-center">
+                    <div class="col-lg-4 pr-lg-2 mb-3 mb-lg-0">
+                        <div class="card h-100">
+                            <div class="card-body p-4 p-sm-5">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Register new rentals vehicle category</h6>
+                                    <img class="d-block mx-auto mb-4" src="../storage/system/envelope.png" alt="shield" width="70" />
+                                    <h4>Mailer settings</h4>
                                 </div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label for="">Category code</label>
-                                            <input type="text" value="<?php echo $category_code; ?>" required name="category_code" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-8">
-                                            <label for="">Category name</label>
-                                            <input type="" required name="category_name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Add_Categories" class="btn btn-outline-success">Add category</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- End Add Staff Modal -->
-
-                <!-- Bulk import staffs modal-->
-                <div class="modal fade fixed-right" id="bulkImportCategories" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header align-items-center">
+                    <div class="col-lg-4 pr-lg-2 mb-3 mb-lg-0">
+                        <div class="card h-100">
+                            <div class="card-body p-4 p-sm-5">
                                 <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Bulk import rentals categories</h6>
+                                    <img class="d-block mx-auto mb-4" src="../storage/system/cms.png" alt="shield" width="70" />
+                                    <h4>Lite CMS</h4>
                                 </div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
                             </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-12 text-center">
-                                            <a class="text-center" href="../storage/templates/categories.xlsx"> Download a template here</a>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="validationTooltip01">XLS File</label>
-                                            <div class="custom-file">
-                                                <input type="file" accept=".xlsx" name="car_categories" required class="custom-file-input" id="inputGroupFile02">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Bulk_Import_Car_Categories" class="btn btn-outline-success">Upload</button>
-                                    </div>
-                                </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 pr-lg-2 mb-3 mb-lg-0">
+                        <div class="card h-100">
+                            <div class="card-body p-4 p-sm-5">
+                                <div class="text-center">
+                                    <img class="d-block mx-auto mb-4" src="../storage/system/credit-card.png" alt="shield" width="70" />
+                                    <h4>Payment APIs</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End bulk import staffs modal -->
-
-                <!-- Download Staff Details -->
-                <div class="modal fade" id="downloadCategoriesModal" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <form method="POST">
-                                <div class="modal-body text-center text-danger">
-                                    <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export rentals vehicle categories details as</h5> <br>
-                                    <!-- Hide This -->
-                                    <a href="reports?module=Categories&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Categories&type=csv" class="text-center btn btn-primary">CSV</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Modal -->
-
+                <?php require_once('../app/partials/back_office_footer.php'); ?>
             </div>
         </div>
     </main><!-- ===============================================-->
