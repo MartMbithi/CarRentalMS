@@ -69,7 +69,7 @@ session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
 include('../app/settings/codeGen.php');
-require_once('../app/helpers/rentals.php');
+//require_once('../app/helpers/payments.php');
 require_once('../app/partials/back_office_head.php');
 
 ?>
@@ -92,23 +92,20 @@ require_once('../app/partials/back_office_head.php');
                     </span>
                     <div class="media-body">
                         <h5 class="mb-0 text-primary position-relative">
-                            <span class="bg-200 pr-3">Rentals Module</span>
+                            <span class="bg-200 pr-3">Payment Module</span>
                             <span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span>
                         </h5>
                         <p class="mb-0 text-justify">
-                            This module allows you to manage your rented vehicles. You can add, edit, delete and view vehicles.
+                            This module allows you to manage your payments records. You can edit, delete and view payments .
                         </p>
                     </div>
                 </div>
                 <div class="row no-gutters">
                     <div class="card mb-3 col-12">
                         <div class="card-header text-right">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCategoriesModal">
-                                <i class="fas fa-plus"></i> Add Rentals
-                            </button>
                             <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadCategoriesModal">
                                 <i class="fas fa-download"></i>
-                                Download Rentals Report
+                                Download Payments Report
                             </button>
                         </div>
                         <div class="row">
@@ -117,75 +114,55 @@ require_once('../app/partials/back_office_head.php');
                                     <table class="data table table-sm no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
-                                                <th class="sort">Ref number</th>
-                                                <th class="sort">Vehicle details</th>
-                                                <th class="sort">Client details</th>
-                                                <th class="sort">Rental details</th>
-                                                <th class="sort">Cost</th>
-                                                <th class="sort">Payment status</th>
+                                                <th class="sort">Payment ref number</th>
+                                                <th class="sort">Rental ref number</th>
+                                                <th class="sort">Payment from</th>
+                                                <th class="sort">Payment amount</th>
+                                                <th class="sort">Date paid</th>
+                                                <th class="sort">Payment means</th>
                                                 <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
                                             <?php
-                                            $rentals_sql = mysqli_query(
+                                            $payments_sql = mysqli_query(
                                                 $mysqli,
-                                                "SELECT * FROM car_rentals cr 
-                                                INNER JOIN cars c ON c.car_id = cr.rental_car_id
+                                                "SELECT * FROM payments p 
+                                                INNER JOIN car_rentals cr  ON cr.rental_id = p.payment_rental_id
                                                 INNER JOIN clients cl ON cl.client_id = cr.rental_client_id                                    
                                                 "
                                             );
-                                            if (mysqli_num_rows($rentals_sql) > 0) {
-                                                while ($rental = mysqli_fetch_array($rentals_sql)) {
-                                                    $date_now = strtotime(date('Y-m-d'));
-                                                    $return_date = strtotime($rental['rental_to_date']);
+                                            if (mysqli_num_rows($payments_sql) > 0) {
+                                                while ($payments = mysqli_fetch_array($payments_sql)) {
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="backoffice_rental?view=<?php echo $rental['rental_id']; ?>">
-                                                                <?php echo $rental['rental_ref_code']; ?>
+                                                            <a href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>">
+                                                                <?php echo $payments['payment_ref_code']; ?>
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            Reg number: <?php echo $rental['car_reg_number']; ?><br>
-                                                            Model: <?php echo $rental['car_model']; ?>
+                                                            <a href="backoffice_rental?view=<?php echo $payments['rental_id']; ?>">
+                                                                <?php echo $payments['rental_ref_code']; ?>
+                                                            </a>
                                                         </td>
                                                         <td>
-                                                            Name: <?php echo $rental['client_names']; ?><br>
-                                                            Contacts: <?php echo $rental['client_phone_number']; ?>
+                                                            <a href="backoffice_client?view=<?php echo $payments['client_id']; ?>">
+                                                                <?php echo $payments['client_names']; ?>
+                                                            </a>
                                                         </td>
                                                         <td>
-                                                            From date: <?php echo date('d M Y', strtotime($rental['rental_from_date'])); ?> <br>
-                                                            To date: <?php echo date('d M Y', strtotime($rental['rental_to_date'])); ?>
+                                                            Kes <?php echo number_format($payments['payment_amount']); ?>
                                                         </td>
                                                         <td>
-                                                            Kes <?php echo number_format($rental['rental_cost']); ?>
+                                                            <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
                                                         </td>
                                                         <td>
-                                                            <?php
-                                                            if ($rental['rental_payment_status'] == '0') {
-                                                                echo '<span class="badge badge-danger">Pending</span>';
-                                                            } else {
-                                                                echo '<span class="badge badge-success">Paid</span>';
-                                                            }
-                                                            ?>
+                                                            <?php echo $payments['payment_means']; ?>
                                                         </td>
                                                         <td>
-                                                            <?php if ($rental['rental_payment_status'] == '0') { ?>
-                                                                <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
-                                                                    <i class="fas fa-hand-holding-usd"></i> Pay
-                                                                </a>
-                                                                <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
-                                                                    <i class="fas fa-edit"></i> Edit
-                                                                </a>
-                                                            <?php }
-                                                            if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
-                                                                <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
-                                                                    <i class="fas fa-history"></i> Return
-                                                                </a>
-                                                            <?php } ?>
                                                             <a data-toggle="modal" href="#delete_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i> Delete
+                                                                <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
