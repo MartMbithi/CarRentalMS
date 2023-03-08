@@ -169,7 +169,7 @@ $html =
                                 <th style="width:100%">Vehicle Model</th>
                                 <th style="width:100%">Rented On</th>
                                 <th style="width:100%">Amount Paid</th>
-                                <th style="width:100%">Paid</th>
+                                <th style="width:100%">Date Paid</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -189,14 +189,13 @@ $html =
                                             <tr>
                                                 <td>' . $cnt . '</td>
                                                 <td>' . $vehicles['rental_ref_code'] . '</td>
+                                                <td>' . $vehicles['payment_ref_code'] . '</td>
                                                 <td>' . $vehicles['car_reg_number'] . '</td>
                                                 <td>' . $vehicles['car_model'] . '</td>
-                                                <td>' . $vehicles['client_names'] . '</td>
+                                                <td>' . date('d M Y', strtotime($vehicles['rental_from_date'])) . '</td>
                                                 <td>' . $vehicles['client_phone_number'] . '</td>
-                                                <td>' . date('d M Y', strtotime($vehicles['rental_from_date'])) . '</td>
-                                                <td>' . date('d M Y', strtotime($vehicles['rental_from_date'])) . '</td>
-                                                <td>Ksh' . $vehicles['rental_cost'] . '</td>
-                                                <td>' . $availability . '</td>
+                                                <td>Ksh' . $vehicles['payment_amount'] . '</td>
+                                                <td>' . date('d M Y g:ia', strtotime($vehicles['payment_date_posted'])) . '</td>
 
                                             </tr>
                                         ';
@@ -214,7 +213,7 @@ $dompdf->load_html($html);
 $dompdf->set_paper('A4', 'landscape');
 $dompdf->set_option('isHtml5ParserEnabled', true);
 $dompdf->render();
-$dompdf->stream('Rentals List Generated On' . date('d M Y'), array("Attachment" => 1));
+$dompdf->stream('Rentals Payment List Generated On' . date('d M Y'), array("Attachment" => 1));
 $options = $dompdf->getOptions();
 $options->setDefaultFont('');
 $dompdf->setOptions($options);
