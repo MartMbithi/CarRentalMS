@@ -169,6 +169,7 @@ $html =
                                 <th style="width:100%">Vehicle Model</th>
                                 <th style="width:100%">Rented On</th>
                                 <th style="width:100%">Amount Paid</th>
+                                <th style="width:100%">Paid By</th>
                                 <th style="width:100%">Date Paid</th>
                             </tr>
                         </thead>
@@ -193,8 +194,8 @@ $html =
                                                 <td>' . $vehicles['car_reg_number'] . '</td>
                                                 <td>' . $vehicles['car_model'] . '</td>
                                                 <td>' . date('d M Y', strtotime($vehicles['rental_from_date'])) . '</td>
-                                                <td>' . $vehicles['client_phone_number'] . '</td>
                                                 <td>Ksh' . $vehicles['payment_amount'] . '</td>
+                                                <td>' . $vehicles['client_names'] . '</td>
                                                 <td>' . date('d M Y g:ia', strtotime($vehicles['payment_date_posted'])) . '</td>
 
                                             </tr>

@@ -90,7 +90,8 @@ $sheet->setCellValue('E5', 'Vehicle Model');
 $sheet->setCellValue('F5', 'Date Rented');
 $sheet->setCellValue('G5', 'Rented On');
 $sheet->setCellValue('H5', 'Amount Paid');
-$sheet->setCellValue('I5', 'Date Paid');
+$sheet->setCellValue('I5', 'Paid By');
+$sheet->setCellValue('J5', 'Date Paid');
 
 
 $query = $mysqli->query("SELECT * FROM payments p
@@ -111,7 +112,8 @@ if ($query->num_rows > 0) {
         $sheet->setCellValue('F' . $row, date('d M Y', strtotime($vehicles['rental_from_date'])));
         $sheet->setCellValue('G' . $row, date('d M Y', strtotime($vehicles['rental_to_date'])));
         $sheet->setCellValue('H' . $row, 'Kes ' . $vehicles['rental_cost']);
-        $sheet->setCellValue('I' . $row, date('d M Y g:ia', strtotime($vehicles['payment_date_posted'])));
+        $sheet->setCellValue('I' . $row,  $vehicles['client_names']);
+        $sheet->setCellValue('J' . $row, date('d M Y g:ia', strtotime($vehicles['payment_date_posted'])));
         $row++;
         $cnt = $cnt + 1;
     }
