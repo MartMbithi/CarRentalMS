@@ -132,4 +132,14 @@ if ($module == 'System_Users') {
         header('location: logout');
         exit();
     }
+} else if ($module == 'Payments') {
+    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
+    if ($type == 'pdf') {
+        require_once('../app/reports/pdf/payments.php');
+    } else if ($type == 'csv') {
+        require_once('../app/reports/csv/payments.php');
+    } else {
+        header('location: logout');
+        exit();
+    }
 }

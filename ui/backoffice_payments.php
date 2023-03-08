@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Mar 03 2023
+ *   Crafted On Mon Mar 06 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -69,7 +69,7 @@ session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
 include('../app/settings/codeGen.php');
-require_once('../app/helpers/cars.php');
+require_once('../app/helpers/rentals.php');
 require_once('../app/partials/back_office_head.php');
 
 ?>
@@ -92,27 +92,20 @@ require_once('../app/partials/back_office_head.php');
                     </span>
                     <div class="media-body">
                         <h5 class="mb-0 text-primary position-relative">
-                            <span class="bg-200 pr-3">Rentals Vehicles Categories</span>
+                            <span class="bg-200 pr-3">Payment Module</span>
                             <span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span>
                         </h5>
                         <p class="mb-0 text-justify">
-                            This module allows you to manage your rentals vehicles categories. You can add, edit, delete and view vehicle categories.
+                            This module allows you to manage your payments records. You can edit, delete and view payments .
                         </p>
                     </div>
                 </div>
                 <div class="row no-gutters">
                     <div class="card mb-3 col-12">
                         <div class="card-header text-right">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCategoriesModal">
-                                <i class="fas fa-plus"></i> Add Categories
-                            </button>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#bulkImportCategories">
-                                <i class="fas fa-upload"></i>
-                                Bulk Import Categories
-                            </button>
                             <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadCategoriesModal">
                                 <i class="fas fa-download"></i>
-                                Download Categories
+                                Download Payments Report
                             </button>
                         </div>
                         <div class="row">
@@ -121,37 +114,61 @@ require_once('../app/partials/back_office_head.php');
                                     <table class="data table table-sm no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
-                                                <th class="sort">Category code</th>
-                                                <th class="sort">Category name</th>
+                                                <th class="sort">Payment ref number</th>
+                                                <th class="sort">Rental ref number</th>
+                                                <th class="sort">Payment from</th>
+                                                <th class="sort">Payment amount</th>
+                                                <th class="sort">Date paid</th>
+                                                <th class="sort">Payment means</th>
                                                 <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
                                             <?php
-                                            $categories_sql = mysqli_query(
+                                            $payments_sql = mysqli_query(
                                                 $mysqli,
-                                                "SELECT * FROM car_categories"
+                                                "SELECT * FROM payments p 
+                                                INNER JOIN car_rentals cr  ON cr.rental_id = p.payment_rental_id
+                                                INNER JOIN clients cl ON cl.client_id = cr.rental_client_id                                    
+                                                "
                                             );
-                                            if (mysqli_num_rows($categories_sql) > 0) {
-                                                while ($categories = mysqli_fetch_array($categories_sql)) {
+                                            if (mysqli_num_rows($payments_sql) > 0) {
+                                                while ($payments = mysqli_fetch_array($payments_sql)) {
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <?php echo $categories['category_code']; ?>
-                                                        </td>
-                                                        <td><?php echo $categories['category_name']; ?></td>
-                                                        <td>
-                                                            <a data-toggle="modal" href="#update_<?php echo $categories['category_id']; ?>" class="badge badge-warning">
-                                                                <i class="fas fa-edit"></i>
+                                                            <a href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>">
+                                                                <?php echo $payments['payment_ref_code']; ?>
                                                             </a>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $categories['category_id']; ?>" class="badge badge-danger">
+                                                        </td>
+                                                        <td>
+                                                            <a href="backoffice_rental?view=<?php echo $payments['rental_id']; ?>">
+                                                                <?php echo $payments['rental_ref_code']; ?>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="backoffice_client?view=<?php echo $payments['client_id']; ?>">
+                                                                <?php echo $payments['client_names']; ?>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            Kes <?php echo number_format($payments['payment_amount']); ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $payments['payment_means']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <a data-toggle="modal" href="#delete_<?php echo $payments['payment_id']; ?>" class="badge badge-danger">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
 
                                             <?php
-                                                    include('../app/modals/categories_modal.php');
+                                                    include('../app/modals/payments.php');
                                                 }
                                             } ?>
                                         </tbody>
@@ -162,94 +179,22 @@ require_once('../app/partials/back_office_head.php');
                     </div>
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
                 </div>
-                <!-- Add Staff Modals -->
-                <div class="modal fade fixed-right" id="addCategoriesModal" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header align-items-center">
-                                <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Register new rentals vehicle category</h6>
-                                </div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label for="">Category code</label>
-                                            <input type="text" value="<?php echo $category_code; ?>" required name="category_code" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-8">
-                                            <label for="">Category name</label>
-                                            <input type="" required name="category_name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Add_Categories" class="btn btn-outline-success">Add category</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Add Staff Modal -->
 
-                <!-- Bulk import staffs modal-->
-                <div class="modal fade fixed-right" id="bulkImportCategories" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header align-items-center">
-                                <div class="text-center">
-                                    <h6 class="mb-0 text-bold">Bulk import rentals categories</h6>
-                                </div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-12 text-center">
-                                            <a class="text-center" href="../storage/templates/categories.xlsx"> Download a template here</a>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="validationTooltip01">XLS File</label>
-                                            <div class="custom-file">
-                                                <input type="file" accept=".xlsx" name="car_categories" required class="custom-file-input" id="inputGroupFile02">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Bulk_Import_Car_Categories" class="btn btn-outline-success">Upload</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End bulk import staffs modal -->
-
-                <!-- Download Staff Details -->
                 <div class="modal fade" id="downloadCategoriesModal" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <form method="POST">
                                 <div class="modal-body text-center text-danger">
                                     <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export rentals vehicle categories details as</h5> <br>
+                                    <h5>Export vehicle payment details as</h5> <br>
                                     <!-- Hide This -->
-                                    <a href="reports?module=Categories&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Categories&type=csv" class="text-center btn btn-primary">CSV</a>
+                                    <a href="reports?module=Payments&type=pdf" class="text-center btn btn-success">PDF</a>
+                                    <a href="reports?module=Payments&type=csv" class="text-center btn btn-primary">CSV</a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- End Modal -->
-
             </div>
         </div>
     </main><!-- ===============================================-->

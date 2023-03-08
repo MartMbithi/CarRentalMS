@@ -82,7 +82,10 @@ if (isset($_POST['Add_Rental'])) {
     VALUES ('{$rental_ref_code}', '{$rental_car_id}', '{$rental_client_id}', '{$rental_from_date}', '{$rental_to_date}', '{$rental_cost}')";
     $car_status_sql = "UPDATE cars SET car_availability_status = '1' WHERE car_id = '{$rental_car_id}'";
 
-    if (mysqli_query($mysqli, $add_rental_sql) && mysqli_query($mysqli, $car_status_sql)) {
+    if (
+        mysqli_query($mysqli, $add_rental_sql)
+        && mysqli_query($mysqli, $car_status_sql)
+    ) {
         $success = "Vehicle rented successfully";
     } else {
         $err = "Something went wrong, try again";
@@ -285,12 +288,19 @@ if (isset($_POST['Return_Car'])) {
     $return_rental_id = mysqli_real_escape_string($mysqli, $_POST['return_rental_id']);
     $return_user_id = mysqli_real_escape_string($mysqli, $_POST['return_user_id']);
     $return_comments = mysqli_real_escape_string($mysqli, $_POST['return_comments']);
+    $return_car_id = mysqli_real_escape_string($mysqli, $_POST['return_car_id']);
 
     /* Persist */
     $return_sql = "INSERT INTO rental_returns (return_rental_id, return_user_id, return_comments) 
     VALUES ('{$return_rental_id}', '{$return_user_id}', '{$return_comments}')";
     $rental_status = "UPDATE car_rentals SET rental_return_status = '1' WHERE rental_id = '{$return_rental_id}'";
-    if (mysqli_query($mysqli, $return_sql) && mysqli_query($mysqli, $rental_status)) {
+    $car_status = "UPDATE cars SET car_availability_status = '0' WHERE car_id = '{$return_car_id}'";
+
+    if (
+        mysqli_query($mysqli, $return_sql)
+        && mysqli_query($mysqli, $rental_status)
+        && mysqli_query($mysqli, $car_status)
+    ) {
         $success = "Vehicle inspected and returned";
     } else {
         $err = "Failed, please try again";
@@ -314,4 +324,18 @@ if (isset($_POST['Delete_Rentals'])) {
     }
 }
 
-/* Return Cars */
+/* Delete Payment */
+if (isset($_POST['Delete_Rental_Payment'])) {
+    $payment_id = mysqli_real_escape_string($mysqli, $_POST['payment_id']);
+    $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
+
+    /* Delete */
+    $delete_payment_sql = "DELETE FROM payments WHERE payment_id = '{$payment_id}'";
+    $rental_status_sql = "UPDATE car_rentals SET rental_payment_status = '0' WHERE rental_id = '{$rental_id}'";
+
+    if (mysqli_query($mysqli, $delete_payment_sql) && mysqli_query($mysqli, $rental_status_sql)) {
+        $success = "Payment record deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}

@@ -150,7 +150,7 @@ require_once('../app/partials/back_office_head.php');
                                                         <td><?php echo $clients['client_address']; ?></td>
                                                         <td>
                                                             <a data-toggle="modal" href="#delete_<?php echo $clients['client_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i> Delete
+                                                                <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
                                                     </tr>

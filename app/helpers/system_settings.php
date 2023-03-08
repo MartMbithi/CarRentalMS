@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Tue Mar 07 2023
+ *   Crafted On Wed Mar 08 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,33 +65,32 @@
  *
  */
 
-/* Update Inspection */
-if (isset($_POST['Update_Rental_Return'])) {
-    $return_id = mysqli_real_escape_string($mysqli, $_POST['return_id']);
-    $return_comments = mysqli_real_escape_string($mysqli, $_POST['return_comments']);
+/* Update Mailer Settings */
+if (isset($_POST['Update_Mailers'])) {
+    $mail_host  = mysqli_real_escape_string($mysqli, $_POST['mail_host']);
+    $mail_port = mysqli_real_escape_string($mysqli, $_POST['mail_port']);
+    $mail_protocol = mysqli_real_escape_string($mysqli, $_POST['mail_protocol']);
+    $mail_username = mysqli_real_escape_string($mysqli, $_POST['mail_username']);
+    $mail_password = mysqli_real_escape_string($mysqli, $_POST['mail_password']);
+    $mail_from_name = mysqli_real_escape_string($mysqli, $_POST['mail_from_name']);
+    $mail_from_email = mysqli_real_escape_string($mysqli, $_POST['mail_from_email']);
+    $mailer_id = mysqli_real_escape_string($mysqli, $_POST['mailer_id']);
 
-    /* Persist */
-    $update_sql = "UPDATE rental_returns SET return_comments = '{$return_comments}' WHERE return_id = '{$return_id}'";
-    if (mysqli_query($mysqli, $update_sql)) {
-        $success = "Rental return updated successfully";
+    /* Update */
+    $update_mailer_sql = "UPDATE mailer_settings SET mail_host = '{$mail_host}', mail_port = '{$mail_port}',
+    mail_protocol = '{$mail_protocol}', mail_username = '{$mail_username}', mail_password = '{$mail_password}', 
+    mail_from_name = '{$mail_from_name}', mail_from_email = '{$mail_from_email}' WHERE mailer_id = '{$mailer_id}'";
+
+    if (mysqli_query($mysqli, $update_mailer_sql)) {
+        $success = "STMP Settings updated successfully";
     } else {
-        $err = "Failed to update rental return";
+        $err = "Failed, please try again later";
     }
 }
 
 
-/* Delete Inspection */
-if (isset($_POST['Delete_Rentals_Return'])) {
-    $return_id = mysqli_real_escape_string($mysqli, $_POST['return_id']);
-    $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
+/* Update Payment Gateway APIS */
 
-    /* Persist */
-    $delete_sql = "DELETE FROM rental_returns WHERE return_id = '{$return_id}'";
-    $update_status = "UPDATE car_rentals SET rental_return_status = '0' WHERE rental_id = '{$rental_id}'";
 
-    if (mysqli_query($mysqli, $delete_sql) && mysqli_query($mysqli, $update_status)) {
-        $success = "Rental return deleted successfully";
-    } else {
-        $err = "Failed to delete rental return";
-    }
-}
+
+/* Update Landing Pages Content */

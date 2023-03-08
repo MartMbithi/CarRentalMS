@@ -15,7 +15,7 @@
                         <div class="form-group col-md-12">
                             <label for="">Return inspection comments</label>
                             <input type="hidden" value="<?php echo $rental['return_id']; ?>" required name="return_id" class="form-control">
-                            <textarea required name="return_comments" class="form-control"></textarea>
+                            <textarea required name="return_comments" class="form-control"><?php echo $rental['return_comments']; ?></textarea>
                         </div>
                     </div>
                     <div class="text-right">

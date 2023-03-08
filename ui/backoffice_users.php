@@ -152,7 +152,7 @@ require_once('../app/partials/back_office_head.php');
                                                         <td><?php echo $staffs['user_id_number']; ?></td>
                                                         <td><?php echo $staffs['user_access_level']; ?></td>
                                                         <td>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $staffs['user_id']; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
+                                                            <a data-toggle="modal" href="#delete_<?php echo $staffs['user_id']; ?>" class="badge badge-danger"><i class="fas fa-trash"></i></a>
                                                         </td>
                                                     </tr>
 

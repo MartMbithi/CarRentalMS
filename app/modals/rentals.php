@@ -112,6 +112,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="">Return inspection comments</label>
+                            <input type="hidden" value="<?php echo $rental['rental_car_id']; ?>" required name="return_car_id" class="form-control">
                             <input type="hidden" value="<?php echo $rental['rental_id']; ?>" required name="return_rental_id" class="form-control">
                             <input type="hidden" value="<?php echo $_SESSION['user_id']; ?>" required name="return_user_id" class="form-control">
                             <textarea required name="return_comments" class="form-control"></textarea>

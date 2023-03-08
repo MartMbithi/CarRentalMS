@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Tue Mar 07 2023
+ *   Crafted On Wed Mar 08 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,33 +65,66 @@
  *
  */
 
-/* Update Inspection */
-if (isset($_POST['Update_Rental_Return'])) {
-    $return_id = mysqli_real_escape_string($mysqli, $_POST['return_id']);
-    $return_comments = mysqli_real_escape_string($mysqli, $_POST['return_comments']);
 
-    /* Persist */
-    $update_sql = "UPDATE rental_returns SET return_comments = '{$return_comments}' WHERE return_id = '{$return_id}'";
-    if (mysqli_query($mysqli, $update_sql)) {
-        $success = "Rental return updated successfully";
-    } else {
-        $err = "Failed to update rental return";
+
+require_once('../vendor/autoload.php');
+
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+/* Load XLS Template */
+
+$report_template = '../storage/templates/reports.xlsx';
+$spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($report_template);
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setTitle('Payments List On' . date('d M Y'), true);
+
+/* Sheet columns head names */
+$sheet->setCellValue('A5', 'S/N');
+$sheet->setCellValue('B5', 'Rental Ref Number');
+$sheet->setCellValue('C5', 'Payment Ref Number');
+$sheet->setCellValue('D5', 'Vehicle Reg Number');
+$sheet->setCellValue('E5', 'Vehicle Model');
+$sheet->setCellValue('F5', 'Date Rented');
+$sheet->setCellValue('G5', 'Rented On');
+$sheet->setCellValue('H5', 'Amount Paid');
+$sheet->setCellValue('I5', 'Paid By');
+$sheet->setCellValue('J5', 'Date Paid');
+
+
+$query = $mysqli->query("SELECT * FROM payments p
+INNER JOIN  car_rentals cr ON cr.rental_id = p.payment_rental_id
+ INNER JOIN cars c ON c.car_id = cr.rental_car_id
+ INNER JOIN clients cl ON cl.client_id = cr.rental_client_id");
+if ($query->num_rows > 0) {
+    $cnt = 1;
+    $row = 6;/* Start filling data from row */
+    while ($vehicles = $query->fetch_assoc()) {
+
+        /* Populate cell data */
+        $sheet->setCellValue('A' . $row, $cnt);
+        $sheet->setCellValue('B' . $row, $vehicles['rental_ref_code']);
+        $sheet->setCellValue('C' . $row, $vehicles['payment_ref_code']);
+        $sheet->setCellValue('D' . $row, $vehicles['car_reg_number']);
+        $sheet->setCellValue('E' . $row, $vehicles['car_model']);
+        $sheet->setCellValue('F' . $row, date('d M Y', strtotime($vehicles['rental_from_date'])));
+        $sheet->setCellValue('G' . $row, date('d M Y', strtotime($vehicles['rental_to_date'])));
+        $sheet->setCellValue('H' . $row, 'Kes ' . $vehicles['rental_cost']);
+        $sheet->setCellValue('I' . $row,  $vehicles['client_names']);
+        $sheet->setCellValue('J' . $row, date('d M Y g:ia', strtotime($vehicles['payment_date_posted'])));
+        $row++;
+        $cnt = $cnt + 1;
     }
 }
 
+$file_name = 'Payments List On ' . date('d M Y') . '.xlsx';
+ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename=' . $file_name . '');
+header('Cache-Control: max-age=0');
 
-/* Delete Inspection */
-if (isset($_POST['Delete_Rentals_Return'])) {
-    $return_id = mysqli_real_escape_string($mysqli, $_POST['return_id']);
-    $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
-
-    /* Persist */
-    $delete_sql = "DELETE FROM rental_returns WHERE return_id = '{$return_id}'";
-    $update_status = "UPDATE car_rentals SET rental_return_status = '0' WHERE rental_id = '{$rental_id}'";
-
-    if (mysqli_query($mysqli, $delete_sql) && mysqli_query($mysqli, $update_status)) {
-        $success = "Rental return deleted successfully";
-    } else {
-        $err = "Failed to delete rental return";
-    }
-}
+$xlsxWriter = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+$xlsxWriter = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+exit($xlsxWriter->save('php://output'));

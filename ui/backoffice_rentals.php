@@ -173,19 +173,19 @@ require_once('../app/partials/back_office_head.php');
                                                         <td>
                                                             <?php if ($rental['rental_payment_status'] == '0') { ?>
                                                                 <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
-                                                                    <i class="fas fa-hand-holding-usd"></i> Pay
+                                                                    <i class="fas fa-hand-holding-usd"></i>
                                                                 </a>
                                                                 <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
-                                                                    <i class="fas fa-edit"></i> Edit
+                                                                    <i class="fas fa-edit"></i>
                                                                 </a>
                                                             <?php }
                                                             if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
                                                                 <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
-                                                                    <i class="fas fa-history"></i> Return
+                                                                    <i class="fas fa-history"></i>
                                                                 </a>
                                                             <?php } ?>
                                                             <a data-toggle="modal" href="#delete_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i> Delete
+                                                                <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
