@@ -27,7 +27,6 @@
                         <li><a href="about" class="py-2 d-block">About</a></li>
                         <li><a href="services" class="py-2 d-block">Services</a></li>
                         <li><a href="toc" class="py-2 d-block">Term and Conditions</a></li>
-                        <li><a href="privacy" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -37,6 +36,7 @@
                     <ul class="list-unstyled">
                         <li><a href="faq" class="py-2 d-block">FAQ</a></li>
                         <li><a href="contacts" class="py-2 d-block">Contact Us</a></li>
+                        <li><a href="privacy" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
                     </ul>
                 </div>
             </div>
