@@ -225,6 +225,7 @@ if (isset($_POST['Pay_Rentals'])) {
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $curl_response = curl_exec($curl);
+        
     } else if ($payment_means == 'Card') {
         /* Handle card payments */
         $request = [

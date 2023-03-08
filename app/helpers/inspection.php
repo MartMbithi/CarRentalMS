@@ -68,7 +68,7 @@
 /* Update Inspection */
 if (isset($_POST['Update_Rental_Return'])) {
     $return_id = mysqli_real_escape_string($mysqli, $_POST['return_id']);
-    $return_comments = mysqli_real_escape_string($mysqli, $_Post['return_comments']);
+    $return_comments = mysqli_real_escape_string($mysqli, $_POST['return_comments']);
 
     /* Persist */
     $update_sql = "UPDATE rental_returns SET return_comments = '{$return_comments}' WHERE return_id = '{$return_id}'";
