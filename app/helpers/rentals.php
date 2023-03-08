@@ -314,4 +314,18 @@ if (isset($_POST['Delete_Rentals'])) {
     }
 }
 
-/* Return Cars */
+/* Delete Payment */
+if (isset($_POST['Delete_Rental_Payment'])) {
+    $payment_id = mysqli_real_escape_string($mysqli, $_POST['payment_id']);
+    $rental_id = mysqli_real_escape_string($mysqli, $_POST['rental_id']);
+
+    /* Delete */
+    $delete_payment_sql = "DELETE FROM payments WHERE payment_id = '{$payment_id}'";
+    $rental_status_sql = "UPDATE car_rentals SET rental_payment_status = '0' WHERE rental_id = '{$rental_id}'";
+
+    if (mysqli_query($mysqli, $delete_payment_sql) && mysqli_query($mysqli, $rental_status_sql)) {
+        $success = "Payment record deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}

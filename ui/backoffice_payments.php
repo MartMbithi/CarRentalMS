@@ -69,7 +69,7 @@ session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
 include('../app/settings/codeGen.php');
-//require_once('../app/helpers/payments.php');
+require_once('../app/helpers/rentals.php');
 require_once('../app/partials/back_office_head.php');
 
 ?>
@@ -168,7 +168,7 @@ require_once('../app/partials/back_office_head.php');
                                                     </tr>
 
                                             <?php
-                                                    include('../app/modals/rentals.php');
+                                                    include('../app/modals/payments.php');
                                                 }
                                             } ?>
                                         </tbody>
