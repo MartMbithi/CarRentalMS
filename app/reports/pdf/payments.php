@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Thu Mar 02 2023
+ *   Crafted On Wed Mar 08 2023
  *   Author Martin (martin@devlan.co.ke)
  * 
  *   www.devlan.co.ke
@@ -65,81 +65,4 @@
  *
  */
 
-
-session_start();
-require_once('../app/settings/config.php');
-require_once('../app/settings/back_office_checklogin.php');
-
-/* Global variables */
-$module = mysqli_real_escape_string($mysqli, $_GET['module']);
-
-/* Convert logo to a base 64 image */
-$path = '../storage/system/logo_backoffice.png';
-$type = pathinfo($path, PATHINFO_EXTENSION);
-$data = file_get_contents($path);
-$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
-/* System Users Reports */
-if ($module == 'System_Users') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/users.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/users.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-
-    /* Clients */
-} else if ($module == 'Clients') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/clients.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/clients.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-} else if ($module == 'Categories') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/categories.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/categories.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-} else if ($module == 'Vehicles') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/vehicles.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/vehicles.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-} else if ($module == 'Rentals') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/rentals.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/rentals.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-} else if ($module == 'Payments') {
-    $type = mysqli_real_escape_string($mysqli, $_GET['type']);
-    if ($type == 'pdf') {
-        require_once('../app/reports/pdf/payments.php');
-    } else if ($type == 'csv') {
-        require_once('../app/reports/csv/payments.php');
-    } else {
-        header('location: logout');
-        exit();
-    }
-}
+ 
