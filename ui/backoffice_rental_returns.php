@@ -146,10 +146,10 @@ require_once('../app/partials/back_office_head.php');
                                                         </td>
                                                         <td>
                                                             <a data-toggle="modal" href="#update_<?php echo $rental['return_id']; ?>" class="badge badge-warning">
-                                                                <i class="fas fa-edit"></i> Update
+                                                                <i class="fas fa-edit"></i>
                                                             </a>
                                                             <a data-toggle="modal" href="#delete_<?php echo $rental['return_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i> Delete
+                                                                <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
