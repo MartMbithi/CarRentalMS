@@ -164,11 +164,12 @@ require_once('../app/partials/back_office_head.php');
                                             <div class="row">
                                                 <div class="form-group col-md-12">
                                                     <label for="">STMP Host</label>
+                                                    <input type="hidden" required name="mailer_id" value="<?php echo $mailer['mailer_id']; ?>" class="form-control">
                                                     <input type="text" value="<?php echo $mailer['mail_host']; ?>" required name="mail_host" class="form-control">
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <label for="">Mail port</label>
-                                                    <input type="" required name="mail_port" value="<?php echo $mailer['mail_port']; ?>" class="form-control">
+                                                    <input type="text" required name="mail_port" value="<?php echo $mailer['mail_port']; ?>" class="form-control">
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <label for="">Mail protocol</label>
