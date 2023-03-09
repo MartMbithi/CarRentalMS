@@ -69,7 +69,7 @@ session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/back_office_checklogin.php');
 include('../app/settings/codeGen.php');
-require_once('../app/helpers/cars.php');
+require_once('../app/helpers/system_settings.php');
 require_once('../app/partials/back_office_head.php');
 
 ?>
@@ -102,36 +102,78 @@ require_once('../app/partials/back_office_head.php');
                 </div>
                 <div class="row no-gutters">
                     <div class="col-lg-4 pr-lg-2 mb-3 mb-lg-0">
-                        <div class="card h-100">
-                            <div class="card-body p-4 p-sm-5">
-                                <div class="text-center">
-                                    <img class="d-block mx-auto mb-4" src="../storage/system/envelope.png" alt="shield" width="70" />
-                                    <h4>Mailer settings</h4>
+                        <a data-toggle="modal" href="#mailer_settings">
+                            <div class=" card h-100">
+                                <div class="card-body p-4 p-sm-5">
+                                    <div class="text-center">
+                                        <img class="d-block mx-auto mb-4" src="../storage/system/envelope.png" alt="shield" width="70" />
+                                        <h4>Mailer settings</h4>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 pr-lg-2 mb-3 mb-lg-0">
+                        <a data-toggle="modal" href="#lite_cms">
+                            <div class="card h-100">
+                                <div class="card-body p-4 p-sm-5">
+                                    <div class="text-center">
+                                        <img class="d-block mx-auto mb-4" src="../storage/system/cms.png" alt="shield" width="70" />
+                                        <h4>Lite CMS</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-lg-4 pr-lg-2 mb-3 mb-lg-0">
                         <div class="card h-100">
-                            <div class="card-body p-4 p-sm-5">
-                                <div class="text-center">
-                                    <img class="d-block mx-auto mb-4" src="../storage/system/cms.png" alt="shield" width="70" />
-                                    <h4>Lite CMS</h4>
+                            <a href="backoffice_payment_apis">
+                                <div class="card-body p-4 p-sm-5">
+                                    <div class="text-center">
+                                        <img class="d-block mx-auto mb-4" src="../storage/system/credit-card.png" alt="shield" width="70" />
+                                        <h4>Payment APIs</h4>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-lg-4 pr-lg-2 mb-3 mb-lg-0">
-                        <div class="card h-100">
-                            <div class="card-body p-4 p-sm-5">
+                </div>
+                <!-- Mailer Modal -->
+                <div class="modal fade fixed-right" id="mailer_settings" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header align-items-center">
                                 <div class="text-center">
-                                    <img class="d-block mx-auto mb-4" src="../storage/system/credit-card.png" alt="shield" width="70" />
-                                    <h4>Payment APIs</h4>
+                                    <h6 class="mb-0 text-bold">Edit STMP Mailer Configurations</h6>
                                 </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label for="">Category code</label>
+                                            <input type="text" value="<?php echo $category_code; ?>" required name="category_code" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-8">
+                                            <label for="">Category name</label>
+                                            <input type="" required name="category_name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" name="Update_Mailers" class="btn btn-outline-success">Save</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End Mailer Modal -->
+
+                <!-- Lite Cms Modal -->
+                <!-- End CMS modal -->
                 <?php require_once('../app/partials/back_office_footer.php'); ?>
             </div>
         </div>
