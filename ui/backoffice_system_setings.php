@@ -151,21 +151,52 @@ require_once('../app/partials/back_office_head.php');
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label for="">Category code</label>
-                                            <input type="text" value="<?php echo $category_code; ?>" required name="category_code" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-8">
-                                            <label for="">Category name</label>
-                                            <input type="" required name="category_name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Update_Mailers" class="btn btn-outline-success">Save</button>
-                                    </div>
-                                </form>
+                                <?php
+                                $mailer_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM mailer_settings                                
+                                    "
+                                );
+                                if (mysqli_num_rows($mailer_sql) > 0) {
+                                    while ($mailer = mysqli_fetch_array($mailer_sql)) {
+                                ?>
+                                        <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="">STMP Host</label>
+                                                    <input type="text" value="<?php echo $mailer['mail_host']; ?>" required name="mail_host" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Mail port</label>
+                                                    <input type="" required name="mail_port" value="<?php echo $mailer['mail_port']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Mail protocol</label>
+                                                    <input type="" required name="mail_protocol" value="<?php echo $mailer['mail_protocol']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Send email from</label>
+                                                    <input type="" required name="mail_from_email" value="<?php echo $mailer['mail_from_email']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Send email from name</label>
+                                                    <input type="" required name="mail_from_name" value="<?php echo $mailer['mail_from_name']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Username</label>
+                                                    <input type="" required name="mail_username" value="<?php echo $mailer['mail_username']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Password</label>
+                                                    <input type="password" required name="mail_password" value="<?php echo $mailer['mail_password']; ?>" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" name="Update_Mailers" class="btn btn-outline-success">Save</button>
+                                            </div>
+                                        </form>
+                                <?php }
+                                } ?>
                             </div>
                         </div>
                     </div>
