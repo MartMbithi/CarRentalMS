@@ -244,11 +244,11 @@ require_once('../app/partials/back_office_head.php');
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="">Frequent asked questions</label>
-                                                    <textarea type="" rows="5" required name="cms_faq" value="<?php echo $mailer['cms_faq']; ?>" class="form-control"></textarea>
+                                                    <textarea type="" rows="5" required name="cms_faq" value="<?php echo $cms['cms_faq']; ?>" class="form-control"></textarea>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="">About</label>
-                                                    <textarea type="" rows="9" required name="cms_cookie_policy" value="<?php echo $mailer['cms_cookie_policy']; ?>" class="form-control"></textarea>
+                                                    <textarea type="" rows="9" required name="cms_cookie_policy" value="<?php echo $cms['cms_cookie_policy']; ?>" class="form-control"></textarea>
                                                 </div>
 
                                             </div>
