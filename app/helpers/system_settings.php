@@ -94,3 +94,22 @@ if (isset($_POST['Update_Mailers'])) {
 
 
 /* Update Landing Pages Content */
+if (isset($_POST['CMS_Save'])) {
+    $cms_email = mysqli_real_escape_string($mysqli, $_POST['cms_email']);
+    $cms_contacts = mysqli_real_escape_string($mysqli, $_POST['cms_contacts']);
+    $cms_address = mysqli_real_escape_string($mysqli, $_POST['cms_address']);
+    $cms_about = mysqli_real_escape_string($mysqli, $_POST['cms_about']);
+    $cms_faq = mysqli_real_escape_string($mysqli, $_POST['cms_faq']);
+    $cms_cookie_policy = mysqli_real_escape_string($mysqli, $_POST['cms_cookie_policy']);
+    $cms_id = mysqli_real_escape_string($mysqli, $_POST['cms_id']);
+
+    /* Persist */
+    $cms_sql = "UPDATE lite_cms SET cms_email = '{$cms_email}', cms_contacts = '{$cms_contacts}', cms_address = '{$cms_address}',
+    cms_about = '{$cms_about}', cms_faq = '{$cms_faq}', cms_cookie_policy = '{$cms_cookie_policy}' WHERE cms_id = '{$cms_id}'";
+
+    if (mysqli_query($mysqli, $cms_sql)) {
+        $success = "Landing pages content updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
