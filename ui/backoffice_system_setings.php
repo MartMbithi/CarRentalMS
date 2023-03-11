@@ -206,7 +206,7 @@ require_once('../app/partials/back_office_head.php');
                 <!-- End Mailer Modal -->
 
                 <!-- Lite cms modal -->
-                <div class="modal fade fixed-right" id="mailer_settings" role="dialog" aria-hidden="true">
+                <div class="modal fade fixed-right" id="lite_cms" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
@@ -234,7 +234,7 @@ require_once('../app/partials/back_office_head.php');
                                                     <input type="hidden" required name="cms_id" value="<?php echo $cms['cms_id']; ?>" class="form-control">
                                                     <input type="text" value="<?php echo $cms['cms_email']; ?>" required name="cms_email" class="form-control">
                                                 </div>
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-6">
                                                     <label for="">Contacts</label>
                                                     <input type="text" required name="cms_contacts" value="<?php echo $cms['cms_contacts']; ?>" class="form-control">
                                                 </div>
@@ -253,7 +253,7 @@ require_once('../app/partials/back_office_head.php');
 
                                             </div>
                                             <div class="text-right">
-                                                <button type="submit" name="CNS" class="btn btn-outline-success">Save</button>
+                                                <button type="submit" name="CMS_Save" class="btn btn-outline-success">Save</button>
                                             </div>
                                         </form>
                                 <?php }
