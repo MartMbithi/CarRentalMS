@@ -248,9 +248,12 @@ require_once('../app/partials/back_office_head.php');
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="">About</label>
-                                                    <textarea type="" rows="9" required name="cms_cookie_policy" value="<?php echo $cms['cms_cookie_policy']; ?>" class="form-control"></textarea>
+                                                    <textarea type="" rows="5" required name="cms_about" value="<?php echo $cms['cms_about']; ?>" class="form-control"></textarea>
                                                 </div>
-
+                                                <div class="form-group col-md-12">
+                                                    <label for="">Cookie policy</label>
+                                                    <textarea type="" rows="5" required name="cms_cookie_policy" value="<?php echo $cms['cms_cookie_policy']; ?>" class="form-control"></textarea>
+                                                </div>
                                             </div>
                                             <div class="text-right">
                                                 <button type="submit" name="CMS_Save" class="btn btn-outline-success">Save</button>
