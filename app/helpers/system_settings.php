@@ -106,6 +106,19 @@ if (isset($_POST['Manage_APIS'])) {
     }
 }
 
+/* Delete API */
+if (isset($_POST['Delete_API'])) {
+    $api_id = mysqli_real_escape_string($mysqli, $_POST['api_id']);
+
+    /* Delete */
+    $delete_sql = "DELETE FROM thirdparty_apis WHERE api_id = '{$api_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Api record deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 
 /* Update Landing Pages Content */
