@@ -108,26 +108,23 @@ require_once('../app/partials/back_office_head.php');
                                     <table class="data table table-sm no-wrap mb-0 fs--1 w-100">
                                         <thead class="bg-200">
                                             <tr>
-                                                <th class="sort">Payment ref number</th>
-                                                <th class="sort">Rental ref number</th>
-                                                <th class="sort">Payment from</th>
-                                                <th class="sort">Payment amount</th>
-                                                <th class="sort">Date paid</th>
-                                                <th class="sort">Payment means</th>
+                                                <th class="sort">API name</th>
+                                                <th class="sort">API identification </th>
+                                                <th class="sort">API token</th>
                                                 <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
                                             <?php
-                                            $payments_sql = mysqli_query(
+                                            $api_sql = mysqli_query(
                                                 $mysqli,
                                                 "SELECT * FROM payments p 
                                                 INNER JOIN car_rentals cr  ON cr.rental_id = p.payment_rental_id
                                                 INNER JOIN clients cl ON cl.client_id = cr.rental_client_id                                    
                                                 "
                                             );
-                                            if (mysqli_num_rows($payments_sql) > 0) {
-                                                while ($payments = mysqli_fetch_array($payments_sql)) {
+                                            if (mysqli_num_rows($api_sql) > 0) {
+                                                while ($apis = mysqli_fetch_array($api_sql)) {
                                             ?>
                                                     <tr>
                                                         <td>
