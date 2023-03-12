@@ -20,11 +20,11 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="">API intentification</label>
-                            <input type="" required name="api_identification" value="<?php echo $apis['api_identification']; ?>" class="form-control">
+                            <input type="" name="api_identification" value="<?php echo $apis['api_identification']; ?>" class="form-control">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="">API token</label>
-                            <input type="" required name="api_token" value="<?php echo $apis['api_token']; ?>" class="form-control">
+                            <input type="" name="api_token" value="<?php echo $apis['api_token']; ?>" class="form-control">
                         </div>
                     </div>
                     <div class="text-right">
