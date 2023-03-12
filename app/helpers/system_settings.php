@@ -90,7 +90,35 @@ if (isset($_POST['Update_Mailers'])) {
 
 
 /* Update Payment Gateway APIS */
+if (isset($_POST['Manage_APIS'])) {
+    $api_name = mysqli_real_escape_string($mysqli, $_POST['api_name']);
+    $api_identification = mysqli_real_escape_string($mysqli, $_POST['api_identification']);
+    $api_token = mysqli_real_escape_string($mysqli, $_POST['api_token']);
+    $api_id  = mysqli_real_escape_string($mysqli, $_POST['api_id']);
 
+    /* Persit */
+    $update_sql = "UPDATE thirdparty_apis SET api_name = '{$api_name}', api_identification = '{$api_identification}'
+    WHERE api_id = '{$api_id}'";
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Api record updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
+
+/* Delete API */
+if (isset($_POST['Delete_API'])) {
+    $api_id = mysqli_real_escape_string($mysqli, $_POST['api_id']);
+
+    /* Delete */
+    $delete_sql = "DELETE FROM thirdparty_apis WHERE api_id = '{$api_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Api record deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 
 /* Update Landing Pages Content */

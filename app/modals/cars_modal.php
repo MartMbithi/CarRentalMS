@@ -17,23 +17,3 @@
     </div>
 </div>
 <!-- End Modal -->
-
-<!-- Update modal -->
-<div class="modal fade fixed-right" id="update_<?php echo $cars['car_id']; ?>" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header align-items-center">
-                <div class="text-center">
-                    <h6 class="mb-0 text-bold">Update vehicle details</h6>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Delete modal  -->
