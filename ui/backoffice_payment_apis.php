@@ -118,48 +118,30 @@ require_once('../app/partials/back_office_head.php');
                                             <?php
                                             $api_sql = mysqli_query(
                                                 $mysqli,
-                                                "SELECT * FROM payments p 
-                                                INNER JOIN car_rentals cr  ON cr.rental_id = p.payment_rental_id
-                                                INNER JOIN clients cl ON cl.client_id = cr.rental_client_id                                    
-                                                "
+                                                "SELECT * FROM thirdparty_apis"
                                             );
                                             if (mysqli_num_rows($api_sql) > 0) {
                                                 while ($apis = mysqli_fetch_array($api_sql)) {
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>">
-                                                                <?php echo $payments['payment_ref_code']; ?>
-                                                            </a>
+                                                            <?php echo $apis['api_name']; ?>
                                                         </td>
                                                         <td>
-                                                            <a href="backoffice_rental?view=<?php echo $payments['rental_id']; ?>">
-                                                                <?php echo $payments['rental_ref_code']; ?>
-                                                            </a>
+                                                            <?php echo $apis['api_identification']; ?>
                                                         </td>
                                                         <td>
-                                                            <a href="backoffice_client?view=<?php echo $payments['client_id']; ?>">
-                                                                <?php echo $payments['client_names']; ?>
-                                                            </a>
+                                                            <?php echo $apis['api_token']; ?>
                                                         </td>
                                                         <td>
-                                                            Kes <?php echo number_format($payments['payment_amount']); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $payments['payment_means']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $payments['payment_id']; ?>" class="badge badge-danger">
+                                                            <a data-toggle="modal" href="#delete_<?php echo $apis['api_id']; ?>" class="badge badge-danger">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
 
                                             <?php
-                                                    include('../app/modals/payments.php');
+                                                    include('../app/modals/apis.php');
                                                 }
                                             } ?>
                                         </tbody>
