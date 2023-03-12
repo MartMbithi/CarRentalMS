@@ -134,8 +134,8 @@ require_once('../app/partials/back_office_head.php');
                                                             <?php echo $apis['api_token']; ?>
                                                         </td>
                                                         <td>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $apis['api_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i>
+                                                            <a data-toggle="modal" href="#update_<?php echo $apis['api_id']; ?>" class="badge badge-danger">
+                                                                <i class="fas fa-edit"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
