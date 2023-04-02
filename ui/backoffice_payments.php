@@ -161,9 +161,15 @@ require_once('../app/partials/back_office_head.php');
                                                             <?php echo $payments['payment_means']; ?>
                                                         </td>
                                                         <td>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $payments['payment_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
+                                                            <?php if ($_SESSION['user_access_level'] == 'Administrator') { ?>
+                                                                <a data-toggle="modal" href="#delete_<?php echo $payments['payment_id']; ?>" class="badge badge-danger">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </a>
+                                                            <?php } else { ?>
+                                                                <a data-toggle="modal" href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>" class="badge badge-success">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </a>
+                                                            <?php } ?>
                                                         </td>
                                                     </tr>
 
