@@ -97,8 +97,9 @@ if (isset($_POST['Manage_APIS'])) {
     $api_id  = mysqli_real_escape_string($mysqli, $_POST['api_id']);
 
     /* Persit */
-    $update_sql = "UPDATE thirdparty_apis SET api_name = '{$api_name}', api_identification = '{$api_identification}'
-    WHERE api_id = '{$api_id}'";
+    $update_sql = "UPDATE thirdparty_apis SET api_name = '{$api_name}', api_identification = '{$api_identification}',
+    api_token = '{$api_token}' WHERE api_id = '{$api_id}'";
+    
     if (mysqli_query($mysqli, $update_sql)) {
         $success = "Api record updated";
     } else {
