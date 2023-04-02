@@ -7,7 +7,7 @@
     </script>
     <div class="d-flex align-items-center">
 
-        <a class="navbar-brand" href="dashboard">
+        <a class="navbar-brand" href="">
             <div class="d-flex align-items-center py-3">
                 <img class="mr-2" src="../storage/system/logo_backoffice.png" alt="" />
             </div>
