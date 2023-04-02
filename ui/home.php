@@ -67,7 +67,7 @@
 session_start();
 require_once('../app/settings/config.php');
 require_once('../app/settings/client_checklogin.php');
-require_once('../app/functions/back_office_functions.php');
+require_once('../app/functions/client_functions.php');
 require_once('../app/partials/back_office_head.php');
 
 ?>
@@ -116,23 +116,25 @@ require_once('../app/partials/back_office_head.php');
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row no-gutters">
 
                     <div class="col-lg-6 pl-lg-2 mb-3">
                         <div class="card h-lg-100">
                             <div class="card-header">
                                 <div class="row flex-between-center">
                                     <div class="col-auto">
-                                        <h6 class="mb-0">My Recent Payments logs</h6>
+                                        <h6 class="mb-0">My Payments logs</h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body h-100 pr-0">
                                 <?php
+                                /* Fetch Recently Received Payments */
                                 $payments_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM payments ORDER BY  payment_date_posted  ASC
+                                    "SELECT * FROM payments p
+                                    INNER JOIN car_rentals cr ON cr.rental_id = p.payment_rental_id
+                                    WHERE cr.rental_client_id = '{$client_id}'
+                                    ORDER BY  p.payment_date_posted  ASC
                                     LIMIT 5
                                     "
                                 );
@@ -175,21 +177,25 @@ require_once('../app/partials/back_office_head.php');
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xl-6 pr-lg-2 mb-3">
-                        <div class="card h-lg-100 overflow-hidden">
-                            <div class="card-body p-0">
+                    <div class="col-lg-6 pl-lg-2 mb-3">
+                        <div class="card h-lg-100">
+                            <div class="card-header">
+                                <div class="row flex-between-center">
+                                    <div class="col-auto">
+                                        <h6 class="mb-0">My Recent Rentals</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body h-100 pr-0">
                                 <table class="table table-dashboard mb-0 table-borderless fs--1">
-                                    <thead class="bg-light">
-                                        <tr class="text-900">
-                                            <th> My Recently Hired Vehicles</th>
-                                        </tr>
-                                    </thead>
                                     <tbody>
                                         <?php
+                                        /* Fetch Recently Hired Cars */
                                         $recent_hires = mysqli_query(
                                             $mysqli,
                                             "SELECT * FROM car_rentals cr
                                             INNER JOIN cars c ON c.car_id = cr.rental_car_id
+                                            WHERE cr.rental_client_id  = '{$client_id}'
                                             "
                                         );
                                         if (mysqli_num_rows($recent_hires) > 0) {
