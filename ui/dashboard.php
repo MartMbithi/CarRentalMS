@@ -361,7 +361,7 @@ require_once('../app/partials/back_office_head.php');
                                                     </div>
                                                     <div class="media-body">
                                                         <h6 class="mb-0 d-flex align-items-center">
-                                                            <a class="text-800 stretched-link" href="backoffice_payment?payment=<?php echo $payments['payment_id']; ?>">
+                                                            <a class="text-800 stretched-link" href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>">
                                                                 <?php echo $payments['payment_ref_code']; ?> Confirmed, Payment of
                                                                 Kes <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
                                                             </a>
