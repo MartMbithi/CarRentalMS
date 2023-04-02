@@ -67,7 +67,7 @@
 
 session_start();
 require_once('../app/settings/config.php');
-require_once('../app/settings/back_office_checklogin.php');
+require_once('../app/settings/client_checklogin.php');
 include('../app/settings/codeGen.php');
 require_once('../app/helpers/rentals.php');
 require_once('../app/partials/back_office_head.php');
@@ -106,10 +106,6 @@ require_once('../app/partials/back_office_head.php');
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCategoriesModal">
                                 <i class="fas fa-plus"></i> Add Rentals
                             </button>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadCategoriesModal">
-                                <i class="fas fa-download"></i>
-                                Download Rentals Report
-                            </button>
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -123,7 +119,6 @@ require_once('../app/partials/back_office_head.php');
                                                 <th class="sort">Rental details</th>
                                                 <th class="sort">Cost</th>
                                                 <th class="sort">Payment status</th>
-                                                <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
@@ -132,7 +127,8 @@ require_once('../app/partials/back_office_head.php');
                                                 $mysqli,
                                                 "SELECT * FROM car_rentals cr 
                                                 INNER JOIN cars c ON c.car_id = cr.rental_car_id
-                                                INNER JOIN clients cl ON cl.client_id = cr.rental_client_id                                    
+                                                INNER JOIN clients cl ON cl.client_id = cr.rental_client_id
+                                                WHERE cl.client_id = '{$client_id}'                                    
                                                 "
                                             );
                                             if (mysqli_num_rows($rentals_sql) > 0) {
@@ -142,7 +138,7 @@ require_once('../app/partials/back_office_head.php');
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="backoffice_rental?view=<?php echo $rental['rental_id']; ?>">
+                                                            <a href="backoffice_my_rental?view=<?php echo $rental['rental_id']; ?>">
                                                                 <?php echo $rental['rental_ref_code']; ?>
                                                             </a>
                                                         </td>
@@ -170,48 +166,8 @@ require_once('../app/partials/back_office_head.php');
                                                             }
                                                             ?>
                                                         </td>
-                                                        <td>
-                                                            <?php if ($_SESSION['user_access_level'] == 'Administrator') {
-                                                                if ($rental['rental_payment_status'] == '0') { ?>
-                                                                    <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
-                                                                        <i class="fas fa-hand-holding-usd"></i>
-                                                                    </a>
-                                                                    <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </a>
-                                                                <?php }
-                                                                if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
-                                                                    <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
-                                                                        <i class="fas fa-history"></i>
-                                                                    </a>
-                                                                <?php } ?>
-                                                                <a data-toggle="modal" href="#delete_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </a>
-                                                                <?php } else {
-                                                                if ($rental['rental_payment_status'] == '0') { ?>
-                                                                    <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
-                                                                        <i class="fas fa-hand-holding-usd"></i>
-                                                                    </a>
-                                                                    <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </a>
-                                                                <?php }
-                                                                if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
-                                                                    <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
-                                                                        <i class="fas fa-history"></i>
-                                                                    </a>
-                                                                <?php } ?>
-                                                                <a href="backoffice_rental?view=<?php echo $rental['rental_id']; ?>" class="badge badge-success">
-                                                                    <i class="fas fa-eye"></i>
-                                                                </a>
-
-                                                            <?php } ?>
-                                                        </td>
                                                     </tr>
-
                                             <?php
-                                                    include('../app/modals/rentals.php');
                                                 }
                                             } ?>
                                         </tbody>
@@ -240,11 +196,10 @@ require_once('../app/partials/back_office_head.php');
                                         <div class="form-group col-md-6">
                                             <label for="">Client Details</label>
                                             <select type="" required name="rental_client_id" class="form-control selectpicker" style="width: 100%;">
-                                                <option value="">Select client</option>
                                                 <?php
-                                                $clients_sql = mysqli_query($mysqli, "SELECT * FROM clients");
+                                                $clients_sql = mysqli_query($mysqli, "SELECT * FROM clients WHERE client_id = '{$client_id}'");
                                                 while ($clients = mysqli_fetch_array($clients_sql)) {
-                                                    echo '<option value="' . $clients['client_id'] . '">' . $clients['client_names'] . ' - ' . $clients['client_email'] . '</option>';
+                                                    echo '<option selected value="' . $clients['client_id'] . '">' . $clients['client_names'] . ' - ' . $clients['client_email'] . '</option>';
                                                 }
                                                 ?>
                                             </select>
@@ -278,22 +233,6 @@ require_once('../app/partials/back_office_head.php');
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal fade" id="downloadCategoriesModal" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <form method="POST">
-                                <div class="modal-body text-center text-danger">
-                                    <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export vehicle rentals details as</h5> <br>
-                                    <!-- Hide This -->
-                                    <a href="reports?module=Rentals&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Rentals&type=csv" class="text-center btn btn-primary">CSV</a>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>

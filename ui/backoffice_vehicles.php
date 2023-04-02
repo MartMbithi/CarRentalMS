@@ -162,9 +162,15 @@ require_once('../app/partials/back_office_head.php');
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $cars['car_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
+                                                            <?php if ($_SESSION['user_access_level'] == 'Administrator') { ?>
+                                                                <a data-toggle="modal" href="#delete_<?php echo $cars['car_id']; ?>" class="badge badge-danger">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </a>
+                                                            <?php } else { ?>
+                                                                <a href="backoffice_vehicle?view=<?php echo $cars['car_id']; ?>" class="badge badge-danger">
+                                                                    <i class="fas fa-edit"></i>
+                                                                </a>
+                                                            <?php } ?>
                                                         </td>
                                                     </tr>
 

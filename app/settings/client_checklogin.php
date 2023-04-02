@@ -69,7 +69,7 @@
 
 function client_checklogin()
 {
-    if ((strlen($_SESSION[' client_id ']) == 0)) {
+    if ((strlen($_SESSION['client_id']) == 0)) {
         $host = $_SERVER['HTTP_HOST'];
         $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $extra = "../";
@@ -79,3 +79,6 @@ function client_checklogin()
 }
 
 client_checklogin();
+
+$client_id = mysqli_real_escape_string($mysqli, $_SESSION['client_id']);
+global $client_id;

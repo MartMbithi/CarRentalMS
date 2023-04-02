@@ -67,7 +67,7 @@
 
 session_start();
 require_once('../app/settings/config.php');
-require_once('../app/settings/back_office_checklogin.php');
+require_once('../app/settings/client_checklogin.php');
 include('../app/settings/codeGen.php');
 require_once('../app/helpers/rentals.php');
 require_once('../app/partials/back_office_head.php');
@@ -96,18 +96,12 @@ require_once('../app/partials/back_office_head.php');
                             <span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span>
                         </h5>
                         <p class="mb-0 text-justify">
-                            This module allows you to manage your payments records. You can edit, delete and view payments .
+                            This module allows you to manage your payments records.
                         </p>
                     </div>
                 </div>
                 <div class="row no-gutters">
                     <div class="card mb-3 col-12">
-                        <div class="card-header text-right">
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#downloadCategoriesModal">
-                                <i class="fas fa-download"></i>
-                                Download Payments Report
-                            </button>
-                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card-body bg-light">
@@ -120,7 +114,6 @@ require_once('../app/partials/back_office_head.php');
                                                 <th class="sort">Payment amount</th>
                                                 <th class="sort">Date paid</th>
                                                 <th class="sort">Payment means</th>
-                                                <th class="">Manage</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white">
@@ -129,7 +122,8 @@ require_once('../app/partials/back_office_head.php');
                                                 $mysqli,
                                                 "SELECT * FROM payments p 
                                                 INNER JOIN car_rentals cr  ON cr.rental_id = p.payment_rental_id
-                                                INNER JOIN clients cl ON cl.client_id = cr.rental_client_id                                    
+                                                INNER JOIN clients cl ON cl.client_id = cr.rental_client_id
+                                                WHERE cl.client_id = '{$client_id}'                                    
                                                 "
                                             );
                                             if (mysqli_num_rows($payments_sql) > 0) {
@@ -137,19 +131,17 @@ require_once('../app/partials/back_office_head.php');
                                             ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>">
+                                                            <a href="backoffice_my_payment?view=<?php echo $payments['payment_id']; ?>">
                                                                 <?php echo $payments['payment_ref_code']; ?>
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a href="backoffice_rental?view=<?php echo $payments['rental_id']; ?>">
+                                                            <a href="backoffice_my_rental?view=<?php echo $payments['rental_id']; ?>">
                                                                 <?php echo $payments['rental_ref_code']; ?>
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a href="backoffice_client?view=<?php echo $payments['client_id']; ?>">
-                                                                <?php echo $payments['client_names']; ?>
-                                                            </a>
+                                                            <?php echo $payments['client_names']; ?>
                                                         </td>
                                                         <td>
                                                             Kes <?php echo number_format($payments['payment_amount']); ?>
@@ -160,21 +152,8 @@ require_once('../app/partials/back_office_head.php');
                                                         <td>
                                                             <?php echo $payments['payment_means']; ?>
                                                         </td>
-                                                        <td>
-                                                            <?php if ($_SESSION['user_access_level'] == 'Administrator') { ?>
-                                                                <a data-toggle="modal" href="#delete_<?php echo $payments['payment_id']; ?>" class="badge badge-danger">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </a>
-                                                            <?php } else { ?>
-                                                                <a data-toggle="modal" href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>" class="badge badge-success">
-                                                                    <i class="fas fa-eye"></i>
-                                                                </a>
-                                                            <?php } ?>
-                                                        </td>
                                                     </tr>
-
                                             <?php
-                                                    include('../app/modals/payments.php');
                                                 }
                                             } ?>
                                         </tbody>
@@ -184,22 +163,6 @@ require_once('../app/partials/back_office_head.php');
                         </div>
                     </div>
                     <?php require_once('../app/partials/back_office_footer.php'); ?>
-                </div>
-
-                <div class="modal fade" id="downloadCategoriesModal" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <form method="POST">
-                                <div class="modal-body text-center text-danger">
-                                    <i class="fas fa-download fa-4x"></i><br><br>
-                                    <h5>Export vehicle payment details as</h5> <br>
-                                    <!-- Hide This -->
-                                    <a href="reports?module=Payments&type=pdf" class="text-center btn btn-success">PDF</a>
-                                    <a href="reports?module=Payments&type=csv" class="text-center btn btn-primary">CSV</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -84,94 +84,172 @@ require_once('../app/partials/back_office_head.php');
                 <!-- Navigations -->
                 <?php require_once('../app/partials/back_office_topbar.php'); ?>
                 <!-- End Navigations -->
-                <div class="row no-gutters">
+                <?php if ($_SESSION['user_access_level'] == 'Administrator') { ?>
+                    <div class="row no-gutters">
 
-                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
-                        <div class="card h-md-100 verflow-hidden">
-                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
-                            <!--/.bg-holder-->
-                            <div class="card-body position-relative">
-                                <h6>Staffs</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $staffs; ?></div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_users">All staffs
-                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
-                        <div class="card h-md-100 verflow-hidden">
-                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
-                            <!--/.bg-holder-->
-                            <div class="card-body position-relative">
-                                <h6>Clients</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $clients; ?></div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_clients">All clients
-                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
-                        <div class="card h-md-100 verflow-hidden">
-                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
-                            <!--/.bg-holder-->
-                            <div class="card-body position-relative">
-                                <h6>Rented Vehicles</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $rented_cars; ?></div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">
-                                    All rentals
-                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
-                        <div class="card h-md-100 verflow-hidden">
-                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-1.png);"></div>
-                            <!--/.bg-holder-->
-                            <div class="card-body position-relative">
-                                <h6>Available Vehicles</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $available_cars; ?></div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">Available vehicles
-                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
-                        <div class="card h-md-100 verflow-hidden">
-                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
-                            <!--/.bg-holder-->
-                            <div class="card-body position-relative">
-                                <h6>Car rentals</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">
-                                    <?php echo $car_rentals; ?>
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Staffs</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $staffs; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_users">All staffs
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
                                 </div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_rentals">All rentals
-                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
-                                </a>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
-                        <div class="card h-md-100 verflow-hidden">
-                            <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
-                            <!--/.bg-holder-->
-                            <div class="card-body position-relative">
-                                <h6>Revenue</h6>
-                                <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">Kes <?php echo $beautified_cost; ?></div>
-                                <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All payments
-                                    <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
-                                </a>
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Clients</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $clients; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_clients">All clients
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Rented Vehicles</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $rented_cars; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">
+                                        All rentals
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-1.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Available Vehicles</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $available_cars; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">Available vehicles
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Car rentals</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">
+                                        <?php echo $car_rentals; ?>
+                                    </div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_rentals">All rentals
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Revenue</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">Kes <?php echo $beautified_cost; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All payments
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                <?php } else if ($_SESSION['user_access_level'] == 'Staff') { ?>
+                    <div class="row no-gutters">
+
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Clients</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $clients; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_clients">All clients
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Rented Vehicles</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $rented_cars; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">
+                                        All rentals
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-1.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Available Vehicles</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info"><?php echo $available_cars; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_vehicles">Available vehicles
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-2.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Car rentals</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">
+                                        <?php echo $car_rentals; ?>
+                                    </div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_rentals">All rentals
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xxl-3 mb-3 pr-md-2">
+                            <div class="card h-md-100 verflow-hidden">
+                                <div class="bg-holder bg-card" style="background-image:url(../public/backoffice_assets/img/illustrations/corner-3.png);"></div>
+                                <!--/.bg-holder-->
+                                <div class="card-body position-relative">
+                                    <h6>Revenue</h6>
+                                    <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info">Kes <?php echo $beautified_cost; ?></div>
+                                    <a class="font-weight-semi-bold fs--1 text-nowrap" href="backoffice_payments">All payments
+                                        <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                <?php } ?>
                 <div class="row no-gutters">
                     <div class="col-lg-6 pr-lg-2 mb-3">
                         <div class="card h-lg-100 overflow-hidden">
@@ -283,7 +361,7 @@ require_once('../app/partials/back_office_head.php');
                                                     </div>
                                                     <div class="media-body">
                                                         <h6 class="mb-0 d-flex align-items-center">
-                                                            <a class="text-800 stretched-link" href="backoffice_payment?payment=<?php echo $payments['payment_id']; ?>">
+                                                            <a class="text-800 stretched-link" href="backoffice_payment?view=<?php echo $payments['payment_id']; ?>">
                                                                 <?php echo $payments['payment_ref_code']; ?> Confirmed, Payment of
                                                                 Kes <?php echo $payments['payment_amount']; ?> Received On <?php echo date('d M Y g:ia', strtotime($payments['payment_date_posted'])); ?>
                                                             </a>
