@@ -171,22 +171,42 @@ require_once('../app/partials/back_office_head.php');
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <?php if ($rental['rental_payment_status'] == '0') { ?>
-                                                                <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
-                                                                    <i class="fas fa-hand-holding-usd"></i>
+                                                            <?php if ($_SESSION['user_access_level'] == 'Administrator') {
+                                                                if ($rental['rental_payment_status'] == '0') { ?>
+                                                                    <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
+                                                                        <i class="fas fa-hand-holding-usd"></i>
+                                                                    </a>
+                                                                    <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
+                                                                        <i class="fas fa-edit"></i>
+                                                                    </a>
+                                                                <?php }
+                                                                if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
+                                                                    <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
+                                                                        <i class="fas fa-history"></i>
+                                                                    </a>
+                                                                <?php } ?>
+                                                                <a data-toggle="modal" href="#delete_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
+                                                                    <i class="fas fa-trash"></i>
                                                                 </a>
-                                                                <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
-                                                                    <i class="fas fa-edit"></i>
+                                                                <?php } else {
+                                                                if ($rental['rental_payment_status'] == '0') { ?>
+                                                                    <a data-toggle="modal" href="#pay_<?php echo $rental['rental_id']; ?>" class="badge badge-success">
+                                                                        <i class="fas fa-hand-holding-usd"></i>
+                                                                    </a>
+                                                                    <a data-toggle="modal" href="#edit_<?php echo $rental['rental_id']; ?>" class="badge badge-warning">
+                                                                        <i class="fas fa-edit"></i>
+                                                                    </a>
+                                                                <?php }
+                                                                if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
+                                                                    <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
+                                                                        <i class="fas fa-history"></i>
+                                                                    </a>
+                                                                <?php } ?>
+                                                                <a href="backoffice_rental?view=<?php echo $rental['rental_id']; ?>" class="badge badge-success">
+                                                                    <i class="fas fa-eye"></i>
                                                                 </a>
-                                                            <?php }
-                                                            if ($date_now <= $return_date && $rental['rental_return_status'] == '0') { ?>
-                                                                <a data-toggle="modal" href="#return_<?php echo $rental['rental_id']; ?>" class="badge badge-primary">
-                                                                    <i class="fas fa-history"></i>
-                                                                </a>
+
                                                             <?php } ?>
-                                                            <a data-toggle="modal" href="#delete_<?php echo $rental['rental_id']; ?>" class="badge badge-danger">
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
                                                         </td>
                                                     </tr>
 
