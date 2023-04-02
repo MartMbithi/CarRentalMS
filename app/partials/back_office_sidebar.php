@@ -145,32 +145,32 @@
 
                 <?php } else { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard">
+                        <a class="nav-link" href="home">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon">
                                     <span class="fas fa-home"></span>
                                 </span>
                                 <span class="nav-link-text">
-                                    Dashboard
+                                    Home
                                 </span>
                             </div>
                         </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="backoffice_rentals">
+                    <li class="nav-item"><a class="nav-link" href="backoffice_my_rentals">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><span class="fas fa-calendar-check"></span></span>
                                 <span class="nav-link-text"> Car rentals</span>
                             </div>
                         </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="backoffice_rental_returns">
+                    <li class="nav-item"><a class="nav-link" href="backoffice_my_rental_returns">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><span class="fas fa-history"></span></span>
                                 <span class="nav-link-text">My Rental returns</span>
                             </div>
                         </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="backoffice_payments">
+                    <li class="nav-item"><a class="nav-link" href="backoffice_my_payments">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><span class="fas fa-hand-holding-usd"></span></span>
                                 <span class="nav-link-text">My Payments</span>

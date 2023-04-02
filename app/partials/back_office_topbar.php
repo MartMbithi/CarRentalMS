@@ -79,7 +79,7 @@ include('../app/helpers/notifications.php');
             <img class="mr-2" src="../storage/system/logo_backoffice.png" />
         </div>
     </a>
-    <ul class="navbar-nav align-items-center d-none d-lg-block">
+    <!-- <ul class="navbar-nav align-items-center d-none d-lg-block">
         <li class="nav-item">
             <div class="search-box">
                 <form class="position-relative" data-toggle="search" data-display="static">
@@ -89,7 +89,7 @@ include('../app/helpers/notifications.php');
                 </form>
             </div>
         </li>
-    </ul>
+    </ul> -->
 
     <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
         <?php
